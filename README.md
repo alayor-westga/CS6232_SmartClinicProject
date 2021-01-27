@@ -1,4 +1,4 @@
 # CS6232_SmartClinicProject
 
-## Members
+## Contributors
 Alonso Ortega (aayalao1@my.westga.edu)
