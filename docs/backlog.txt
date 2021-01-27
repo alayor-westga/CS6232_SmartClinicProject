@@ -1,0 +1,11 @@
+AUTHENTICATION
+* As ____, so that ____, I want to ____.
+
+APPOINTMENTS
+* As ____, so that ____, I want to ____.
+
+LAB TESTS
+* As ____, so that ____, I want to ____.
+
+ADMIN
+* As ____, so that ____, I want to ____.
