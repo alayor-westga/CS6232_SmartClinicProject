@@ -4,14 +4,22 @@ AUTHENTICATION
 
 APPOINTMENTS
 * As Nurse, I want to schedule appointments with a doctor on a 
- specific date and time for a specific patient
+    specific date and time for a specific patient
 * As Nurse, I want to register new patients.
 * As Nurse, I want to make sure there are no double appointments
- with the same doctor at the same time.
- * As Nurse, I want to edit the personal information of existing patients.
- * As Nurse, I want to delete existing patients if they have no scheduled appointments.
- * As Nurse, I want to delete an appointment if there is no visit associated with it yet.
- * As Nurse, I want to edit an appointments within 24 hours before the appointment datetime.
+    with the same doctor at the same time.
+* As Nurse, I want to edit the personal information of existing patients.
+* As Nurse, I want to delete existing patients if they have no scheduled appointments.
+* As Nurse, I want to delete an appointment if there is no visit associated with it yet.
+* As Nurse, I want to edit an appointments within 24 hours before the appointment datetime.
+
+ VISITS
+* As Nurse, I want to capture the routine check details for a patient visit. (weight with 2 
+    decimal places, blood pressure including systolic and diastolic reading , body temperature with one decimal place, pulse) 
+* As Nurse, I want to capture the patient symptoms.
+* As Nurse, I want to capture all the visit details (check up, symptoms, etc) even if I
+    didn't scheduled the appointment.
+* As Nurse, I want to see the information of the doctor that was associated with the appointment.
 
 
 LAB TESTS
