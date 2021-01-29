@@ -1,66 +1,89 @@
 AUTHENTICATION
 * As Admin, I want to login to the System by entering a username and password.
+
 * As Nurse, I want to login to the System by entering a username and password.
 
+
 APPOINTMENTS
-* As Nurse, I want to schedule appointments with a doctor on a 
-    specific date and time for a specific patient
+* As Nurse, I want to schedule appointments with a doctor on a specific date and time for a specific patient
+
 * As Nurse, I want to register new patients.
-* As Nurse, I want to make sure there are no double appointments
-    with the same doctor at the same time.
+
+* As Nurse, I want to make sure there are no double appointments with the same doctor at the same time.
+
 * As Nurse, I want to edit the personal information of existing patients.
+
 * As Nurse, I want to delete existing patients if they have no scheduled appointments.
+
 * As Nurse, I want to delete an appointment if there is no visit associated with it yet.
-* As Nurse, I want to edit an appointments within 24 hours before the appointment datetime.
+
+* As Nurse, I want to edit an appointments within 24 hours before the appointment date time.
+
 * As Nurse, I want to see the past and future appointments information.
-* 
+
 
  VISITS
-* As Nurse, I want to capture the routine check details for a patient visit. (weight with 2 
-    decimal places, blood pressure including systolic and diastolic reading , body temperature with 
-    one decimal place, pulse) 
+* As Nurse, I want to capture the routine check details for a patient visit. (weight with 2 decimal places, blood pressure including systolic and diastolic reading , body temperature with one decimal place, pulse) 
+
 * As Nurse, I want to capture the patient symptoms.
-* As Nurse, I want to capture all the visit details (check up, symptoms, etc) even if I
-    didn't scheduled the appointment.
+
+* As Nurse, I want to capture all the visit details (check up, symptoms, etc) even if I didn't scheduled the appointment.
+
 * As Nurse, I want to see the information of the doctor that was associated with the appointment.
+
 * As Nurse, I want to capture the initial diagnosis on behalf of the doctor.
-* As Nurse, I want to see the patient's past visits information (e.g. routine check results 
-    and any tests ordered and the results if available)
-* As Nurse, once the final diagnosis has been entered, I want the System to restrict the 
-    edition of visit information and ordering more lab tests for that visit.
+
+* As Nurse, I want to see the patient's past visits information (e.g. routine check results and any tests ordered and the results if available)
+
+* As Nurse, once the final diagnosis has been entered, I want the System to restrict the edition of visit information and ordering more lab tests for that visit.
+
 
 LAB TESTS
 * As Nurse, I want to see a list of tests.
+
 * As Nurse, I want to see a search for tests.
+
 * As Nurse, I want to add tests to the order.
+
 * As Nurse, I want to remove tests from the order.
+
 * As Nurse, I want to see a confirmation message before sending the order.
+
 * As Nurse, I want to capture the date the test was performed.
-* As Nurse, I want to capture the test results. he test results can be anything (a numeric 
-    value, or a description). Each result can be normal or abnormal.
-* As Nurse, I want to capture the final dianosis on behalf of the doctor.
+
+* As Nurse, I want to capture the test results. he test results can be anything (a numeric value, or a description). Each result can be normal or abnormal.
+
+* As Nurse, I want to capture the final diagnosis on behalf of the doctor.
+
 
 ADMIN
 * As Admin, I want to add Nurses to the System.
+
 * As Admin, I want to view the list of Nurses.
+
 * As Admin, I want to view the personal info of a Nurse.
+
 * As Admin, I want to update a Nurse personal info.
+
 * As Admin, I want to inactivate Nurses.
+
 * As Admin, I want to reactivate Nurses.
-* As Admin, I want to generate a report than includes the most performed 
-    tests during certaing dates.
+
+* As Admin, I want to generate a report than includes the most performed tests during certaing dates.
+
 
 MISC
 * As Nurse, I want to search for patient's personal information by
     * date of birth,
     * or name(last name and first name),
     * or the combination of DOB and last name.
+
 * As Nurse, I want to search for appointments information.
     * date of birth,
     * or name(last name and first name),
     * or the combination of DOB and last name.
+    
 
 Questions:
-* Explain: "If it's a nurse, this nurse will be the person who performs the tasks, 
-    therefore, in the UI, _it should not let the user choose a nurse again_."
+* Explain: "If it's a nurse, this nurse will be the person who performs the tasks, therefore, in the UI, _it should not let the user choose a nurse again_."
 * Can there only be one future appointment?
