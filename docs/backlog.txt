@@ -1,11 +1,26 @@
 AUTHENTICATION
-* As ____, so that ____, I want to ____.
+* As Admin, I want to login to the System.
+* As Nurse, I want to login to the System.
 
 APPOINTMENTS
-* As ____, so that ____, I want to ____.
+* As Nurse, I want to schedule appointments with a doctor on a 
+ specific date and time for a specific patient
+* As Nurse, I want to register new patients.
+* As Nurse, I want to make sure there are no double appointments
+ with the same doctor at the same time.
+ * As Nurse, I want to edit the personal information of existing patients.
+ * As Nurse, I want to delete existing patients if they have no scheduled appointments.
+ * As Nurse, I want to delete an appointment if there is no visit associated with it yet.
+ * As Nurse, I want to edit an appointments within 24 hours before the appointment datetime.
+
 
 LAB TESTS
 * As ____, so that ____, I want to ____.
 
 ADMIN
-* As ____, so that ____, I want to ____.
+* As Admin, I want to add Nurses to the System.
+* As Admin, I want to view the list of Nurses.
+* As Admin, I want to view the personal info of a Nurse.
+* As Admin, I want to update a Nurse personal info.
+* As Admin, I want to inactivate Nurses.
+* As Admin, I want to reactivate Nurses.
