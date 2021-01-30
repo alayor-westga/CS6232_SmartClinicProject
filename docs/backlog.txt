@@ -11,15 +11,17 @@ APPOINTMENTS
 
 * As Nurse, I want to make sure there are no double appointments with the same doctor at the same time.
 
-* As Nurse, I want to edit the personal information of existing patients.
-
-* As Nurse, I want to delete existing patients if they have no scheduled appointments.
-
 * As Nurse, I want to delete an appointment if there is no visit associated with it yet.
 
 * As Nurse, I want to edit an appointments within 24 hours before the appointment date time.
 
 * As Nurse, I want to see the past and future appointments information.
+
+
+PATIENTS
+* As Nurse, I want to edit the personal information of existing patients.
+
+* As Nurse, I want to delete existing patients if they have no scheduled appointments.
 
 
  VISITS
