@@ -1,41 +1,41 @@
 AUTHENTICATION
 * As Admin, I want to login to the System by entering a username and password.
 
-* As Nurse, I want to login to the System by entering a username and password.
+* (#1) As Nurse, I want to login to the System by entering a username and password.
 
 
 APPOINTMENTS
-* As Nurse, I want to schedule appointments with a doctor on a specific date and time for a specific patient
+* (#4) As Nurse, I want to schedule appointments with a doctor on a specific date and time for a specific patient
 
-* As Nurse, I want to register new patients.
+* (#2) As Nurse, I want to register new patients.
 
-* As Nurse, I want to make sure there are no double appointments with the same doctor at the same time.
+* (#5) As Nurse, I want to make sure there are no double appointments with the same doctor at the same time.
 
 * As Nurse, I want to delete an appointment if there is no visit associated with it yet.
 
-* As Nurse, I want to edit an appointments within 24 hours before the appointment date time.
+* (#6) As Nurse, I want to edit an appointments within 24 hours before the appointment date time.
 
-* As Nurse, I want to see the past and future appointments information.
+* (#8) As Nurse, I want to see the past and future appointments information.
 
 
 PATIENTS
-* As Nurse, I want to edit the personal information of existing patients.
+* (#3) As Nurse, I want to edit the personal information of existing patients.
 
 * As Nurse, I want to delete existing patients if they have no scheduled appointments.
 
 
  VISITS
-* As Nurse, I want to capture the routine check details for a patient visit. (weight with 2 decimal places, blood pressure including systolic and diastolic reading , body temperature with one decimal place, pulse) 
+* (#9) As Nurse, I want to capture the routine check details for a patient visit. (weight with 2 decimal places, blood pressure including systolic and diastolic reading, body temperature with one decimal place, pulse) 
 
-* As Nurse, I want to capture the patient symptoms.
+* (#10) As Nurse, I want to capture the patient symptoms.
 
-* As Nurse, I want to capture all the visit details (check up, symptoms, etc) even if I didn't scheduled the appointment.
+* (#11) As Nurse, I want to capture all the visit details (check up, symptoms, etc) even if I didn't scheduled the appointment.
 
 * As Nurse, I want to see the information of the doctor that was associated with the appointment.
 
 * As Nurse, I want to capture the initial diagnosis on behalf of the doctor.
 
-* As Nurse, I want to see the patient's past visits information (e.g. routine check results and any tests ordered and the results if available)
+* (#12) As Nurse, I want to see the patient's past visits information (e.g. routine check results and any tests ordered and the results if available)
 
 * As Nurse, once the final diagnosis has been entered, I want the System to restrict the edition of visit information and ordering more lab tests for that visit.
 
@@ -71,11 +71,11 @@ ADMIN
 
 * As Admin, I want to reactivate Nurses.
 
-* As Admin, I want to generate a report than includes the most performed tests during certaing dates.
+* As Admin, I want to generate a report than includes the most performed tests during certain dates.
 
 
 MISC
-* As Nurse, I want to search for patient's personal information by
+* (#7) As Nurse, I want to search for patient's personal information by
     * date of birth,
     * or name(last name and first name),
     * or the combination of DOB and last name.
@@ -87,5 +87,5 @@ MISC
     
 
 Questions:
-* Explain: "If it's a nurse, this nurse will be the person who performs the tasks, therefore, in the UI, _it should not let the user choose a nurse again_."
-* Can there only be one future appointment?
+* Can there only be one future appointment? No, a patient may have many future appointments (e.g. may be with different doctors).
+
