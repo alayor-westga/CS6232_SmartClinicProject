@@ -204,6 +204,10 @@
     <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\NurseDAL.cs" />
+    <Compile Include="DAL\SmartClinitDBConnection.cs" />
+    <Compile Include="Model\ClinicPerson.cs" />
+    <Compile Include="Model\Nurse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
