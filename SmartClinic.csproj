@@ -195,6 +195,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="database\script.sql" />
     <Content Include="docs\backlog.txt" />
   </ItemGroup>
   <ItemGroup>
