@@ -1,0 +1,36 @@
+﻿using System;
+using System.Windows.Forms;
+using SmartClinic.Model;
+
+namespace SmartClinic.View
+{
+    /// <summary>
+    /// It renders the main dashboard for logged-in users.
+    /// </summary>
+    public partial class MainDashboard : Form
+    {
+        private readonly Form loginForm;
+        private Nurse nurse;
+        /// <summary>
+        /// It builds and initializes the main dashboard.
+        /// </summary>
+        public MainDashboard(Form loginForm)
+        {
+            InitializeComponent();
+            this.loginForm = loginForm;
+        }
+
+        /// <summary>
+        /// It sets the nurse property.
+        /// </summary>
+        public void SetNurse(Nurse nurse)
+        {
+            this.nurse = nurse;
+        }
+
+        private void MainDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+    }
+}

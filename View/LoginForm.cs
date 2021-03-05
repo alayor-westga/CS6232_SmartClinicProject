@@ -7,11 +7,13 @@ namespace SmartClinic.View
 {
     public partial class LoginForm : Form
     {
+        private readonly MainDashboard mainDashboard;
         private readonly NurseController nurseController;
         public LoginForm()
         {
             InitializeComponent();
             nurseController = new NurseController();
+            mainDashboard = new MainDashboard(this);
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -22,6 +24,10 @@ namespace SmartClinic.View
             Nurse nurse = nurseController.Login(username, password);
             if (nurse == null) {
                 errorMessageLabel.Text = "Invalid credentials";
+            } else {
+                mainDashboard.SetNurse(nurse);
+                Hide();
+                mainDashboard.Show();
             }
         }
 
