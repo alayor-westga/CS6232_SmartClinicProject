@@ -204,6 +204,7 @@
     <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\NurseController.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\SmartClinitDBConnection.cs" />
     <Compile Include="Model\ClinicPerson.cs" />

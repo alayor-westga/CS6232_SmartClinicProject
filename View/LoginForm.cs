@@ -1,19 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using SmartClinic.Controller;
+using SmartClinic.Model;
 
 namespace SmartClinic.View
 {
     public partial class LoginForm : Form
     {
+        private readonly NurseController nurseController;
         public LoginForm()
         {
             InitializeComponent();
+            nurseController = new NurseController();
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            String username = this.userNameTextBox.Text;
+            String password = this.passwordTextBox.Text;
+            nurseController.Login(username, password);
         }
     }
 }

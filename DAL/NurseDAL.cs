@@ -27,7 +27,7 @@ namespace SmartClinic.DAL
             string selectStatement =
             " SELECT n.nurse_id, cp.first_name, cp.last_name" +
             " FROM Nurses n" +
-            " INNER JOIN ClinicPersons cp" +
+            " INNER JOIN ClinicPersons cp ON (n.clinic_person_id = cp.clinic_person_id)" +
             " WHERE n.username = @UserName" +
             "   AND password = @Password;";
 
