@@ -197,6 +197,9 @@
   <ItemGroup>
     <Content Include="database\script.sql" />
     <Content Include="docs\backlog.txt" />
+    <Content Include="read_me.txt">
+      <SubType>Form</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".git\branches\" />
