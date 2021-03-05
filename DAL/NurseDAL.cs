@@ -25,7 +25,7 @@ namespace SmartClinic.DAL
                 throw new ArgumentException("password cannot be null or empty.");
             }
             string selectStatement =
-            " SELECT n.nurse_id, cp.first_name, cp.last_name" +
+            " SELECT n.nurse_id, n.username, cp.first_name, cp.last_name" +
             " FROM Nurses n" +
             " INNER JOIN ClinicPersons cp ON (n.clinic_person_id = cp.clinic_person_id)" +
             " WHERE n.username = @UserName" +
@@ -45,6 +45,7 @@ namespace SmartClinic.DAL
                             Nurse nurse = new Nurse()
                             {
                                 NurseId = Int32.Parse(reader["nurse_id"].ToString()),
+                                UserName = reader["username"].ToString(),
                                 FirstName = reader["first_name"].ToString(),
                                 LastName = reader["last_name"].ToString(),
                             };

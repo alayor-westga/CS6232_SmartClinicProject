@@ -14,5 +14,10 @@ namespace SmartClinic.Model
         /// The Id of the nurse.
         /// </summary>
         public int NurseId { get; set; }
+
+        /// <summary>
+        /// The User Name of the nurse.
+        /// </summary>
+        public string UserName { get; set; }
     }
 }

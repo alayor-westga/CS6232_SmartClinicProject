@@ -28,7 +28,7 @@ namespace SmartClinic.View
         public void SetNurse(Nurse nurse)
         {
             this.nurse = nurse;
-            personNameLabel.Text = nurse.FirstName + " " + nurse.LastName;
+            userNameLabel.Text = nurse.FirstName + " " + nurse.LastName + " (" + nurse.UserName + ")";
         }
 
         private void MainDashboard_FormClosed(object sender, FormClosedEventArgs e)

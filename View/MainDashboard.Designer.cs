@@ -30,7 +30,7 @@ namespace SmartClinic.View
         private void InitializeComponent()
         {
             this.userLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.personNameLabel = new System.Windows.Forms.Label();
+            this.userNameLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.newAppointmentButton = new System.Windows.Forms.Button();
@@ -40,12 +40,12 @@ namespace SmartClinic.View
             // userLayoutPanel
             // 
             this.userLayoutPanel.ColumnCount = 3;
-            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.62234F));
-            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.37765F));
+            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.59447F));
+            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.40553F));
             this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.userLayoutPanel.Controls.Add(this.welcomeLabel, 0, 0);
-            this.userLayoutPanel.Controls.Add(this.personNameLabel, 1, 0);
+            this.userLayoutPanel.Controls.Add(this.userNameLabel, 1, 0);
             this.userLayoutPanel.Controls.Add(this.logoutLinkLabel, 2, 0);
+            this.userLayoutPanel.Controls.Add(this.welcomeLabel, 0, 0);
             this.userLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.userLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.userLayoutPanel.Name = "userLayoutPanel";
@@ -54,20 +54,20 @@ namespace SmartClinic.View
             this.userLayoutPanel.Size = new System.Drawing.Size(1178, 44);
             this.userLayoutPanel.TabIndex = 0;
             // 
-            // personNameLabel
+            // userNameLabel
             // 
-            this.personNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.personNameLabel.AutoSize = true;
-            this.personNameLabel.Location = new System.Drawing.Point(878, 9);
-            this.personNameLabel.Name = "personNameLabel";
-            this.personNameLabel.Size = new System.Drawing.Size(0, 25);
-            this.personNameLabel.TabIndex = 1;
+            this.userNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.userNameLabel.AutoSize = true;
+            this.userNameLabel.Location = new System.Drawing.Point(910, 9);
+            this.userNameLabel.Name = "userNameLabel";
+            this.userNameLabel.Size = new System.Drawing.Size(0, 25);
+            this.userNameLabel.TabIndex = 1;
             // 
             // welcomeLabel
             // 
             this.welcomeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.welcomeLabel.AutoSize = true;
-            this.welcomeLabel.Location = new System.Drawing.Point(771, 9);
+            this.welcomeLabel.Location = new System.Drawing.Point(803, 9);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(101, 25);
             this.welcomeLabel.TabIndex = 2;
@@ -119,7 +119,7 @@ namespace SmartClinic.View
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel userLayoutPanel;
-        private System.Windows.Forms.Label personNameLabel;
+        private System.Windows.Forms.Label userNameLabel;
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
         private System.Windows.Forms.Button newAppointmentButton;
