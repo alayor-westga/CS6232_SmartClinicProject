@@ -16,9 +16,41 @@ namespace SmartClinic.View
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            String username = this.userNameTextBox.Text;
-            String password = this.passwordTextBox.Text;
-            nurseController.Login(username, password);
+            if (!ValidateFields()) return;
+            string username = userNameTextBox.Text;
+            string password = passwordTextBox.Text;
+            Nurse nurse = nurseController.Login(username, password);
+            if (nurse == null) {
+                errorMessageLabel.Text = "Invalid credentials";
+            }
+        }
+
+        private bool ValidateFields()
+        {
+            var isValid = true;
+            if (userNameTextBox.Text.Length == 0)
+            {
+                isValid = false;
+                userNameErrorLabel.Text = "This field is required";
+            }
+            if (passwordTextBox.Text.Length == 0)
+            {
+                isValid = false;
+                passwordErrorLabel.Text = "This field is required";
+            }
+            return isValid;
+        }
+
+        private void UserNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            errorMessageLabel.Text = "";
+            userNameErrorLabel.Text = "";
+        }
+
+        private void PasswordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            errorMessageLabel.Text = "";
+            passwordErrorLabel.Text = "";
         }
     }
 }
