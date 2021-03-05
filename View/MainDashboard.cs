@@ -31,7 +31,13 @@ namespace SmartClinic.View
 
         private void MainDashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            Application.Exit();
+        }
+
+        private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            loginForm.Show();
         }
     }
 }

@@ -58,5 +58,10 @@ namespace SmartClinic.View
             errorMessageLabel.Text = "";
             passwordErrorLabel.Text = "";
         }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
