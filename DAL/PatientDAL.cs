@@ -95,5 +95,38 @@ namespace SmartClinic.DAL
             }
             return patientList;
         }
+        public void addPatient(ClinicPerson newPatient)
+        {
+            string insertStatement =
+               "INSERT ClinicPerson " +
+                 "(first_name, last_name, date_of_birth, gender, street1, street2, city, state, zip_code, phone_number) " +
+               "VALUES (@CustomerID, @ProductCode, @DateOpened, @Title, @Description)";
+
+            using (SqlConnection connection = IncidentDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
+                    insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
+                    insertCommand.Parameters.AddWithValue("@DateOpened", DateTime.Now);
+                    insertCommand.Parameters.AddWithValue("@Title", incident.Title);
+                    insertCommand.Parameters.AddWithValue("@Description", incident.Description);
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
+/*
+newPatient.DateOfBirth = DateTime.Parse(this.dob.Text);
+newPatient.FirstName = this.firstNameTextBox.Text;
+newPatient.LastName = this.lastNameTextBox.Text;
+newPatient.Street1 = this.address1TextBox.Text;
+newPatient.Street2 = this.address2TextBox.Text;
+newPatient.City = this.cityTextBox.Text;
+newPatient.State = this.stateTextBox.Text;
+newPatient.ZipCode = Int32.Parse(this.zipCodeTextBox.Text);
+newPatient.Phone = Int32.Parse(this.phoneTextBox.Text);
+*/

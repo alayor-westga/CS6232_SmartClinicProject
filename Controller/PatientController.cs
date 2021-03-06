@@ -39,5 +39,14 @@ namespace SmartClinic.Controller
             }
             return patientSource.SearchPatients(firstName, lastName, patientId, dateOfBirth);
         }
+
+        public void addPatient(ClinicPerson newPatient)
+        {
+            if (newPatient == null)
+            {
+                throw new ArgumentNullException("ClinicPerson object cannot be null");
+            }
+            this.patientSource.addPatient(newPatient);
+        }
     }
 }

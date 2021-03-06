@@ -51,6 +51,8 @@ namespace SmartClinic.View
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipCodeTextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.genderLabel = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // addPatientButton
@@ -78,32 +80,32 @@ namespace SmartClinic.View
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(120, 18);
+            this.textBox1.Location = new System.Drawing.Point(124, 18);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(131, 30);
+            this.textBox1.Size = new System.Drawing.Size(122, 30);
             this.textBox1.TabIndex = 2;
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(330, 74);
+            this.firstNameTextBox.Location = new System.Drawing.Point(252, 73);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(192, 30);
+            this.firstNameTextBox.Size = new System.Drawing.Size(236, 30);
             this.firstNameTextBox.TabIndex = 3;
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(594, 74);
+            this.lastNameTextBox.Location = new System.Drawing.Point(550, 73);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(192, 30);
+            this.lastNameTextBox.Size = new System.Drawing.Size(236, 30);
             this.lastNameTextBox.TabIndex = 4;
             // 
             // dateTimePickerForDOB
             // 
             this.dateTimePickerForDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerForDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForDOB.Location = new System.Drawing.Point(79, 74);
+            this.dateTimePickerForDOB.Location = new System.Drawing.Point(330, 18);
             this.dateTimePickerForDOB.Name = "dateTimePickerForDOB";
             this.dateTimePickerForDOB.Size = new System.Drawing.Size(172, 30);
             this.dateTimePickerForDOB.TabIndex = 5;
@@ -120,7 +122,7 @@ namespace SmartClinic.View
             // 
             this.patientIDLabel.AutoSize = true;
             this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientIDLabel.Location = new System.Drawing.Point(12, 21);
+            this.patientIDLabel.Location = new System.Drawing.Point(13, 21);
             this.patientIDLabel.Name = "patientIDLabel";
             this.patientIDLabel.Size = new System.Drawing.Size(102, 25);
             this.patientIDLabel.TabIndex = 7;
@@ -130,7 +132,7 @@ namespace SmartClinic.View
             // 
             this.dob.AutoSize = true;
             this.dob.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dob.Location = new System.Drawing.Point(12, 77);
+            this.dob.Location = new System.Drawing.Point(263, 21);
             this.dob.Name = "dob";
             this.dob.Size = new System.Drawing.Size(61, 25);
             this.dob.TabIndex = 8;
@@ -140,7 +142,7 @@ namespace SmartClinic.View
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(269, 77);
+            this.firstNameLabel.Location = new System.Drawing.Point(191, 76);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(55, 25);
             this.firstNameLabel.TabIndex = 9;
@@ -150,7 +152,7 @@ namespace SmartClinic.View
             // 
             this.lastName.AutoSize = true;
             this.lastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastName.Location = new System.Drawing.Point(537, 77);
+            this.lastName.Location = new System.Drawing.Point(492, 76);
             this.lastName.Name = "lastName";
             this.lastName.Size = new System.Drawing.Size(55, 25);
             this.lastName.TabIndex = 10;
@@ -256,11 +258,31 @@ namespace SmartClinic.View
             this.phoneTextBox.Size = new System.Drawing.Size(221, 30);
             this.phoneTextBox.TabIndex = 21;
             // 
+            // genderLabel
+            // 
+            this.genderLabel.AutoSize = true;
+            this.genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genderLabel.Location = new System.Drawing.Point(34, 73);
+            this.genderLabel.Name = "genderLabel";
+            this.genderLabel.Size = new System.Drawing.Size(88, 25);
+            this.genderLabel.TabIndex = 22;
+            this.genderLabel.Text = "Gender: ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(124, 73);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(51, 30);
+            this.textBox2.TabIndex = 23;
+            // 
             // NewPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 370);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.genderLabel);
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(this.zipCodeTextBox);
             this.Controls.Add(this.stateTextBox);
@@ -316,5 +338,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipCodeTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
+        private System.Windows.Forms.Label genderLabel;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
