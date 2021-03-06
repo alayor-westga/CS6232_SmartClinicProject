@@ -19,7 +19,6 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.patientController = new PatientController();
-
         }
 
         private void AddPatientButton_Click(object sender, EventArgs e)
@@ -68,7 +67,7 @@ namespace SmartClinic.View
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-           
+           this.Close();
         }
 
         private void DisplayError(Exception errorMessage)
@@ -96,15 +95,10 @@ namespace SmartClinic.View
                 isValid = false;
                 this.dobErrorLabel.Text = requiredField;
             }
-            if (this.genderTextBox.Text.Length != 1)
+            if (!(this.genderTextBox.Text == "M" || this.genderTextBox.Text == "F" || this.genderTextBox.Text == "X"))
             {
                 isValid = false;
-                this.genderErrorLabel.Text = "field accepts 1 letter";
-            }
-            if (this.genderTextBox.Text.Length == 0)
-            {
-                isValid = false;
-                this.genderErrorLabel.Text = requiredField;
+                this.genderErrorLabel.Text = "Accepts 'M', 'F' or 'X'";
             }
             if (this.address1TextBox.Text.Length == 0)
             {
@@ -115,6 +109,12 @@ namespace SmartClinic.View
             {
                 isValid = false;
                 this.cityErrorLabel.Text = requiredField;
+            }
+            Regex stateRegex = new Regex("[A-Z]{2}");
+            if (!stateRegex.IsMatch(stateTextBox.Text))
+            {
+                isValid = false;
+                this.stateErrorLabel.Text = "2 letter state code requried";
             }
             if (this.stateTextBox.Text.Length != 2)
             {
@@ -131,9 +131,8 @@ namespace SmartClinic.View
                 isValid = false;
                 this.zipCodeErrorLabel.Text = requiredField;
             }
-           
-            Regex rgx = new Regex("[0-9]{10}");
-            if (!rgx.IsMatch(phoneTextBox.Text))
+            Regex phoneRegex = new Regex("[0-9]{10}");
+            if (!phoneRegex.IsMatch(phoneTextBox.Text))
             {
                 isValid = false;
                 this.phoneErrorLabel.Text = "only 10 numbers permitted";
@@ -170,7 +169,10 @@ namespace SmartClinic.View
             this.ClearErrorMessages();
         }
 
-
+        private void NewPatientForm_Load(object sender, EventArgs e)
+        {
+            this.ClearForm();
+        }
     }
 
 

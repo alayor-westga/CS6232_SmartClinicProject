@@ -69,7 +69,7 @@ namespace SmartClinic.View
             this.addPatientButton.Location = new System.Drawing.Point(387, 309);
             this.addPatientButton.Name = "addPatientButton";
             this.addPatientButton.Size = new System.Drawing.Size(123, 37);
-            this.addPatientButton.TabIndex = 0;
+            this.addPatientButton.TabIndex = 10;
             this.addPatientButton.Text = "Add Patient";
             this.addPatientButton.UseVisualStyleBackColor = true;
             this.addPatientButton.Click += new System.EventHandler(this.AddPatientButton_Click);
@@ -80,7 +80,7 @@ namespace SmartClinic.View
             this.cancelButton.Location = new System.Drawing.Point(526, 309);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(123, 37);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 11;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -91,7 +91,7 @@ namespace SmartClinic.View
             this.firstNameTextBox.Location = new System.Drawing.Point(123, 11);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(291, 30);
-            this.firstNameTextBox.TabIndex = 3;
+            this.firstNameTextBox.TabIndex = 0;
             // 
             // lastNameTextBox
             // 
@@ -99,7 +99,7 @@ namespace SmartClinic.View
             this.lastNameTextBox.Location = new System.Drawing.Point(495, 11);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(291, 30);
-            this.lastNameTextBox.TabIndex = 4;
+            this.lastNameTextBox.TabIndex = 1;
             // 
             // dateTimePickerForDOB
             // 
@@ -108,7 +108,7 @@ namespace SmartClinic.View
             this.dateTimePickerForDOB.Location = new System.Drawing.Point(272, 70);
             this.dateTimePickerForDOB.Name = "dateTimePickerForDOB";
             this.dateTimePickerForDOB.Size = new System.Drawing.Size(172, 30);
-            this.dateTimePickerForDOB.TabIndex = 5;
+            this.dateTimePickerForDOB.TabIndex = 3;
             // 
             // address1TextBox
             // 
@@ -116,7 +116,7 @@ namespace SmartClinic.View
             this.address1TextBox.Location = new System.Drawing.Point(125, 133);
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(661, 30);
-            this.address1TextBox.TabIndex = 6;
+            this.address1TextBox.TabIndex = 4;
             // 
             // dob
             // 
@@ -184,7 +184,7 @@ namespace SmartClinic.View
             this.address2TextBox.Location = new System.Drawing.Point(125, 192);
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(661, 30);
-            this.address2TextBox.TabIndex = 13;
+            this.address2TextBox.TabIndex = 5;
             // 
             // cityLabel
             // 
@@ -222,7 +222,7 @@ namespace SmartClinic.View
             this.cityTextBox.Location = new System.Drawing.Point(125, 253);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(221, 30);
-            this.cityTextBox.TabIndex = 18;
+            this.cityTextBox.TabIndex = 6;
             // 
             // stateTextBox
             // 
@@ -230,7 +230,7 @@ namespace SmartClinic.View
             this.stateTextBox.Location = new System.Drawing.Point(440, 253);
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(82, 30);
-            this.stateTextBox.TabIndex = 19;
+            this.stateTextBox.TabIndex = 7;
             // 
             // zipCodeTextBox
             // 
@@ -238,7 +238,7 @@ namespace SmartClinic.View
             this.zipCodeTextBox.Location = new System.Drawing.Point(636, 253);
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(150, 30);
-            this.zipCodeTextBox.TabIndex = 20;
+            this.zipCodeTextBox.TabIndex = 8;
             // 
             // phoneTextBox
             // 
@@ -246,7 +246,7 @@ namespace SmartClinic.View
             this.phoneTextBox.Location = new System.Drawing.Point(124, 312);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(221, 30);
-            this.phoneTextBox.TabIndex = 21;
+            this.phoneTextBox.TabIndex = 9;
             // 
             // genderLabel
             // 
@@ -264,7 +264,7 @@ namespace SmartClinic.View
             this.genderTextBox.Location = new System.Drawing.Point(125, 72);
             this.genderTextBox.Name = "genderTextBox";
             this.genderTextBox.Size = new System.Drawing.Size(51, 30);
-            this.genderTextBox.TabIndex = 23;
+            this.genderTextBox.TabIndex = 2;
             // 
             // clearButton
             // 
@@ -272,7 +272,7 @@ namespace SmartClinic.View
             this.clearButton.Location = new System.Drawing.Point(665, 309);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(123, 37);
-            this.clearButton.TabIndex = 24;
+            this.clearButton.TabIndex = 12;
             this.clearButton.Text = "Clear Form";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -298,7 +298,7 @@ namespace SmartClinic.View
             this.genderErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.genderErrorLabel.Location = new System.Drawing.Point(125, 105);
             this.genderErrorLabel.Name = "genderErrorLabel";
-            this.genderErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.genderErrorLabel.Size = new System.Drawing.Size(145, 23);
             this.genderErrorLabel.TabIndex = 27;
             // 
             // address1ErrorLabel
@@ -390,6 +390,7 @@ namespace SmartClinic.View
             this.Name = "NewPatientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewPatientForm";
+            this.Load += new System.EventHandler(this.NewPatientForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
