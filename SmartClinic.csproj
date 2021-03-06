@@ -195,6 +195,7 @@
     <None Include="docs\backlog.pdf" />
     <None Include="docs\mockups.pdf" />
     <None Include="docs\Smart_Clinic_EERD.pdf" />
+    <None Include="Properties\DataSources\SmartClinic.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Patient.datasource" />
     <None Include="README.md" />
   </ItemGroup>
@@ -213,12 +214,15 @@
     <Folder Include=".vs\CS6232_SmartClinicProject\v16\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\SmartClinitDBConnection.cs" />
     <Compile Include="Model\ClinicPerson.cs" />
+    <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Program.cs" />

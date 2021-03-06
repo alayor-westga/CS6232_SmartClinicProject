@@ -42,13 +42,6 @@ namespace SmartClinic.View
             this.newPatientButton = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientIdNumericUpdown = new System.Windows.Forms.NumericUpDown();
-            this.appointmentDateLabel = new System.Windows.Forms.Label();
-            this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
-            this.newAppoinmentGroupBox = new System.Windows.Forms.GroupBox();
-            this.appointmentTimeLabel = new System.Windows.Forms.Label();
-            this.appointmentTimePicker = new System.Windows.Forms.DateTimePicker();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,13 +50,22 @@ namespace SmartClinic.View
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.doctorLabel = new System.Windows.Forms.Label();
+            this.patientIdNumericUpdown = new System.Windows.Forms.NumericUpDown();
+            this.appointmentDateLabel = new System.Windows.Forms.Label();
+            this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
+            this.newAppoinmentGroupBox = new System.Windows.Forms.GroupBox();
             this.doctorComboBox = new System.Windows.Forms.ComboBox();
+            this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.doctorLabel = new System.Windows.Forms.Label();
+            this.appointmentTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.appointmentTimeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).BeginInit();
             this.searchForPatientsGroupBox.SuspendLayout();
             this.newAppoinmentGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // patientFirstNameTextBox
@@ -210,6 +212,73 @@ namespace SmartClinic.View
             this.Column1.ReadOnly = true;
             this.Column1.Width = 200;
             // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.firstNameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastNameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
+            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateOfBirthDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // street1DataGridViewTextBoxColumn
+            // 
+            this.street1DataGridViewTextBoxColumn.DataPropertyName = "Street1";
+            this.street1DataGridViewTextBoxColumn.HeaderText = "Street 1";
+            this.street1DataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.street1DataGridViewTextBoxColumn.Name = "street1DataGridViewTextBoxColumn";
+            this.street1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.street1DataGridViewTextBoxColumn.Width = 200;
+            // 
+            // street2DataGridViewTextBoxColumn
+            // 
+            this.street2DataGridViewTextBoxColumn.DataPropertyName = "Street2";
+            this.street2DataGridViewTextBoxColumn.HeaderText = "Street 2";
+            this.street2DataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.street2DataGridViewTextBoxColumn.Name = "street2DataGridViewTextBoxColumn";
+            this.street2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.street2DataGridViewTextBoxColumn.Width = 200;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cityDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stateDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
+            // 
             // patientIdNumericUpdown
             // 
             this.patientIdNumericUpdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -285,15 +354,32 @@ namespace SmartClinic.View
             this.newAppoinmentGroupBox.TabStop = false;
             this.newAppoinmentGroupBox.Text = "New Appointment For -";
             // 
-            // appointmentTimeLabel
+            // doctorComboBox
             // 
-            this.appointmentTimeLabel.AutoSize = true;
-            this.appointmentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentTimeLabel.Location = new System.Drawing.Point(357, 52);
-            this.appointmentTimeLabel.Name = "appointmentTimeLabel";
-            this.appointmentTimeLabel.Size = new System.Drawing.Size(88, 37);
-            this.appointmentTimeLabel.TabIndex = 19;
-            this.appointmentTimeLabel.Text = "Time";
+            this.doctorComboBox.DataSource = this.doctorBindingSource;
+            this.doctorComboBox.DisplayMember = "DoctorId";
+            this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.doctorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doctorComboBox.FormattingEnabled = true;
+            this.doctorComboBox.Location = new System.Drawing.Point(538, 92);
+            this.doctorComboBox.Name = "doctorComboBox";
+            this.doctorComboBox.Size = new System.Drawing.Size(535, 45);
+            this.doctorComboBox.TabIndex = 22;
+            this.doctorComboBox.ValueMember = "FullName";
+            // 
+            // doctorBindingSource
+            // 
+            this.doctorBindingSource.DataSource = typeof(SmartClinic.Model.Doctor);
+            // 
+            // doctorLabel
+            // 
+            this.doctorLabel.AutoSize = true;
+            this.doctorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doctorLabel.Location = new System.Drawing.Point(741, 52);
+            this.doctorLabel.Name = "doctorLabel";
+            this.doctorLabel.Size = new System.Drawing.Size(112, 37);
+            this.doctorLabel.TabIndex = 21;
+            this.doctorLabel.Text = "Doctor";
             // 
             // appointmentTimePicker
             // 
@@ -310,92 +396,15 @@ namespace SmartClinic.View
             this.appointmentTimePicker.TabIndex = 20;
             this.appointmentTimePicker.Value = new System.DateTime(2021, 3, 6, 0, 0, 0, 0);
             // 
-            // firstNameDataGridViewTextBoxColumn
+            // appointmentTimeLabel
             // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
-            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.firstNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastNameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // dateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
-            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
-            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateOfBirthDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // street1DataGridViewTextBoxColumn
-            // 
-            this.street1DataGridViewTextBoxColumn.DataPropertyName = "Street1";
-            this.street1DataGridViewTextBoxColumn.HeaderText = "Street 1";
-            this.street1DataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.street1DataGridViewTextBoxColumn.Name = "street1DataGridViewTextBoxColumn";
-            this.street1DataGridViewTextBoxColumn.ReadOnly = true;
-            this.street1DataGridViewTextBoxColumn.Width = 200;
-            // 
-            // street2DataGridViewTextBoxColumn
-            // 
-            this.street2DataGridViewTextBoxColumn.DataPropertyName = "Street2";
-            this.street2DataGridViewTextBoxColumn.HeaderText = "Street 2";
-            this.street2DataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.street2DataGridViewTextBoxColumn.Name = "street2DataGridViewTextBoxColumn";
-            this.street2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.street2DataGridViewTextBoxColumn.Width = 200;
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cityDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // stateDataGridViewTextBoxColumn
-            // 
-            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
-            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stateDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
-            // 
-            // doctorLabel
-            // 
-            this.doctorLabel.AutoSize = true;
-            this.doctorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorLabel.Location = new System.Drawing.Point(741, 52);
-            this.doctorLabel.Name = "doctorLabel";
-            this.doctorLabel.Size = new System.Drawing.Size(112, 37);
-            this.doctorLabel.TabIndex = 21;
-            this.doctorLabel.Text = "Doctor";
-            // 
-            // doctorComboBox
-            // 
-            this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.doctorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorComboBox.FormattingEnabled = true;
-            this.doctorComboBox.Location = new System.Drawing.Point(538, 92);
-            this.doctorComboBox.Name = "doctorComboBox";
-            this.doctorComboBox.Size = new System.Drawing.Size(535, 45);
-            this.doctorComboBox.TabIndex = 22;
+            this.appointmentTimeLabel.AutoSize = true;
+            this.appointmentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentTimeLabel.Location = new System.Drawing.Point(357, 52);
+            this.appointmentTimeLabel.Name = "appointmentTimeLabel";
+            this.appointmentTimeLabel.Size = new System.Drawing.Size(88, 37);
+            this.appointmentTimeLabel.TabIndex = 19;
+            this.appointmentTimeLabel.Text = "Time";
             // 
             // NewAppointmentForm
             // 
@@ -412,12 +421,13 @@ namespace SmartClinic.View
             this.Text = "New Appointment";
             this.Load += new System.EventHandler(this.NewAppointmentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).EndInit();
             this.searchForPatientsGroupBox.ResumeLayout(false);
             this.searchForPatientsGroupBox.PerformLayout();
             this.newAppoinmentGroupBox.ResumeLayout(false);
             this.newAppoinmentGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -452,5 +462,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.DateTimePicker appointmentTimePicker;
         private System.Windows.Forms.Label doctorLabel;
         private System.Windows.Forms.ComboBox doctorComboBox;
+        private System.Windows.Forms.BindingSource doctorBindingSource;
     }
 }
