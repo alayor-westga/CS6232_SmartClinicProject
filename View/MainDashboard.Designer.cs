@@ -38,6 +38,7 @@ namespace SmartClinic.View
             this.appointmentsTabPage = new System.Windows.Forms.TabPage();
             this.patientVisitsTabPage = new System.Windows.Forms.TabPage();
             this.PatientsTabPage = new System.Windows.Forms.TabPage();
+            this.newPatientButton = new System.Windows.Forms.Button();
             this.userLayoutPanel.SuspendLayout();
             this.mainDashBoardTabControl.SuspendLayout();
             this.SuspendLayout();
@@ -150,11 +151,23 @@ namespace SmartClinic.View
             this.PatientsTabPage.Text = "Patients";
             this.PatientsTabPage.UseVisualStyleBackColor = true;
             // 
+            // newPatientButton
+            // 
+            this.newPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPatientButton.Location = new System.Drawing.Point(243, 42);
+            this.newPatientButton.Name = "newPatientButton";
+            this.newPatientButton.Size = new System.Drawing.Size(191, 35);
+            this.newPatientButton.TabIndex = 3;
+            this.newPatientButton.Text = "New Patient";
+            this.newPatientButton.UseVisualStyleBackColor = true;
+            this.newPatientButton.Click += new System.EventHandler(this.NewPatientButton_Click);
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 721);
+            this.Controls.Add(this.newPatientButton);
             this.Controls.Add(this.mainDashBoardTabControl);
             this.Controls.Add(this.newAppointmentButton);
             this.Controls.Add(this.userLayoutPanel);
@@ -182,5 +195,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.TabPage appointmentsTabPage;
         private System.Windows.Forms.TabPage patientVisitsTabPage;
         private System.Windows.Forms.TabPage PatientsTabPage;
+        private System.Windows.Forms.Button newPatientButton;
     }
 }

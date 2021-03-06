@@ -11,6 +11,7 @@ namespace SmartClinic.View
     {
         private readonly Form loginForm;
         private readonly Form newAppointmentForm;
+        private readonly Form newPatientForm;
         private Nurse nurse;
         /// <summary>
         /// It builds and initializes the main dashboard.
@@ -19,7 +20,8 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.loginForm = loginForm;
-            newAppointmentForm = new NewAppointmentForm();
+            this.newAppointmentForm = new NewAppointmentForm();
+            this.newPatientForm = new NewPatientForm();
         }
 
         /// <summary>
@@ -45,6 +47,11 @@ namespace SmartClinic.View
         private void NewAppointmentButton_Click(object sender, EventArgs e)
         {
             newAppointmentForm.ShowDialog();
+        }
+
+        private void NewPatientButton_Click(object sender, EventArgs e)
+        {
+            newPatientForm.ShowDialog();
         }
     }
 }
