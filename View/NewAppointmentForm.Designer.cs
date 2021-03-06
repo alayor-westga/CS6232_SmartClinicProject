@@ -42,9 +42,10 @@ namespace SmartClinic.View
             this.clearSearchFieldsButton = new System.Windows.Forms.Button();
             this.newPatientButton = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientIdNumericUpdown = new System.Windows.Forms.NumericUpDown();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientIdNumericUpdown = new System.Windows.Forms.NumericUpDown();
+            this.appointmentTitleLabel = new System.Windows.Forms.Label();
+            this.appointmentTitleTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,9 +53,11 @@ namespace SmartClinic.View
             this.street2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).BeginInit();
+            this.appointmentTitleTableLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // searchForPatientsLabel
@@ -125,6 +128,7 @@ namespace SmartClinic.View
             // 
             // patiendDateOfBirthDateTimePicker
             // 
+            this.patiendDateOfBirthDateTimePicker.Checked = false;
             this.patiendDateOfBirthDateTimePicker.CustomFormat = "MM/dd/yyyy";
             this.patiendDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patiendDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -140,6 +144,7 @@ namespace SmartClinic.View
             // searchPatientsButton
             // 
             this.searchPatientsButton.AutoSize = true;
+            this.searchPatientsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchPatientsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchPatientsButton.Location = new System.Drawing.Point(929, 83);
             this.searchPatientsButton.Name = "searchPatientsButton";
@@ -152,6 +157,7 @@ namespace SmartClinic.View
             // clearSearchFieldsButton
             // 
             this.clearSearchFieldsButton.AutoSize = true;
+            this.clearSearchFieldsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearSearchFieldsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearSearchFieldsButton.Location = new System.Drawing.Point(1074, 83);
             this.clearSearchFieldsButton.Name = "clearSearchFieldsButton";
@@ -163,6 +169,7 @@ namespace SmartClinic.View
             // newPatientButton
             // 
             this.newPatientButton.AutoSize = true;
+            this.newPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.newPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newPatientButton.Location = new System.Drawing.Point(929, 146);
             this.newPatientButton.Name = "newPatientButton";
@@ -188,6 +195,7 @@ namespace SmartClinic.View
             this.stateDataGridViewTextBoxColumn});
             this.patientsDataGridView.DataSource = this.patientBindingSource;
             this.patientsDataGridView.Location = new System.Drawing.Point(21, 232);
+            this.patientsDataGridView.MultiSelect = false;
             this.patientsDataGridView.Name = "patientsDataGridView";
             this.patientsDataGridView.ReadOnly = true;
             this.patientsDataGridView.RowHeadersWidth = 82;
@@ -195,10 +203,16 @@ namespace SmartClinic.View
             this.patientsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientsDataGridView.Size = new System.Drawing.Size(1174, 258);
             this.patientsDataGridView.TabIndex = 12;
+            this.patientsDataGridView.SelectionChanged += new System.EventHandler(this.PatientsDataGridView_SelectionChanged);
             // 
-            // patientBindingSource
+            // Column1
             // 
-            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
+            this.Column1.DataPropertyName = "PatientId";
+            this.Column1.HeaderText = "Id";
+            this.Column1.MinimumWidth = 10;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
             // 
             // patientIdNumericUpdown
             // 
@@ -213,14 +227,28 @@ namespace SmartClinic.View
             this.patientIdNumericUpdown.Size = new System.Drawing.Size(242, 44);
             this.patientIdNumericUpdown.TabIndex = 14;
             // 
-            // Column1
+            // appointmentTitleLabel
             // 
-            this.Column1.DataPropertyName = "PatientId";
-            this.Column1.HeaderText = "Id";
-            this.Column1.MinimumWidth = 10;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 200;
+            this.appointmentTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.appointmentTitleLabel.AutoSize = true;
+            this.appointmentTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentTitleLabel.Location = new System.Drawing.Point(598, 3);
+            this.appointmentTitleLabel.Name = "appointmentTitleLabel";
+            this.appointmentTitleLabel.Size = new System.Drawing.Size(0, 37);
+            this.appointmentTitleLabel.TabIndex = 15;
+            // 
+            // appointmentTitleTableLayout
+            // 
+            this.appointmentTitleTableLayout.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.appointmentTitleTableLayout.ColumnCount = 1;
+            this.appointmentTitleTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.appointmentTitleTableLayout.Controls.Add(this.appointmentTitleLabel, 0, 0);
+            this.appointmentTitleTableLayout.Location = new System.Drawing.Point(12, 506);
+            this.appointmentTitleTableLayout.Name = "appointmentTitleTableLayout";
+            this.appointmentTitleTableLayout.RowCount = 1;
+            this.appointmentTitleTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.appointmentTitleTableLayout.Size = new System.Drawing.Size(1196, 44);
+            this.appointmentTitleTableLayout.TabIndex = 16;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
@@ -285,11 +313,16 @@ namespace SmartClinic.View
             this.stateDataGridViewTextBoxColumn.ReadOnly = true;
             this.stateDataGridViewTextBoxColumn.Width = 200;
             // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
+            // 
             // NewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 864);
+            this.Controls.Add(this.appointmentTitleTableLayout);
             this.Controls.Add(this.patientIdNumericUpdown);
             this.Controls.Add(this.patientsDataGridView);
             this.Controls.Add(this.newPatientButton);
@@ -311,8 +344,10 @@ namespace SmartClinic.View
             this.Text = "New Appointment";
             this.Load += new System.EventHandler(this.NewAppointmentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).EndInit();
+            this.appointmentTitleTableLayout.ResumeLayout(false);
+            this.appointmentTitleTableLayout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,5 +377,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.DataGridViewTextBoxColumn street2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label appointmentTitleLabel;
+        private System.Windows.Forms.TableLayoutPanel appointmentTitleTableLayout;
     }
 }

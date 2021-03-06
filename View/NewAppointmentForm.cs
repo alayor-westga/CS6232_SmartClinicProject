@@ -12,6 +12,7 @@ namespace SmartClinic.View
     public partial class NewAppointmentForm : Form
     {
         private readonly PatientController patientController;
+        private Patient selectedPatient;
 
         /// <summary>
         /// It builds and initializes the new appointment form.
@@ -49,6 +50,15 @@ namespace SmartClinic.View
                 return;
             }
             patientsDataGridView.DataSource = patients;
+        }
+
+        private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (patientsDataGridView.SelectedRows.Count > 0)
+            {
+                selectedPatient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
+                appointmentTitleLabel.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+            }
         }
     }
 }
