@@ -55,15 +55,15 @@ namespace SmartClinic.View
             this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
             this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
             this.newAppoinmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.addAppointmentButton = new System.Windows.Forms.Button();
+            this.reasonForVisitLabel = new System.Windows.Forms.Label();
+            this.reasonForVisitTextBox = new System.Windows.Forms.TextBox();
             this.doctorComboBox = new System.Windows.Forms.ComboBox();
             this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.doctorLabel = new System.Windows.Forms.Label();
             this.appointmentTimePicker = new System.Windows.Forms.DateTimePicker();
             this.appointmentTimeLabel = new System.Windows.Forms.Label();
-            this.reasonForVisitTextBox = new System.Windows.Forms.TextBox();
-            this.reasonForVisitLabel = new System.Windows.Forms.Label();
-            this.addAppointmentButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).BeginInit();
@@ -167,6 +167,7 @@ namespace SmartClinic.View
             this.clearSearchFieldsButton.TabIndex = 10;
             this.clearSearchFieldsButton.Text = "Clear";
             this.clearSearchFieldsButton.UseVisualStyleBackColor = true;
+            this.clearSearchFieldsButton.Click += new System.EventHandler(this.ClearSearchFieldsButton_Click);
             // 
             // newPatientButton
             // 
@@ -363,6 +364,52 @@ namespace SmartClinic.View
             this.newAppoinmentGroupBox.TabStop = false;
             this.newAppoinmentGroupBox.Text = "New Appointment For -";
             // 
+            // cancelButton
+            // 
+            this.cancelButton.AutoSize = true;
+            this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.Location = new System.Drawing.Point(650, 312);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(290, 47);
+            this.cancelButton.TabIndex = 26;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // addAppointmentButton
+            // 
+            this.addAppointmentButton.AutoSize = true;
+            this.addAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addAppointmentButton.Location = new System.Drawing.Point(175, 312);
+            this.addAppointmentButton.Name = "addAppointmentButton";
+            this.addAppointmentButton.Size = new System.Drawing.Size(290, 47);
+            this.addAppointmentButton.TabIndex = 25;
+            this.addAppointmentButton.Text = "Add Appointment";
+            this.addAppointmentButton.UseVisualStyleBackColor = true;
+            this.addAppointmentButton.Click += new System.EventHandler(this.AddAppointmentButton_Click);
+            // 
+            // reasonForVisitLabel
+            // 
+            this.reasonForVisitLabel.AutoSize = true;
+            this.reasonForVisitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reasonForVisitLabel.Location = new System.Drawing.Point(70, 156);
+            this.reasonForVisitLabel.Name = "reasonForVisitLabel";
+            this.reasonForVisitLabel.Size = new System.Drawing.Size(254, 37);
+            this.reasonForVisitLabel.TabIndex = 24;
+            this.reasonForVisitLabel.Text = "Reason For Visit";
+            // 
+            // reasonForVisitTextBox
+            // 
+            this.reasonForVisitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reasonForVisitTextBox.Location = new System.Drawing.Point(49, 196);
+            this.reasonForVisitTextBox.MaxLength = 200;
+            this.reasonForVisitTextBox.Multiline = true;
+            this.reasonForVisitTextBox.Name = "reasonForVisitTextBox";
+            this.reasonForVisitTextBox.Size = new System.Drawing.Size(1076, 98);
+            this.reasonForVisitTextBox.TabIndex = 23;
+            // 
             // doctorComboBox
             // 
             this.doctorComboBox.DataSource = this.doctorBindingSource;
@@ -414,51 +461,6 @@ namespace SmartClinic.View
             this.appointmentTimeLabel.Size = new System.Drawing.Size(88, 37);
             this.appointmentTimeLabel.TabIndex = 19;
             this.appointmentTimeLabel.Text = "Time";
-            // 
-            // reasonForVisitTextBox
-            // 
-            this.reasonForVisitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reasonForVisitTextBox.Location = new System.Drawing.Point(49, 196);
-            this.reasonForVisitTextBox.Multiline = true;
-            this.reasonForVisitTextBox.Name = "reasonForVisitTextBox";
-            this.reasonForVisitTextBox.Size = new System.Drawing.Size(1076, 98);
-            this.reasonForVisitTextBox.TabIndex = 23;
-            // 
-            // reasonForVisitLabel
-            // 
-            this.reasonForVisitLabel.AutoSize = true;
-            this.reasonForVisitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reasonForVisitLabel.Location = new System.Drawing.Point(70, 156);
-            this.reasonForVisitLabel.Name = "reasonForVisitLabel";
-            this.reasonForVisitLabel.Size = new System.Drawing.Size(254, 37);
-            this.reasonForVisitLabel.TabIndex = 24;
-            this.reasonForVisitLabel.Text = "Reason For Visit";
-            // 
-            // addAppointmentButton
-            // 
-            this.addAppointmentButton.AutoSize = true;
-            this.addAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAppointmentButton.Location = new System.Drawing.Point(175, 312);
-            this.addAppointmentButton.Name = "addAppointmentButton";
-            this.addAppointmentButton.Size = new System.Drawing.Size(290, 47);
-            this.addAppointmentButton.TabIndex = 25;
-            this.addAppointmentButton.Text = "Add Appointment";
-            this.addAppointmentButton.UseVisualStyleBackColor = true;
-            this.addAppointmentButton.Click += new System.EventHandler(this.AddAppointmentButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.AutoSize = true;
-            this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(650, 312);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(290, 47);
-            this.cancelButton.TabIndex = 26;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // NewAppointmentForm
             // 
