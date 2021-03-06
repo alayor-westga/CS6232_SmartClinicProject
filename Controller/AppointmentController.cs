@@ -24,13 +24,13 @@ namespace SmartClinic.Controller
         /// It creates a new appointment.
         /// </summary>
         /// <param name="newAppointment">The appointment to be inserted.</param>
-        public List<Appointment> Save(Appointment newAppointment)
+        public void Create(Appointment newAppointment)
         {
             if (newAppointment == null)
             {
                 throw new ArgumentNullException("newAppointment");
             }
-            return appointmentSource.AddAppointment();
+            appointmentSource.Insert(newAppointment);
         }
     }
 }

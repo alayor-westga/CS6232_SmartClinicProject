@@ -13,6 +13,7 @@ namespace SmartClinic.View
     {
         private readonly PatientController patientController; 
         private readonly DoctorController doctorController;
+        private readonly AppointmentController appointmentController;
 
         private Patient selectedPatient;
 
@@ -24,6 +25,7 @@ namespace SmartClinic.View
             InitializeComponent();
             patientController = new PatientController();
             doctorController = new DoctorController();
+            appointmentController = new AppointmentController();
         }
 
         private void NewAppointmentForm_Load(object sender, EventArgs e)
@@ -77,6 +79,19 @@ namespace SmartClinic.View
             patientsDataGridView.DataSource = patients;
         }
 
+        private void ClearSearchFieldsButton_Click(object sender, EventArgs e)
+        {
+            ClearSearchForm();
+        }
+        private void ClearSearchForm()
+        {
+            patientFirstNameTextBox.Text = "";
+            patientLastNameTextBox.Text = "";
+            patientIdNumericUpdown.Text = "";
+            patiendDateOfBirthDateTimePicker.Checked = false;
+            patientsDataGridView.DataSource = null;
+        }
+
         private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (patientsDataGridView.SelectedRows.Count > 0)
@@ -104,7 +119,37 @@ namespace SmartClinic.View
 
         private void AddAppointmentButton_Click(object sender, EventArgs e)
         {
-            Close();
+            Appointment newAppointment = new Appointment()
+            {
+                PatientId = selectedPatient.PatientId,
+                Date = appointmentDatePicker.Value,
+                DoctorId = Int32.Parse(doctorComboBox.SelectedValue.ToString()),
+                Reason = reasonForVisitTextBox.Text,
+            };
+            try
+            {
+                appointmentController.Create(newAppointment);
+                MessageBox.Show("A new apointment has been created", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearSearchForm();
+                ClearNewAppointmentForm();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("The appointment could not be created.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void ClearNewAppointmentForm()
+        {
+            doctorComboBox.SelectedIndex = 0;
+            reasonForVisitTextBox.Text = "";
         }
     }
 }

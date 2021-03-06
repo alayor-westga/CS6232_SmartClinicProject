@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using SmartClinic.Model;
 using System.Data.SqlClient;
 
@@ -14,7 +13,7 @@ namespace SmartClinic.DAL
         /// It inserts a new appointment in the data base.
         /// </summary>
         /// <param name="newAppointment">The appointment to be inserted.</param>
-        public void AddAppointment(Appointment newAppointment)
+        public void Insert(Appointment newAppointment)
         {
             if (newAppointment == null)
             {

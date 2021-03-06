@@ -8,7 +8,7 @@ namespace SmartClinic.Model
     /// <summary>
     /// The Appoinment model class.
     /// </summary>
-    public class Appoinment
+    public class Appointment
     {
         /// <summary>
         /// The Id of the appointment.
