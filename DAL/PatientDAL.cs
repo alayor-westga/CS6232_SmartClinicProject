@@ -102,17 +102,17 @@ namespace SmartClinic.DAL
                  "(first_name, last_name, date_of_birth, gender, street1, street2, city, state, zip_code, phone_number) " +
                "VALUES (@CustomerID, @ProductCode, @DateOpened, @Title, @Description)";
 
-            using (SqlConnection connection = IncidentDBConnection.GetConnection())
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
                 connection.Open();
 
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
-                    insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
-                    insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
+                    //insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
+                    //insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
                     insertCommand.Parameters.AddWithValue("@DateOpened", DateTime.Now);
-                    insertCommand.Parameters.AddWithValue("@Title", incident.Title);
-                    insertCommand.Parameters.AddWithValue("@Description", incident.Description);
+                    //insertCommand.Parameters.AddWithValue("@Title", incident.Title);
+                    //insertCommand.Parameters.AddWithValue("@Description", incident.Description);
                     insertCommand.ExecuteNonQuery();
                 }
             }
