@@ -31,12 +31,10 @@ namespace SmartClinic.View
         {
             this.addPatientButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.dateTimePickerForDOB = new System.Windows.Forms.DateTimePicker();
             this.address1TextBox = new System.Windows.Forms.TextBox();
-            this.patientIDLabel = new System.Windows.Forms.Label();
             this.dob = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.lastName = new System.Windows.Forms.Label();
@@ -53,59 +51,61 @@ namespace SmartClinic.View
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.genderLabel = new System.Windows.Forms.Label();
             this.genderTextBox = new System.Windows.Forms.TextBox();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.firstNameErrorLabel = new System.Windows.Forms.Label();
+            this.lastNameErrorLabel = new System.Windows.Forms.Label();
+            this.genderErrorLabel = new System.Windows.Forms.Label();
+            this.address1ErrorLabel = new System.Windows.Forms.Label();
+            this.cityErrorLabel = new System.Windows.Forms.Label();
+            this.phoneErrorLabel = new System.Windows.Forms.Label();
+            this.stateErrorLabel = new System.Windows.Forms.Label();
+            this.zipCodeErrorLabel = new System.Windows.Forms.Label();
+            this.dobErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // addPatientButton
             // 
             this.addPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addPatientButton.Location = new System.Drawing.Point(402, 309);
+            this.addPatientButton.Location = new System.Drawing.Point(387, 309);
             this.addPatientButton.Name = "addPatientButton";
-            this.addPatientButton.Size = new System.Drawing.Size(137, 37);
+            this.addPatientButton.Size = new System.Drawing.Size(123, 37);
             this.addPatientButton.TabIndex = 0;
             this.addPatientButton.Text = "Add Patient";
             this.addPatientButton.UseVisualStyleBackColor = true;
-            this.addPatientButton.Click += new System.EventHandler(this.addPatientButton_Click);
+            this.addPatientButton.Click += new System.EventHandler(this.AddPatientButton_Click);
             // 
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(594, 309);
+            this.cancelButton.Location = new System.Drawing.Point(526, 309);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(137, 37);
+            this.cancelButton.Size = new System.Drawing.Size(123, 37);
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(124, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(122, 30);
-            this.textBox1.TabIndex = 2;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(252, 73);
+            this.firstNameTextBox.Location = new System.Drawing.Point(123, 11);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(236, 30);
+            this.firstNameTextBox.Size = new System.Drawing.Size(291, 30);
             this.firstNameTextBox.TabIndex = 3;
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(550, 73);
+            this.lastNameTextBox.Location = new System.Drawing.Point(495, 11);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(236, 30);
+            this.lastNameTextBox.Size = new System.Drawing.Size(291, 30);
             this.lastNameTextBox.TabIndex = 4;
             // 
             // dateTimePickerForDOB
             // 
             this.dateTimePickerForDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerForDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForDOB.Location = new System.Drawing.Point(330, 18);
+            this.dateTimePickerForDOB.Location = new System.Drawing.Point(272, 70);
             this.dateTimePickerForDOB.Name = "dateTimePickerForDOB";
             this.dateTimePickerForDOB.Size = new System.Drawing.Size(172, 30);
             this.dateTimePickerForDOB.TabIndex = 5;
@@ -118,21 +118,11 @@ namespace SmartClinic.View
             this.address1TextBox.Size = new System.Drawing.Size(661, 30);
             this.address1TextBox.TabIndex = 6;
             // 
-            // patientIDLabel
-            // 
-            this.patientIDLabel.AutoSize = true;
-            this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientIDLabel.Location = new System.Drawing.Point(13, 21);
-            this.patientIDLabel.Name = "patientIDLabel";
-            this.patientIDLabel.Size = new System.Drawing.Size(102, 25);
-            this.patientIDLabel.TabIndex = 7;
-            this.patientIDLabel.Text = "Patient ID:";
-            // 
             // dob
             // 
             this.dob.AutoSize = true;
             this.dob.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dob.Location = new System.Drawing.Point(263, 21);
+            this.dob.Location = new System.Drawing.Point(205, 73);
             this.dob.Name = "dob";
             this.dob.Size = new System.Drawing.Size(61, 25);
             this.dob.TabIndex = 8;
@@ -142,7 +132,7 @@ namespace SmartClinic.View
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(191, 76);
+            this.firstNameLabel.Location = new System.Drawing.Point(62, 14);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(55, 25);
             this.firstNameLabel.TabIndex = 9;
@@ -152,7 +142,7 @@ namespace SmartClinic.View
             // 
             this.lastName.AutoSize = true;
             this.lastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastName.Location = new System.Drawing.Point(492, 76);
+            this.lastName.Location = new System.Drawing.Point(437, 14);
             this.lastName.Name = "lastName";
             this.lastName.Size = new System.Drawing.Size(55, 25);
             this.lastName.TabIndex = 10;
@@ -262,7 +252,7 @@ namespace SmartClinic.View
             // 
             this.genderLabel.AutoSize = true;
             this.genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderLabel.Location = new System.Drawing.Point(34, 73);
+            this.genderLabel.Location = new System.Drawing.Point(35, 72);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(88, 25);
             this.genderLabel.TabIndex = 22;
@@ -271,16 +261,109 @@ namespace SmartClinic.View
             // genderTextBox
             // 
             this.genderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderTextBox.Location = new System.Drawing.Point(124, 73);
+            this.genderTextBox.Location = new System.Drawing.Point(125, 72);
             this.genderTextBox.Name = "genderTextBox";
             this.genderTextBox.Size = new System.Drawing.Size(51, 30);
             this.genderTextBox.TabIndex = 23;
+            // 
+            // clearButton
+            // 
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(665, 309);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(123, 37);
+            this.clearButton.TabIndex = 24;
+            this.clearButton.Text = "Clear Form";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // firstNameErrorLabel
+            // 
+            this.firstNameErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.firstNameErrorLabel.Location = new System.Drawing.Point(125, 44);
+            this.firstNameErrorLabel.Name = "firstNameErrorLabel";
+            this.firstNameErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.firstNameErrorLabel.TabIndex = 25;
+            // 
+            // lastNameErrorLabel
+            // 
+            this.lastNameErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.lastNameErrorLabel.Location = new System.Drawing.Point(499, 44);
+            this.lastNameErrorLabel.Name = "lastNameErrorLabel";
+            this.lastNameErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.lastNameErrorLabel.TabIndex = 26;
+            // 
+            // genderErrorLabel
+            // 
+            this.genderErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.genderErrorLabel.Location = new System.Drawing.Point(125, 105);
+            this.genderErrorLabel.Name = "genderErrorLabel";
+            this.genderErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.genderErrorLabel.TabIndex = 27;
+            // 
+            // address1ErrorLabel
+            // 
+            this.address1ErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.address1ErrorLabel.Location = new System.Drawing.Point(130, 166);
+            this.address1ErrorLabel.Name = "address1ErrorLabel";
+            this.address1ErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.address1ErrorLabel.TabIndex = 28;
+            // 
+            // cityErrorLabel
+            // 
+            this.cityErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.cityErrorLabel.Location = new System.Drawing.Point(130, 286);
+            this.cityErrorLabel.Name = "cityErrorLabel";
+            this.cityErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.cityErrorLabel.TabIndex = 29;
+            // 
+            // phoneErrorLabel
+            // 
+            this.phoneErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.phoneErrorLabel.Location = new System.Drawing.Point(130, 344);
+            this.phoneErrorLabel.Name = "phoneErrorLabel";
+            this.phoneErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.phoneErrorLabel.TabIndex = 30;
+            // 
+            // stateErrorLabel
+            // 
+            this.stateErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.stateErrorLabel.Location = new System.Drawing.Point(439, 286);
+            this.stateErrorLabel.Name = "stateErrorLabel";
+            this.stateErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.stateErrorLabel.TabIndex = 31;
+            // 
+            // zipCodeErrorLabel
+            // 
+            this.zipCodeErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.zipCodeErrorLabel.Location = new System.Drawing.Point(642, 286);
+            this.zipCodeErrorLabel.Name = "zipCodeErrorLabel";
+            this.zipCodeErrorLabel.Size = new System.Drawing.Size(146, 23);
+            this.zipCodeErrorLabel.TabIndex = 32;
+            // 
+            // dobErrorLabel
+            // 
+            this.dobErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.dobErrorLabel.Location = new System.Drawing.Point(276, 105);
+            this.dobErrorLabel.Name = "dobErrorLabel";
+            this.dobErrorLabel.Size = new System.Drawing.Size(242, 23);
+            this.dobErrorLabel.TabIndex = 33;
             // 
             // NewPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 370);
+            this.Controls.Add(this.dobErrorLabel);
+            this.Controls.Add(this.zipCodeErrorLabel);
+            this.Controls.Add(this.stateErrorLabel);
+            this.Controls.Add(this.phoneErrorLabel);
+            this.Controls.Add(this.cityErrorLabel);
+            this.Controls.Add(this.address1ErrorLabel);
+            this.Controls.Add(this.genderErrorLabel);
+            this.Controls.Add(this.lastNameErrorLabel);
+            this.Controls.Add(this.firstNameErrorLabel);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.genderTextBox);
             this.Controls.Add(this.genderLabel);
             this.Controls.Add(this.phoneTextBox);
@@ -297,13 +380,11 @@ namespace SmartClinic.View
             this.Controls.Add(this.lastName);
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.dob);
-            this.Controls.Add(this.patientIDLabel);
             this.Controls.Add(this.address1TextBox);
             this.Controls.Add(this.dateTimePickerForDOB);
             this.Controls.Add(this.addPatientButton);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cancelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "NewPatientForm";
@@ -318,12 +399,10 @@ namespace SmartClinic.View
 
         private System.Windows.Forms.Button addPatientButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.DateTimePicker dateTimePickerForDOB;
         private System.Windows.Forms.TextBox address1TextBox;
-        private System.Windows.Forms.Label patientIDLabel;
         private System.Windows.Forms.Label dob;
         private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.Label lastName;
@@ -340,5 +419,15 @@ namespace SmartClinic.View
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.Label genderLabel;
         private System.Windows.Forms.TextBox genderTextBox;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label firstNameErrorLabel;
+        private System.Windows.Forms.Label lastNameErrorLabel;
+        private System.Windows.Forms.Label genderErrorLabel;
+        private System.Windows.Forms.Label address1ErrorLabel;
+        private System.Windows.Forms.Label cityErrorLabel;
+        private System.Windows.Forms.Label phoneErrorLabel;
+        private System.Windows.Forms.Label stateErrorLabel;
+        private System.Windows.Forms.Label zipCodeErrorLabel;
+        private System.Windows.Forms.Label dobErrorLabel;
     }
 }
