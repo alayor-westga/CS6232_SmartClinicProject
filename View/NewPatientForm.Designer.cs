@@ -52,7 +52,7 @@ namespace SmartClinic.View
             this.zipCodeTextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.genderLabel = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.genderTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // addPatientButton
@@ -268,20 +268,20 @@ namespace SmartClinic.View
             this.genderLabel.TabIndex = 22;
             this.genderLabel.Text = "Gender: ";
             // 
-            // textBox2
+            // genderTextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(124, 73);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(51, 30);
-            this.textBox2.TabIndex = 23;
+            this.genderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genderTextBox.Location = new System.Drawing.Point(124, 73);
+            this.genderTextBox.Name = "genderTextBox";
+            this.genderTextBox.Size = new System.Drawing.Size(51, 30);
+            this.genderTextBox.TabIndex = 23;
             // 
             // NewPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 370);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.genderTextBox);
             this.Controls.Add(this.genderLabel);
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(this.zipCodeTextBox);
@@ -339,6 +339,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.TextBox zipCodeTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.Label genderLabel;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox genderTextBox;
     }
 }

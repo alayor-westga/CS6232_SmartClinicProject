@@ -95,38 +95,35 @@ namespace SmartClinic.DAL
             }
             return patientList;
         }
-        public void addPatient(ClinicPerson newPatient)
+        public void AddPatient(ClinicPerson newPatient)
         {
             string insertStatement =
-               "INSERT ClinicPerson " +
-                 "(first_name, last_name, date_of_birth, gender, street1, street2, city, state, zip_code, phone_number) " +
-               "VALUES (@CustomerID, @ProductCode, @DateOpened, @Title, @Description)";
+                 
+           "INSERT ClinicPersons " +
+             "(date_of_birth, gender, first_name, last_name, street1, street2, city, state, zip_code, phone_number) " +
+           "VALUES (@DateOfBirth, @Gender, @FirstName, @LastName, @Street1, @Street2, @City, @State, @ZipCode, @Phone)";
+            
 
-            using (SqlConnection connection = IncidentDBConnection.GetConnection())
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
                 connection.Open();
 
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
-                    insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
-                    insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
-                    insertCommand.Parameters.AddWithValue("@DateOpened", DateTime.Now);
-                    insertCommand.Parameters.AddWithValue("@Title", incident.Title);
-                    insertCommand.Parameters.AddWithValue("@Description", incident.Description);
+                    insertCommand.Parameters.AddWithValue("@DateOfBirth", newPatient.DateOfBirth);
+                    insertCommand.Parameters.AddWithValue("@Gender", newPatient.Gender);
+                    insertCommand.Parameters.AddWithValue("@FirstName", newPatient.FirstName);
+                    insertCommand.Parameters.AddWithValue("@LastName", newPatient.LastName);
+                    insertCommand.Parameters.AddWithValue("@Street1", newPatient.Street1);
+                    insertCommand.Parameters.AddWithValue("@Street2", newPatient.Street2);
+                    insertCommand.Parameters.AddWithValue("@City", newPatient.City);
+                    insertCommand.Parameters.AddWithValue("@State", newPatient.State);
+                    insertCommand.Parameters.AddWithValue("@ZipCode", newPatient.ZipCode);
+                    insertCommand.Parameters.AddWithValue("@Phone", newPatient.Phone);
+
                     insertCommand.ExecuteNonQuery();
                 }
             }
         }
     }
 }
-/*
-newPatient.DateOfBirth = DateTime.Parse(this.dob.Text);
-newPatient.FirstName = this.firstNameTextBox.Text;
-newPatient.LastName = this.lastNameTextBox.Text;
-newPatient.Street1 = this.address1TextBox.Text;
-newPatient.Street2 = this.address2TextBox.Text;
-newPatient.City = this.cityTextBox.Text;
-newPatient.State = this.stateTextBox.Text;
-newPatient.ZipCode = Int32.Parse(this.zipCodeTextBox.Text);
-newPatient.Phone = Int32.Parse(this.phoneTextBox.Text);
-*/

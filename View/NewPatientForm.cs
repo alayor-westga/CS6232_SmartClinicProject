@@ -25,17 +25,18 @@ namespace SmartClinic.View
             try
             {
                 ClinicPerson newPatient = new ClinicPerson();
-                newPatient.DateOfBirth = DateTime.Parse(this.dob.Text);
+                newPatient.DateOfBirth = this.dateTimePickerForDOB.Value.Date;
+                newPatient.Gender = this.genderTextBox.Text;
                 newPatient.FirstName = this.firstNameTextBox.Text;
                 newPatient.LastName = this.lastNameTextBox.Text;
                 newPatient.Street1 = this.address1TextBox.Text;
                 newPatient.Street2 = this.address2TextBox.Text;
                 newPatient.City = this.cityTextBox.Text;
                 newPatient.State = this.stateTextBox.Text;
-                newPatient.ZipCode = Int32.Parse(this.zipCodeTextBox.Text);
-                newPatient.Phone = Int32.Parse(this.phoneTextBox.Text);
+                newPatient.ZipCode = this.zipCodeTextBox.Text;
+                newPatient.Phone = this.phoneTextBox.Text;
 
-                this.patientController.addPatient(newPatient);
+                this.patientController.AddPatient(newPatient);
 
                 MessageBox.Show("The patient was successfully added to the database.",
                         "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
