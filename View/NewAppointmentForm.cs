@@ -22,9 +22,27 @@ namespace SmartClinic.View
             patientController = new PatientController();
         }
 
+        private void NewAppointmentForm_Load(object sender, EventArgs e)
+        {
+            patientIdNumericUpdown.Text = "";
+            patientIdNumericUpdown.Controls[0].Visible = false;
+        }
+
         private void SearchPatientsButton_Click(object sender, EventArgs e)
         {
-            List<Patient> patients = patientController.SearchPatients("B", null, 0, null);
+            var firstName = patientFirstNameTextBox.Text;
+            var lastName = patientLastNameTextBox.Text;
+            var patientId = patientIdNumericUpdown.Text == "" ? 0 : (int) patientIdNumericUpdown.Value;
+            List<Patient> patients = new List<Patient>();
+            try
+            {
+                patients.AddRange(patientController.SearchPatients(firstName, lastName, patientId, null));
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             patientsDataGridView.DataSource = patients;
         }
     }

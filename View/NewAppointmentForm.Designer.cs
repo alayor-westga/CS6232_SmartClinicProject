@@ -36,7 +36,6 @@ namespace SmartClinic.View
             this.patientLastNameLabel = new System.Windows.Forms.Label();
             this.patientLastNameTextBox = new System.Windows.Forms.TextBox();
             this.patientIdLabel = new System.Windows.Forms.Label();
-            this.patiendIdTextBox = new System.Windows.Forms.TextBox();
             this.patientDateOfBirthLabel = new System.Windows.Forms.Label();
             this.patiendDateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchPatientsButton = new System.Windows.Forms.Button();
@@ -51,8 +50,10 @@ namespace SmartClinic.View
             this.street2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientIdNumericUpdown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // searchForPatientsLabel
@@ -110,14 +111,6 @@ namespace SmartClinic.View
             this.patientIdLabel.Size = new System.Drawing.Size(156, 37);
             this.patientIdLabel.TabIndex = 6;
             this.patientIdLabel.Text = "Patient ID";
-            // 
-            // patiendIdTextBox
-            // 
-            this.patiendIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patiendIdTextBox.Location = new System.Drawing.Point(195, 146);
-            this.patiendIdTextBox.Name = "patiendIdTextBox";
-            this.patiendIdTextBox.Size = new System.Drawing.Size(242, 44);
-            this.patiendIdTextBox.TabIndex = 5;
             // 
             // patientDateOfBirthLabel
             // 
@@ -268,11 +261,26 @@ namespace SmartClinic.View
             this.stateDataGridViewTextBoxColumn.ReadOnly = true;
             this.stateDataGridViewTextBoxColumn.Width = 200;
             // 
+            // patientIdNumericUpdown
+            // 
+            this.patientIdNumericUpdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIdNumericUpdown.Location = new System.Drawing.Point(195, 146);
+            this.patientIdNumericUpdown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.patientIdNumericUpdown.Name = "patientIdNumericUpdown";
+            this.patientIdNumericUpdown.Size = new System.Drawing.Size(242, 44);
+            this.patientIdNumericUpdown.TabIndex = 14;
+            this.patientIdNumericUpdown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // NewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 864);
+            this.Controls.Add(this.patientIdNumericUpdown);
             this.Controls.Add(this.patientsDataGridView);
             this.Controls.Add(this.newPatientButton);
             this.Controls.Add(this.clearSearchFieldsButton);
@@ -280,7 +288,6 @@ namespace SmartClinic.View
             this.Controls.Add(this.patiendDateOfBirthDateTimePicker);
             this.Controls.Add(this.patientDateOfBirthLabel);
             this.Controls.Add(this.patientIdLabel);
-            this.Controls.Add(this.patiendIdTextBox);
             this.Controls.Add(this.patientLastNameLabel);
             this.Controls.Add(this.patientLastNameTextBox);
             this.Controls.Add(this.patientFirstNameLabel);
@@ -292,8 +299,10 @@ namespace SmartClinic.View
             this.Name = "NewAppointmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Appointment";
+            this.Load += new System.EventHandler(this.NewAppointmentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,7 +316,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label patientLastNameLabel;
         private System.Windows.Forms.TextBox patientLastNameTextBox;
         private System.Windows.Forms.Label patientIdLabel;
-        private System.Windows.Forms.TextBox patiendIdTextBox;
         private System.Windows.Forms.Label patientDateOfBirthLabel;
         private System.Windows.Forms.DateTimePicker patiendDateOfBirthDateTimePicker;
         private System.Windows.Forms.Button searchPatientsButton;
@@ -322,5 +330,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource patientBindingSource;
+        private System.Windows.Forms.NumericUpDown patientIdNumericUpdown;
     }
 }

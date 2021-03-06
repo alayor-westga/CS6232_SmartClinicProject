@@ -32,7 +32,7 @@ namespace SmartClinic.Controller
         {
             if (String.IsNullOrWhiteSpace(firstName) &&
                 String.IsNullOrWhiteSpace(lastName) &&
-                patientId == 0 &&
+                patientId <= 0 &&
                 dateOfBirth == null)
             {
                 throw new ArgumentException("At least one parameter must be neither null nor empty.");
