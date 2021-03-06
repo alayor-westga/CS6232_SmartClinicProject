@@ -357,7 +357,7 @@ namespace SmartClinic.View
             // doctorComboBox
             // 
             this.doctorComboBox.DataSource = this.doctorBindingSource;
-            this.doctorComboBox.DisplayMember = "DoctorId";
+            this.doctorComboBox.DisplayMember = "FullName";
             this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.doctorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doctorComboBox.FormattingEnabled = true;
@@ -365,7 +365,7 @@ namespace SmartClinic.View
             this.doctorComboBox.Name = "doctorComboBox";
             this.doctorComboBox.Size = new System.Drawing.Size(535, 45);
             this.doctorComboBox.TabIndex = 22;
-            this.doctorComboBox.ValueMember = "FullName";
+            this.doctorComboBox.ValueMember = "DoctorId";
             // 
             // doctorBindingSource
             // 

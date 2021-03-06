@@ -11,7 +11,9 @@ namespace SmartClinic.View
     /// </summary>
     public partial class NewAppointmentForm : Form
     {
-        private readonly PatientController patientController;
+        private readonly PatientController patientController; 
+        private readonly DoctorController doctorController;
+
         private Patient selectedPatient;
 
         /// <summary>
@@ -21,12 +23,35 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             patientController = new PatientController();
+            doctorController = new DoctorController();
         }
 
         private void NewAppointmentForm_Load(object sender, EventArgs e)
         {
             patientIdNumericUpdown.Text = "";
             patientIdNumericUpdown.Controls[0].Visible = false;
+            PopulateDoctors();
+        }
+
+        private void PopulateDoctors()
+        {
+            List<Doctor> doctors = new List<Doctor>();
+            try
+            {
+                doctors.Add(new Doctor()
+                {
+                    DoctorId = -1,
+                    FirstName = "-- Select a doctor --"
+                });
+                doctors.AddRange(doctorController.GetAll());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("The doctor list could not get loaded.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            doctorComboBox.DataSource = doctors;
         }
 
         private void SearchPatientsButton_Click(object sender, EventArgs e)

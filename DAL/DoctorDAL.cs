@@ -29,7 +29,7 @@ namespace SmartClinic.DAL
                 {
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
                             Doctor doctor = new Doctor()
                             {
