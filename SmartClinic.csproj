@@ -195,8 +195,6 @@
     <None Include="docs\backlog.pdf" />
     <None Include="docs\mockups.pdf" />
     <None Include="docs\Smart_Clinic_EERD.pdf" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\x86\Debug\SmartClinic.csprojAssemblyReference.cache" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -212,9 +210,6 @@
     <Folder Include=".git\objects\pack\" />
     <Folder Include=".git\refs\tags\" />
     <Folder Include=".vs\CS6232_SmartClinicProject\v16\" />
-    <Folder Include="bin\Debug\" />
-    <Folder Include="bin\Release\" />
-    <Folder Include="obj\x86\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\NurseController.cs" />
@@ -223,8 +218,6 @@
     <Compile Include="Model\ClinicPerson.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
-    <Compile Include="obj\x86\Debug\.NETFramework,Version=v4.0,Profile=Client.AssemblyAttributes.cs" />
-    <Compile Include="obj\x86\Release\.NETFramework,Version=v4.0,Profile=Client.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UserControls\PatientsUserControls.cs">
       <SubType>UserControl</SubType>
