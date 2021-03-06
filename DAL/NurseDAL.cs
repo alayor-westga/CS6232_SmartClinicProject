@@ -13,8 +13,6 @@ namespace SmartClinic.DAL
         /// <summary>
         /// It verifies if a nurse exists with the provided username and password.
         /// </summary>
-        /// <param name="username">The nurse's username.</param>
-        /// <param name="password">The nurse's password.</param>
         /// <returns>The nurse if found. Null otherwise.</returns>
         public Nurse GetByUserNameAndPassword(string username, string password)
         {

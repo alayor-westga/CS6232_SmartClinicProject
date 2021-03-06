@@ -15,10 +15,5 @@ namespace SmartClinic.View
         {
             InitializeComponent();
         }
-
-        private void SearchPatientsButton_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

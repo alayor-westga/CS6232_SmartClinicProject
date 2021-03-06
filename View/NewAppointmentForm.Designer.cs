@@ -41,8 +41,6 @@ namespace SmartClinic.View
             this.searchPatientsButton = new System.Windows.Forms.Button();
             this.clearSearchFieldsButton = new System.Windows.Forms.Button();
             this.newPatientButton = new System.Windows.Forms.Button();
-            this.patientsDataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // searchForPatientsLabel
@@ -60,7 +58,7 @@ namespace SmartClinic.View
             this.patientFirstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientFirstNameTextBox.Location = new System.Drawing.Point(195, 83);
             this.patientFirstNameTextBox.Name = "patientFirstNameTextBox";
-            this.patientFirstNameTextBox.Size = new System.Drawing.Size(242, 44);
+            this.patientFirstNameTextBox.Size = new System.Drawing.Size(218, 44);
             this.patientFirstNameTextBox.TabIndex = 1;
             // 
             // patientFirstNameLabel
@@ -77,7 +75,7 @@ namespace SmartClinic.View
             // 
             this.patientLastNameLabel.AutoSize = true;
             this.patientLastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientLastNameLabel.Location = new System.Drawing.Point(477, 86);
+            this.patientLastNameLabel.Location = new System.Drawing.Point(469, 86);
             this.patientLastNameLabel.Name = "patientLastNameLabel";
             this.patientLastNameLabel.Size = new System.Drawing.Size(173, 37);
             this.patientLastNameLabel.TabIndex = 4;
@@ -86,9 +84,9 @@ namespace SmartClinic.View
             // patientLastNameTextBox
             // 
             this.patientLastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientLastNameTextBox.Location = new System.Drawing.Point(656, 83);
+            this.patientLastNameTextBox.Location = new System.Drawing.Point(648, 83);
             this.patientLastNameTextBox.Name = "patientLastNameTextBox";
-            this.patientLastNameTextBox.Size = new System.Drawing.Size(242, 44);
+            this.patientLastNameTextBox.Size = new System.Drawing.Size(218, 44);
             this.patientLastNameTextBox.TabIndex = 3;
             // 
             // patientIdLabel
@@ -106,14 +104,14 @@ namespace SmartClinic.View
             this.patiendIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patiendIdTextBox.Location = new System.Drawing.Point(195, 146);
             this.patiendIdTextBox.Name = "patiendIdTextBox";
-            this.patiendIdTextBox.Size = new System.Drawing.Size(242, 44);
+            this.patiendIdTextBox.Size = new System.Drawing.Size(218, 44);
             this.patiendIdTextBox.TabIndex = 5;
             // 
             // patientDateOfBirthLabel
             // 
             this.patientDateOfBirthLabel.AutoSize = true;
             this.patientDateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientDateOfBirthLabel.Location = new System.Drawing.Point(455, 149);
+            this.patientDateOfBirthLabel.Location = new System.Drawing.Point(447, 149);
             this.patientDateOfBirthLabel.Name = "patientDateOfBirthLabel";
             this.patientDateOfBirthLabel.Size = new System.Drawing.Size(195, 37);
             this.patientDateOfBirthLabel.TabIndex = 7;
@@ -121,36 +119,32 @@ namespace SmartClinic.View
             // 
             // patiendDateOfBirthDateTimePicker
             // 
-            this.patiendDateOfBirthDateTimePicker.Checked = false;
-            this.patiendDateOfBirthDateTimePicker.CustomFormat = "yyyy/MM/dd";
+            this.patiendDateOfBirthDateTimePicker.CustomFormat = "yyyy/mm/dd";
             this.patiendDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patiendDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.patiendDateOfBirthDateTimePicker.Location = new System.Drawing.Point(656, 146);
+            this.patiendDateOfBirthDateTimePicker.Location = new System.Drawing.Point(648, 143);
             this.patiendDateOfBirthDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.patiendDateOfBirthDateTimePicker.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
             this.patiendDateOfBirthDateTimePicker.Name = "patiendDateOfBirthDateTimePicker";
-            this.patiendDateOfBirthDateTimePicker.ShowCheckBox = true;
-            this.patiendDateOfBirthDateTimePicker.Size = new System.Drawing.Size(242, 44);
+            this.patiendDateOfBirthDateTimePicker.Size = new System.Drawing.Size(218, 44);
             this.patiendDateOfBirthDateTimePicker.TabIndex = 8;
-            this.patiendDateOfBirthDateTimePicker.Value = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
+            this.patiendDateOfBirthDateTimePicker.Value = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             // 
             // searchPatientsButton
             // 
             this.searchPatientsButton.AutoSize = true;
             this.searchPatientsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPatientsButton.Location = new System.Drawing.Point(929, 83);
+            this.searchPatientsButton.Location = new System.Drawing.Point(909, 83);
             this.searchPatientsButton.Name = "searchPatientsButton";
             this.searchPatientsButton.Size = new System.Drawing.Size(128, 47);
             this.searchPatientsButton.TabIndex = 9;
             this.searchPatientsButton.Text = "Search";
             this.searchPatientsButton.UseVisualStyleBackColor = true;
-            this.searchPatientsButton.Click += new System.EventHandler(this.SearchPatientsButton_Click);
             // 
             // clearSearchFieldsButton
             // 
             this.clearSearchFieldsButton.AutoSize = true;
             this.clearSearchFieldsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearSearchFieldsButton.Location = new System.Drawing.Point(1074, 83);
+            this.clearSearchFieldsButton.Location = new System.Drawing.Point(1054, 83);
             this.clearSearchFieldsButton.Name = "clearSearchFieldsButton";
             this.clearSearchFieldsButton.Size = new System.Drawing.Size(121, 47);
             this.clearSearchFieldsButton.TabIndex = 10;
@@ -161,29 +155,18 @@ namespace SmartClinic.View
             // 
             this.newPatientButton.AutoSize = true;
             this.newPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPatientButton.Location = new System.Drawing.Point(929, 146);
+            this.newPatientButton.Location = new System.Drawing.Point(909, 146);
             this.newPatientButton.Name = "newPatientButton";
             this.newPatientButton.Size = new System.Drawing.Size(266, 47);
             this.newPatientButton.TabIndex = 11;
             this.newPatientButton.Text = "New Patient";
             this.newPatientButton.UseVisualStyleBackColor = true;
             // 
-            // patientsDataGridView
-            // 
-            this.patientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.patientsDataGridView.Location = new System.Drawing.Point(21, 232);
-            this.patientsDataGridView.Name = "patientsDataGridView";
-            this.patientsDataGridView.RowHeadersWidth = 82;
-            this.patientsDataGridView.RowTemplate.Height = 33;
-            this.patientsDataGridView.Size = new System.Drawing.Size(1174, 258);
-            this.patientsDataGridView.TabIndex = 12;
-            // 
             // NewAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 864);
-            this.Controls.Add(this.patientsDataGridView);
             this.Controls.Add(this.newPatientButton);
             this.Controls.Add(this.clearSearchFieldsButton);
             this.Controls.Add(this.searchPatientsButton);
@@ -202,7 +185,6 @@ namespace SmartClinic.View
             this.Name = "NewAppointmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Appointment";
-            ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,6 +204,5 @@ namespace SmartClinic.View
         private System.Windows.Forms.Button searchPatientsButton;
         private System.Windows.Forms.Button clearSearchFieldsButton;
         private System.Windows.Forms.Button newPatientButton;
-        private System.Windows.Forms.DataGridView patientsDataGridView;
     }
 }
