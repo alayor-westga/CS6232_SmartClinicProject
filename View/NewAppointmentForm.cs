@@ -83,7 +83,18 @@ namespace SmartClinic.View
             {
                 selectedPatient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
                 newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+                newAppoinmentGroupBox.Enabled = true;
+            } else
+            {
+                DisableNewAppointmentSection();
             }
+        }
+
+        private void DisableNewAppointmentSection()
+        {
+            selectedPatient = null;
+            newAppoinmentGroupBox.Text = "New Appointment For -";
+            newAppoinmentGroupBox.Enabled = false;
         }
     }
 }

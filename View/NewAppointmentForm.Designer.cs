@@ -346,6 +346,7 @@ namespace SmartClinic.View
             this.newAppoinmentGroupBox.Controls.Add(this.appointmentTimeLabel);
             this.newAppoinmentGroupBox.Controls.Add(this.appointmentDatePicker);
             this.newAppoinmentGroupBox.Controls.Add(this.appointmentDateLabel);
+            this.newAppoinmentGroupBox.Enabled = false;
             this.newAppoinmentGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newAppoinmentGroupBox.Location = new System.Drawing.Point(6, 512);
             this.newAppoinmentGroupBox.Name = "newAppoinmentGroupBox";
