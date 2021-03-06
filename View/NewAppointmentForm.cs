@@ -96,5 +96,15 @@ namespace SmartClinic.View
             newAppoinmentGroupBox.Text = "New Appointment For -";
             newAppoinmentGroupBox.Enabled = false;
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void AddAppointmentButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
