@@ -50,11 +50,11 @@ namespace SmartClinic.Model
         /// <summary>
         /// The zip code of the clinic person.
         /// </summary>
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
         
         /// <summary>
         /// The phone of the clinic person.
         /// </summary>
-        public int Phone { get; set; }
+        public string Phone { get; set; }
     }
 }
