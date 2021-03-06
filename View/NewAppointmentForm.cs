@@ -119,11 +119,13 @@ namespace SmartClinic.View
 
         private void AddAppointmentButton_Click(object sender, EventArgs e)
         {
+            string dateString = appointmentDatePicker.Value.ToShortDateString();
+            string timeString = appointmentTimePicker.Value.ToShortTimeString();
             Appointment newAppointment = new Appointment()
             {
                 PatientId = selectedPatient.PatientId,
-                Date = appointmentDatePicker.Value,
-                DoctorId = Int32.Parse(doctorComboBox.SelectedValue.ToString()),
+                Date = DateTime.Parse(dateString + " " + timeString),
+                DoctorId = int.Parse(doctorComboBox.SelectedValue.ToString()),
                 Reason = reasonForVisitTextBox.Text,
             };
             try
