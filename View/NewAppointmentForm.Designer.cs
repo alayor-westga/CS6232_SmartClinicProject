@@ -419,6 +419,7 @@ namespace SmartClinic.View
             // 
             this.reasonForVisitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reasonForVisitTextBox.Location = new System.Drawing.Point(49, 196);
+            this.reasonForVisitTextBox.MaxLength = 200;
             this.reasonForVisitTextBox.Multiline = true;
             this.reasonForVisitTextBox.Name = "reasonForVisitTextBox";
             this.reasonForVisitTextBox.Size = new System.Drawing.Size(1076, 98);
