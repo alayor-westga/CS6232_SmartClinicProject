@@ -71,11 +71,10 @@ namespace SmartClinic.DAL
                     }
                     if (dateOfBirth != null)
                     {
-                        selectCommand.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
+                        selectCommand.Parameters.AddWithValue("@DateOfBirth", dateOfBirth.GetValueOrDefault().Date);
                     }
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        selectCommand.ToString();
                         while (reader.Read())
                         {
                             Patient patient = new Patient()

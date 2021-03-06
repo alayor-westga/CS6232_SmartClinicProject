@@ -33,10 +33,15 @@ namespace SmartClinic.View
             var firstName = patientFirstNameTextBox.Text;
             var lastName = patientLastNameTextBox.Text;
             var patientId = patientIdNumericUpdown.Text == "" ? 0 : (int) patientIdNumericUpdown.Value;
+            DateTime? dateOfBirth = null;
+            if (patiendDateOfBirthDateTimePicker.Checked)
+            {
+                dateOfBirth = patiendDateOfBirthDateTimePicker.Value;        
+            }
             List<Patient> patients = new List<Patient>();
             try
             {
-                patients.AddRange(patientController.SearchPatients(firstName, lastName, patientId, null));
+                patients.AddRange(patientController.SearchPatients(firstName, lastName, patientId, dateOfBirth));
             }
             catch (ArgumentException ex)
             {

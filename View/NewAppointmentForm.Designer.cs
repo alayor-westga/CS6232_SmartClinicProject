@@ -43,6 +43,8 @@ namespace SmartClinic.View
             this.newPatientButton = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientIdNumericUpdown = new System.Windows.Forms.NumericUpDown();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +52,6 @@ namespace SmartClinic.View
             this.street2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientIdNumericUpdown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).BeginInit();
@@ -124,8 +125,7 @@ namespace SmartClinic.View
             // 
             // patiendDateOfBirthDateTimePicker
             // 
-            this.patiendDateOfBirthDateTimePicker.Checked = false;
-            this.patiendDateOfBirthDateTimePicker.CustomFormat = "yyyy/MM/dd";
+            this.patiendDateOfBirthDateTimePicker.CustomFormat = "MM/dd/yyyy";
             this.patiendDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patiendDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.patiendDateOfBirthDateTimePicker.Location = new System.Drawing.Point(656, 146);
@@ -135,7 +135,7 @@ namespace SmartClinic.View
             this.patiendDateOfBirthDateTimePicker.ShowCheckBox = true;
             this.patiendDateOfBirthDateTimePicker.Size = new System.Drawing.Size(242, 44);
             this.patiendDateOfBirthDateTimePicker.TabIndex = 8;
-            this.patiendDateOfBirthDateTimePicker.Value = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
+            this.patiendDateOfBirthDateTimePicker.Value = new System.DateTime(2021, 3, 6, 0, 0, 0, 0);
             // 
             // searchPatientsButton
             // 
@@ -178,6 +178,7 @@ namespace SmartClinic.View
             this.patientsDataGridView.AutoGenerateColumns = false;
             this.patientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn,
             this.dateOfBirthDataGridViewTextBoxColumn,
@@ -191,6 +192,7 @@ namespace SmartClinic.View
             this.patientsDataGridView.ReadOnly = true;
             this.patientsDataGridView.RowHeadersWidth = 82;
             this.patientsDataGridView.RowTemplate.Height = 33;
+            this.patientsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientsDataGridView.Size = new System.Drawing.Size(1174, 258);
             this.patientsDataGridView.TabIndex = 12;
             // 
@@ -198,10 +200,32 @@ namespace SmartClinic.View
             // 
             this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
             // 
+            // patientIdNumericUpdown
+            // 
+            this.patientIdNumericUpdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIdNumericUpdown.Location = new System.Drawing.Point(195, 146);
+            this.patientIdNumericUpdown.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.patientIdNumericUpdown.Name = "patientIdNumericUpdown";
+            this.patientIdNumericUpdown.Size = new System.Drawing.Size(242, 44);
+            this.patientIdNumericUpdown.TabIndex = 14;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PatientId";
+            this.Column1.HeaderText = "Id";
+            this.Column1.MinimumWidth = 10;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
             // firstNameDataGridViewTextBoxColumn
             // 
             this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
             this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
             this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -210,7 +234,7 @@ namespace SmartClinic.View
             // lastNameDataGridViewTextBoxColumn
             // 
             this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
             this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -219,7 +243,7 @@ namespace SmartClinic.View
             // dateOfBirthDataGridViewTextBoxColumn
             // 
             this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
             this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
@@ -228,7 +252,7 @@ namespace SmartClinic.View
             // street1DataGridViewTextBoxColumn
             // 
             this.street1DataGridViewTextBoxColumn.DataPropertyName = "Street1";
-            this.street1DataGridViewTextBoxColumn.HeaderText = "Street1";
+            this.street1DataGridViewTextBoxColumn.HeaderText = "Street 1";
             this.street1DataGridViewTextBoxColumn.MinimumWidth = 10;
             this.street1DataGridViewTextBoxColumn.Name = "street1DataGridViewTextBoxColumn";
             this.street1DataGridViewTextBoxColumn.ReadOnly = true;
@@ -237,7 +261,7 @@ namespace SmartClinic.View
             // street2DataGridViewTextBoxColumn
             // 
             this.street2DataGridViewTextBoxColumn.DataPropertyName = "Street2";
-            this.street2DataGridViewTextBoxColumn.HeaderText = "Street2";
+            this.street2DataGridViewTextBoxColumn.HeaderText = "Street 2";
             this.street2DataGridViewTextBoxColumn.MinimumWidth = 10;
             this.street2DataGridViewTextBoxColumn.Name = "street2DataGridViewTextBoxColumn";
             this.street2DataGridViewTextBoxColumn.ReadOnly = true;
@@ -260,20 +284,6 @@ namespace SmartClinic.View
             this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
             this.stateDataGridViewTextBoxColumn.ReadOnly = true;
             this.stateDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // patientIdNumericUpdown
-            // 
-            this.patientIdNumericUpdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientIdNumericUpdown.Location = new System.Drawing.Point(195, 146);
-            this.patientIdNumericUpdown.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.patientIdNumericUpdown.Name = "patientIdNumericUpdown";
-            this.patientIdNumericUpdown.Size = new System.Drawing.Size(242, 44);
-            this.patientIdNumericUpdown.TabIndex = 14;
-            this.patientIdNumericUpdown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // NewAppointmentForm
             // 
@@ -322,6 +332,9 @@ namespace SmartClinic.View
         private System.Windows.Forms.Button clearSearchFieldsButton;
         private System.Windows.Forms.Button newPatientButton;
         private System.Windows.Forms.DataGridView patientsDataGridView;
+        private System.Windows.Forms.BindingSource patientBindingSource;
+        private System.Windows.Forms.NumericUpDown patientIdNumericUpdown;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
@@ -329,7 +342,5 @@ namespace SmartClinic.View
         private System.Windows.Forms.DataGridViewTextBoxColumn street2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource patientBindingSource;
-        private System.Windows.Forms.NumericUpDown patientIdNumericUpdown;
     }
 }
