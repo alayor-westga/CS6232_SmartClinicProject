@@ -56,5 +56,15 @@ namespace SmartClinic.Model
         /// The phone of the clinic person.
         /// </summary>
         public string Phone { get; set; }
+
+        // <summary>
+        /// The full name of the clinic person.
+        /// </summary>
+        public string FullName { 
+            get 
+            {
+                return FirstName + " " + LastName;
+            }
+        }
     }
 }
