@@ -57,7 +57,7 @@ namespace SmartClinic.View
             if (patientsDataGridView.SelectedRows.Count > 0)
             {
                 selectedPatient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
-                appointmentTitleLabel.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+                newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
             }
         }
     }
