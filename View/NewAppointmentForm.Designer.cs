@@ -29,6 +29,7 @@ namespace SmartClinic.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.searchForPatientsLabel = new System.Windows.Forms.Label();
             this.patientFirstNameTextBox = new System.Windows.Forms.TextBox();
             this.patientFirstNameLabel = new System.Windows.Forms.Label();
@@ -42,7 +43,16 @@ namespace SmartClinic.View
             this.clearSearchFieldsButton = new System.Windows.Forms.Button();
             this.newPatientButton = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.street1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.street2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // searchForPatientsLabel
@@ -170,13 +180,93 @@ namespace SmartClinic.View
             // 
             // patientsDataGridView
             // 
+            this.patientsDataGridView.AllowUserToAddRows = false;
+            this.patientsDataGridView.AllowUserToDeleteRows = false;
+            this.patientsDataGridView.AutoGenerateColumns = false;
             this.patientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.firstNameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.dateOfBirthDataGridViewTextBoxColumn,
+            this.street1DataGridViewTextBoxColumn,
+            this.street2DataGridViewTextBoxColumn,
+            this.cityDataGridViewTextBoxColumn,
+            this.stateDataGridViewTextBoxColumn});
+            this.patientsDataGridView.DataSource = this.patientBindingSource;
             this.patientsDataGridView.Location = new System.Drawing.Point(21, 232);
             this.patientsDataGridView.Name = "patientsDataGridView";
+            this.patientsDataGridView.ReadOnly = true;
             this.patientsDataGridView.RowHeadersWidth = 82;
             this.patientsDataGridView.RowTemplate.Height = 33;
             this.patientsDataGridView.Size = new System.Drawing.Size(1174, 258);
             this.patientsDataGridView.TabIndex = 12;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.firstNameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastNameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateOfBirthDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // street1DataGridViewTextBoxColumn
+            // 
+            this.street1DataGridViewTextBoxColumn.DataPropertyName = "Street1";
+            this.street1DataGridViewTextBoxColumn.HeaderText = "Street1";
+            this.street1DataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.street1DataGridViewTextBoxColumn.Name = "street1DataGridViewTextBoxColumn";
+            this.street1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.street1DataGridViewTextBoxColumn.Width = 200;
+            // 
+            // street2DataGridViewTextBoxColumn
+            // 
+            this.street2DataGridViewTextBoxColumn.DataPropertyName = "Street2";
+            this.street2DataGridViewTextBoxColumn.HeaderText = "Street2";
+            this.street2DataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.street2DataGridViewTextBoxColumn.Name = "street2DataGridViewTextBoxColumn";
+            this.street2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.street2DataGridViewTextBoxColumn.Width = 200;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cityDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stateDataGridViewTextBoxColumn.Width = 200;
             // 
             // NewAppointmentForm
             // 
@@ -203,6 +293,7 @@ namespace SmartClinic.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Appointment";
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +314,13 @@ namespace SmartClinic.View
         private System.Windows.Forms.Button clearSearchFieldsButton;
         private System.Windows.Forms.Button newPatientButton;
         private System.Windows.Forms.DataGridView patientsDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn street1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn street2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource patientBindingSource;
     }
 }
