@@ -63,20 +63,30 @@ namespace SmartClinic.UserControls
                 {
                     //need try-catch
                     this.patientController.DeletePatient(patientID);
-                    this.SearchButton.PerformClick();
-                }
-                else if (dialogResultVerifyClose == DialogResult.No)
-                {
-                    MessageBox.Show("Patient was not deleted.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+                    this.searchButton.PerformClick();
                 }
             }
             else
             {
-                MessageBox.Show("This patient has associated appointment\nand cannot be deleted", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This patient has associated appointments\nand cannot be deleted.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
                 
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            this.patientDataGridView.DataSource = null;
+            this.dobSearchPicker.Value = DateTime.Now;
+            this.dobSearchPicker.Checked = false;
+            this.firstNameTextBox.Text = "";
+            this.lastNameTextBox.Text = "";
+            this.searchMessageLabel.Text = "";
+        }
+
+        private void SearchTermsValueChanged(object sender, EventArgs e)
+        {
+            this.patientDataGridView.DataSource = null;
         }
     }
 }

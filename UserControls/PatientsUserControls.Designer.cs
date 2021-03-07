@@ -34,7 +34,7 @@ namespace SmartClinic.UserControls
             this.deletePatientButton = new System.Windows.Forms.Button();
             this.viewOrEditPatientDetailsButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
-            this.SearchButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.dobSearchPicker = new System.Windows.Forms.DateTimePicker();
@@ -118,17 +118,18 @@ namespace SmartClinic.UserControls
             this.clearButton.TabIndex = 22;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
-            // SearchButton
+            // searchButton
             // 
-            this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchButton.Location = new System.Drawing.Point(137, 537);
-            this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(125, 35);
-            this.SearchButton.TabIndex = 21;
-            this.SearchButton.Text = "Search";
-            this.SearchButton.UseVisualStyleBackColor = true;
-            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchButton.Location = new System.Drawing.Point(137, 537);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(125, 35);
+            this.searchButton.TabIndex = 21;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // lastNameTextBox
             // 
@@ -137,6 +138,7 @@ namespace SmartClinic.UserControls
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(262, 30);
             this.lastNameTextBox.TabIndex = 20;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.SearchTermsValueChanged);
             // 
             // firstNameTextBox
             // 
@@ -145,6 +147,7 @@ namespace SmartClinic.UserControls
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(262, 30);
             this.firstNameTextBox.TabIndex = 19;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.SearchTermsValueChanged);
             // 
             // dobSearchPicker
             // 
@@ -157,6 +160,7 @@ namespace SmartClinic.UserControls
             this.dobSearchPicker.ShowCheckBox = true;
             this.dobSearchPicker.Size = new System.Drawing.Size(262, 30);
             this.dobSearchPicker.TabIndex = 18;
+            this.dobSearchPicker.ValueChanged += new System.EventHandler(this.SearchTermsValueChanged);
             // 
             // lastNameLabel
             // 
@@ -318,7 +322,7 @@ namespace SmartClinic.UserControls
             this.Controls.Add(this.deletePatientButton);
             this.Controls.Add(this.viewOrEditPatientDetailsButton);
             this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.SearchButton);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.dobSearchPicker);
@@ -344,7 +348,7 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.Button deletePatientButton;
         private System.Windows.Forms.Button viewOrEditPatientDetailsButton;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.DateTimePicker dobSearchPicker;
