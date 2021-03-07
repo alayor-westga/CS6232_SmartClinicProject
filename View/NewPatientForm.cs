@@ -40,7 +40,8 @@ namespace SmartClinic.View
                 newPatient.ZipCode = this.zipCodeTextBox.Text;
                 newPatient.Phone = this.phoneTextBox.Text;
 
-                this.patientController.AddPatient(newPatient);
+                int clinicPersonID = this.patientController.AddClinicPerson(newPatient);
+                this.patientIDLabel.Text = "Patient ID: " + this.patientController.AddPatient(clinicPersonID).ToString();
 
                 MessageBox.Show("The patient was successfully added to the database.",
                         "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -63,6 +64,7 @@ namespace SmartClinic.View
             this.stateErrorLabel.Text = "";
             this.zipCodeErrorLabel.Text = "";
             this.phoneErrorLabel.Text = "";
+            this.patientIDLabel.Text = "";
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

@@ -96,6 +96,56 @@ namespace SmartClinic.DAL
             }
             return patientList;
         }
+
+        internal int AddPatient(int clinicPersonID)
+        {
+            string insertStatement =
+
+                       "INSERT Patients " +
+                         "(clinic_person_id) " +
+                       "VALUES (@ClinicPersonID)";
+
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@ClinicPersonID", clinicPersonID);                 
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            return this.GetLastPatientID();
+        }
+
+        private int GetLastPatientID()
+        {
+            int lastPatientID = 0;
+            string selectStatement =
+
+           "SELECT TOP 1 patient_id FROM Patients ORDER BY patient_id DESC";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+
+                    {
+                        while (reader.Read())
+                        {
+                            lastPatientID = (int)reader["patient_id"];
+                        }
+                    }
+                }
+            }
+            return lastPatientID;
+        }
+    
+
         public int AddClinicPerson(ClinicPerson newPatient)
         {
             string insertStatement =

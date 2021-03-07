@@ -48,5 +48,10 @@ namespace SmartClinic.Controller
             }
             return this.patientSource.AddClinicPerson(newPatient);
         }
+
+        internal int AddPatient(int clinicPersonID)
+        {
+            return this.patientSource.AddPatient(clinicPersonID);
+        }
     }
 }

@@ -61,6 +61,7 @@ namespace SmartClinic.View
             this.stateErrorLabel = new System.Windows.Forms.Label();
             this.zipCodeErrorLabel = new System.Windows.Forms.Label();
             this.dobErrorLabel = new System.Windows.Forms.Label();
+            this.patientIDLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // addPatientButton
@@ -349,11 +350,22 @@ namespace SmartClinic.View
             this.dobErrorLabel.Size = new System.Drawing.Size(242, 23);
             this.dobErrorLabel.TabIndex = 33;
             // 
+            // patientIDLabel
+            // 
+            this.patientIDLabel.Enabled = false;
+            this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIDLabel.ForeColor = System.Drawing.Color.Black;
+            this.patientIDLabel.Location = new System.Drawing.Point(526, 74);
+            this.patientIDLabel.Name = "patientIDLabel";
+            this.patientIDLabel.Size = new System.Drawing.Size(260, 23);
+            this.patientIDLabel.TabIndex = 34;
+            // 
             // NewPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 370);
+            this.Controls.Add(this.patientIDLabel);
             this.Controls.Add(this.dobErrorLabel);
             this.Controls.Add(this.zipCodeErrorLabel);
             this.Controls.Add(this.stateErrorLabel);
@@ -430,5 +442,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label stateErrorLabel;
         private System.Windows.Forms.Label zipCodeErrorLabel;
         private System.Windows.Forms.Label dobErrorLabel;
+        private System.Windows.Forms.Label patientIDLabel;
     }
 }
