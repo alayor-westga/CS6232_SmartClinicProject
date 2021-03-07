@@ -1,5 +1,6 @@
 ﻿using SmartClinic.Controller;
 using SmartClinic.Model;
+using SmartClinic.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,7 +53,7 @@ namespace SmartClinic.UserControls
         private void DeletePatientButton_Click(object sender, EventArgs e)
         {
             int patientID = Int32.Parse(patientDataGridView.Rows[patientDataGridView.CurrentCell.RowIndex].Cells[0].Value.ToString());
-            Console.WriteLine(patientID);
+            
 
             if (this.patientController.PatientHasNoAppointments(patientID))
             {
@@ -87,6 +88,20 @@ namespace SmartClinic.UserControls
         private void SearchTermsValueChanged(object sender, EventArgs e)
         {
             this.patientDataGridView.DataSource = null;
+        }
+
+        private void ViewOrEditPatientDetailsButton_Click(object sender, EventArgs e)
+        {
+            int patientID = Int32.Parse(patientDataGridView.Rows[patientDataGridView.CurrentCell.RowIndex].Cells[0].Value.ToString());
+            using (Form updateForm = new UpdatePatient(patientID))
+            {
+                DialogResult result = updateForm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                  
+                }
+            }
         }
     }
 }

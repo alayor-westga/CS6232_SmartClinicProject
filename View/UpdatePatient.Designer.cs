@@ -156,6 +156,7 @@ namespace SmartClinic.View
             this.clearButton.TabIndex = 51;
             this.clearButton.Text = "Delete Patient";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // genderTextBox
             // 
@@ -331,6 +332,7 @@ namespace SmartClinic.View
             this.EditPatientButton.TabIndex = 47;
             this.EditPatientButton.Text = "Edit";
             this.EditPatientButton.UseVisualStyleBackColor = true;
+            this.EditPatientButton.Click += new System.EventHandler(this.EditPatientButton_Click);
             // 
             // lastNameTextBox
             // 
@@ -357,6 +359,7 @@ namespace SmartClinic.View
             this.cancelButton.TabIndex = 50;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // saveChangesAndCloseButton
             // 
@@ -367,6 +370,7 @@ namespace SmartClinic.View
             this.saveChangesAndCloseButton.TabIndex = 68;
             this.saveChangesAndCloseButton.Text = "Save Changes and Close";
             this.saveChangesAndCloseButton.UseVisualStyleBackColor = true;
+            this.saveChangesAndCloseButton.Click += new System.EventHandler(this.SaveChangesAndCloseButton_Click);
             // 
             // UpdatePatient
             // 
@@ -407,7 +411,9 @@ namespace SmartClinic.View
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.cancelButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "UpdatePatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdatePatient";
             this.ResumeLayout(false);
             this.PerformLayout();

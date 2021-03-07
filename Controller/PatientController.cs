@@ -20,6 +20,11 @@ namespace SmartClinic.Controller
             patientSource = new PatientDAL();
         }
 
+        internal ClinicPerson GetClinicPerson(int patientID)
+        {
+            return this.patientSource.GetClinicPerson(patientID);
+        }
+
         /// <summary>
         /// It searches patients by their name, id, and date of birth.
         /// </summary>

@@ -262,6 +262,7 @@ namespace SmartClinic.DAL
             return this.GetLastPatientID();
         }
 
+
         private int GetLastPatientID()
         {
             int lastPatientID = 0;
@@ -321,6 +322,64 @@ namespace SmartClinic.DAL
             return this.GetLastClinicPersonID();
         }
 
+        public ClinicPerson GetClinicPerson(int patientID)
+        {
+            ClinicPerson patient = new ClinicPerson();
+            string selectStatement =
+
+                "SELECT " +
+                    "first_name, " +
+                    "last_name, " +
+                    "date_of_birth, " +
+                    "gender, " +
+                    "street1, " +
+                    "street2, " +
+                    "city, " +
+                    "state, " +
+                    "zip_code, " +
+                    "phone_number " +
+                "FROM ClinicPersons c " +
+                    "JOIN Patients p " +
+                        "ON c.clinic_person_id = p.clinic_person_id " +
+                "WHERE patient_id = @PatientID";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@PatientID", patientID);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+
+                    {
+                        while (reader.Read())
+                        {
+                            patient.FirstName= (string)reader["first_name"];
+                            patient.LastName = (string)reader["last_name"];
+                            patient.DateOfBirth = (DateTime)reader["date_of_birth"];
+                            patient.Gender = (string)reader["gender"];
+                            patient.Street1 = (string)reader["street1"];                        
+                            if (reader[5] == DBNull.Value)
+                            {
+                                patient.Street2 = "";
+                            }
+                            else
+                            {
+                                patient.Street2 = (string)reader["street2"];
+                            }
+                            patient.City = (string)reader["city"];
+                            patient.State = (string)reader["state"];
+                            patient.ZipCode = (string)reader["zip_code"];
+                            patient.Phone   = (string)reader["phone_number"];
+                        }
+                    }
+                }
+                return patient;
+            }
+        }
+
         private int GetLastClinicPersonID()
         {
             int lastClinicPersonID = 0;
@@ -346,5 +405,6 @@ namespace SmartClinic.DAL
             }
             return lastClinicPersonID;
         }
+
     }
 }
