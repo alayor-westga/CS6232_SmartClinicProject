@@ -141,8 +141,7 @@ namespace SmartClinic.View
             {
                 appointmentController.Create(newAppointment);
                 MessageBox.Show("A new apointment has been created", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearSearchForm();
-                ClearNewAppointmentForm();
+                Close();
             }
             catch (ArgumentException ex)
             {

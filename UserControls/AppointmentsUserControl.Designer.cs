@@ -39,14 +39,16 @@ namespace SmartClinic.UserControls
             this.clearSearchFieldsButton = new System.Windows.Forms.Button();
             this.searchPatientsButton = new System.Windows.Forms.Button();
             this.searchForAppointmentsGroupBox = new System.Windows.Forms.GroupBox();
-            this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
             this.resultsReturnedLabel = new System.Windows.Forms.Label();
+            this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
             this.appointmentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientDateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewAppointmentButton = new System.Windows.Forms.Button();
+            this.deleteAppointmentButton = new System.Windows.Forms.Button();
             this.searchForAppointmentsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
@@ -158,6 +160,15 @@ namespace SmartClinic.UserControls
             this.searchForAppointmentsGroupBox.TabStop = false;
             this.searchForAppointmentsGroupBox.Text = "Search for Appointments";
             // 
+            // resultsReturnedLabel
+            // 
+            this.resultsReturnedLabel.AutoSize = true;
+            this.resultsReturnedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultsReturnedLabel.Location = new System.Drawing.Point(131, 325);
+            this.resultsReturnedLabel.Name = "resultsReturnedLabel";
+            this.resultsReturnedLabel.Size = new System.Drawing.Size(0, 31);
+            this.resultsReturnedLabel.TabIndex = 13;
+            // 
             // appointmentsDataGridView
             // 
             this.appointmentsDataGridView.AllowUserToAddRows = false;
@@ -181,15 +192,7 @@ namespace SmartClinic.UserControls
             this.appointmentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.appointmentsDataGridView.Size = new System.Drawing.Size(914, 474);
             this.appointmentsDataGridView.TabIndex = 14;
-            // 
-            // resultsReturnedLabel
-            // 
-            this.resultsReturnedLabel.AutoSize = true;
-            this.resultsReturnedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultsReturnedLabel.Location = new System.Drawing.Point(131, 325);
-            this.resultsReturnedLabel.Name = "resultsReturnedLabel";
-            this.resultsReturnedLabel.Size = new System.Drawing.Size(0, 31);
-            this.resultsReturnedLabel.TabIndex = 13;
+            this.appointmentsDataGridView.SelectionChanged += new System.EventHandler(this.AppointmentsDataGridView_SelectionChanged);
             // 
             // appointmentDateDataGridViewTextBoxColumn
             // 
@@ -235,19 +238,48 @@ namespace SmartClinic.UserControls
             // 
             this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
             // 
+            // viewAppointmentButton
+            // 
+            this.viewAppointmentButton.AutoSize = true;
+            this.viewAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.viewAppointmentButton.Enabled = false;
+            this.viewAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewAppointmentButton.Location = new System.Drawing.Point(552, 509);
+            this.viewAppointmentButton.Name = "viewAppointmentButton";
+            this.viewAppointmentButton.Size = new System.Drawing.Size(474, 47);
+            this.viewAppointmentButton.TabIndex = 14;
+            this.viewAppointmentButton.Text = "View / Edit Appointment Details";
+            this.viewAppointmentButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteAppointmentButton
+            // 
+            this.deleteAppointmentButton.AutoSize = true;
+            this.deleteAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteAppointmentButton.Enabled = false;
+            this.deleteAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteAppointmentButton.Location = new System.Drawing.Point(1065, 509);
+            this.deleteAppointmentButton.Name = "deleteAppointmentButton";
+            this.deleteAppointmentButton.Size = new System.Drawing.Size(340, 47);
+            this.deleteAppointmentButton.TabIndex = 15;
+            this.deleteAppointmentButton.Text = "Delete Appointment";
+            this.deleteAppointmentButton.UseVisualStyleBackColor = true;
+            // 
             // AppointmentsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.deleteAppointmentButton);
+            this.Controls.Add(this.viewAppointmentButton);
             this.Controls.Add(this.appointmentsDataGridView);
             this.Controls.Add(this.searchForAppointmentsGroupBox);
             this.Name = "AppointmentsUserControl";
-            this.Size = new System.Drawing.Size(1456, 524);
+            this.Size = new System.Drawing.Size(1456, 578);
             this.searchForAppointmentsGroupBox.ResumeLayout(false);
             this.searchForAppointmentsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -269,5 +301,7 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorFullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource appointmentSearchResultBindingSource;
         private System.Windows.Forms.Label resultsReturnedLabel;
+        private System.Windows.Forms.Button viewAppointmentButton;
+        private System.Windows.Forms.Button deleteAppointmentButton;
     }
 }
