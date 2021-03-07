@@ -54,6 +54,7 @@ namespace SmartClinic.UserControls
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -201,9 +202,9 @@ namespace SmartClinic.UserControls
             this.searchForPatientsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchForPatientsLabel.Location = new System.Drawing.Point(16, 325);
             this.searchForPatientsLabel.Name = "searchForPatientsLabel";
-            this.searchForPatientsLabel.Size = new System.Drawing.Size(192, 25);
+            this.searchForPatientsLabel.Size = new System.Drawing.Size(184, 25);
             this.searchForPatientsLabel.TabIndex = 13;
-            this.searchForPatientsLabel.Text = "Search For Incidents";
+            this.searchForPatientsLabel.Text = "Search For Patients";
             // 
             // DateOfBirth
             // 
@@ -298,10 +299,20 @@ namespace SmartClinic.UserControls
             // 
             this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(590, 382);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(362, 17);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Double-click in any row to view or edit a patient\'s details.";
+            // 
             // PatientsUserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.searchMessageLabel);
             this.Controls.Add(this.deletePatientButton);
             this.Controls.Add(this.viewOrEditPatientDetailsButton);
@@ -351,5 +362,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.Label searchMessageLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
