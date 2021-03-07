@@ -123,6 +123,7 @@ namespace SmartClinic.UserControls
             this.clearSearchFieldsButton.TabIndex = 12;
             this.clearSearchFieldsButton.Text = "Clear";
             this.clearSearchFieldsButton.UseVisualStyleBackColor = true;
+            this.clearSearchFieldsButton.Click += new System.EventHandler(this.ClearSearchFieldsButton_Click);
             // 
             // searchPatientsButton
             // 
@@ -135,6 +136,7 @@ namespace SmartClinic.UserControls
             this.searchPatientsButton.TabIndex = 11;
             this.searchPatientsButton.Text = "Search";
             this.searchPatientsButton.UseVisualStyleBackColor = true;
+            this.searchPatientsButton.Click += new System.EventHandler(this.SearchPatientsButton_Click);
             // 
             // searchForAppointmentsGroupBox
             // 

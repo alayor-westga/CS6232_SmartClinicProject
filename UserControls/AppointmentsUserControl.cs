@@ -15,5 +15,15 @@ namespace SmartClinic.UserControls
         {
             InitializeComponent();
         }
+
+        private void SearchPatientsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearSearchFieldsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

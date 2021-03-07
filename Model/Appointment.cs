@@ -21,6 +21,11 @@ namespace SmartClinic.Model
         public int PatientId { get; set; }
 
         /// <summary>
+        /// The patient assigned to the appointment.
+        /// </summary>
+        public Patient Patient { get; set; }
+
+        /// <summary>
         /// The appointment date.
         /// </summary>
         public DateTime Date { get; set; }
@@ -29,6 +34,11 @@ namespace SmartClinic.Model
         /// The doctor id assigned to the appointment.
         /// </summary>
         public int DoctorId { get; set; }
+
+        /// <summary>
+        /// The doctor assigned to the appointment.
+        /// </summary>
+        public Doctor Doctor { get; set; }
 
         /// <summary>
         /// The appointment reason.
