@@ -30,6 +30,18 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentNullException("newAppointment");
             }
+            if (newAppointment.PatientId <= 0) 
+            {
+                throw new ArgumentException("The patient must be specified.");
+            }
+            if (newAppointment.DoctorId <= 0) 
+            {
+                throw new ArgumentException("The doctor must be specified.");
+            }
+            if (String.IsNullOrWhiteSpace(newAppointment.Reason)) 
+            {
+                throw new ArgumentException("The reason must not be empty.");
+            }
             appointmentSource.Insert(newAppointment);
         }
     }

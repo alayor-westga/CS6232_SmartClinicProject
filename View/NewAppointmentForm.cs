@@ -165,14 +165,17 @@ namespace SmartClinic.View
             if (appointmentTimePicker.Text.Equals(" ---"))
             {
                 appointmentTimeErrorLabel.Text = "This field is required.";
+                isValid = false;
             }
             if (doctorComboBox.SelectedIndex == 0)
             {
                 appointmentDoctorErrorLabel.Text = "This field is required.";
+                isValid = false;
             }
             if (reasonForVisitTextBox.Text == "")
             {
                 appointmentReasonErrorLabel.Text = "This field is required.";
+                isValid = false;
             }
             return isValid;
         }
