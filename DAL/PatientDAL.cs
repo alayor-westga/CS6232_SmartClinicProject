@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using SmartClinic.Model;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace SmartClinic.DAL
 {
@@ -95,7 +96,7 @@ namespace SmartClinic.DAL
             }
             return patientList;
         }
-        public void AddPatient(ClinicPerson newPatient)
+        public int AddClinicPerson(ClinicPerson newPatient)
         {
             string insertStatement =
                  
@@ -124,6 +125,33 @@ namespace SmartClinic.DAL
                     insertCommand.ExecuteNonQuery();
                 }
             }
+            return this.GetLastClinicPersonID();
+        }
+
+        private int GetLastClinicPersonID()
+        {
+            int lastClinicPersonID = 0;
+            string selectStatement =
+
+           "SELECT TOP 1 clinic_person_id FROM ClinicPersons ORDER BY clinic_person_id DESC";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {                  
+                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+
+                    {
+                        while (reader.Read())
+                        {
+                            lastClinicPersonID = (int)reader["clinic_person_id"];                           
+                        }
+                    }
+                }
+            }
+            return lastClinicPersonID;
         }
     }
 }
