@@ -110,6 +110,8 @@ namespace SmartClinic.View
             selectedPatient = null;
             newAppoinmentGroupBox.Text = "New Appointment For -";
             newAppoinmentGroupBox.Enabled = false;
+            appointmentDatePicker.CustomFormat = " ---";
+            appointmentTimePicker.CustomFormat = " ---";
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -119,6 +121,10 @@ namespace SmartClinic.View
 
         private void AddAppointmentButton_Click(object sender, EventArgs e)
         {
+            if (!ValidateAppointmentFields())
+            {
+                return;
+            }
             string dateString = appointmentDatePicker.Value.ToShortDateString();
             string timeString = appointmentTimePicker.Value.ToShortTimeString();
             Appointment newAppointment = new Appointment()
@@ -148,10 +154,59 @@ namespace SmartClinic.View
             }
         }
 
+        private bool ValidateAppointmentFields()
+        {
+            bool isValid = true;
+            if (appointmentDatePicker.Text.Equals(" ---"))
+            {
+                appointmentDateErrorLabel.Text = "This field is required.";
+                isValid = false;
+            }
+            if (appointmentTimePicker.Text.Equals(" ---"))
+            {
+                appointmentTimeErrorLabel.Text = "This field is required.";
+            }
+            if (doctorComboBox.SelectedIndex == 0)
+            {
+                appointmentDoctorErrorLabel.Text = "This field is required.";
+            }
+            if (reasonForVisitTextBox.Text == "")
+            {
+                appointmentReasonErrorLabel.Text = "This field is required.";
+            }
+            return isValid;
+        }
+
         private void ClearNewAppointmentForm()
         {
             doctorComboBox.SelectedIndex = 0;
             reasonForVisitTextBox.Text = "";
+            appointmentDateErrorLabel.Text = "";
+            appointmentTimeErrorLabel.Text = "";
+            appointmentDoctorErrorLabel.Text = "";
+            appointmentReasonErrorLabel.Text = "";
+        }
+
+        private void AppointmentDatePicker_MouseDown(object sender, MouseEventArgs e)
+        {
+            appointmentDatePicker.CustomFormat = "dd/MM/yyyy";
+            appointmentDateErrorLabel.Text = "";
+        }
+
+        private void AppointmentTimePicker_MouseDown(object sender, MouseEventArgs e)
+        {
+            appointmentTimePicker.CustomFormat = "hh:mm tt";
+            appointmentTimeErrorLabel.Text = "";
+        }
+
+        private void DoctorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            appointmentDoctorErrorLabel.Text = "";
+        }
+
+        private void ReasonForVisitTextBox_TextChanged(object sender, EventArgs e)
+        {
+            appointmentReasonErrorLabel.Text = "";
         }
     }
 }
