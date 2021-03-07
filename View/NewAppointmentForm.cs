@@ -65,9 +65,9 @@ namespace SmartClinic.View
             var lastName = patientLastNameTextBox.Text;
             var patientId = patientIdNumericUpdown.Text == "" ? 0 : (int) patientIdNumericUpdown.Value;
             DateTime? dateOfBirth = null;
-            if (patiendDateOfBirthDateTimePicker.Checked)
+            if (patientDateOfBirthDateTimePicker.Checked)
             {
-                dateOfBirth = patiendDateOfBirthDateTimePicker.Value;        
+                dateOfBirth = patientDateOfBirthDateTimePicker.Value;        
             }
             List<Patient> patients = new List<Patient>();
             try
@@ -91,7 +91,7 @@ namespace SmartClinic.View
             patientFirstNameTextBox.Text = "";
             patientLastNameTextBox.Text = "";
             patientIdNumericUpdown.Text = "";
-            patiendDateOfBirthDateTimePicker.Checked = false;
+            patientDateOfBirthDateTimePicker.Checked = false;
             patientsDataGridView.DataSource = null;
         }
 

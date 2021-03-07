@@ -36,7 +36,7 @@ namespace SmartClinic.View
             this.patientLastNameTextBox = new System.Windows.Forms.TextBox();
             this.patientIdLabel = new System.Windows.Forms.Label();
             this.patientDateOfBirthLabel = new System.Windows.Forms.Label();
-            this.patiendDateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.patientDateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchPatientsButton = new System.Windows.Forms.Button();
             this.clearSearchFieldsButton = new System.Windows.Forms.Button();
             this.newPatientButton = new System.Windows.Forms.Button();
@@ -132,20 +132,20 @@ namespace SmartClinic.View
             this.patientDateOfBirthLabel.TabIndex = 7;
             this.patientDateOfBirthLabel.Text = "Date of Birth";
             // 
-            // patiendDateOfBirthDateTimePicker
+            // patientDateOfBirthDateTimePicker
             // 
-            this.patiendDateOfBirthDateTimePicker.Checked = false;
-            this.patiendDateOfBirthDateTimePicker.CustomFormat = "MM/dd/yyyy";
-            this.patiendDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patiendDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.patiendDateOfBirthDateTimePicker.Location = new System.Drawing.Point(650, 124);
-            this.patiendDateOfBirthDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.patiendDateOfBirthDateTimePicker.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
-            this.patiendDateOfBirthDateTimePicker.Name = "patiendDateOfBirthDateTimePicker";
-            this.patiendDateOfBirthDateTimePicker.ShowCheckBox = true;
-            this.patiendDateOfBirthDateTimePicker.Size = new System.Drawing.Size(242, 44);
-            this.patiendDateOfBirthDateTimePicker.TabIndex = 8;
-            this.patiendDateOfBirthDateTimePicker.Value = new System.DateTime(2021, 3, 6, 0, 0, 0, 0);
+            this.patientDateOfBirthDateTimePicker.Checked = false;
+            this.patientDateOfBirthDateTimePicker.CustomFormat = "MM/dd/yyyy";
+            this.patientDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.patientDateOfBirthDateTimePicker.Location = new System.Drawing.Point(650, 124);
+            this.patientDateOfBirthDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.patientDateOfBirthDateTimePicker.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
+            this.patientDateOfBirthDateTimePicker.Name = "patientDateOfBirthDateTimePicker";
+            this.patientDateOfBirthDateTimePicker.ShowCheckBox = true;
+            this.patientDateOfBirthDateTimePicker.Size = new System.Drawing.Size(242, 44);
+            this.patientDateOfBirthDateTimePicker.TabIndex = 8;
+            this.patientDateOfBirthDateTimePicker.Value = new System.DateTime(2021, 3, 6, 0, 0, 0, 0);
             // 
             // searchPatientsButton
             // 
@@ -333,7 +333,7 @@ namespace SmartClinic.View
             this.searchForPatientsGroupBox.Controls.Add(this.clearSearchFieldsButton);
             this.searchForPatientsGroupBox.Controls.Add(this.patientDateOfBirthLabel);
             this.searchForPatientsGroupBox.Controls.Add(this.searchPatientsButton);
-            this.searchForPatientsGroupBox.Controls.Add(this.patiendDateOfBirthDateTimePicker);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientDateOfBirthDateTimePicker);
             this.searchForPatientsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchForPatientsGroupBox.Location = new System.Drawing.Point(6, 12);
             this.searchForPatientsGroupBox.Name = "searchForPatientsGroupBox";
@@ -541,7 +541,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.TextBox patientLastNameTextBox;
         private System.Windows.Forms.Label patientIdLabel;
         private System.Windows.Forms.Label patientDateOfBirthLabel;
-        private System.Windows.Forms.DateTimePicker patiendDateOfBirthDateTimePicker;
+        private System.Windows.Forms.DateTimePicker patientDateOfBirthDateTimePicker;
         private System.Windows.Forms.Button searchPatientsButton;
         private System.Windows.Forms.Button clearSearchFieldsButton;
         private System.Windows.Forms.Button newPatientButton;

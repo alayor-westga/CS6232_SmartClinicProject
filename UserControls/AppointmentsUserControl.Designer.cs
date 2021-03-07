@@ -35,17 +35,18 @@ namespace SmartClinic.UserControls
             this.patientLastNameTextBox = new System.Windows.Forms.TextBox();
             this.patientLastNameLabel = new System.Windows.Forms.Label();
             this.patientDateOfBirthLabel = new System.Windows.Forms.Label();
-            this.patiendDateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.patientDateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.clearSearchFieldsButton = new System.Windows.Forms.Button();
             this.searchPatientsButton = new System.Windows.Forms.Button();
             this.searchForAppointmentsGroupBox = new System.Windows.Forms.GroupBox();
             this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
-            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.resultsReturnedLabel = new System.Windows.Forms.Label();
             this.appointmentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientDateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchForAppointmentsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
@@ -97,20 +98,20 @@ namespace SmartClinic.UserControls
             this.patientDateOfBirthLabel.TabIndex = 9;
             this.patientDateOfBirthLabel.Text = "Date of Birth";
             // 
-            // patiendDateOfBirthDateTimePicker
+            // patientDateOfBirthDateTimePicker
             // 
-            this.patiendDateOfBirthDateTimePicker.Checked = false;
-            this.patiendDateOfBirthDateTimePicker.CustomFormat = "MM/dd/yyyy";
-            this.patiendDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patiendDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.patiendDateOfBirthDateTimePicker.Location = new System.Drawing.Point(212, 196);
-            this.patiendDateOfBirthDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.patiendDateOfBirthDateTimePicker.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
-            this.patiendDateOfBirthDateTimePicker.Name = "patiendDateOfBirthDateTimePicker";
-            this.patiendDateOfBirthDateTimePicker.ShowCheckBox = true;
-            this.patiendDateOfBirthDateTimePicker.Size = new System.Drawing.Size(242, 44);
-            this.patiendDateOfBirthDateTimePicker.TabIndex = 10;
-            this.patiendDateOfBirthDateTimePicker.Value = new System.DateTime(2021, 3, 6, 0, 0, 0, 0);
+            this.patientDateOfBirthDateTimePicker.Checked = false;
+            this.patientDateOfBirthDateTimePicker.CustomFormat = "MM/dd/yyyy";
+            this.patientDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.patientDateOfBirthDateTimePicker.Location = new System.Drawing.Point(212, 196);
+            this.patientDateOfBirthDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.patientDateOfBirthDateTimePicker.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
+            this.patientDateOfBirthDateTimePicker.Name = "patientDateOfBirthDateTimePicker";
+            this.patientDateOfBirthDateTimePicker.ShowCheckBox = true;
+            this.patientDateOfBirthDateTimePicker.Size = new System.Drawing.Size(242, 44);
+            this.patientDateOfBirthDateTimePicker.TabIndex = 10;
+            this.patientDateOfBirthDateTimePicker.Value = new System.DateTime(2021, 3, 6, 0, 0, 0, 0);
             // 
             // clearSearchFieldsButton
             // 
@@ -140,13 +141,14 @@ namespace SmartClinic.UserControls
             // 
             // searchForAppointmentsGroupBox
             // 
+            this.searchForAppointmentsGroupBox.Controls.Add(this.resultsReturnedLabel);
             this.searchForAppointmentsGroupBox.Controls.Add(this.clearSearchFieldsButton);
             this.searchForAppointmentsGroupBox.Controls.Add(this.patientFirstNameTextBox);
             this.searchForAppointmentsGroupBox.Controls.Add(this.searchPatientsButton);
             this.searchForAppointmentsGroupBox.Controls.Add(this.patientFirstNameLabel);
             this.searchForAppointmentsGroupBox.Controls.Add(this.patientDateOfBirthLabel);
             this.searchForAppointmentsGroupBox.Controls.Add(this.patientLastNameLabel);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.patiendDateOfBirthDateTimePicker);
+            this.searchForAppointmentsGroupBox.Controls.Add(this.patientDateOfBirthDateTimePicker);
             this.searchForAppointmentsGroupBox.Controls.Add(this.patientLastNameTextBox);
             this.searchForAppointmentsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchForAppointmentsGroupBox.Location = new System.Drawing.Point(12, 46);
@@ -180,9 +182,14 @@ namespace SmartClinic.UserControls
             this.appointmentsDataGridView.Size = new System.Drawing.Size(914, 474);
             this.appointmentsDataGridView.TabIndex = 14;
             // 
-            // appointmentSearchResultBindingSource
+            // resultsReturnedLabel
             // 
-            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
+            this.resultsReturnedLabel.AutoSize = true;
+            this.resultsReturnedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultsReturnedLabel.Location = new System.Drawing.Point(131, 325);
+            this.resultsReturnedLabel.Name = "resultsReturnedLabel";
+            this.resultsReturnedLabel.Size = new System.Drawing.Size(0, 31);
+            this.resultsReturnedLabel.TabIndex = 13;
             // 
             // appointmentDateDataGridViewTextBoxColumn
             // 
@@ -224,6 +231,10 @@ namespace SmartClinic.UserControls
             this.doctorFullNameDataGridViewTextBoxColumn.Name = "doctorFullNameDataGridViewTextBoxColumn";
             this.doctorFullNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // appointmentSearchResultBindingSource
+            // 
+            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
+            // 
             // AppointmentsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -246,7 +257,7 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.TextBox patientLastNameTextBox;
         private System.Windows.Forms.Label patientLastNameLabel;
         private System.Windows.Forms.Label patientDateOfBirthLabel;
-        private System.Windows.Forms.DateTimePicker patiendDateOfBirthDateTimePicker;
+        private System.Windows.Forms.DateTimePicker patientDateOfBirthDateTimePicker;
         private System.Windows.Forms.Button clearSearchFieldsButton;
         private System.Windows.Forms.Button searchPatientsButton;
         private System.Windows.Forms.GroupBox searchForAppointmentsGroupBox;
@@ -257,5 +268,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn patientAddressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorFullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource appointmentSearchResultBindingSource;
+        private System.Windows.Forms.Label resultsReturnedLabel;
     }
 }

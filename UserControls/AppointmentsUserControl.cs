@@ -27,9 +27,9 @@ namespace SmartClinic.UserControls
             var firstName = patientFirstNameTextBox.Text;
             var lastName = patientLastNameTextBox.Text;
             DateTime? dateOfBirth = null;
-            if (patiendDateOfBirthDateTimePicker.Checked)
+            if (patientDateOfBirthDateTimePicker.Checked)
             {
-                dateOfBirth = patiendDateOfBirthDateTimePicker.Value;        
+                dateOfBirth = patientDateOfBirthDateTimePicker.Value;        
             }
             List<AppointmentSearchResult> appointments = new List<AppointmentSearchResult>();
             try
@@ -41,12 +41,24 @@ namespace SmartClinic.UserControls
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (appointments.Count > 0)
+            {
+                resultsReturnedLabel.Text = appointments.Count + " Result(s) Returned";
+            }
+            else
+            {
+                resultsReturnedLabel.Text = "";
+            }
             appointmentsDataGridView.DataSource = appointments;
         }
 
         private void ClearSearchFieldsButton_Click(object sender, EventArgs e)
         {
-
+            patientFirstNameTextBox.Text = "";
+            patientLastNameTextBox.Text = "";
+            patientDateOfBirthDateTimePicker.Checked = false;
+            resultsReturnedLabel.Text = "";
+            appointmentsDataGridView.DataSource = null;
         }
     }
 }
