@@ -55,6 +55,8 @@ namespace SmartClinic.View
             this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
             this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
             this.newAppoinmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.appointmentReasonErrorLabel = new System.Windows.Forms.Label();
+            this.appointmentDoctorErrorLabel = new System.Windows.Forms.Label();
             this.appointmentTimeErrorLabel = new System.Windows.Forms.Label();
             this.appointmentDateErrorLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -66,8 +68,6 @@ namespace SmartClinic.View
             this.doctorLabel = new System.Windows.Forms.Label();
             this.appointmentTimePicker = new System.Windows.Forms.DateTimePicker();
             this.appointmentTimeLabel = new System.Windows.Forms.Label();
-            this.appointmentDoctorErrorLabel = new System.Windows.Forms.Label();
-            this.appointmentReasonErrorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIdNumericUpdown)).BeginInit();
@@ -184,6 +184,7 @@ namespace SmartClinic.View
             this.newPatientButton.TabIndex = 11;
             this.newPatientButton.Text = "New Patient";
             this.newPatientButton.UseVisualStyleBackColor = true;
+            this.newPatientButton.Click += new System.EventHandler(this.NewPatientButton_Click);
             // 
             // patientsDataGridView
             // 
@@ -373,6 +374,26 @@ namespace SmartClinic.View
             this.newAppoinmentGroupBox.TabStop = false;
             this.newAppoinmentGroupBox.Text = "New Appointment For -";
             // 
+            // appointmentReasonErrorLabel
+            // 
+            this.appointmentReasonErrorLabel.AutoSize = true;
+            this.appointmentReasonErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentReasonErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.appointmentReasonErrorLabel.Location = new System.Drawing.Point(821, 298);
+            this.appointmentReasonErrorLabel.Name = "appointmentReasonErrorLabel";
+            this.appointmentReasonErrorLabel.Size = new System.Drawing.Size(0, 25);
+            this.appointmentReasonErrorLabel.TabIndex = 30;
+            // 
+            // appointmentDoctorErrorLabel
+            // 
+            this.appointmentDoctorErrorLabel.AutoSize = true;
+            this.appointmentDoctorErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentDoctorErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.appointmentDoctorErrorLabel.Location = new System.Drawing.Point(877, 133);
+            this.appointmentDoctorErrorLabel.Name = "appointmentDoctorErrorLabel";
+            this.appointmentDoctorErrorLabel.Size = new System.Drawing.Size(0, 25);
+            this.appointmentDoctorErrorLabel.TabIndex = 29;
+            // 
             // appointmentTimeErrorLabel
             // 
             this.appointmentTimeErrorLabel.AutoSize = true;
@@ -493,26 +514,6 @@ namespace SmartClinic.View
             this.appointmentTimeLabel.Size = new System.Drawing.Size(88, 37);
             this.appointmentTimeLabel.TabIndex = 19;
             this.appointmentTimeLabel.Text = "Time";
-            // 
-            // appointmentDoctorErrorLabel
-            // 
-            this.appointmentDoctorErrorLabel.AutoSize = true;
-            this.appointmentDoctorErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentDoctorErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.appointmentDoctorErrorLabel.Location = new System.Drawing.Point(877, 133);
-            this.appointmentDoctorErrorLabel.Name = "appointmentDoctorErrorLabel";
-            this.appointmentDoctorErrorLabel.Size = new System.Drawing.Size(0, 25);
-            this.appointmentDoctorErrorLabel.TabIndex = 29;
-            // 
-            // appointmentReasonErrorLabel
-            // 
-            this.appointmentReasonErrorLabel.AutoSize = true;
-            this.appointmentReasonErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentReasonErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.appointmentReasonErrorLabel.Location = new System.Drawing.Point(821, 298);
-            this.appointmentReasonErrorLabel.Name = "appointmentReasonErrorLabel";
-            this.appointmentReasonErrorLabel.Size = new System.Drawing.Size(0, 25);
-            this.appointmentReasonErrorLabel.TabIndex = 30;
             // 
             // NewAppointmentForm
             // 

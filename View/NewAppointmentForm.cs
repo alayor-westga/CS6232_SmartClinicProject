@@ -11,6 +11,7 @@ namespace SmartClinic.View
     /// </summary>
     public partial class NewAppointmentForm : Form
     {
+        private readonly Form newPatientForm;
         private readonly PatientController patientController; 
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
@@ -23,6 +24,7 @@ namespace SmartClinic.View
         public NewAppointmentForm()
         {
             InitializeComponent();
+            this.newPatientForm = new NewPatientForm();
             patientController = new PatientController();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
@@ -210,6 +212,11 @@ namespace SmartClinic.View
         private void ReasonForVisitTextBox_TextChanged(object sender, EventArgs e)
         {
             appointmentReasonErrorLabel.Text = "";
+        }
+
+        private void NewPatientButton_Click(object sender, EventArgs e)
+        {
+            newPatientForm.ShowDialog();
         }
     }
 }
