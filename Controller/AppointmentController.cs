@@ -42,6 +42,10 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The reason must not be empty.");
             }
+            if (appointmentSource.ExistsForDoctorAndDate(newAppointment.DoctorId, newAppointment.Date))
+            {
+                throw new ArgumentException("The doctor has an existing appointment at the specified time.");
+            }
             appointmentSource.Insert(newAppointment);
         }
     }

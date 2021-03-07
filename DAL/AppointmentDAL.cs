@@ -36,5 +36,49 @@ namespace SmartClinic.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// It verifies if an appoinment exists for the same doctor and date.
+        /// </summary>
+        /// <param name="doctorId">The appointment's doctorId.</param>
+        /// <param name="appointmentDate">The appointment's date time.</param>
+        /// <returns>True if exists. False otherwise.</returns>
+        public bool ExistsForDoctorAndDate(int doctorId, DateTime appointmentDate)
+        {
+            if (doctorId < 0)
+            {
+                throw new ArgumentException("doctorId must not be negative.");
+            }
+            if (appointmentDate == null)
+            {
+                throw new ArgumentNullException("appointmentDate");
+            }
+            string selectStatement =
+            " SELECT appointment_id" +
+            " FROM Appointments" +
+            " WHERE doctor_id = @DoctorId" +
+            " AND date = @AppointmentDate;";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@DoctorId", doctorId);
+                    selectCommand.Parameters.AddWithValue("@AppointmentDate", appointmentDate);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

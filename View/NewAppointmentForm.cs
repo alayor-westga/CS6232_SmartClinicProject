@@ -34,6 +34,7 @@ namespace SmartClinic.View
         {
             patientIdNumericUpdown.Text = "";
             patientIdNumericUpdown.Controls[0].Visible = false;
+            appointmentTimePicker.Value = DateTime.Parse("1970-01-01 09:00 AM");
             PopulateDoctors();
         }
 
