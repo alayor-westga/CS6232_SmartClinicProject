@@ -48,5 +48,35 @@ namespace SmartClinic.UserControls
         {
             Console.WriteLine("it worked");
         }
+
+        private void DeletePatientButton_Click(object sender, EventArgs e)
+        {
+            int patientID = Int32.Parse(patientDataGridView.Rows[patientDataGridView.CurrentCell.RowIndex].Cells[0].Value.ToString());
+            Console.WriteLine(patientID);
+
+            if (this.patientController.PatientHasNoAppointments(patientID))
+            {
+                DialogResult dialogResultVerifyClose = MessageBox.Show("Are you sure you want to delete this patient?\n" +
+               "This cannot be undone.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                if (dialogResultVerifyClose == DialogResult.Yes)
+                {
+                    //need try-catch
+                    this.patientController.DeletePatient(patientID);
+                    this.SearchButton.PerformClick();
+                }
+                else if (dialogResultVerifyClose == DialogResult.No)
+                {
+                    MessageBox.Show("Patient was not deleted.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("This patient has associated appointment\nand cannot be deleted", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+                
+        }
     }
 }

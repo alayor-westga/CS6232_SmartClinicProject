@@ -45,6 +45,7 @@ namespace SmartClinic.UserControls
             this.searchForPatientsLabel = new System.Windows.Forms.Label();
             this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchMessageLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +55,6 @@ namespace SmartClinic.UserControls
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +97,7 @@ namespace SmartClinic.UserControls
             this.deletePatientButton.TabIndex = 24;
             this.deletePatientButton.Text = "Delete Patient";
             this.deletePatientButton.UseVisualStyleBackColor = true;
+            this.deletePatientButton.Click += new System.EventHandler(this.DeletePatientButton_Click);
             // 
             // viewOrEditPatientDetailsButton
             // 
@@ -111,7 +112,7 @@ namespace SmartClinic.UserControls
             // clearButton
             // 
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(428, 435);
+            this.clearButton.Location = new System.Drawing.Point(274, 537);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(125, 35);
             this.clearButton.TabIndex = 22;
@@ -121,7 +122,7 @@ namespace SmartClinic.UserControls
             // SearchButton
             // 
             this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchButton.Location = new System.Drawing.Point(428, 382);
+            this.SearchButton.Location = new System.Drawing.Point(137, 537);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(125, 35);
             this.SearchButton.TabIndex = 21;
@@ -132,7 +133,7 @@ namespace SmartClinic.UserControls
             // lastNameTextBox
             // 
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(137, 484);
+            this.lastNameTextBox.Location = new System.Drawing.Point(137, 480);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(262, 30);
             this.lastNameTextBox.TabIndex = 20;
@@ -140,7 +141,7 @@ namespace SmartClinic.UserControls
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(137, 437);
+            this.firstNameTextBox.Location = new System.Drawing.Point(137, 433);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(262, 30);
             this.firstNameTextBox.TabIndex = 19;
@@ -161,7 +162,7 @@ namespace SmartClinic.UserControls
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.Location = new System.Drawing.Point(19, 484);
+            this.lastNameLabel.Location = new System.Drawing.Point(19, 480);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(112, 25);
             this.lastNameLabel.TabIndex = 17;
@@ -171,7 +172,7 @@ namespace SmartClinic.UserControls
             // 
             this.firstNameSearchLabel.AutoSize = true;
             this.firstNameSearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameSearchLabel.Location = new System.Drawing.Point(19, 437);
+            this.firstNameSearchLabel.Location = new System.Drawing.Point(19, 433);
             this.firstNameSearchLabel.Name = "firstNameSearchLabel";
             this.firstNameSearchLabel.Size = new System.Drawing.Size(112, 25);
             this.firstNameSearchLabel.TabIndex = 16;
@@ -218,10 +219,19 @@ namespace SmartClinic.UserControls
             // searchMessageLabel
             // 
             this.searchMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchMessageLabel.Location = new System.Drawing.Point(134, 538);
+            this.searchMessageLabel.Location = new System.Drawing.Point(134, 515);
             this.searchMessageLabel.Name = "searchMessageLabel";
-            this.searchMessageLabel.Size = new System.Drawing.Size(427, 23);
+            this.searchMessageLabel.Size = new System.Drawing.Size(427, 15);
             this.searchMessageLabel.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(590, 382);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(362, 17);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Double-click in any row to view or edit a patient\'s details.";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -298,15 +308,6 @@ namespace SmartClinic.UserControls
             // patientBindingSource
             // 
             this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(590, 382);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(362, 17);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Double-click in any row to view or edit a patient\'s details.";
             // 
             // PatientsUserControls
             // 

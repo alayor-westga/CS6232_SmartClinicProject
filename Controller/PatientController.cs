@@ -51,6 +51,16 @@ namespace SmartClinic.Controller
             return patientSource.SearchPatients(firstName, lastName, dateOfBirth);
         }
 
+        public bool PatientHasNoAppointments(int patientID)
+        {
+            return this.patientSource.PatientHasNoAppointments(patientID);
+        }
+
+        public bool PatientIsNotADoctor(int patientID)
+        {
+            return this.patientSource.PatientIsNotADoctor(patientID);
+        }
+
         public int AddClinicPerson(ClinicPerson newPatient)
         {
             if (newPatient == null)
@@ -58,6 +68,11 @@ namespace SmartClinic.Controller
                 throw new ArgumentNullException("ClinicPerson object cannot be null");
             }
             return this.patientSource.AddClinicPerson(newPatient);
+        }
+
+        public void DeletePatient(int patientID)
+        {
+            this.patientSource.DeletePatient(patientID);
         }
 
         internal int AddPatient(int clinicPersonID)

@@ -97,6 +97,78 @@ namespace SmartClinic.DAL
             return patientList;
         }
 
+        internal void DeletePatient(int patientID)
+        {
+            string insertStatement = "DELETE FROM Patients WHERE patient_id = @PatientID";
+
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@PatientID", patientID);
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool PatientIsNotADoctor(int patientID) //may not need this class, but keeping just in case
+        {
+            string selectStatement =
+
+                "select count(*) from Patients p, ClinicPersons cp, Doctors d " +
+                "where p.clinic_person_id = cp.clinic_person_id and " +
+                "cp.clinic_person_id = d.clinic_person_id and " +
+                "p.patient_id = @PatientID";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@PatientID", patientID);
+
+                    if ((Int32)selectCommand.ExecuteScalar() == 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        public bool PatientHasNoAppointments(int patientID)
+        {
+            string selectStatement =
+
+                "SELECT count(*) FROM Appointments WHERE patient_id = @PatientID";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@PatientID", patientID);
+
+                    if ((Int32)selectCommand.ExecuteScalar() == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
         public List<Patient> SearchPatients(string firstName, string lastName, DateTime? dateOfBirth)
         {
             if (String.IsNullOrWhiteSpace(firstName) &&
