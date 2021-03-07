@@ -40,6 +40,17 @@ namespace SmartClinic.Controller
             return patientSource.SearchPatients(firstName, lastName, patientId, dateOfBirth);
         }
 
+        public List<Patient> SearchPatients(string firstName, string lastName, DateTime? dateOfBirth)
+        {
+            if (String.IsNullOrWhiteSpace(firstName) &&
+                String.IsNullOrWhiteSpace(lastName) &&
+                dateOfBirth == null)
+            {
+                throw new ArgumentException("At least one parameter must be neither null nor empty.");
+            }
+            return patientSource.SearchPatients(firstName, lastName, dateOfBirth);
+        }
+
         public int AddClinicPerson(ClinicPerson newPatient)
         {
             if (newPatient == null)
