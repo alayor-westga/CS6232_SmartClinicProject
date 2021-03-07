@@ -89,7 +89,7 @@ namespace SmartClinic.DAL
         /// <param name="lastName">The patients's lastName.</param>
         /// <param name="dateOfBirth">The patients's dateOfBirth.</param>
         /// <returns>The list of found appointments.</returns>
-        public List<Appointment> SearchAppointments(string firstName, string lastName, DateTime? dateOfBirth)
+        public List<AppointmentSearchResult> SearchAppointments(string firstName, string lastName, DateTime? dateOfBirth)
         {
             if (String.IsNullOrWhiteSpace(firstName) &&
                 String.IsNullOrWhiteSpace(lastName) &&
@@ -121,7 +121,7 @@ namespace SmartClinic.DAL
             }
             selectStatement += ";";
 
-            List<Appointment> appointmentList = new List<Appointment>();
+            List<AppointmentSearchResult> AppointmentSearchResults = new List<AppointmentSearchResult>();
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
                 connection.Open();
@@ -170,12 +170,12 @@ namespace SmartClinic.DAL
                                 Doctor = doctor,
                                 Reason = reader["reason"].ToString(),
                             };
-                            appointmentList.Add(appointment);
+                            AppointmentSearchResults.Add(new AppointmentSearchResult(appointment));
                         }
                     }
                 }
             }
-            return appointmentList;
+            return AppointmentSearchResults;
         }
     }
 }

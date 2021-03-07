@@ -191,6 +191,7 @@ namespace SmartClinic.View
             this.patientsDataGridView.AllowUserToAddRows = false;
             this.patientsDataGridView.AllowUserToDeleteRows = false;
             this.patientsDataGridView.AutoGenerateColumns = false;
+            this.patientsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.patientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -220,7 +221,6 @@ namespace SmartClinic.View
             this.Column1.MinimumWidth = 10;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 200;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
@@ -229,7 +229,6 @@ namespace SmartClinic.View
             this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
             this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.firstNameDataGridViewTextBoxColumn.Width = 200;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
@@ -238,7 +237,6 @@ namespace SmartClinic.View
             this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastNameDataGridViewTextBoxColumn.Width = 200;
             // 
             // dateOfBirthDataGridViewTextBoxColumn
             // 
@@ -247,7 +245,6 @@ namespace SmartClinic.View
             this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateOfBirthDataGridViewTextBoxColumn.Width = 200;
             // 
             // street1DataGridViewTextBoxColumn
             // 
@@ -256,7 +253,6 @@ namespace SmartClinic.View
             this.street1DataGridViewTextBoxColumn.MinimumWidth = 10;
             this.street1DataGridViewTextBoxColumn.Name = "street1DataGridViewTextBoxColumn";
             this.street1DataGridViewTextBoxColumn.ReadOnly = true;
-            this.street1DataGridViewTextBoxColumn.Width = 200;
             // 
             // street2DataGridViewTextBoxColumn
             // 
@@ -265,7 +261,6 @@ namespace SmartClinic.View
             this.street2DataGridViewTextBoxColumn.MinimumWidth = 10;
             this.street2DataGridViewTextBoxColumn.Name = "street2DataGridViewTextBoxColumn";
             this.street2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.street2DataGridViewTextBoxColumn.Width = 200;
             // 
             // cityDataGridViewTextBoxColumn
             // 
@@ -274,7 +269,6 @@ namespace SmartClinic.View
             this.cityDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
             this.cityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cityDataGridViewTextBoxColumn.Width = 200;
             // 
             // stateDataGridViewTextBoxColumn
             // 
@@ -283,7 +277,6 @@ namespace SmartClinic.View
             this.stateDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
             this.stateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stateDataGridViewTextBoxColumn.Width = 200;
             // 
             // patientBindingSource
             // 

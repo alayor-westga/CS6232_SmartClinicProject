@@ -195,7 +195,7 @@
     <None Include="docs\backlog.pdf" />
     <None Include="docs\mockups.pdf" />
     <None Include="docs\Smart_Clinic_EERD.pdf" />
-    <None Include="Properties\DataSources\SmartClinic.Model.Appointment.datasource" />
+    <None Include="Properties\DataSources\SmartClinic.Model.AppointmentSearchResult.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Patient.datasource" />
     <None Include="README.md" />
@@ -229,6 +229,7 @@
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Views\AppointmentSearchResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UserControls\AppointmentsUserControl.cs">
       <SubType>UserControl</SubType>

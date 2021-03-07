@@ -31,7 +31,7 @@ namespace SmartClinic.UserControls
             {
                 dateOfBirth = patiendDateOfBirthDateTimePicker.Value;        
             }
-            List<Appointment> appointments = new List<Appointment>();
+            List<AppointmentSearchResult> appointments = new List<AppointmentSearchResult>();
             try
             {
                 appointments.AddRange(appointmentController.SearchAppointments(firstName, lastName, dateOfBirth));

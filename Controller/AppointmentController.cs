@@ -56,7 +56,7 @@ namespace SmartClinic.Controller
         /// <param name="lastName">The patients's lastName.</param>
         /// <param name="dateOfBirth">The patients's dateOfBirth.</param>
         /// <returns>The list of found appointments.</returns>
-        public List<Appointment> SearchAppointments(string firstName, string lastName, DateTime? dateOfBirth)
+        public List<AppointmentSearchResult> SearchAppointments(string firstName, string lastName, DateTime? dateOfBirth)
         {
             if (String.IsNullOrWhiteSpace(firstName) &&
                 String.IsNullOrWhiteSpace(lastName) &&
