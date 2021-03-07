@@ -48,5 +48,23 @@ namespace SmartClinic.Controller
             }
             appointmentSource.Insert(newAppointment);
         }
+
+        /// <summary>
+        /// It searches appointments by the patient's name and date of birth.
+        /// </summary>
+        /// <param name="firstName">The patients's username.</param>
+        /// <param name="lastName">The patients's lastName.</param>
+        /// <param name="dateOfBirth">The patients's dateOfBirth.</param>
+        /// <returns>The list of found appointments.</returns>
+        public List<Appointment> SearchAppointments(string firstName, string lastName, DateTime? dateOfBirth)
+        {
+            if (String.IsNullOrWhiteSpace(firstName) &&
+                String.IsNullOrWhiteSpace(lastName) &&
+                dateOfBirth == null)
+            {
+                throw new ArgumentException("At least one parameter must be neither null nor empty.");
+            }
+            return appointmentSource.SearchAppointments(firstName, lastName, dateOfBirth);
+        }
     }
 }

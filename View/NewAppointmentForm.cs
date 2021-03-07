@@ -7,7 +7,7 @@ using SmartClinic.Model;
 namespace SmartClinic.View
 {
     /// <summary>
-    /// It renders the for to create appointments for patients.
+    /// It renders the form to create appointments for patients.
     /// </summary>
     public partial class NewAppointmentForm : Form
     {
