@@ -84,5 +84,10 @@ namespace SmartClinic.Controller
         {
             return this.patientSource.AddPatient(clinicPersonID);
         }
+
+        internal bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient)
+        {
+            return this.patientSource.UpdatePatientInformation(oldPatient, newPatient);
+        }
     }
 }

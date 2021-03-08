@@ -39,7 +39,7 @@ namespace SmartClinic.View
             this.genderErrorLabel = new System.Windows.Forms.Label();
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
             this.firstNameErrorLabel = new System.Windows.Forms.Label();
-            this.clearButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.genderTextBox = new System.Windows.Forms.TextBox();
             this.genderLabel = new System.Windows.Forms.Label();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
@@ -147,16 +147,16 @@ namespace SmartClinic.View
             this.firstNameErrorLabel.Size = new System.Drawing.Size(242, 23);
             this.firstNameErrorLabel.TabIndex = 58;
             // 
-            // clearButton
+            // deleteButton
             // 
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(504, 365);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(123, 37);
-            this.clearButton.TabIndex = 51;
-            this.clearButton.Text = "Delete Patient";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.Location = new System.Drawing.Point(490, 365);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(146, 37);
+            this.deleteButton.TabIndex = 51;
+            this.deleteButton.Text = "Delete Patient";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // genderTextBox
             // 
@@ -364,7 +364,7 @@ namespace SmartClinic.View
             // saveChangesAndCloseButton
             // 
             this.saveChangesAndCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveChangesAndCloseButton.Location = new System.Drawing.Point(181, 365);
+            this.saveChangesAndCloseButton.Location = new System.Drawing.Point(171, 365);
             this.saveChangesAndCloseButton.Name = "saveChangesAndCloseButton";
             this.saveChangesAndCloseButton.Size = new System.Drawing.Size(286, 36);
             this.saveChangesAndCloseButton.TabIndex = 68;
@@ -388,7 +388,7 @@ namespace SmartClinic.View
             this.Controls.Add(this.genderErrorLabel);
             this.Controls.Add(this.lastNameErrorLabel);
             this.Controls.Add(this.firstNameErrorLabel);
-            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.genderTextBox);
             this.Controls.Add(this.genderLabel);
             this.Controls.Add(this.phoneTextBox);
@@ -432,7 +432,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label genderErrorLabel;
         private System.Windows.Forms.Label lastNameErrorLabel;
         private System.Windows.Forms.Label firstNameErrorLabel;
-        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.TextBox genderTextBox;
         private System.Windows.Forms.Label genderLabel;
         private System.Windows.Forms.TextBox phoneTextBox;

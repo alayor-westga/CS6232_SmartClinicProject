@@ -97,6 +97,71 @@ namespace SmartClinic.DAL
             return patientList;
         }
 
+        internal bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient) //here is where I am currently working
+        {
+            string updateStatement =
+               "UPDATE ClinicPersons SET " +
+                    "first_name = @NewFirstName, " +
+                    "last_name = @NewLastName, " +
+                    "date_of_birth = @NewDateOfBirth, " +
+                    "gender = @NewGender, " +
+                    "street1 = @NewStreet1, " +
+                    "street2 = @NewStreet2, " +
+                    "city = @NewCity, " +
+                    "state = @NewState, " +
+                    "zip_code = @NewZipCode, " +
+                    "phone_number = @NewPhoneNumber " +
+                "WHERE clinic_person_id = @OldClinicPersonID " +
+                    "AND first_name = @OldFirstName " +
+                    "AND last_name = @OldLastName " +
+                    "AND date_of_birth = @OldDateOfBirth " +
+                    "AND gender = @OldGender " +
+                    "AND street1 = @OldStreet1 " +
+                    "AND street2 = @OldStreet2 " +
+                    "AND city = @OldCity " +
+                    "AND state = @OldState " +
+                    "AND zip_code = @OldZipCode " +
+                    "AND phone_number = @OldPhoneNumber";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@NewFirstName", newPatient.FirstName);
+                    updateCommand.Parameters.AddWithValue("@NewLastName", newPatient.LastName);
+                    updateCommand.Parameters.AddWithValue("@NewDateOfBirth", newPatient.DateOfBirth);
+                    updateCommand.Parameters.AddWithValue("@NewGender", newPatient.Gender);
+                    updateCommand.Parameters.AddWithValue("@NewStreet1", newPatient.Street1);
+                    updateCommand.Parameters.AddWithValue("@NewStreet2", newPatient.Street2);
+                    updateCommand.Parameters.AddWithValue("@NewCity", newPatient.City);
+                    updateCommand.Parameters.AddWithValue("@NewState", newPatient.State);
+                    updateCommand.Parameters.AddWithValue("@NewZipCode", newPatient.ZipCode);
+                    updateCommand.Parameters.AddWithValue("@NewPhoneNumber", newPatient.Phone);
+       
+
+                    updateCommand.Parameters.AddWithValue("@OldClinicPersonID", oldPatient.ClinicPersonID);
+                    updateCommand.Parameters.AddWithValue("@OldFirstName", oldPatient.FirstName);
+                    updateCommand.Parameters.AddWithValue("@OldLastName", oldPatient.LastName);
+                    updateCommand.Parameters.AddWithValue("@OldDateOfBirth", oldPatient.DateOfBirth);
+                    updateCommand.Parameters.AddWithValue("@OldGender", oldPatient.Gender);
+                    updateCommand.Parameters.AddWithValue("@OldStreet1", oldPatient.Street1);
+                    updateCommand.Parameters.AddWithValue("@OldStreet2", oldPatient.Street2);
+                    updateCommand.Parameters.AddWithValue("@OldCity", oldPatient.City);
+                    updateCommand.Parameters.AddWithValue("@OldState", oldPatient.State);
+                    updateCommand.Parameters.AddWithValue("@OldZipCode", oldPatient.ZipCode);
+                    updateCommand.Parameters.AddWithValue("@OldPhoneNumber", oldPatient.Phone);
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    if (count > 0)
+                        return true;
+                    else
+                        return false;
+                }
+            };
+        }
+
         internal void DeletePatient(int patientID)
         {
             string insertStatement = "DELETE FROM Patients WHERE patient_id = @PatientID";
@@ -203,7 +268,7 @@ namespace SmartClinic.DAL
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    
+
                     if (!String.IsNullOrWhiteSpace(firstName))
                     {
                         selectCommand.Parameters.AddWithValue("@FirstName", '%' + firstName + '%');
@@ -255,7 +320,7 @@ namespace SmartClinic.DAL
 
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
-                    insertCommand.Parameters.AddWithValue("@ClinicPersonID", clinicPersonID);                 
+                    insertCommand.Parameters.AddWithValue("@ClinicPersonID", clinicPersonID);
                     insertCommand.ExecuteNonQuery();
                 }
             }
@@ -288,16 +353,16 @@ namespace SmartClinic.DAL
             }
             return lastPatientID;
         }
-    
+
 
         public int AddClinicPerson(ClinicPerson newPatient)
         {
             string insertStatement =
-                 
+
            "INSERT ClinicPersons " +
              "(date_of_birth, gender, first_name, last_name, street1, street2, city, state, zip_code, phone_number) " +
            "VALUES (@DateOfBirth, @Gender, @FirstName, @LastName, @Street1, @Street2, @City, @State, @ZipCode, @Phone)";
-            
+
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -328,6 +393,7 @@ namespace SmartClinic.DAL
             string selectStatement =
 
                 "SELECT " +
+                    "c.clinic_person_id, " +
                     "first_name, " +
                     "last_name, " +
                     "date_of_birth, " +
@@ -356,11 +422,12 @@ namespace SmartClinic.DAL
                     {
                         while (reader.Read())
                         {
-                            patient.FirstName= (string)reader["first_name"];
+                            patient.ClinicPersonID = (int)reader["clinic_person_id"];
+                            patient.FirstName = (string)reader["first_name"];
                             patient.LastName = (string)reader["last_name"];
                             patient.DateOfBirth = (DateTime)reader["date_of_birth"];
                             patient.Gender = (string)reader["gender"];
-                            patient.Street1 = (string)reader["street1"];                        
+                            patient.Street1 = (string)reader["street1"];
                             if (reader[5] == DBNull.Value)
                             {
                                 patient.Street2 = "";
@@ -372,7 +439,7 @@ namespace SmartClinic.DAL
                             patient.City = (string)reader["city"];
                             patient.State = (string)reader["state"];
                             patient.ZipCode = (string)reader["zip_code"];
-                            patient.Phone   = (string)reader["phone_number"];
+                            patient.Phone = (string)reader["phone_number"];
                         }
                     }
                 }
@@ -392,13 +459,13 @@ namespace SmartClinic.DAL
                 connection.Open();
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {                  
+                {
                     using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
 
                     {
                         while (reader.Read())
                         {
-                            lastClinicPersonID = (int)reader["clinic_person_id"];                           
+                            lastClinicPersonID = (int)reader["clinic_person_id"];
                         }
                     }
                 }

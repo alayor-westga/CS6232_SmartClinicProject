@@ -31,16 +31,7 @@ namespace SmartClinic.UserControls
         {
             this.components = new System.ComponentModel.Container();
             this.patientDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.deletePatientButton = new System.Windows.Forms.Button();
             this.viewOrEditPatientDetailsButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
@@ -54,8 +45,21 @@ namespace SmartClinic.UserControls
             this.searchRulesLabel = new System.Windows.Forms.Label();
             this.searchForPatientsLabel = new System.Windows.Forms.Label();
             this.searchMessageLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.doubleClickOptionToViewPatientLabel = new System.Windows.Forms.Label();
+            this.RightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deletePatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rightClickToDeleteLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
+            this.RightClickMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,33 +91,7 @@ namespace SmartClinic.UserControls
             this.patientDataGridView.Size = new System.Drawing.Size(955, 292);
             this.patientDataGridView.TabIndex = 1;
             this.patientDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectRow_DoubleClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "PatientId";
-            this.dataGridViewTextBoxColumn1.FillWeight = 15F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "PID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn2.FillWeight = 34.391F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "First Name";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
-            this.dataGridViewTextBoxColumn3.FillWeight = 34.391F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Last Name";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.patientDataGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PatientsTable_RighClick);
             // 
             // DateOfBirth
             // 
@@ -123,55 +101,6 @@ namespace SmartClinic.UserControls
             this.DateOfBirth.MinimumWidth = 6;
             this.DateOfBirth.Name = "DateOfBirth";
             this.DateOfBirth.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Gender";
-            this.dataGridViewTextBoxColumn5.FillWeight = 19F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Gender";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Street1";
-            this.dataGridViewTextBoxColumn6.FillWeight = 34.391F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Address 1";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Street2";
-            this.dataGridViewTextBoxColumn7.FillWeight = 34.391F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Address 2";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "City";
-            this.dataGridViewTextBoxColumn8.FillWeight = 34.391F;
-            this.dataGridViewTextBoxColumn8.HeaderText = "City";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "State";
-            this.dataGridViewTextBoxColumn9.FillWeight = 15F;
-            this.dataGridViewTextBoxColumn9.HeaderText = "State";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
             // 
             // deletePatientButton
             // 
@@ -305,20 +234,121 @@ namespace SmartClinic.UserControls
             this.searchMessageLabel.Size = new System.Drawing.Size(427, 15);
             this.searchMessageLabel.TabIndex = 25;
             // 
-            // label1
+            // doubleClickOptionToViewPatientLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(590, 382);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(362, 17);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Double-click in any row to view or edit a patient\'s details.";
+            this.doubleClickOptionToViewPatientLabel.AutoSize = true;
+            this.doubleClickOptionToViewPatientLabel.Location = new System.Drawing.Point(590, 382);
+            this.doubleClickOptionToViewPatientLabel.Name = "doubleClickOptionToViewPatientLabel";
+            this.doubleClickOptionToViewPatientLabel.Size = new System.Drawing.Size(347, 17);
+            this.doubleClickOptionToViewPatientLabel.TabIndex = 26;
+            this.doubleClickOptionToViewPatientLabel.Text = "Double-click any row to view or edit a patient\'s details.";
+            // 
+            // RightClickMenu
+            // 
+            this.RightClickMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.RightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deletePatientToolStripMenuItem});
+            this.RightClickMenu.Name = "RightClickMenu";
+            this.RightClickMenu.Size = new System.Drawing.Size(172, 28);
+            this.RightClickMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ContextMenuForDataGridView_Click);
+            // 
+            // deletePatientToolStripMenuItem
+            // 
+            this.deletePatientToolStripMenuItem.Name = "deletePatientToolStripMenuItem";
+            this.deletePatientToolStripMenuItem.Size = new System.Drawing.Size(171, 24);
+            this.deletePatientToolStripMenuItem.Text = "Delete Patient";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PatientId";
+            this.dataGridViewTextBoxColumn1.FillWeight = 15F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "PID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn2.FillWeight = 34.391F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "First Name";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn3.FillWeight = 34.391F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Last Name";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Gender";
+            this.dataGridViewTextBoxColumn5.FillWeight = 19F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Gender";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Street1";
+            this.dataGridViewTextBoxColumn6.FillWeight = 34.391F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Address 1";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Street2";
+            this.dataGridViewTextBoxColumn7.FillWeight = 34.391F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Address 2";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "City";
+            this.dataGridViewTextBoxColumn8.FillWeight = 34.391F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "City";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "State";
+            this.dataGridViewTextBoxColumn9.FillWeight = 15F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "State";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
+            // 
+            // rightClickToDeleteLabel
+            // 
+            this.rightClickToDeleteLabel.AutoSize = true;
+            this.rightClickToDeleteLabel.Location = new System.Drawing.Point(590, 413);
+            this.rightClickToDeleteLabel.Name = "rightClickToDeleteLabel";
+            this.rightClickToDeleteLabel.Size = new System.Drawing.Size(245, 17);
+            this.rightClickToDeleteLabel.TabIndex = 28;
+            this.rightClickToDeleteLabel.Text = "Right-click any row for \'Delete\' option.";
             // 
             // PatientsUserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.rightClickToDeleteLabel);
+            this.Controls.Add(this.doubleClickOptionToViewPatientLabel);
             this.Controls.Add(this.searchMessageLabel);
             this.Controls.Add(this.deletePatientButton);
             this.Controls.Add(this.viewOrEditPatientDetailsButton);
@@ -336,6 +366,7 @@ namespace SmartClinic.UserControls
             this.Name = "PatientsUserControls";
             this.Size = new System.Drawing.Size(996, 586);
             ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
+            this.RightClickMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -368,6 +399,9 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.Label searchMessageLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label doubleClickOptionToViewPatientLabel;
+        private System.Windows.Forms.ContextMenuStrip RightClickMenu;
+        private System.Windows.Forms.ToolStripMenuItem deletePatientToolStripMenuItem;
+        private System.Windows.Forms.Label rightClickToDeleteLabel;
     }
 }

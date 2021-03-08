@@ -8,6 +8,10 @@ namespace SmartClinic.Model
     public class ClinicPerson
     {
         /// <summary>
+        /// The ID of the clinic person
+        /// </summary>
+        public int ClinicPersonID { get; set; }
+        /// <summary>
         /// The first name of the clinic person.
         /// </summary>
         public string FirstName { get; set; }
