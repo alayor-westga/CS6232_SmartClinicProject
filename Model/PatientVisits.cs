@@ -18,6 +18,5 @@ namespace SmartClinic.Model
         public string Symptoms { get; set; }
         public int InitialDiagnosis { get; set; }
         public string FinalDiagnosis { get; set; }
-
     }
 }

@@ -41,8 +41,10 @@ namespace SmartClinic.View
             this.mainDashBoardTabControl = new System.Windows.Forms.TabControl();
             this.appointmentsUserControl1 = new SmartClinic.UserControls.AppointmentsUserControl();
             this.patientsUserControls1 = new SmartClinic.UserControls.PatientsUserControls();
+            this.patientVisitsUserControl1 = new SmartClinic.UserControls.PatientVisitsUserControl();
             this.userLayoutPanel.SuspendLayout();
             this.PatientsTabPage.SuspendLayout();
+            this.patientVisitsTabPage.SuspendLayout();
             this.appointmentsTabPage.SuspendLayout();
             this.mainDashBoardTabControl.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +54,7 @@ namespace SmartClinic.View
             this.userLayoutPanel.ColumnCount = 3;
             this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.59447F));
             this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.40553F));
-            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
+            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.userLayoutPanel.Controls.Add(this.userNameLabel, 1, 0);
             this.userLayoutPanel.Controls.Add(this.logoutLinkLabel, 2, 0);
             this.userLayoutPanel.Controls.Add(this.welcomeLabel, 0, 0);
@@ -70,7 +72,7 @@ namespace SmartClinic.View
             this.userNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.userNameLabel.AutoSize = true;
             this.userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.Location = new System.Drawing.Point(750, 4);
+            this.userNameLabel.Location = new System.Drawing.Point(747, 4);
             this.userNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(0, 20);
@@ -81,7 +83,7 @@ namespace SmartClinic.View
             this.logoutLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logoutLinkLabel.AutoSize = true;
             this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLinkLabel.Location = new System.Drawing.Point(919, 4);
+            this.logoutLinkLabel.Location = new System.Drawing.Point(917, 4);
             this.logoutLinkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.logoutLinkLabel.Name = "logoutLinkLabel";
             this.logoutLinkLabel.Size = new System.Drawing.Size(60, 20);
@@ -95,7 +97,7 @@ namespace SmartClinic.View
             this.welcomeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeLabel.Location = new System.Drawing.Point(667, 4);
+            this.welcomeLabel.Location = new System.Drawing.Point(664, 4);
             this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(79, 20);
@@ -140,6 +142,7 @@ namespace SmartClinic.View
             // 
             // patientVisitsTabPage
             // 
+            this.patientVisitsTabPage.Controls.Add(this.patientVisitsUserControl1);
             this.patientVisitsTabPage.Location = new System.Drawing.Point(4, 25);
             this.patientVisitsTabPage.Name = "patientVisitsTabPage";
             this.patientVisitsTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
@@ -188,6 +191,13 @@ namespace SmartClinic.View
             this.patientsUserControls1.Size = new System.Drawing.Size(996, 594);
             this.patientsUserControls1.TabIndex = 0;
             // 
+            // patientVisitsUserControl1
+            // 
+            this.patientVisitsUserControl1.Location = new System.Drawing.Point(0, 3);
+            this.patientVisitsUserControl1.Name = "patientVisitsUserControl1";
+            this.patientVisitsUserControl1.Size = new System.Drawing.Size(997, 587);
+            this.patientVisitsUserControl1.TabIndex = 0;
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -205,6 +215,7 @@ namespace SmartClinic.View
             this.userLayoutPanel.ResumeLayout(false);
             this.userLayoutPanel.PerformLayout();
             this.PatientsTabPage.ResumeLayout(false);
+            this.patientVisitsTabPage.ResumeLayout(false);
             this.appointmentsTabPage.ResumeLayout(false);
             this.mainDashBoardTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -226,5 +237,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.TabPage appointmentsTabPage;
         private System.Windows.Forms.TabControl mainDashBoardTabControl;
         private UserControls.AppointmentsUserControl appointmentsUserControl1;
+        private UserControls.PatientVisitsUserControl patientVisitsUserControl1;
     }
 }
