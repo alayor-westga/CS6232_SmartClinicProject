@@ -21,6 +21,7 @@ namespace SmartClinic.UserControls
             InitializeComponent();
             this.patientController = new PatientController();
             this.rowIndexForDataGridView = 0;
+            this.DisableButtons();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -38,6 +39,14 @@ namespace SmartClinic.UserControls
             {
                 patients.AddRange(patientController.SearchPatients(firstName, lastName, dateOfBirth));
                 this.searchMessageLabel.Text = patients.Count.ToString() + " result(s) returned";
+                if (patients.Count == 0)
+                {
+                    this.DisableButtons();
+                    this.patientDataGridView.DataSource = null;
+                    return;
+                }
+
+                this.EnableButtons();
             }
             catch (ArgumentException ex)
             {
@@ -45,6 +54,18 @@ namespace SmartClinic.UserControls
                 return;
             }
             patientDataGridView.DataSource = patients;
+        }
+
+        private void DisableButtons()
+        {
+            this.viewOrEditPatientDetailsButton.Enabled = false;
+            this.deletePatientButton.Enabled = false;
+        }
+
+        private void EnableButtons()
+        {
+            this.viewOrEditPatientDetailsButton.Enabled = true;
+            this.deletePatientButton.Enabled = true;
         }
 
         private void SelectRow_DoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -89,12 +110,15 @@ namespace SmartClinic.UserControls
             this.firstNameTextBox.Text = "";
             this.lastNameTextBox.Text = "";
             this.searchMessageLabel.Text = "";
+            this.DisableButtons();
+           
         }
 
         private void SearchTermsValueChanged(object sender, EventArgs e)
         {
             this.patientDataGridView.DataSource = null;
             this.searchMessageLabel.Text = "";
+            this.DisableButtons();
         }
 
         private void ViewOrEditPatientDetailsButton_Click(object sender, EventArgs e)
@@ -115,7 +139,7 @@ namespace SmartClinic.UserControls
 
         private void PatientsTable_RighClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+
             if (e.Button == MouseButtons.Right)
             {
                 this.patientDataGridView.Rows[e.RowIndex].Selected = true;
