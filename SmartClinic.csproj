@@ -243,6 +243,12 @@
     <Compile Include="UserControls\PatientsUserControls.Designer.cs">
       <DependentUpon>PatientsUserControls.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PatientVisitsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PatientVisitsUserControl.Designer.cs">
+      <DependentUpon>PatientVisitsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientsUserControls.resx">
       <DependentUpon>PatientsUserControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PatientVisitsUserControl.resx">
+      <DependentUpon>PatientVisitsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
