@@ -52,7 +52,7 @@ namespace SmartClinic.View
             this.userLayoutPanel.ColumnCount = 3;
             this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.59447F));
             this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.40553F));
-            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
             this.userLayoutPanel.Controls.Add(this.userNameLabel, 1, 0);
             this.userLayoutPanel.Controls.Add(this.logoutLinkLabel, 2, 0);
             this.userLayoutPanel.Controls.Add(this.welcomeLabel, 0, 0);
@@ -70,7 +70,7 @@ namespace SmartClinic.View
             this.userNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.userNameLabel.AutoSize = true;
             this.userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.Location = new System.Drawing.Point(773, 4);
+            this.userNameLabel.Location = new System.Drawing.Point(750, 4);
             this.userNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(0, 20);
@@ -81,7 +81,7 @@ namespace SmartClinic.View
             this.logoutLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logoutLinkLabel.AutoSize = true;
             this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLinkLabel.Location = new System.Drawing.Point(933, 4);
+            this.logoutLinkLabel.Location = new System.Drawing.Point(919, 4);
             this.logoutLinkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.logoutLinkLabel.Name = "logoutLinkLabel";
             this.logoutLinkLabel.Size = new System.Drawing.Size(60, 20);
@@ -95,7 +95,7 @@ namespace SmartClinic.View
             this.welcomeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeLabel.Location = new System.Drawing.Point(690, 4);
+            this.welcomeLabel.Location = new System.Drawing.Point(667, 4);
             this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(79, 20);

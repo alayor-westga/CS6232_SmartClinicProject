@@ -229,6 +229,7 @@
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\PatientVisits.cs" />
     <Compile Include="Model\Views\AppointmentSearchResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UserControls\AppointmentsUserControl.cs">
@@ -273,6 +274,12 @@
     <Compile Include="View\NewPatientForm.Designer.cs">
       <DependentUpon>NewPatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientVisitDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientVisitDetailsForm.Designer.cs">
+      <DependentUpon>PatientVisitDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdatePatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\NewPatientForm.resx">
       <DependentUpon>NewPatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientVisitDetailsForm.resx">
+      <DependentUpon>PatientVisitDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UpdatePatient.resx">
       <DependentUpon>UpdatePatient.cs</DependentUpon>
