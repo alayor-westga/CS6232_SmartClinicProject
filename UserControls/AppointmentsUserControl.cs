@@ -60,5 +60,19 @@ namespace SmartClinic.UserControls
             resultsReturnedLabel.Text = "";
             appointmentsDataGridView.DataSource = null;
         }
+
+        private void AppointmentsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (appointmentsDataGridView.SelectedRows.Count > 0)
+            {
+                viewAppointmentButton.Enabled = true;
+                deleteAppointmentButton.Enabled = true;
+            }
+            else
+            {
+                viewAppointmentButton.Enabled = false;
+                deleteAppointmentButton.Enabled = false;
+            }
+        }
     }
 }
