@@ -44,11 +44,11 @@ namespace SmartClinic.UserControls
             this.searchRulesLabel = new System.Windows.Forms.Label();
             this.searchForPatientVisitLabel = new System.Windows.Forms.Label();
             this.appointmentSearchResultDataGridView = new System.Windows.Forms.DataGridView();
-            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientVisitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dobLabel = new System.Windows.Forms.Label();
             this.firstAndLastLabel = new System.Windows.Forms.Label();
             this.dobLastName = new System.Windows.Forms.Label();
+            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientVisitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -204,14 +204,6 @@ namespace SmartClinic.UserControls
             this.appointmentSearchResultDataGridView.Size = new System.Drawing.Size(623, 496);
             this.appointmentSearchResultDataGridView.TabIndex = 44;
             // 
-            // appointmentSearchResultBindingSource
-            // 
-            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
-            // 
-            // patientVisitsBindingSource
-            // 
-            this.patientVisitsBindingSource.DataSource = typeof(SmartClinic.Model.PatientVisits);
-            // 
             // dobLabel
             // 
             this.dobLabel.AutoSize = true;
@@ -239,11 +231,19 @@ namespace SmartClinic.UserControls
             this.dobLastName.TabIndex = 47;
             this.dobLastName.Text = "- DOB and Last Name";
             // 
+            // appointmentSearchResultBindingSource
+            // 
+            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
+            // 
+            // patientVisitsBindingSource
+            // 
+            this.patientVisitsBindingSource.DataSource = typeof(SmartClinic.Model.PatientVisits);
+            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "AppointmentDate";
             this.dataGridViewTextBoxColumn2.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Appt Date";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Visit Date";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
