@@ -189,8 +189,6 @@
     <None Include=".git\ORIG_HEAD" />
     <None Include=".git\refs\heads\main" />
     <None Include=".git\refs\remotes\origin\main" />
-    <None Include=".vs\slnx.sqlite" />
-    <None Include=".vs\SmartClinic\v16\.suo" />
     <None Include="App.config" />
     <None Include="docs\backlog.pdf" />
     <None Include="docs\mockups.pdf" />
@@ -213,7 +211,6 @@
     <Folder Include=".git\objects\info\" />
     <Folder Include=".git\objects\pack\" />
     <Folder Include=".git\refs\tags\" />
-    <Folder Include=".vs\CS6232_SmartClinicProject\v16\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AppointmentController.cs" />
