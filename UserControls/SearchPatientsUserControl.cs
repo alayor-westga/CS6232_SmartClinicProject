@@ -16,6 +16,7 @@ namespace SmartClinic.UserControls
         {
             InitializeComponent();
             patientController = new PatientController();
+            selectionListeners = new List<SelectionListener<Patient>>();
         }
 
         public void AddSelectionListener(SelectionListener<Patient> selectionListener)
@@ -26,15 +27,9 @@ namespace SmartClinic.UserControls
             }
         }
 
-        public void RemoveSelectionListener(SelectionListener<Patient> selectionListener)
-        {
-             selectionListeners.Remove(selectionListener);
-        }
-
         private void SearchPatientsUserControl_Load(object sender, EventArgs e)
         {
             searchByDOBOnlyRadioButton.Checked = true;
-            selectionListeners = new List<SelectionListener<Patient>>();
         }
 
         private void SearchByDOBOnlyRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -106,8 +101,14 @@ namespace SmartClinic.UserControls
         {
             if (searchByDOBOnlyRadioButton.Checked)
             {
-                var patients = patientController.SearchByDOB(dobOnlyDatePicker.Value);
-                patientsDataGridView.DataSource = patients;
+                patientsDataGridView.DataSource = patientController.SearchByDOB(dobOnlyDatePicker.Value);
+            } 
+            else if (searchByNamesRadioButton.Checked)
+            {
+                patientsDataGridView.DataSource = patientController.SearchByName(
+                    firstNameTextBox.Text,
+                    lastNameTextBox.Text
+                );
             }
         }
 

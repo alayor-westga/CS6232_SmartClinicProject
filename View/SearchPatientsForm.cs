@@ -8,22 +8,25 @@ namespace SmartClinic.View
 {
     public partial class SearchPatientsForm : Form, SelectionListener<Patient>
     {
+        private Patient patient;
         public SearchPatientsForm()
         {
             InitializeComponent();
+            searchPatientsUserControl.AddSelectionListener(this);
+            patient = null;
         }
 
         public Patient SelectedPatient { get; set; }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            SelectedPatient = null;
+            patient = null;
             Close();
         }
 
         void SelectionListener<Patient>.OnSelect(Patient selectedValue)
         {
-            SelectedPatient = selectedValue;
+            patient = selectedValue;
             selectPatientButton.Enabled = true;
         }
 
@@ -35,17 +38,8 @@ namespace SmartClinic.View
         private void SelectPatientButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+            SelectedPatient = patient;
             Close();
-        }
-
-        private void SearchPatientsForm_Load(object sender, EventArgs e)
-        {
-            searchPatientsUserControl.AddSelectionListener(this);
-        }
-
-        private void SearchPatientsForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            searchPatientsUserControl.RemoveSelectionListener(this);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace SmartClinic.Controller
         }
 
         /// <summary>
-        /// It searches patients by their name, id, and date of birth.
+        /// It searches patients by their date of birth.
         /// </summary>
         /// <param name="dateOfBirth">The patients's dateOfBirth.</param>
         /// <returns>The list of found patients.</returns>
@@ -37,6 +37,21 @@ namespace SmartClinic.Controller
                 throw new ArgumentNullException("dateOfBirth");
             }
             return patientSource.SearchByDOB(dateOfBirth);
+        }
+
+         /// <summary>
+        /// It searches patients by their names.
+        /// </summary>
+        /// <param name="firstName">The patients's first name.</param>
+        /// <param name="lastName">The patients's last name.</param>
+        /// <returns>The list of found patients.</returns>
+        public List<Patient> SearchByName(string firstName, string lastName)
+        {
+            if (String.IsNullOrWhiteSpace(firstName) && String.IsNullOrWhiteSpace(lastName))
+            {
+                throw new ArgumentException("Please enter a name to search.");
+            }
+            return patientSource.SearchByName(firstName, lastName);
         }
 
         public bool PatientHasNoAppointments(int patientID)

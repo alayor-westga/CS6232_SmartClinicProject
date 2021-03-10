@@ -15,7 +15,7 @@ namespace SmartClinic.DAL
         /// <summary>
         /// It searches patients by their date of birth.
         /// </summary>
-        /// <param name="dateOfBirth">The patients's dateOfBirth.</param>
+        /// <param name="dateOfBirth">The patients's date of birth.</param>
         /// <returns>The list of found patients.</returns>
         public List<Patient> SearchByDOB(DateTime dateOfBirth)
         {
@@ -35,6 +35,40 @@ namespace SmartClinic.DAL
                     {"@DateOfBirth", dateOfBirth.Date}
                 }
             );
+        }
+
+        /// <summary>
+        /// It searches patients by their names.
+        /// </summary>
+        /// <param name="firstName">The patients's first name.</param>
+        /// <param name="lastName">The patients's last name.</param>
+        /// <returns>The list of found patients.</returns>
+        public List<Patient> SearchByName(string firstName, string lastName)
+        {
+            if (String.IsNullOrWhiteSpace(firstName) && String.IsNullOrWhiteSpace(lastName))
+            {
+                throw new ArgumentException("Please enter a name to search.");
+            }
+            string selectStatement =
+            " SELECT p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
+            " cp.street2, cp.city, cp.state" +
+            " FROM Patients p" +
+            " INNER JOIN ClinicPersons cp ON (p.clinic_person_id = cp.clinic_person_id)" +
+            " WHERE 1=1";
+
+            Hashtable parameters = new Hashtable();
+            if (!String.IsNullOrWhiteSpace(firstName))
+            {
+                selectStatement += " AND cp.first_name like @FirstName";
+                parameters.Add("@FirstName", "%" + firstName + "%");
+            }
+            if (!String.IsNullOrWhiteSpace(lastName))
+            {
+                selectStatement += " AND cp.last_name like @LastName";
+                parameters.Add("@LastName", "%" + lastName + "%");
+            }
+
+            return SelectMany(selectStatement, parameters);
         }
 
         internal List<Patient> SelectMany(string selectStatement, Hashtable parameters = null)

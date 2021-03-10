@@ -29,17 +29,10 @@ namespace SmartClinic.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.searchPatientsUserControl = new SmartClinic.UserControls.SearchPatientsUserControl();
             this.cancelButton = new System.Windows.Forms.Button();
             this.selectPatientButton = new System.Windows.Forms.Button();
+            this.searchPatientsUserControl = new SmartClinic.UserControls.SearchPatientsUserControl();
             this.SuspendLayout();
-            // 
-            // searchPatientsUserControl
-            // 
-            this.searchPatientsUserControl.Location = new System.Drawing.Point(12, 12);
-            this.searchPatientsUserControl.Name = "searchPatientsUserControl";
-            this.searchPatientsUserControl.Size = new System.Drawing.Size(1172, 694);
-            this.searchPatientsUserControl.TabIndex = 0;
             // 
             // cancelButton
             // 
@@ -70,6 +63,13 @@ namespace SmartClinic.View
             this.selectPatientButton.UseVisualStyleBackColor = true;
             this.selectPatientButton.Click += new System.EventHandler(this.SelectPatientButton_Click);
             // 
+            // searchPatientsUserControl
+            // 
+            this.searchPatientsUserControl.Location = new System.Drawing.Point(12, 12);
+            this.searchPatientsUserControl.Name = "searchPatientsUserControl";
+            this.searchPatientsUserControl.Size = new System.Drawing.Size(1172, 694);
+            this.searchPatientsUserControl.TabIndex = 0;
+            // 
             // SearchPatientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -83,8 +83,6 @@ namespace SmartClinic.View
             this.Name = "SearchPatientsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Patients";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchPatientsForm_FormClosing);
-            this.Load += new System.EventHandler(this.SearchPatientsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
