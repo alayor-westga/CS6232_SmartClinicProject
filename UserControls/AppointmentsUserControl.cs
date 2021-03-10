@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using SmartClinic.Controller;
 using SmartClinic.Model;
+using SmartClinic.View;
 
 namespace SmartClinic.UserControls
 {
@@ -11,6 +12,7 @@ namespace SmartClinic.UserControls
     /// </summary>
     public partial class AppointmentsUserControl : UserControl
     {
+        private readonly AppointmentDetailsForm appointmentDetailsForm;
         private readonly AppointmentController appointmentController;
 
         /// <summary>
@@ -19,6 +21,7 @@ namespace SmartClinic.UserControls
         public AppointmentsUserControl()
         {
             InitializeComponent();
+            appointmentDetailsForm = new AppointmentDetailsForm();
             appointmentController = new AppointmentController();
         }
 
@@ -73,6 +76,12 @@ namespace SmartClinic.UserControls
                 viewAppointmentButton.Enabled = false;
                 deleteAppointmentButton.Enabled = false;
             }
+        }
+
+        private void ViewAppointmentButton_Click(object sender, EventArgs e)
+        {
+            AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult) appointmentsDataGridView.SelectedRows[0].DataBoundItem;
+            appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);
         }
     }
 }

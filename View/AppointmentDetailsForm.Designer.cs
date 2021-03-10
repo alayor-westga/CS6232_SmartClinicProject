@@ -64,17 +64,16 @@ namespace SmartClinic.View
             // 
             this.patientIdValueLabel.AutoSize = true;
             this.patientIdValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientIdValueLabel.Location = new System.Drawing.Point(194, 9);
+            this.patientIdValueLabel.Location = new System.Drawing.Point(178, 9);
             this.patientIdValueLabel.Name = "patientIdValueLabel";
-            this.patientIdValueLabel.Size = new System.Drawing.Size(100, 37);
+            this.patientIdValueLabel.Size = new System.Drawing.Size(0, 37);
             this.patientIdValueLabel.TabIndex = 1;
-            this.patientIdValueLabel.Text = "label1";
             // 
             // patientNameLabel
             // 
             this.patientNameLabel.AutoSize = true;
             this.patientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientNameLabel.Location = new System.Drawing.Point(353, 9);
+            this.patientNameLabel.Location = new System.Drawing.Point(271, 9);
             this.patientNameLabel.Name = "patientNameLabel";
             this.patientNameLabel.Size = new System.Drawing.Size(133, 37);
             this.patientNameLabel.TabIndex = 2;
@@ -84,11 +83,10 @@ namespace SmartClinic.View
             // 
             this.patientNameValueLabel.AutoSize = true;
             this.patientNameValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientNameValueLabel.Location = new System.Drawing.Point(492, 9);
+            this.patientNameValueLabel.Location = new System.Drawing.Point(398, 9);
             this.patientNameValueLabel.Name = "patientNameValueLabel";
-            this.patientNameValueLabel.Size = new System.Drawing.Size(100, 37);
+            this.patientNameValueLabel.Size = new System.Drawing.Size(0, 37);
             this.patientNameValueLabel.TabIndex = 3;
-            this.patientNameValueLabel.Text = "label1";
             // 
             // patientDateOfBirthLabel
             // 
@@ -104,11 +102,10 @@ namespace SmartClinic.View
             // 
             this.patientDateOfBirthValueLabel.AutoSize = true;
             this.patientDateOfBirthValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientDateOfBirthValueLabel.Location = new System.Drawing.Point(243, 61);
+            this.patientDateOfBirthValueLabel.Location = new System.Drawing.Point(225, 61);
             this.patientDateOfBirthValueLabel.Name = "patientDateOfBirthValueLabel";
-            this.patientDateOfBirthValueLabel.Size = new System.Drawing.Size(100, 37);
+            this.patientDateOfBirthValueLabel.Size = new System.Drawing.Size(0, 37);
             this.patientDateOfBirthValueLabel.TabIndex = 5;
-            this.patientDateOfBirthValueLabel.Text = "label1";
             // 
             // appointmentDateLabel
             // 
@@ -122,8 +119,8 @@ namespace SmartClinic.View
             // 
             // appointmentTimePicker
             // 
-            this.appointmentTimePicker.Checked = false;
-            this.appointmentTimePicker.CustomFormat = " ---";
+            this.appointmentTimePicker.CustomFormat = "hh:mm tt";
+            this.appointmentTimePicker.Enabled = false;
             this.appointmentTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.appointmentTimePicker.Location = new System.Drawing.Point(395, 161);
@@ -137,8 +134,8 @@ namespace SmartClinic.View
             // 
             // appointmentDatePicker
             // 
-            this.appointmentDatePicker.Checked = false;
-            this.appointmentDatePicker.CustomFormat = " ---";
+            this.appointmentDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.appointmentDatePicker.Enabled = false;
             this.appointmentDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.appointmentDatePicker.Location = new System.Drawing.Point(29, 161);
@@ -173,6 +170,7 @@ namespace SmartClinic.View
             // 
             this.doctorComboBox.DisplayMember = "FullName";
             this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.doctorComboBox.Enabled = false;
             this.doctorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doctorComboBox.FormattingEnabled = true;
             this.doctorComboBox.Location = new System.Drawing.Point(29, 268);
@@ -193,6 +191,7 @@ namespace SmartClinic.View
             // 
             // reasonForVisitTextBox
             // 
+            this.reasonForVisitTextBox.Enabled = false;
             this.reasonForVisitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reasonForVisitTextBox.Location = new System.Drawing.Point(29, 382);
             this.reasonForVisitTextBox.MaxLength = 200;
@@ -287,6 +286,7 @@ namespace SmartClinic.View
             this.Controls.Add(this.patientIdLabel);
             this.Name = "AppointmentDetailsForm";
             this.Text = "Appointment Details";
+            this.Load += new System.EventHandler(this.AppointmentDetailsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,6 +18,16 @@ namespace SmartClinic.Model
         }
 
         /// <summary>
+        /// The appoinment source object.
+        /// </summary>
+        public Appointment Appointment { 
+            get
+            {
+                return appointment;
+            }
+        }
+
+        /// <summary>
         /// The appoinment's id.
         /// </summary>
         public int AppoinmentId { 

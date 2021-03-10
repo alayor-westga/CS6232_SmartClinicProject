@@ -250,6 +250,7 @@ namespace SmartClinic.UserControls
             this.viewAppointmentButton.TabIndex = 14;
             this.viewAppointmentButton.Text = "View / Edit Appointment Details";
             this.viewAppointmentButton.UseVisualStyleBackColor = true;
+            this.viewAppointmentButton.Click += new System.EventHandler(this.ViewAppointmentButton_Click);
             // 
             // deleteAppointmentButton
             // 
