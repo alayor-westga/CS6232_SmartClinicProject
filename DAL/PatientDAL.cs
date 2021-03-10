@@ -71,6 +71,39 @@ namespace SmartClinic.DAL
             return SelectMany(selectStatement, parameters);
         }
 
+        /// <summary>
+        /// It searches patients by their date of birth and last name.
+        /// </summary>
+        /// <param name="dateOfBirth">The patients's date of birth</param>
+        /// <param name="lastName">The patients's last name.</param>
+        /// <returns>The list of found patients.</returns>
+        public List<Patient> SearchByDOBAndLastName(DateTime dateOfBirth, string lastName)
+        {
+            if (dateOfBirth == null)
+            {
+                throw new ArgumentNullException("dateOfBirth");
+            }
+            string selectStatement =
+            " SELECT p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
+            " cp.street2, cp.city, cp.state" +
+            " FROM Patients p" +
+            " INNER JOIN ClinicPersons cp ON (p.clinic_person_id = cp.clinic_person_id)" +
+            " WHERE cp.date_of_birth = @DateOfBirth";
+            
+            Hashtable parameters = new Hashtable()
+                {
+                    {"@DateOfBirth", dateOfBirth.Date}
+                };
+
+            if (!String.IsNullOrWhiteSpace(lastName))
+            {
+                selectStatement += " AND cp.last_name like @LastName";
+                parameters.Add("@LastName", "%" + lastName + "%");
+            }
+
+            return SelectMany(selectStatement, parameters);
+        }
+
         internal List<Patient> SelectMany(string selectStatement, Hashtable parameters = null)
         {
             List<Patient> patientList = new List<Patient>();

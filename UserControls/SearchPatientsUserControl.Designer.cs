@@ -245,6 +245,7 @@ namespace SmartClinic.UserControls
             this.clearButton.TabIndex = 22;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // searchButton
             // 

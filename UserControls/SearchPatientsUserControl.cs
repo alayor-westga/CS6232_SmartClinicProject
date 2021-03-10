@@ -110,6 +110,13 @@ namespace SmartClinic.UserControls
                     lastNameTextBox.Text
                 );
             }
+            else if (searchByDOBAndLastNameRadioButton.Checked)
+            {
+                patientsDataGridView.DataSource = patientController.SearchByDOBAndLastName(
+                    dobCombinedDatePicker.Value,
+                    lastNameCombinedTextBox.Text
+                );
+            }
         }
 
         private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -129,6 +136,16 @@ namespace SmartClinic.UserControls
                     listener.OnSelectionCleared();
                 }
             }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            dobOnlyDatePicker.Value = DateTime.Now;
+            firstNameTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            dobCombinedDatePicker.Value = DateTime.Now;
+            lastNameCombinedTextBox.Text = "";
+            patientsDataGridView.DataSource = null;
         }
     }
 }
