@@ -17,6 +17,7 @@ namespace SmartClinic.View
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            SelectedPatient = null;
             Close();
         }
 
@@ -35,6 +36,16 @@ namespace SmartClinic.View
         {
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void SearchPatientsForm_Load(object sender, EventArgs e)
+        {
+            searchPatientsUserControl.AddSelectionListener(this);
+        }
+
+        private void SearchPatientsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            searchPatientsUserControl.RemoveSelectionListener(this);
         }
     }
 }

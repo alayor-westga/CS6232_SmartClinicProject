@@ -20,7 +20,15 @@ namespace SmartClinic.UserControls
 
         public void AddSelectionListener(SelectionListener<Patient> selectionListener)
         {
-            selectionListeners.Add(selectionListener);
+            if (!selectionListeners.Contains(selectionListener))
+            {
+                selectionListeners.Add(selectionListener);
+            }
+        }
+
+        public void RemoveSelectionListener(SelectionListener<Patient> selectionListener)
+        {
+             selectionListeners.Remove(selectionListener);
         }
 
         private void SearchPatientsUserControl_Load(object sender, EventArgs e)

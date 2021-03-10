@@ -32,7 +32,7 @@ namespace SmartClinic.DAL
 
             return SelectMany(selectStatement, new Hashtable()
                 {
-                    {"@DateOfBirth", dateOfBirth}
+                    {"@DateOfBirth", dateOfBirth.Date}
                 }
             );
         }

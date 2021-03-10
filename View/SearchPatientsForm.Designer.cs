@@ -83,6 +83,8 @@ namespace SmartClinic.View
             this.Name = "SearchPatientsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Patients";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchPatientsForm_FormClosing);
+            this.Load += new System.EventHandler(this.SearchPatientsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

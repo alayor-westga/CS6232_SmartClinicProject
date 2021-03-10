@@ -33,6 +33,7 @@ namespace SmartClinic.View
         private void NewAppointmentForm_Load(object sender, EventArgs e)
         {
             PopulateDoctors();
+            ClearPatientInfo();
             ClearNewAppointmentForm();
             DisableNewAppointmentSection();
             appointmentDatePicker.Value = DateTime.Now;
@@ -134,6 +135,14 @@ namespace SmartClinic.View
             return isValid;
         }
 
+        private void ClearPatientInfo()
+        {
+            patientIdValueLabel.Text = "-";
+            patientFullNameValueLabel.Text = "-";
+            patientDateOfBirthValueLabel.Text = "-";
+            patientAddressValueLabel.Text = "-";
+        }
+
         private void ClearNewAppointmentForm()
         {
             doctorComboBox.SelectedIndex = 0;
@@ -174,9 +183,9 @@ namespace SmartClinic.View
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
             searchPatientsForm.ShowDialog();
-            selectedPatient = searchPatientsForm.SelectedPatient;
-            if (selectedPatient != null)
+            if (searchPatientsForm.SelectedPatient != null)
             {
+                selectedPatient = searchPatientsForm.SelectedPatient;
                 ShowPatientInfo();
                 newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
                 newAppoinmentGroupBox.Enabled = true;
