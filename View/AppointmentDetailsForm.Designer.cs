@@ -212,6 +212,7 @@ namespace SmartClinic.View
             // 
             this.saveButton.AutoSize = true;
             this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saveButton.Enabled = false;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(201, 514);
             this.saveButton.Name = "saveButton";
@@ -225,6 +226,7 @@ namespace SmartClinic.View
             // 
             this.deleteButton.AutoSize = true;
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteButton.Enabled = false;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.Location = new System.Drawing.Point(481, 514);
             this.deleteButton.Name = "deleteButton";
@@ -295,7 +297,10 @@ namespace SmartClinic.View
             this.Controls.Add(this.patientNameLabel);
             this.Controls.Add(this.patientIdValueLabel);
             this.Controls.Add(this.patientIdLabel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AppointmentDetailsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Appointment Details";
             this.Load += new System.EventHandler(this.AppointmentDetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).EndInit();

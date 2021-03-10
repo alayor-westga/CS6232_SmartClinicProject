@@ -39,6 +39,46 @@ namespace SmartClinic.DAL
         }
 
         /// <summary>
+        /// It updates an appointment in the data base.
+        /// </summary>
+        /// <param name="existingAppointment">The existing appoinment.</param>
+        /// <param name="newAppointment">The appointment to be updated.</param>
+        public void Update(Appointment existingAppointment, Appointment appointmentChanges)
+        {
+            if (appointmentChanges == null)
+            {
+                throw new ArgumentNullException("appointmentChanges");
+            }
+            string updateStatement = "UPDATE Appointments" +
+            " SET date = @Date, doctor_id = @DoctorId, reason = @Reason" +
+            " WHERE appointment_id = @AppointmentId" +
+            " AND date = @ExistingDate" +
+            " AND doctor_id = @ExistingDoctorId" +
+            " AND reason = @ExistingReason;";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@AppointmentId", appointmentChanges.AppointmentId);
+                    updateCommand.Parameters.AddWithValue("@Date", appointmentChanges.Date);
+                    updateCommand.Parameters.AddWithValue("@DoctorId", appointmentChanges.DoctorId);
+                    updateCommand.Parameters.AddWithValue("@Reason", appointmentChanges.Reason);
+                    
+                    updateCommand.Parameters.AddWithValue("@ExistingDate", existingAppointment.Date);
+                    updateCommand.Parameters.AddWithValue("@ExistingDoctorId", existingAppointment.DoctorId);
+                    updateCommand.Parameters.AddWithValue("@ExistingReason", existingAppointment.Reason);
+                    int result = updateCommand.ExecuteNonQuery();
+                    if (result == 0)
+                    {
+                        throw new Exception("Now rows were updated");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// It verifies if an appoinment exists for the same doctor and date.
         /// </summary>
         /// <param name="doctorId">The appointment's doctorId.</param>

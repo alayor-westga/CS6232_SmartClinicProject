@@ -27,6 +27,11 @@ namespace SmartClinic.UserControls
 
         private void SearchPatientsButton_Click(object sender, EventArgs e)
         {
+            SearchAppointments();
+        }
+
+        private void SearchAppointments()
+        {
             var firstName = patientFirstNameTextBox.Text;
             var lastName = patientLastNameTextBox.Text;
             DateTime? dateOfBirth = null;
@@ -87,6 +92,7 @@ namespace SmartClinic.UserControls
         {
             AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult)appointmentsDataGridView.SelectedRows[0].DataBoundItem;
             appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);
+            SearchAppointments();
         }
 
         private void AppointmentsDataGridView_DoubleClick(object sender, EventArgs e)

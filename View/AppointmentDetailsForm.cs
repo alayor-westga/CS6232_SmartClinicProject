@@ -13,6 +13,7 @@ namespace SmartClinic.View
     {
         private Appointment appointment;
         private readonly DoctorController doctorController;
+        private readonly AppointmentController appointmentController;
 
         /// <summary>
         /// It builds and initializes the appointment view details form.
@@ -21,6 +22,7 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             doctorController = new DoctorController();
+            appointmentController = new AppointmentController();
         }
 
         public void ShowWithAppointment(Appointment appointment) 
@@ -46,11 +48,6 @@ namespace SmartClinic.View
             List<Doctor> doctors = new List<Doctor>();
             try
             {
-                doctors.Add(new Doctor()
-                {
-                    DoctorId = -1,
-                    FirstName = "-- Select a doctor --"
-                });
                 doctors.AddRange(doctorController.GetAll());
             }
             catch (Exception ex)
@@ -68,6 +65,8 @@ namespace SmartClinic.View
             appointmentTimePicker.Enabled = true;
             doctorComboBox.Enabled = true;
             reasonForVisitTextBox.Enabled = true;
+            saveButton.Enabled = true;
+            deleteButton.Enabled = true;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -77,7 +76,32 @@ namespace SmartClinic.View
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-
+            string dateString = appointmentDatePicker.Value.ToShortDateString();
+            string timeString = appointmentTimePicker.Value.ToShortTimeString();
+            Appointment appointmentChanges = new Appointment()
+            {
+                AppointmentId = appointment.AppointmentId,
+                Date = DateTime.Parse(dateString + " " + timeString),
+                DoctorId = int.Parse(doctorComboBox.SelectedValue.ToString()),
+                Reason = reasonForVisitTextBox.Text,
+            };
+            try
+            {
+                appointmentController.Update(appointment, appointmentChanges);
+                MessageBox.Show("The apointment has been updated", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("The appointment could not get updated.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 }

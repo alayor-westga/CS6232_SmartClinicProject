@@ -50,6 +50,27 @@ namespace SmartClinic.Controller
         }
 
         /// <summary>
+        /// It updates an appointment.
+        /// </summary>
+        /// <param name="existingAppointment">The existing appoinment.</param>
+        /// <param name="newAppointment">The appointment to be updated.</param>
+        public void Update(Appointment existingAppointment, Appointment appointmentChanges)
+        {
+            if (!HasAnyUpdateChanges(existingAppointment, appointmentChanges))
+            {
+                throw new ArgumentException("No changes have been detected.");
+            }
+            appointmentSource.Update(existingAppointment, appointmentChanges);
+        }
+
+        private bool HasAnyUpdateChanges(Appointment existingAppointment, Appointment appointmentChanges)
+        {
+            return DateTime.Compare(existingAppointment.Date, appointmentChanges.Date) != 0
+                || existingAppointment.DoctorId != appointmentChanges.DoctorId
+                || existingAppointment.Reason != appointmentChanges.Reason;
+        }
+
+        /// <summary>
         /// It searches appointments by the patient's name and date of birth.
         /// </summary>
         /// <param name="firstName">The patients's username.</param>
