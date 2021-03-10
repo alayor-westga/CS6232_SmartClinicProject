@@ -75,5 +75,15 @@ namespace SmartClinic.Model
                 return FirstName + " " + LastName;
             }
         }
+
+        // <summary>
+        /// The street of the clinic person.
+        /// </summary>
+        public string Address { 
+            get 
+            {
+                return Street1 + " " + Street2 + " " + City + " " + State + " " + ZipCode;
+            }
+        }
     }
 }

@@ -183,7 +183,10 @@ namespace SmartClinic.View
 
         private void ShowPatientInfo()
         {
+            patientIdValueLabel.Text = selectedPatient.PatientId.ToString();
             patientFullNameValueLabel.Text = selectedPatient.FullName;
+            patientDateOfBirthValueLabel.Text = selectedPatient.DateOfBirth.ToShortDateString();
+            patientAddressValueLabel.Text = selectedPatient.Address;
         }
 
         private void searchForPatientsGroupBox_Enter(object sender, EventArgs e)
