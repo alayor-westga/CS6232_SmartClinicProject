@@ -61,5 +61,23 @@ namespace SmartClinic.View
             }
             doctorComboBox.DataSource = doctors;
         }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            appointmentDatePicker.Enabled = true;
+            appointmentTimePicker.Enabled = true;
+            doctorComboBox.Enabled = true;
+            reasonForVisitTextBox.Enabled = true;
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

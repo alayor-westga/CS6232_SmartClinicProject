@@ -42,6 +42,7 @@ namespace SmartClinic.View
             this.appointmentTimeLabel = new System.Windows.Forms.Label();
             this.doctorLabel = new System.Windows.Forms.Label();
             this.doctorComboBox = new System.Windows.Forms.ComboBox();
+            this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reasonForVisitLabel = new System.Windows.Forms.Label();
             this.reasonForVisitTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@ namespace SmartClinic.View
             this.patientVisitDetailsButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
-            this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,6 +183,10 @@ namespace SmartClinic.View
             this.doctorComboBox.TabIndex = 25;
             this.doctorComboBox.ValueMember = "DoctorId";
             // 
+            // doctorBindingSource
+            // 
+            this.doctorBindingSource.DataSource = typeof(SmartClinic.Model.Doctor);
+            // 
             // reasonForVisitLabel
             // 
             this.reasonForVisitLabel.AutoSize = true;
@@ -215,6 +219,7 @@ namespace SmartClinic.View
             this.saveButton.TabIndex = 28;
             this.saveButton.Text = "Save And Close";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // deleteButton
             // 
@@ -251,6 +256,7 @@ namespace SmartClinic.View
             this.cancelButton.TabIndex = 31;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // editButton
             // 
@@ -263,10 +269,7 @@ namespace SmartClinic.View
             this.editButton.TabIndex = 32;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
-            // 
-            // doctorBindingSource
-            // 
-            this.doctorBindingSource.DataSource = typeof(SmartClinic.Model.Doctor);
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // AppointmentDetailsForm
             // 
