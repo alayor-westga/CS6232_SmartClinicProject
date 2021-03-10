@@ -33,14 +33,25 @@ namespace SmartClinic.View
 
         private void AppointmentDetailsForm_Load(object sender, EventArgs e)
         {
+            PopulateDoctors();
             patientIdValueLabel.Text = appointment.PatientId.ToString();
             patientNameValueLabel.Text = appointment.Patient.FullName;
             patientDateOfBirthValueLabel.Text = appointment.Patient.DateOfBirth.ToShortDateString();
             appointmentDatePicker.Value = appointment.Date;
             appointmentTimePicker.Value = appointment.Date;
-            PopulateDoctors();
             doctorComboBox.SelectedValue = appointment.DoctorId;
             reasonForVisitTextBox.Text = appointment.Reason;
+            DisableUIControls();
+        }
+
+        private void DisableUIControls()
+        {
+            appointmentDatePicker.Enabled = false;
+            appointmentTimePicker.Enabled = false;
+            doctorComboBox.Enabled = false;
+            reasonForVisitTextBox.Enabled = false;
+            saveButton.Enabled = false;
+            deleteButton.Enabled = false;
         }
 
         private void PopulateDoctors()
@@ -61,12 +72,25 @@ namespace SmartClinic.View
 
         private void editButton_Click(object sender, EventArgs e)
         {
+            TimeSpan difference = GetCurrentAppointmentDateTime() - DateTime.Now;
+            if(difference.TotalHours < 24)
+            {
+                MessageBox.Show("The appointment cannot be edited 24 hours prior the appointment date.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             appointmentDatePicker.Enabled = true;
             appointmentTimePicker.Enabled = true;
             doctorComboBox.Enabled = true;
             reasonForVisitTextBox.Enabled = true;
             saveButton.Enabled = true;
             deleteButton.Enabled = true;
+        }
+
+        private DateTime GetCurrentAppointmentDateTime()
+        {
+            string dateString = appointmentDatePicker.Value.ToShortDateString();
+            string timeString = appointmentTimePicker.Value.ToShortTimeString();
+            return DateTime.Parse(dateString + " " + timeString);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -76,12 +100,11 @@ namespace SmartClinic.View
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            string dateString = appointmentDatePicker.Value.ToShortDateString();
-            string timeString = appointmentTimePicker.Value.ToShortTimeString();
+ 
             Appointment appointmentChanges = new Appointment()
             {
                 AppointmentId = appointment.AppointmentId,
-                Date = DateTime.Parse(dateString + " " + timeString),
+                Date = GetCurrentAppointmentDateTime(),
                 DoctorId = int.Parse(doctorComboBox.SelectedValue.ToString()),
                 Reason = reasonForVisitTextBox.Text,
             };

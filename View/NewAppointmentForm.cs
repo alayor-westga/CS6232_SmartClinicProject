@@ -32,10 +32,12 @@ namespace SmartClinic.View
 
         private void NewAppointmentForm_Load(object sender, EventArgs e)
         {
+            PopulateDoctors();
+            ClearSearchForm();
+            ClearNewAppointmentForm();
             patientIdNumericUpdown.Text = "";
             patientIdNumericUpdown.Controls[0].Visible = false;
             appointmentTimePicker.Value = DateTime.Parse("1970-01-01 09:00 AM");
-            PopulateDoctors();
         }
 
         private void PopulateDoctors()
