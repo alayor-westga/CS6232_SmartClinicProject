@@ -80,8 +80,18 @@ namespace SmartClinic.UserControls
 
         private void ViewAppointmentButton_Click(object sender, EventArgs e)
         {
-            AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult) appointmentsDataGridView.SelectedRows[0].DataBoundItem;
+            openAppoinmentDetailsDialog();
+        }
+
+        private void openAppoinmentDetailsDialog()
+        {
+            AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult)appointmentsDataGridView.SelectedRows[0].DataBoundItem;
             appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);
+        }
+
+        private void AppointmentsDataGridView_DoubleClick(object sender, EventArgs e)
+        {
+            openAppoinmentDetailsDialog();
         }
     }
 }

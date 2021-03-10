@@ -193,6 +193,7 @@ namespace SmartClinic.UserControls
             this.appointmentsDataGridView.Size = new System.Drawing.Size(914, 474);
             this.appointmentsDataGridView.TabIndex = 14;
             this.appointmentsDataGridView.SelectionChanged += new System.EventHandler(this.AppointmentsDataGridView_SelectionChanged);
+            this.appointmentsDataGridView.DoubleClick += new System.EventHandler(this.AppointmentsDataGridView_DoubleClick);
             // 
             // appointmentDateDataGridViewTextBoxColumn
             // 

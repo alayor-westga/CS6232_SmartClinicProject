@@ -29,6 +29,7 @@ namespace SmartClinic.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.patientIdLabel = new System.Windows.Forms.Label();
             this.patientIdValueLabel = new System.Windows.Forms.Label();
             this.patientNameLabel = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@ namespace SmartClinic.View
             this.patientVisitDetailsButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
+            this.doctorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // patientIdLabel
@@ -168,6 +171,7 @@ namespace SmartClinic.View
             // 
             // doctorComboBox
             // 
+            this.doctorComboBox.DataSource = this.doctorBindingSource;
             this.doctorComboBox.DisplayMember = "FullName";
             this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.doctorComboBox.Enabled = false;
@@ -260,11 +264,15 @@ namespace SmartClinic.View
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
             // 
+            // doctorBindingSource
+            // 
+            this.doctorBindingSource.DataSource = typeof(SmartClinic.Model.Doctor);
+            // 
             // AppointmentDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 644);
+            this.ClientSize = new System.Drawing.Size(670, 652);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.patientVisitDetailsButton);
@@ -287,6 +295,7 @@ namespace SmartClinic.View
             this.Name = "AppointmentDetailsForm";
             this.Text = "Appointment Details";
             this.Load += new System.EventHandler(this.AppointmentDetailsForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +322,6 @@ namespace SmartClinic.View
         private System.Windows.Forms.Button patientVisitDetailsButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.BindingSource doctorBindingSource;
     }
 }
