@@ -13,7 +13,6 @@ namespace SmartClinic.View
     {
         private readonly Form newPatientForm;
         private readonly SearchPatientsForm searchPatientsForm;
-        private readonly PatientController patientController; 
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
 
@@ -27,7 +26,6 @@ namespace SmartClinic.View
             InitializeComponent();
             newPatientForm = new NewPatientForm();
             searchPatientsForm = new SearchPatientsForm();
-            patientController = new PatientController();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
         }
@@ -37,6 +35,7 @@ namespace SmartClinic.View
             PopulateDoctors();
             ClearNewAppointmentForm();
             DisableNewAppointmentSection();
+            appointmentDatePicker.Value = DateTime.Now;
             appointmentTimePicker.Value = DateTime.Parse("1970-01-01 09:00 AM");
         }
 
@@ -176,9 +175,12 @@ namespace SmartClinic.View
         {
             searchPatientsForm.ShowDialog();
             selectedPatient = searchPatientsForm.SelectedPatient;
-            ShowPatientInfo();
-            newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
-            newAppoinmentGroupBox.Enabled = true;
+            if (selectedPatient != null)
+            {
+                ShowPatientInfo();
+                newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+                newAppoinmentGroupBox.Enabled = true;
+            }
         }
 
         private void ShowPatientInfo()
@@ -187,11 +189,6 @@ namespace SmartClinic.View
             patientFullNameValueLabel.Text = selectedPatient.FullName;
             patientDateOfBirthValueLabel.Text = selectedPatient.DateOfBirth.ToShortDateString();
             patientAddressValueLabel.Text = selectedPatient.Address;
-        }
-
-        private void searchForPatientsGroupBox_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

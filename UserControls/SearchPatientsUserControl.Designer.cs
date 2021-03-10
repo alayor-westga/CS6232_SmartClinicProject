@@ -31,22 +31,21 @@ namespace SmartClinic.UserControls
         {
             this.components = new System.ComponentModel.Container();
             this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.clearButton = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.firstNameSearchLabel = new System.Windows.Forms.Label();
-            this.dobCombinedSearchLabel = new System.Windows.Forms.Label();
+            this.lastNameCombinedTextBox = new System.Windows.Forms.TextBox();
+            this.lastNameCombinedLabel = new System.Windows.Forms.Label();
+            this.searchByDOBAndLastNameRadioButton = new System.Windows.Forms.RadioButton();
+            this.dobCombinedDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.firstNameLabel = new System.Windows.Forms.Label();
+            this.dobCombinedLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.dobSearchPicker = new System.Windows.Forms.DateTimePicker();
-            this.searchByDateOfBirthRadioButton = new System.Windows.Forms.RadioButton();
+            this.searchByNamesRadioButton = new System.Windows.Forms.RadioButton();
+            this.dobOnlyDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.searchByDOBOnlyRadioButton = new System.Windows.Forms.RadioButton();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.dobOnlyLabel = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
-            this.searchMessageLabel = new System.Windows.Forms.Label();
-            this.dobOnlySearchLabel = new System.Windows.Forms.Label();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -54,10 +53,8 @@ namespace SmartClinic.UserControls
             this.patientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.street1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.street2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchMessageLabel = new System.Windows.Forms.Label();
             this.searchForPatientsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
@@ -65,19 +62,19 @@ namespace SmartClinic.UserControls
             // 
             // searchForPatientsGroupBox
             // 
-            this.searchForPatientsGroupBox.Controls.Add(this.textBox1);
-            this.searchForPatientsGroupBox.Controls.Add(this.label2);
-            this.searchForPatientsGroupBox.Controls.Add(this.radioButton2);
-            this.searchForPatientsGroupBox.Controls.Add(this.dateTimePicker1);
-            this.searchForPatientsGroupBox.Controls.Add(this.firstNameSearchLabel);
-            this.searchForPatientsGroupBox.Controls.Add(this.dobCombinedSearchLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.lastNameCombinedTextBox);
+            this.searchForPatientsGroupBox.Controls.Add(this.lastNameCombinedLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.searchByDOBAndLastNameRadioButton);
+            this.searchForPatientsGroupBox.Controls.Add(this.dobCombinedDatePicker);
+            this.searchForPatientsGroupBox.Controls.Add(this.firstNameLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.dobCombinedLabel);
             this.searchForPatientsGroupBox.Controls.Add(this.lastNameLabel);
-            this.searchForPatientsGroupBox.Controls.Add(this.radioButton1);
-            this.searchForPatientsGroupBox.Controls.Add(this.dobSearchPicker);
-            this.searchForPatientsGroupBox.Controls.Add(this.searchByDateOfBirthRadioButton);
+            this.searchForPatientsGroupBox.Controls.Add(this.searchByNamesRadioButton);
+            this.searchForPatientsGroupBox.Controls.Add(this.dobOnlyDatePicker);
+            this.searchForPatientsGroupBox.Controls.Add(this.searchByDOBOnlyRadioButton);
             this.searchForPatientsGroupBox.Controls.Add(this.firstNameTextBox);
             this.searchForPatientsGroupBox.Controls.Add(this.lastNameTextBox);
-            this.searchForPatientsGroupBox.Controls.Add(this.dobOnlySearchLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.dobOnlyLabel);
             this.searchForPatientsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchForPatientsGroupBox.Location = new System.Drawing.Point(3, 3);
             this.searchForPatientsGroupBox.Name = "searchForPatientsGroupBox";
@@ -86,88 +83,75 @@ namespace SmartClinic.UserControls
             this.searchForPatientsGroupBox.TabStop = false;
             this.searchForPatientsGroupBox.Text = "Select a search option";
             // 
-            // textBox1
+            // lastNameCombinedTextBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(266, 344);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 44);
-            this.textBox1.TabIndex = 35;
+            this.lastNameCombinedTextBox.Enabled = false;
+            this.lastNameCombinedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameCombinedTextBox.Location = new System.Drawing.Point(266, 344);
+            this.lastNameCombinedTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lastNameCombinedTextBox.Name = "lastNameCombinedTextBox";
+            this.lastNameCombinedTextBox.Size = new System.Drawing.Size(243, 44);
+            this.lastNameCombinedTextBox.TabIndex = 35;
             // 
-            // label2
+            // lastNameCombinedLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(64, 347);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 37);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "Last Name:";
+            this.lastNameCombinedLabel.AutoSize = true;
+            this.lastNameCombinedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameCombinedLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lastNameCombinedLabel.Location = new System.Drawing.Point(64, 347);
+            this.lastNameCombinedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lastNameCombinedLabel.Name = "lastNameCombinedLabel";
+            this.lastNameCombinedLabel.Size = new System.Drawing.Size(182, 37);
+            this.lastNameCombinedLabel.TabIndex = 34;
+            this.lastNameCombinedLabel.Text = "Last Name:";
             // 
-            // radioButton2
+            // searchByDOBAndLastNameRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(30, 319);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(27, 26);
-            this.radioButton2.TabIndex = 33;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.searchByDOBAndLastNameRadioButton.AutoSize = true;
+            this.searchByDOBAndLastNameRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchByDOBAndLastNameRadioButton.Location = new System.Drawing.Point(30, 319);
+            this.searchByDOBAndLastNameRadioButton.Name = "searchByDOBAndLastNameRadioButton";
+            this.searchByDOBAndLastNameRadioButton.Size = new System.Drawing.Size(27, 26);
+            this.searchByDOBAndLastNameRadioButton.TabIndex = 33;
+            this.searchByDOBAndLastNameRadioButton.TabStop = true;
+            this.searchByDOBAndLastNameRadioButton.UseVisualStyleBackColor = true;
+            this.searchByDOBAndLastNameRadioButton.CheckedChanged += new System.EventHandler(this.SearchByDOBAndLastNameRadioButton_CheckedChanged);
             // 
-            // clearButton
+            // dobCombinedDatePicker
             // 
-            this.clearButton.AutoSize = true;
-            this.clearButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.clearButton.Enabled = false;
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(597, 103);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(188, 55);
-            this.clearButton.TabIndex = 22;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
+            this.dobCombinedDatePicker.CustomFormat = "mm/dd/yyyy";
+            this.dobCombinedDatePicker.Enabled = false;
+            this.dobCombinedDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dobCombinedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobCombinedDatePicker.Location = new System.Drawing.Point(266, 290);
+            this.dobCombinedDatePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dobCombinedDatePicker.Name = "dobCombinedDatePicker";
+            this.dobCombinedDatePicker.Size = new System.Drawing.Size(243, 44);
+            this.dobCombinedDatePicker.TabIndex = 32;
             // 
-            // dateTimePicker1
+            // firstNameLabel
             // 
-            this.dateTimePicker1.CustomFormat = "mm/dd/yyyy";
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(266, 290);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(243, 44);
-            this.dateTimePicker1.TabIndex = 32;
+            this.firstNameLabel.AutoSize = true;
+            this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.firstNameLabel.Location = new System.Drawing.Point(64, 148);
+            this.firstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.firstNameLabel.Name = "firstNameLabel";
+            this.firstNameLabel.Size = new System.Drawing.Size(184, 37);
+            this.firstNameLabel.TabIndex = 16;
+            this.firstNameLabel.Text = "First Name:";
             // 
-            // firstNameSearchLabel
+            // dobCombinedLabel
             // 
-            this.firstNameSearchLabel.AutoSize = true;
-            this.firstNameSearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameSearchLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.firstNameSearchLabel.Location = new System.Drawing.Point(64, 148);
-            this.firstNameSearchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.firstNameSearchLabel.Name = "firstNameSearchLabel";
-            this.firstNameSearchLabel.Size = new System.Drawing.Size(184, 37);
-            this.firstNameSearchLabel.TabIndex = 16;
-            this.firstNameSearchLabel.Text = "First Name:";
-            // 
-            // dobCombinedSearchLabel
-            // 
-            this.dobCombinedSearchLabel.AutoSize = true;
-            this.dobCombinedSearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobCombinedSearchLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.dobCombinedSearchLabel.Location = new System.Drawing.Point(64, 290);
-            this.dobCombinedSearchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.dobCombinedSearchLabel.Name = "dobCombinedSearchLabel";
-            this.dobCombinedSearchLabel.Size = new System.Drawing.Size(204, 37);
-            this.dobCombinedSearchLabel.TabIndex = 31;
-            this.dobCombinedSearchLabel.Text = "Date of Birth:";
+            this.dobCombinedLabel.AutoSize = true;
+            this.dobCombinedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dobCombinedLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.dobCombinedLabel.Location = new System.Drawing.Point(64, 290);
+            this.dobCombinedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dobCombinedLabel.Name = "dobCombinedLabel";
+            this.dobCombinedLabel.Size = new System.Drawing.Size(204, 37);
+            this.dobCombinedLabel.TabIndex = 31;
+            this.dobCombinedLabel.Text = "Date of Birth:";
             // 
             // lastNameLabel
             // 
@@ -181,39 +165,41 @@ namespace SmartClinic.UserControls
             this.lastNameLabel.TabIndex = 17;
             this.lastNameLabel.Text = "Last Name:";
             // 
-            // radioButton1
+            // searchByNamesRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(30, 172);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(27, 26);
-            this.radioButton1.TabIndex = 30;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.searchByNamesRadioButton.AutoSize = true;
+            this.searchByNamesRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchByNamesRadioButton.Location = new System.Drawing.Point(30, 172);
+            this.searchByNamesRadioButton.Name = "searchByNamesRadioButton";
+            this.searchByNamesRadioButton.Size = new System.Drawing.Size(27, 26);
+            this.searchByNamesRadioButton.TabIndex = 30;
+            this.searchByNamesRadioButton.TabStop = true;
+            this.searchByNamesRadioButton.UseVisualStyleBackColor = true;
+            this.searchByNamesRadioButton.CheckedChanged += new System.EventHandler(this.SearchByNamesRadioButton_CheckedChanged);
             // 
-            // dobSearchPicker
+            // dobOnlyDatePicker
             // 
-            this.dobSearchPicker.CustomFormat = "mm/dd/yyyy";
-            this.dobSearchPicker.Enabled = false;
-            this.dobSearchPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobSearchPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobSearchPicker.Location = new System.Drawing.Point(266, 59);
-            this.dobSearchPicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dobSearchPicker.Name = "dobSearchPicker";
-            this.dobSearchPicker.Size = new System.Drawing.Size(243, 44);
-            this.dobSearchPicker.TabIndex = 18;
+            this.dobOnlyDatePicker.CustomFormat = "mm/dd/yyyy";
+            this.dobOnlyDatePicker.Enabled = false;
+            this.dobOnlyDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dobOnlyDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobOnlyDatePicker.Location = new System.Drawing.Point(266, 59);
+            this.dobOnlyDatePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dobOnlyDatePicker.Name = "dobOnlyDatePicker";
+            this.dobOnlyDatePicker.Size = new System.Drawing.Size(243, 44);
+            this.dobOnlyDatePicker.TabIndex = 18;
             // 
-            // searchByDateOfBirthRadioButton
+            // searchByDOBOnlyRadioButton
             // 
-            this.searchByDateOfBirthRadioButton.AutoSize = true;
-            this.searchByDateOfBirthRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchByDateOfBirthRadioButton.Location = new System.Drawing.Point(30, 70);
-            this.searchByDateOfBirthRadioButton.Name = "searchByDateOfBirthRadioButton";
-            this.searchByDateOfBirthRadioButton.Size = new System.Drawing.Size(27, 26);
-            this.searchByDateOfBirthRadioButton.TabIndex = 29;
-            this.searchByDateOfBirthRadioButton.TabStop = true;
-            this.searchByDateOfBirthRadioButton.UseVisualStyleBackColor = true;
+            this.searchByDOBOnlyRadioButton.AutoSize = true;
+            this.searchByDOBOnlyRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchByDOBOnlyRadioButton.Location = new System.Drawing.Point(30, 70);
+            this.searchByDOBOnlyRadioButton.Name = "searchByDOBOnlyRadioButton";
+            this.searchByDOBOnlyRadioButton.Size = new System.Drawing.Size(27, 26);
+            this.searchByDOBOnlyRadioButton.TabIndex = 29;
+            this.searchByDOBOnlyRadioButton.TabStop = true;
+            this.searchByDOBOnlyRadioButton.UseVisualStyleBackColor = true;
+            this.searchByDOBOnlyRadioButton.CheckedChanged += new System.EventHandler(this.SearchByDOBOnlyRadioButton_CheckedChanged);
             // 
             // firstNameTextBox
             // 
@@ -235,40 +221,45 @@ namespace SmartClinic.UserControls
             this.lastNameTextBox.Size = new System.Drawing.Size(243, 44);
             this.lastNameTextBox.TabIndex = 20;
             // 
+            // dobOnlyLabel
+            // 
+            this.dobOnlyLabel.AutoSize = true;
+            this.dobOnlyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dobOnlyLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.dobOnlyLabel.Location = new System.Drawing.Point(64, 65);
+            this.dobOnlyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dobOnlyLabel.Name = "dobOnlyLabel";
+            this.dobOnlyLabel.Size = new System.Drawing.Size(204, 37);
+            this.dobOnlyLabel.TabIndex = 15;
+            this.dobOnlyLabel.Text = "Date of Birth:";
+            // 
+            // clearButton
+            // 
+            this.clearButton.AutoSize = true;
+            this.clearButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clearButton.Enabled = false;
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(817, 186);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(188, 55);
+            this.clearButton.TabIndex = 22;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            // 
             // searchButton
             // 
             this.searchButton.AutoSize = true;
             this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchButton.Enabled = false;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(597, 191);
+            this.searchButton.Location = new System.Drawing.Point(597, 186);
             this.searchButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(188, 55);
             this.searchButton.TabIndex = 21;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            // 
-            // searchMessageLabel
-            // 
-            this.searchMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchMessageLabel.Location = new System.Drawing.Point(597, 272);
-            this.searchMessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.searchMessageLabel.Name = "searchMessageLabel";
-            this.searchMessageLabel.Size = new System.Drawing.Size(188, 49);
-            this.searchMessageLabel.TabIndex = 25;
-            // 
-            // dobOnlySearchLabel
-            // 
-            this.dobOnlySearchLabel.AutoSize = true;
-            this.dobOnlySearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobOnlySearchLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.dobOnlySearchLabel.Location = new System.Drawing.Point(64, 65);
-            this.dobOnlySearchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.dobOnlySearchLabel.Name = "dobOnlySearchLabel";
-            this.dobOnlySearchLabel.Size = new System.Drawing.Size(204, 37);
-            this.dobOnlySearchLabel.TabIndex = 15;
-            this.dobOnlySearchLabel.Text = "Date of Birth:";
             // 
             // patientsDataGridView
             // 
@@ -281,10 +272,7 @@ namespace SmartClinic.UserControls
             this.patientIdDataGridViewTextBoxColumn,
             this.fullNameDataGridViewTextBoxColumn,
             this.dateOfBirthDataGridViewTextBoxColumn,
-            this.street1DataGridViewTextBoxColumn,
-            this.street2DataGridViewTextBoxColumn,
-            this.cityDataGridViewTextBoxColumn,
-            this.stateDataGridViewTextBoxColumn});
+            this.addressDataGridViewTextBoxColumn});
             this.patientsDataGridView.DataSource = this.patientBindingSource;
             this.patientsDataGridView.Location = new System.Drawing.Point(3, 437);
             this.patientsDataGridView.MultiSelect = false;
@@ -339,7 +327,7 @@ namespace SmartClinic.UserControls
             // fullNameDataGridViewTextBoxColumn
             // 
             this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.fullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
             this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -347,42 +335,27 @@ namespace SmartClinic.UserControls
             // dateOfBirthDataGridViewTextBoxColumn
             // 
             this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
             this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // street1DataGridViewTextBoxColumn
+            // addressDataGridViewTextBoxColumn
             // 
-            this.street1DataGridViewTextBoxColumn.DataPropertyName = "Street1";
-            this.street1DataGridViewTextBoxColumn.HeaderText = "Street1";
-            this.street1DataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.street1DataGridViewTextBoxColumn.Name = "street1DataGridViewTextBoxColumn";
-            this.street1DataGridViewTextBoxColumn.ReadOnly = true;
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // street2DataGridViewTextBoxColumn
+            // searchMessageLabel
             // 
-            this.street2DataGridViewTextBoxColumn.DataPropertyName = "Street2";
-            this.street2DataGridViewTextBoxColumn.HeaderText = "Street2";
-            this.street2DataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.street2DataGridViewTextBoxColumn.Name = "street2DataGridViewTextBoxColumn";
-            this.street2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stateDataGridViewTextBoxColumn
-            // 
-            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
-            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.searchMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.searchMessageLabel.Location = new System.Drawing.Point(884, 385);
+            this.searchMessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchMessageLabel.Name = "searchMessageLabel";
+            this.searchMessageLabel.Size = new System.Drawing.Size(276, 49);
+            this.searchMessageLabel.TabIndex = 25;
             // 
             // SearchPatientsUserControl
             // 
@@ -410,22 +383,21 @@ namespace SmartClinic.UserControls
         #endregion
 
         private System.Windows.Forms.GroupBox searchForPatientsGroupBox;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label firstNameSearchLabel;
-        private System.Windows.Forms.Label dobCombinedSearchLabel;
+        private System.Windows.Forms.TextBox lastNameCombinedTextBox;
+        private System.Windows.Forms.Label lastNameCombinedLabel;
+        private System.Windows.Forms.RadioButton searchByDOBAndLastNameRadioButton;
+        private System.Windows.Forms.DateTimePicker dobCombinedDatePicker;
+        private System.Windows.Forms.Label firstNameLabel;
+        private System.Windows.Forms.Label dobCombinedLabel;
         private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.DateTimePicker dobSearchPicker;
-        private System.Windows.Forms.RadioButton searchByDateOfBirthRadioButton;
+        private System.Windows.Forms.RadioButton searchByNamesRadioButton;
+        private System.Windows.Forms.DateTimePicker dobOnlyDatePicker;
+        private System.Windows.Forms.RadioButton searchByDOBOnlyRadioButton;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
-        private System.Windows.Forms.Label dobOnlySearchLabel;
+        private System.Windows.Forms.Label dobOnlyLabel;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Label searchMessageLabel;
         private System.Windows.Forms.DataGridView patientsDataGridView;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -433,9 +405,7 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn patientIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn street1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn street2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label searchMessageLabel;
     }
 }
