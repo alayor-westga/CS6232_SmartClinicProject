@@ -248,6 +248,12 @@
     <Compile Include="UserControls\PatientVisitsUserControl.Designer.cs">
       <DependentUpon>PatientVisitsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SearchPatientsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchPatientsUserControl.Designer.cs">
+      <DependentUpon>SearchPatientsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AppointmentDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,12 @@
     <Compile Include="View\PatientVisitDetailsForm.Designer.cs">
       <DependentUpon>PatientVisitDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SearchPatientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchPatientsForm.Designer.cs">
+      <DependentUpon>SearchPatientsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdatePatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientVisitsUserControl.resx">
       <DependentUpon>PatientVisitsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchPatientsUserControl.resx">
+      <DependentUpon>SearchPatientsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AppointmentDetailsForm.resx">
       <DependentUpon>AppointmentDetailsForm.cs</DependentUpon>
@@ -318,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PatientVisitDetailsForm.resx">
       <DependentUpon>PatientVisitDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchPatientsForm.resx">
+      <DependentUpon>SearchPatientsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UpdatePatient.resx">
       <DependentUpon>UpdatePatient.cs</DependentUpon>

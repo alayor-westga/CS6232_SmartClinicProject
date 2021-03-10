@@ -12,6 +12,7 @@ namespace SmartClinic.View
     public partial class NewAppointmentForm : Form
     {
         private readonly Form newPatientForm;
+        private readonly SearchPatientsForm searchPatientsForm;
         private readonly PatientController patientController; 
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
@@ -24,7 +25,8 @@ namespace SmartClinic.View
         public NewAppointmentForm()
         {
             InitializeComponent();
-            this.newPatientForm = new NewPatientForm();
+            newPatientForm = new NewPatientForm();
+            searchPatientsForm = new SearchPatientsForm();
             patientController = new PatientController();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
@@ -33,10 +35,8 @@ namespace SmartClinic.View
         private void NewAppointmentForm_Load(object sender, EventArgs e)
         {
             PopulateDoctors();
-            ClearSearchForm();
             ClearNewAppointmentForm();
-            patientIdNumericUpdown.Text = "";
-            patientIdNumericUpdown.Controls[0].Visible = false;
+            DisableNewAppointmentSection();
             appointmentTimePicker.Value = DateTime.Parse("1970-01-01 09:00 AM");
         }
 
@@ -59,55 +59,6 @@ namespace SmartClinic.View
                 return;
             }
             doctorComboBox.DataSource = doctors;
-        }
-
-        private void SearchPatientsButton_Click(object sender, EventArgs e)
-        {
-            var firstName = patientFirstNameTextBox.Text;
-            var lastName = patientLastNameTextBox.Text;
-            var patientId = patientIdNumericUpdown.Text == "" ? 0 : (int) patientIdNumericUpdown.Value;
-            DateTime? dateOfBirth = null;
-            if (patientDateOfBirthDateTimePicker.Checked)
-            {
-                dateOfBirth = patientDateOfBirthDateTimePicker.Value;        
-            }
-            List<Patient> patients = new List<Patient>();
-            try
-            {
-                patients.AddRange(patientController.SearchPatients(firstName, lastName, patientId, dateOfBirth));
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            patientsDataGridView.DataSource = patients;
-        }
-
-        private void ClearSearchFieldsButton_Click(object sender, EventArgs e)
-        {
-            ClearSearchForm();
-        }
-        private void ClearSearchForm()
-        {
-            patientFirstNameTextBox.Text = "";
-            patientLastNameTextBox.Text = "";
-            patientIdNumericUpdown.Text = "";
-            patientDateOfBirthDateTimePicker.Checked = false;
-            patientsDataGridView.DataSource = null;
-        }
-
-        private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (patientsDataGridView.SelectedRows.Count > 0)
-            {
-                selectedPatient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
-                newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
-                newAppoinmentGroupBox.Enabled = true;
-            } else
-            {
-                DisableNewAppointmentSection();
-            }
         }
 
         private void DisableNewAppointmentSection()
@@ -219,6 +170,25 @@ namespace SmartClinic.View
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
             newPatientForm.ShowDialog();
+        }
+
+        private void SearchPatientButton_Click(object sender, EventArgs e)
+        {
+            searchPatientsForm.ShowDialog();
+            selectedPatient = searchPatientsForm.SelectedPatient;
+            ShowPatientInfo();
+            newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+            newAppoinmentGroupBox.Enabled = true;
+        }
+
+        private void ShowPatientInfo()
+        {
+            patientFullNameValueLabel.Text = selectedPatient.FullName;
+        }
+
+        private void searchForPatientsGroupBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
