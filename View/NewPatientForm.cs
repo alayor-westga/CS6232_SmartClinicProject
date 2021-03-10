@@ -39,6 +39,7 @@ namespace SmartClinic.View
                 newPatient.State = this.stateTextBox.Text;
                 newPatient.ZipCode = this.zipCodeTextBox.Text;
                 newPatient.Phone = this.phoneTextBox.Text;
+                newPatient.SSN = this.ssnTextBox.Text;
 
                 int clinicPersonID = this.patientController.AddClinicPerson(newPatient);
                 this.patientIDLabel.Text = "Patient ID: " + this.patientController.AddPatient(clinicPersonID).ToString();
@@ -65,6 +66,7 @@ namespace SmartClinic.View
             this.zipCodeErrorLabel.Text = "";
             this.phoneErrorLabel.Text = "";
             this.patientIDLabel.Text = "";
+            this.ssnErrorLabel.Text = "";
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -92,7 +94,7 @@ namespace SmartClinic.View
                 isValid = false;
                 this.lastNameErrorLabel.Text = requiredField;
             }
-            if (this.dob.Text.Length == 0)
+            if (this.dobLabel.Text.Length == 0)
             {
                 isValid = false;
                 this.dobErrorLabel.Text = requiredField;
@@ -139,7 +141,7 @@ namespace SmartClinic.View
                 isValid = false;
                 this.phoneErrorLabel.Text = "only 10 numbers permitted";
             }
-                if (this.phoneTextBox.Text.Length != 10)
+            if (this.phoneTextBox.Text.Length != 10)
             {
                 isValid = false;
                 this.phoneErrorLabel.Text = "10 digits required";
@@ -148,6 +150,16 @@ namespace SmartClinic.View
             {
                 isValid = false;
                 this.phoneErrorLabel.Text = requiredField;
+            }
+            if (this.ssnTextBox.Text.Length != 9)
+            {
+                isValid = false;
+                this.ssnErrorLabel.Text = "9 digits required";
+            }
+            if (this.ssnTextBox.Text.Length == 0)
+            {
+                isValid = false;
+                this.ssnErrorLabel.Text = requiredField;
             }
             return isValid;
         }
@@ -168,6 +180,7 @@ namespace SmartClinic.View
             this.stateTextBox.Text = "";
             this.zipCodeTextBox.Text = "";
             this.phoneTextBox.Text = "";
+            this.ssnTextBox.Text = "";
             this.ClearErrorMessages();
         }
 

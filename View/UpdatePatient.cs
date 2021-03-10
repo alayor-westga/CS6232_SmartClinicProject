@@ -45,6 +45,7 @@ namespace SmartClinic.View
             this.stateTextBox.Text = this.patient.State;
             this.zipCodeTextBox.Text = this.patient.ZipCode;
             this.phoneTextBox.Text = this.patient.Phone;
+            this.ssnTextBox.Text = this.patient.SSN;
             this.MakeAllFieldsReadOnly();
         }
 
@@ -61,7 +62,7 @@ namespace SmartClinic.View
             this.stateTextBox.ReadOnly = true;
             this.zipCodeTextBox.ReadOnly = true;
             this.phoneTextBox.ReadOnly = true;
-
+            this.ssnTextBox.ReadOnly = true;
         }
 
         private void EditPatientButton_Click(object sender, EventArgs e)
@@ -77,14 +78,13 @@ namespace SmartClinic.View
             this.stateTextBox.ReadOnly = false;
             this.zipCodeTextBox.ReadOnly = false;
             this.phoneTextBox.ReadOnly = false;
+            this.ssnTextBox.ReadOnly = false;
         }
 
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
             this.ClearErrorMessages();
             if (!this.ValidateFields()) return;
-
-
 
             ClinicPerson updatedPatient = new ClinicPerson();
             updatedPatient.DateOfBirth = this.dateTimePickerForDOB.Value.Date;
@@ -97,6 +97,7 @@ namespace SmartClinic.View
             updatedPatient.State = this.stateTextBox.Text;
             updatedPatient.ZipCode = this.zipCodeTextBox.Text;
             updatedPatient.Phone = this.phoneTextBox.Text;
+            updatedPatient.SSN = this.ssnTextBox.Text;
 
             try
             {
@@ -157,6 +158,7 @@ namespace SmartClinic.View
             this.zipCodeErrorLabel.Text = "";
             this.phoneErrorLabel.Text = "";
             this.patientIDLabel.Text = "";
+            this.ssnErrorLabel.Text = "";
         }
 
         private bool ValidateFields()
@@ -229,6 +231,16 @@ namespace SmartClinic.View
             {
                 isValid = false;
                 this.phoneErrorLabel.Text = requiredField;
+            }
+            if (this.ssnTextBox.Text.Length != 9)
+            {
+                isValid = false;
+                this.ssnErrorLabel.Text = "9 digits required";
+            }
+            if (this.ssnTextBox.Text.Length == 0)
+            {
+                isValid = false;
+                this.ssnErrorLabel.Text = requiredField;
             }
             return isValid;
         }

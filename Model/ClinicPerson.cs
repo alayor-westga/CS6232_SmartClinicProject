@@ -61,6 +61,11 @@ namespace SmartClinic.Model
         /// </summary>
         public string Phone { get; set; }
 
+        /// <summary>
+        /// The SSN of the clinic person.
+        /// </summary>
+        public string SSN { get; set; }
+
         // <summary>
         /// The full name of the clinic person.
         /// </summary>

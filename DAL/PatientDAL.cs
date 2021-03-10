@@ -110,7 +110,8 @@ namespace SmartClinic.DAL
                     "city = @NewCity, " +
                     "state = @NewState, " +
                     "zip_code = @NewZipCode, " +
-                    "phone_number = @NewPhoneNumber " +
+                    "phone_number = @NewPhoneNumber, " +
+                    "ssn = @NewSSN " +
                 "WHERE clinic_person_id = @OldClinicPersonID " +
                     "AND first_name = @OldFirstName " +
                     "AND last_name = @OldLastName " +
@@ -121,7 +122,8 @@ namespace SmartClinic.DAL
                     "AND city = @OldCity " +
                     "AND state = @OldState " +
                     "AND zip_code = @OldZipCode " +
-                    "AND phone_number = @OldPhoneNumber";
+                    "AND phone_number = @OldPhoneNumber " +
+                    "AND ssn = @OldSSN";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -139,6 +141,7 @@ namespace SmartClinic.DAL
                     updateCommand.Parameters.AddWithValue("@NewState", newPatient.State);
                     updateCommand.Parameters.AddWithValue("@NewZipCode", newPatient.ZipCode);
                     updateCommand.Parameters.AddWithValue("@NewPhoneNumber", newPatient.Phone);
+                    updateCommand.Parameters.AddWithValue("@NewSSN", newPatient.SSN);
        
 
                     updateCommand.Parameters.AddWithValue("@OldClinicPersonID", oldPatient.ClinicPersonID);
@@ -152,6 +155,7 @@ namespace SmartClinic.DAL
                     updateCommand.Parameters.AddWithValue("@OldState", oldPatient.State);
                     updateCommand.Parameters.AddWithValue("@OldZipCode", oldPatient.ZipCode);
                     updateCommand.Parameters.AddWithValue("@OldPhoneNumber", oldPatient.Phone);
+                    updateCommand.Parameters.AddWithValue("@OldSSN", oldPatient.SSN);
 
                     int count = updateCommand.ExecuteNonQuery();
                     if (count > 0)
@@ -165,7 +169,6 @@ namespace SmartClinic.DAL
         internal void DeletePatient(int patientID)
         {
             string insertStatement = "DELETE FROM Patients WHERE patient_id = @PatientID";
-
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -308,11 +311,9 @@ namespace SmartClinic.DAL
         internal int AddPatient(int clinicPersonID)
         {
             string insertStatement =
-
                        "INSERT Patients " +
                          "(clinic_person_id) " +
                        "VALUES (@ClinicPersonID)";
-
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -358,16 +359,13 @@ namespace SmartClinic.DAL
         public int AddClinicPerson(ClinicPerson newPatient)
         {
             string insertStatement =
-
            "INSERT ClinicPersons " +
-             "(date_of_birth, gender, first_name, last_name, street1, street2, city, state, zip_code, phone_number) " +
-           "VALUES (@DateOfBirth, @Gender, @FirstName, @LastName, @Street1, @Street2, @City, @State, @ZipCode, @Phone)";
-
+             "(date_of_birth, gender, first_name, last_name, street1, street2, city, state, zip_code, phone_number, ssn) " +
+           "VALUES (@DateOfBirth, @Gender, @FirstName, @LastName, @Street1, @Street2, @City, @State, @ZipCode, @Phone, @SSN)";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
                 connection.Open();
-
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@DateOfBirth", newPatient.DateOfBirth);
@@ -380,6 +378,7 @@ namespace SmartClinic.DAL
                     insertCommand.Parameters.AddWithValue("@State", newPatient.State);
                     insertCommand.Parameters.AddWithValue("@ZipCode", newPatient.ZipCode);
                     insertCommand.Parameters.AddWithValue("@Phone", newPatient.Phone);
+                    insertCommand.Parameters.AddWithValue("@SSN", newPatient.SSN);
 
                     insertCommand.ExecuteNonQuery();
                 }
@@ -403,7 +402,8 @@ namespace SmartClinic.DAL
                     "city, " +
                     "state, " +
                     "zip_code, " +
-                    "phone_number " +
+                    "phone_number, " +
+                    "ssn " +
                 "FROM ClinicPersons c " +
                     "JOIN Patients p " +
                         "ON c.clinic_person_id = p.clinic_person_id " +
@@ -440,6 +440,7 @@ namespace SmartClinic.DAL
                             patient.State = (string)reader["state"];
                             patient.ZipCode = (string)reader["zip_code"];
                             patient.Phone = (string)reader["phone_number"];
+                            patient.SSN = (string)reader["ssn"];
                         }
                     }
                 }

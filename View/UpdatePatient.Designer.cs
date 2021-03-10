@@ -63,6 +63,9 @@ namespace SmartClinic.View
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveChangesAndCloseButton = new System.Windows.Forms.Button();
+            this.ssnErrorLabel = new System.Windows.Forms.Label();
+            this.ssnTextBox = new System.Windows.Forms.TextBox();
+            this.ssnLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // patientIDLabel
@@ -162,7 +165,7 @@ namespace SmartClinic.View
             this.deleteButton.AutoSize = true;
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(709, 570);
+            this.deleteButton.Location = new System.Drawing.Point(709, 582);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(255, 58);
@@ -196,6 +199,7 @@ namespace SmartClinic.View
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneTextBox.Location = new System.Drawing.Point(189, 484);
             this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.phoneTextBox.MaxLength = 10;
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(330, 44);
             this.phoneTextBox.TabIndex = 46;
@@ -359,7 +363,7 @@ namespace SmartClinic.View
             this.EditPatientButton.AutoSize = true;
             this.EditPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EditPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditPatientButton.Location = new System.Drawing.Point(28, 570);
+            this.EditPatientButton.Location = new System.Drawing.Point(28, 582);
             this.EditPatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.EditPatientButton.Name = "EditPatientButton";
             this.EditPatientButton.Size = new System.Drawing.Size(184, 58);
@@ -391,7 +395,7 @@ namespace SmartClinic.View
             this.cancelButton.AutoSize = true;
             this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(998, 570);
+            this.cancelButton.Location = new System.Drawing.Point(998, 582);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(184, 58);
@@ -405,7 +409,7 @@ namespace SmartClinic.View
             this.saveChangesAndCloseButton.AutoSize = true;
             this.saveChangesAndCloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveChangesAndCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveChangesAndCloseButton.Location = new System.Drawing.Point(256, 570);
+            this.saveChangesAndCloseButton.Location = new System.Drawing.Point(256, 582);
             this.saveChangesAndCloseButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.saveChangesAndCloseButton.Name = "saveChangesAndCloseButton";
             this.saveChangesAndCloseButton.Size = new System.Drawing.Size(429, 56);
@@ -414,11 +418,44 @@ namespace SmartClinic.View
             this.saveChangesAndCloseButton.UseVisualStyleBackColor = true;
             this.saveChangesAndCloseButton.Click += new System.EventHandler(this.SaveChangesAndCloseButton_Click);
             // 
+            // ssnErrorLabel
+            // 
+            this.ssnErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.ssnErrorLabel.Location = new System.Drawing.Point(644, 535);
+            this.ssnErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ssnErrorLabel.Name = "ssnErrorLabel";
+            this.ssnErrorLabel.Size = new System.Drawing.Size(321, 36);
+            this.ssnErrorLabel.TabIndex = 71;
+            // 
+            // ssnTextBox
+            // 
+            this.ssnTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ssnTextBox.Location = new System.Drawing.Point(655, 486);
+            this.ssnTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ssnTextBox.MaxLength = 9;
+            this.ssnTextBox.Name = "ssnTextBox";
+            this.ssnTextBox.Size = new System.Drawing.Size(238, 44);
+            this.ssnTextBox.TabIndex = 70;
+            // 
+            // ssnLabel
+            // 
+            this.ssnLabel.AutoSize = true;
+            this.ssnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ssnLabel.Location = new System.Drawing.Point(555, 489);
+            this.ssnLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ssnLabel.Name = "ssnLabel";
+            this.ssnLabel.Size = new System.Drawing.Size(92, 37);
+            this.ssnLabel.TabIndex = 69;
+            this.ssnLabel.Text = "SSN:";
+            // 
             // UpdatePatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1206, 645);
+            this.ClientSize = new System.Drawing.Size(1206, 667);
+            this.Controls.Add(this.ssnErrorLabel);
+            this.Controls.Add(this.ssnTextBox);
+            this.Controls.Add(this.ssnLabel);
             this.Controls.Add(this.saveChangesAndCloseButton);
             this.Controls.Add(this.patientIDLabel);
             this.Controls.Add(this.dobErrorLabel);
@@ -501,5 +538,8 @@ namespace SmartClinic.View
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button saveChangesAndCloseButton;
+        private System.Windows.Forms.Label ssnErrorLabel;
+        private System.Windows.Forms.TextBox ssnTextBox;
+        private System.Windows.Forms.Label ssnLabel;
     }
 }
