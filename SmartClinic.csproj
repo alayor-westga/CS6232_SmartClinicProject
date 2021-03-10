@@ -236,12 +236,6 @@
     <Compile Include="UserControls\AppointmentsUserControl.Designer.cs">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\PatientsUserControls.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\PatientsUserControls.Designer.cs">
-      <DependentUpon>PatientsUserControls.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\PatientVisitsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -296,6 +290,7 @@
     <Compile Include="View\SearchPatientsForm.Designer.cs">
       <DependentUpon>SearchPatientsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SelectionListener.cs" />
     <Compile Include="View\UpdatePatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,9 +301,6 @@
   <ItemGroup>
     <EmbeddedResource Include="UserControls\AppointmentsUserControl.resx">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\PatientsUserControls.resx">
-      <DependentUpon>PatientsUserControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientVisitsUserControl.resx">
       <DependentUpon>PatientVisitsUserControl.cs</DependentUpon>

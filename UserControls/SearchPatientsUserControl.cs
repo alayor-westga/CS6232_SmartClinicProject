@@ -4,11 +4,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using SmartClinic.Controller;
 using SmartClinic.Model;
+using SmartClinic.View;
 
 namespace SmartClinic.UserControls
 {
     public partial class SearchPatientsUserControl : UserControl
     {
+        private List<SelectionListener<Patient>> selectionListeners;
         private readonly PatientController patientController;
         public SearchPatientsUserControl()
         {
@@ -16,17 +18,15 @@ namespace SmartClinic.UserControls
             patientController = new PatientController();
         }
 
-        public Patient SelectedPatient {
-            get
-            {
-                return (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
-            }
+        public void AddSelectionListener(SelectionListener<Patient> selectionListener)
+        {
+            selectionListeners.Add(selectionListener);
         }
 
         private void SearchPatientsUserControl_Load(object sender, EventArgs e)
         {
-            var patients = patientController.SearchPatients("a", "", 0, null);
-            patientsDataGridView.DataSource = patients;
+            searchByDOBOnlyRadioButton.Checked = true;
+            selectionListeners = new List<SelectionListener<Patient>>();
         }
 
         private void SearchByDOBOnlyRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -92,6 +92,34 @@ namespace SmartClinic.UserControls
             dobCombinedDatePicker.Enabled = false;
             lastNameCombinedLabel.ForeColor = SystemColors.ControlDark;
             lastNameCombinedTextBox.Enabled = false;
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            if (searchByDOBOnlyRadioButton.Checked)
+            {
+                var patients = patientController.SearchByDOB(dobOnlyDatePicker.Value);
+                patientsDataGridView.DataSource = patients;
+            }
+        }
+
+        private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (patientsDataGridView.SelectedRows.Count > 0)
+            {
+                foreach (SelectionListener<Patient> listener in selectionListeners)
+                {
+                    Patient patient = (Patient) patientsDataGridView.SelectedRows[0].DataBoundItem;
+                    listener.OnSelect(patient);
+                }
+            }
+           else
+            {
+                foreach (SelectionListener<Patient> listener in selectionListeners)
+                {
+                    listener.OnSelectionCleared();
+                }
+            }
         }
     }
 }

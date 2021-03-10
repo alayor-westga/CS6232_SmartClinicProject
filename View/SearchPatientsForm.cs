@@ -6,7 +6,7 @@ using SmartClinic.Model;
 
 namespace SmartClinic.View
 {
-    public partial class SearchPatientsForm : Form
+    public partial class SearchPatientsForm : Form, SelectionListener<Patient>
     {
         public SearchPatientsForm()
         {
@@ -15,14 +15,24 @@ namespace SmartClinic.View
 
         public Patient SelectedPatient { get; set; }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        void SelectionListener<Patient>.OnSelect(Patient selectedValue)
+        {
+            SelectedPatient = selectedValue;
+            selectPatientButton.Enabled = true;
+        }
+
+        void SelectionListener<Patient>.OnSelectionCleared()
+        {
+            selectPatientButton.Enabled = false;
+        }
+
         private void SelectPatientButton_Click(object sender, EventArgs e)
         {
-            SelectedPatient = searchPatientsUserControl.SelectedPatient;
             DialogResult = DialogResult.OK;
             Close();
         }
