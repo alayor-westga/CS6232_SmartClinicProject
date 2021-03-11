@@ -81,6 +81,7 @@ namespace SmartClinic.UserControls
             this.viewOrEditPatientVisitDetailsButton.TabIndex = 40;
             this.viewOrEditPatientVisitDetailsButton.Text = "View / Edit Patient Visit Details";
             this.viewOrEditPatientVisitDetailsButton.UseVisualStyleBackColor = true;
+            this.viewOrEditPatientVisitDetailsButton.Click += new System.EventHandler(this.EditPatientButton_Click);
             // 
             // searchForPatientVisitLabel
             // 
@@ -211,6 +212,7 @@ namespace SmartClinic.UserControls
             this.searchByDOBAndLastNameRadioButton.TabIndex = 33;
             this.searchByDOBAndLastNameRadioButton.TabStop = true;
             this.searchByDOBAndLastNameRadioButton.UseVisualStyleBackColor = true;
+            this.searchByDOBAndLastNameRadioButton.CheckedChanged += new System.EventHandler(this.SearchByDOBAndLastNameRadioButton_CheckedChanged);
             // 
             // dobCombinedDatePicker
             // 
@@ -267,6 +269,7 @@ namespace SmartClinic.UserControls
             this.searchByNamesRadioButton.TabIndex = 30;
             this.searchByNamesRadioButton.TabStop = true;
             this.searchByNamesRadioButton.UseVisualStyleBackColor = true;
+            this.searchByNamesRadioButton.CheckedChanged += new System.EventHandler(this.SearchByNamesRadioButton_CheckedChanged);
             // 
             // dobOnlyDatePicker
             // 
@@ -290,6 +293,7 @@ namespace SmartClinic.UserControls
             this.searchByDOBOnlyRadioButton.TabIndex = 29;
             this.searchByDOBOnlyRadioButton.TabStop = true;
             this.searchByDOBOnlyRadioButton.UseVisualStyleBackColor = true;
+            this.searchByDOBOnlyRadioButton.CheckedChanged += new System.EventHandler(this.SearchByDOBOnlyRadioButton_CheckedChanged);
             // 
             // firstNameTextBox
             // 
@@ -331,6 +335,7 @@ namespace SmartClinic.UserControls
             this.clearButton.TabIndex = 46;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // searchButton
             // 
@@ -343,6 +348,7 @@ namespace SmartClinic.UserControls
             this.searchButton.TabIndex = 45;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // searchMessageLabel
             // 

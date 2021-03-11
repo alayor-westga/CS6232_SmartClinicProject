@@ -8,8 +8,13 @@ namespace SmartClinic.Model
     class PatientVisits
     {
         public int AppointmentID { get; set; }
-        public int NurseID { get; set; }
-        public DateTime Date { get; set; }
+        public int PatientID { get; set; }
+        public string Patient { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Reason { get; set; }
+        public string Nurse { get; set; }
+        public string Doctor { get; set; }
+        public DateTime VisitDate { get; set; }
         public float Weight { get; set; }
         public int SystolicBP { get; set; }
         public int DiastolicBP { get; set; }
