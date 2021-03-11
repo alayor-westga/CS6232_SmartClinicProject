@@ -14,6 +14,7 @@ namespace SmartClinic.View
         private Appointment appointment;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
+        List<Doctor> doctors;
 
         /// <summary>
         /// It builds and initializes the appointment view details form.
@@ -23,6 +24,7 @@ namespace SmartClinic.View
             InitializeComponent();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
+            doctors = new List<Doctor>();
         }
 
         public void ShowWithAppointment(Appointment appointment) 
@@ -40,6 +42,7 @@ namespace SmartClinic.View
             appointmentDatePicker.Value = appointment.Date;
             appointmentTimePicker.Value = appointment.Date;
             doctorComboBox.SelectedValue = appointment.DoctorId;
+            doctorPhoneNumberValueLabel.Text = appointment.Doctor.Phone;
             reasonForVisitTextBox.Text = appointment.Reason;
             DisableUIControls();
         }
@@ -56,7 +59,7 @@ namespace SmartClinic.View
 
         private void PopulateDoctors()
         {
-            List<Doctor> doctors = new List<Doctor>();
+            doctors.Clear();
             try
             {
                 doctors.AddRange(doctorController.GetAll());
@@ -162,6 +165,11 @@ namespace SmartClinic.View
                 MessageBox.Show("The appointment could not get deleted.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private void DoctorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            doctorPhoneNumberValueLabel.Text = doctors[doctorComboBox.SelectedIndex].Phone;
         }
     }
 }

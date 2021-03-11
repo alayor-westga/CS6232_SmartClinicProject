@@ -17,7 +17,7 @@ namespace SmartClinic.DAL
         public List<Doctor> GetAll()
         {
             string selectStatement =
-            " SELECT d.doctor_id, cp.first_name, cp.last_name" +
+            " SELECT d.doctor_id, cp.first_name, cp.last_name, cp.phone_number" +
             " FROM Doctors d" +
             " INNER JOIN ClinicPersons cp ON (d.clinic_person_id = cp.clinic_person_id);";
             List<Doctor> doctorList = new List<Doctor>();
@@ -36,6 +36,7 @@ namespace SmartClinic.DAL
                                 DoctorId = Int32.Parse(reader["doctor_id"].ToString()),
                                 FirstName = reader["first_name"].ToString(),
                                 LastName = reader["last_name"].ToString(),
+                                Phone = reader["phone_number"].ToString(),
                             };
                             doctorList.Add(doctor);
                         }

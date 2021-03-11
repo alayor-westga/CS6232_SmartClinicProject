@@ -245,7 +245,7 @@ namespace SmartClinic.DAL
    
             string selectStatement =
             " SELECT a.appointment_id, a.date, a.reason, d.doctor_id, cpd.first_name AS doctor_first_name, " +
-            " cpd.last_name AS doctor_last_name, p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
+            " cpd.last_name AS doctor_last_name, cpd.phone_number AS doctor_phone_number, p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
             " cp.street2, cp.city, cp.state" +
             " FROM Appointments a" +
             " INNER JOIN Patients p ON (a.patient_id = p.patient_id)" +
@@ -281,6 +281,7 @@ namespace SmartClinic.DAL
                                 DoctorId = Int32.Parse(reader["doctor_id"].ToString()),
                                 FirstName = reader["doctor_first_name"].ToString(),
                                 LastName = reader["doctor_last_name"].ToString(),
+                                Phone = reader["doctor_phone_number"].ToString(),
                             };
                             Appointment appointment = new Appointment()
                             {
