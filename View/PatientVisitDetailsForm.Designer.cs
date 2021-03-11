@@ -44,8 +44,8 @@ namespace SmartClinic.View
             this.symptomsLabel = new System.Windows.Forms.Label();
             this.diastolicTextBox = new System.Windows.Forms.TextBox();
             this.temperatureTextBox = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tempTextBox = new System.Windows.Forms.TextBox();
+            this.weightTextBox = new System.Windows.Forms.TextBox();
             this.initialDiagnosisTextBox = new System.Windows.Forms.TextBox();
             this.systolicTextBox = new System.Windows.Forms.TextBox();
             this.symptomsTextBox = new System.Windows.Forms.TextBox();
@@ -64,6 +64,8 @@ namespace SmartClinic.View
             this.doctorLabel = new System.Windows.Forms.Label();
             this.patientIDLabel = new System.Windows.Forms.Label();
             this.slashLabel = new System.Windows.Forms.Label();
+            this.loggedInNurseLabel = new System.Windows.Forms.Label();
+            this.loggedInNurseTextBox = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labTestsButton
@@ -204,21 +206,21 @@ namespace SmartClinic.View
             this.temperatureTextBox.Size = new System.Drawing.Size(100, 30);
             this.temperatureTextBox.TabIndex = 59;
             // 
-            // textBox5
+            // tempTextBox
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(627, 367);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(123, 30);
-            this.textBox5.TabIndex = 58;
+            this.tempTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tempTextBox.Location = new System.Drawing.Point(627, 367);
+            this.tempTextBox.Name = "tempTextBox";
+            this.tempTextBox.Size = new System.Drawing.Size(123, 30);
+            this.tempTextBox.TabIndex = 58;
             // 
-            // textBox4
+            // weightTextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(487, 367);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(123, 30);
-            this.textBox4.TabIndex = 57;
+            this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weightTextBox.Location = new System.Drawing.Point(487, 367);
+            this.weightTextBox.Name = "weightTextBox";
+            this.weightTextBox.Size = new System.Drawing.Size(123, 30);
+            this.weightTextBox.TabIndex = 57;
             // 
             // initialDiagnosisTextBox
             // 
@@ -259,7 +261,7 @@ namespace SmartClinic.View
             // 
             this.timeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.timeTextBox.Location = new System.Drawing.Point(511, 67);
+            this.timeTextBox.Location = new System.Drawing.Point(409, 68);
             this.timeTextBox.Name = "timeTextBox";
             this.timeTextBox.Size = new System.Drawing.Size(164, 23);
             this.timeTextBox.TabIndex = 52;
@@ -279,11 +281,11 @@ namespace SmartClinic.View
             // 
             this.nurse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nurse.ForeColor = System.Drawing.Color.Black;
-            this.nurse.Location = new System.Drawing.Point(405, 112);
+            this.nurse.Location = new System.Drawing.Point(341, 111);
             this.nurse.Name = "nurse";
-            this.nurse.Size = new System.Drawing.Size(100, 23);
+            this.nurse.Size = new System.Drawing.Size(251, 23);
             this.nurse.TabIndex = 50;
-            this.nurse.Text = "Nurse:";
+            this.nurse.Text = "Last Nurse To Modify Visit:";
             this.nurse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // doctorTextBox
@@ -312,14 +314,14 @@ namespace SmartClinic.View
             this.appointmentDateTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.appointmentDateTextBox.Location = new System.Drawing.Point(161, 67);
             this.appointmentDateTextBox.Name = "appointmentDateTextBox";
-            this.appointmentDateTextBox.Size = new System.Drawing.Size(224, 23);
+            this.appointmentDateTextBox.Size = new System.Drawing.Size(177, 23);
             this.appointmentDateTextBox.TabIndex = 47;
             // 
             // nurseTextBox
             // 
             this.nurseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nurseTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.nurseTextBox.Location = new System.Drawing.Point(511, 112);
+            this.nurseTextBox.Location = new System.Drawing.Point(598, 112);
             this.nurseTextBox.Name = "nurseTextBox";
             this.nurseTextBox.Size = new System.Drawing.Size(213, 23);
             this.nurseTextBox.TabIndex = 45;
@@ -328,7 +330,7 @@ namespace SmartClinic.View
             // 
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLabel.ForeColor = System.Drawing.Color.Black;
-            this.timeLabel.Location = new System.Drawing.Point(428, 67);
+            this.timeLabel.Location = new System.Drawing.Point(326, 67);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(77, 23);
             this.timeLabel.TabIndex = 44;
@@ -396,11 +398,32 @@ namespace SmartClinic.View
             this.slashLabel.TabIndex = 65;
             this.slashLabel.Text = "/";
             // 
+            // loggedInNurseLabel
+            // 
+            this.loggedInNurseLabel.AutoSize = true;
+            this.loggedInNurseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loggedInNurseLabel.Location = new System.Drawing.Point(348, 156);
+            this.loggedInNurseLabel.Name = "loggedInNurseLabel";
+            this.loggedInNurseLabel.Size = new System.Drawing.Size(162, 25);
+            this.loggedInNurseLabel.TabIndex = 75;
+            this.loggedInNurseLabel.Text = "Logged In Nurse:";
+            // 
+            // loggedInNurseTextBox
+            // 
+            this.loggedInNurseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loggedInNurseTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.loggedInNurseTextBox.Location = new System.Drawing.Point(524, 158);
+            this.loggedInNurseTextBox.Name = "loggedInNurseTextBox";
+            this.loggedInNurseTextBox.Size = new System.Drawing.Size(247, 23);
+            this.loggedInNurseTextBox.TabIndex = 76;
+            // 
             // PatientVisitDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 752);
+            this.Controls.Add(this.loggedInNurseTextBox);
+            this.Controls.Add(this.loggedInNurseLabel);
             this.Controls.Add(this.labTestsButton);
             this.Controls.Add(this.appointmentDetailsButton);
             this.Controls.Add(this.saveChangesAndCloseButton);
@@ -416,8 +439,8 @@ namespace SmartClinic.View
             this.Controls.Add(this.symptomsLabel);
             this.Controls.Add(this.diastolicTextBox);
             this.Controls.Add(this.temperatureTextBox);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.tempTextBox);
+            this.Controls.Add(this.weightTextBox);
             this.Controls.Add(this.initialDiagnosisTextBox);
             this.Controls.Add(this.systolicTextBox);
             this.Controls.Add(this.symptomsTextBox);
@@ -460,8 +483,8 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label symptomsLabel;
         private System.Windows.Forms.TextBox diastolicTextBox;
         private System.Windows.Forms.TextBox temperatureTextBox;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tempTextBox;
+        private System.Windows.Forms.TextBox weightTextBox;
         private System.Windows.Forms.TextBox initialDiagnosisTextBox;
         private System.Windows.Forms.TextBox systolicTextBox;
         private System.Windows.Forms.TextBox symptomsTextBox;
@@ -480,5 +503,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label doctorLabel;
         private System.Windows.Forms.Label patientIDLabel;
         private System.Windows.Forms.Label slashLabel;
+        private System.Windows.Forms.Label loggedInNurseLabel;
+        private System.Windows.Forms.Label loggedInNurseTextBox;
     }
 }
