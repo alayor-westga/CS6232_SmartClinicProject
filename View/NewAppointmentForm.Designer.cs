@@ -34,6 +34,8 @@ namespace SmartClinic.View
             this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
             this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
             this.patientDateOfBirthValueLabel = new System.Windows.Forms.Label();
+            this.patientAddressValueLabel = new System.Windows.Forms.Label();
+            this.patientAddressLabel = new System.Windows.Forms.Label();
             this.patientDateOfBirthLabel = new System.Windows.Forms.Label();
             this.patientIdValueLabel = new System.Windows.Forms.Label();
             this.patientIdLabel = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@ namespace SmartClinic.View
             this.doctorLabel = new System.Windows.Forms.Label();
             this.appointmentTimePicker = new System.Windows.Forms.DateTimePicker();
             this.appointmentTimeLabel = new System.Windows.Forms.Label();
-            this.patientAddressLabel = new System.Windows.Forms.Label();
-            this.patientAddressValueLabel = new System.Windows.Forms.Label();
             this.searchForPatientsGroupBox.SuspendLayout();
             this.newAppoinmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
@@ -103,7 +103,7 @@ namespace SmartClinic.View
             this.searchForPatientsGroupBox.Size = new System.Drawing.Size(1202, 226);
             this.searchForPatientsGroupBox.TabIndex = 19;
             this.searchForPatientsGroupBox.TabStop = false;
-            this.searchForPatientsGroupBox.Text = "Search for Patients";
+            this.searchForPatientsGroupBox.Text = "Search for a patient";
             // 
             // patientDateOfBirthValueLabel
             // 
@@ -114,6 +114,26 @@ namespace SmartClinic.View
             this.patientDateOfBirthValueLabel.Size = new System.Drawing.Size(27, 37);
             this.patientDateOfBirthValueLabel.TabIndex = 36;
             this.patientDateOfBirthValueLabel.Text = "-";
+            // 
+            // patientAddressValueLabel
+            // 
+            this.patientAddressValueLabel.AutoSize = true;
+            this.patientAddressValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientAddressValueLabel.Location = new System.Drawing.Point(453, 149);
+            this.patientAddressValueLabel.Name = "patientAddressValueLabel";
+            this.patientAddressValueLabel.Size = new System.Drawing.Size(27, 37);
+            this.patientAddressValueLabel.TabIndex = 38;
+            this.patientAddressValueLabel.Text = "-";
+            // 
+            // patientAddressLabel
+            // 
+            this.patientAddressLabel.AutoSize = true;
+            this.patientAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientAddressLabel.Location = new System.Drawing.Point(317, 149);
+            this.patientAddressLabel.Name = "patientAddressLabel";
+            this.patientAddressLabel.Size = new System.Drawing.Size(144, 37);
+            this.patientAddressLabel.TabIndex = 37;
+            this.patientAddressLabel.Text = "Address:";
             // 
             // patientDateOfBirthLabel
             // 
@@ -343,26 +363,6 @@ namespace SmartClinic.View
             this.appointmentTimeLabel.Size = new System.Drawing.Size(88, 37);
             this.appointmentTimeLabel.TabIndex = 19;
             this.appointmentTimeLabel.Text = "Time";
-            // 
-            // patientAddressLabel
-            // 
-            this.patientAddressLabel.AutoSize = true;
-            this.patientAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientAddressLabel.Location = new System.Drawing.Point(317, 149);
-            this.patientAddressLabel.Name = "patientAddressLabel";
-            this.patientAddressLabel.Size = new System.Drawing.Size(144, 37);
-            this.patientAddressLabel.TabIndex = 37;
-            this.patientAddressLabel.Text = "Address:";
-            // 
-            // patientAddressValueLabel
-            // 
-            this.patientAddressValueLabel.AutoSize = true;
-            this.patientAddressValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientAddressValueLabel.Location = new System.Drawing.Point(453, 149);
-            this.patientAddressValueLabel.Name = "patientAddressValueLabel";
-            this.patientAddressValueLabel.Size = new System.Drawing.Size(27, 37);
-            this.patientAddressValueLabel.TabIndex = 38;
-            this.patientAddressValueLabel.Text = "-";
             // 
             // NewAppointmentForm
             // 

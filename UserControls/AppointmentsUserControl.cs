@@ -12,6 +12,8 @@ namespace SmartClinic.UserControls
     /// </summary>
     public partial class AppointmentsUserControl : UserControl
     {
+        private Patient selectedPatient;
+        private readonly SearchPatientsForm searchPatientsForm;
         private readonly AppointmentDetailsForm appointmentDetailsForm;
         private readonly AppointmentController appointmentController;
 
@@ -21,51 +23,29 @@ namespace SmartClinic.UserControls
         public AppointmentsUserControl()
         {
             InitializeComponent();
+            searchPatientsForm = new SearchPatientsForm();
             appointmentDetailsForm = new AppointmentDetailsForm();
             appointmentController = new AppointmentController();
         }
 
-        private void SearchPatientsButton_Click(object sender, EventArgs e)
-        {
-            SearchAppointments();
-        }
 
         private void SearchAppointments()
         {
-            var firstName = patientFirstNameTextBox.Text;
-            var lastName = patientLastNameTextBox.Text;
-            DateTime? dateOfBirth = null;
-            if (patientDateOfBirthDateTimePicker.Checked)
-            {
-                dateOfBirth = patientDateOfBirthDateTimePicker.Value;        
-            }
             List<AppointmentSearchResult> appointments = new List<AppointmentSearchResult>();
             try
             {
-                appointments.AddRange(appointmentController.SearchAppointments(firstName, lastName, dateOfBirth));
+                appointments.AddRange(appointmentController.GetAppointmentsByPatientId(selectedPatient.PatientId));
             }
             catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (appointments.Count > 0)
-            {
-                resultsReturnedLabel.Text = appointments.Count + " Result(s) Returned";
-            }
-            else
-            {
-                resultsReturnedLabel.Text = "";
-            }
             appointmentsDataGridView.DataSource = appointments;
         }
 
         private void ClearSearchFieldsButton_Click(object sender, EventArgs e)
         {
-            patientFirstNameTextBox.Text = "";
-            patientLastNameTextBox.Text = "";
-            patientDateOfBirthDateTimePicker.Checked = false;
-            resultsReturnedLabel.Text = "";
             appointmentsDataGridView.DataSource = null;
         }
 
@@ -98,6 +78,25 @@ namespace SmartClinic.UserControls
         private void AppointmentsDataGridView_DoubleClick(object sender, EventArgs e)
         {
             openAppoinmentDetailsDialog();
+        }
+
+        private void SearchPatientButton_Click(object sender, EventArgs e)
+        {
+            searchPatientsForm.ShowDialog();
+            if (searchPatientsForm.SelectedPatient != null)
+            {
+                selectedPatient = searchPatientsForm.SelectedPatient;
+                ShowPatientInfo();
+                SearchAppointments();
+            }
+        }
+
+        private void ShowPatientInfo()
+        {
+            patientIdValueLabel.Text = selectedPatient.PatientId.ToString();
+            patientFullNameValueLabel.Text = selectedPatient.FullName;
+            patientDateOfBirthValueLabel.Text = selectedPatient.DateOfBirth.ToShortDateString();
+            patientAddressValueLabel.Text = selectedPatient.Address;
         }
     }
 }

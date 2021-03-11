@@ -123,20 +123,17 @@ namespace SmartClinic.DAL
         }
 
         /// <summary>
-        /// It searches appointments by the patient's name and date of birth.
+        /// It searches appointments by the patient's id.
         /// </summary>
-        /// <param name="firstName">The patients's username.</param>
-        /// <param name="lastName">The patients's lastName.</param>
-        /// <param name="dateOfBirth">The patients's dateOfBirth.</param>
+        /// <param name="patientId">The patients's id.</param>
         /// <returns>The list of found appointments.</returns>
-        public List<AppointmentSearchResult> SearchAppointments(string firstName, string lastName, DateTime? dateOfBirth)
+        public List<AppointmentSearchResult> GetAppointmentsByPatientId(int patientId)
         {
-            if (String.IsNullOrWhiteSpace(firstName) &&
-                String.IsNullOrWhiteSpace(lastName) &&
-                dateOfBirth == null)
+            if (patientId < 0)
             {
-                throw new ArgumentException("At least one parameter must be neither null nor empty.");
+                throw new ArgumentException("The patientId must not be negative");
             }
+   
             string selectStatement =
             " SELECT a.appointment_id, a.date, a.reason, d.doctor_id, cpd.first_name AS doctor_first_name, " +
             " cpd.last_name AS doctor_last_name, p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
@@ -146,20 +143,7 @@ namespace SmartClinic.DAL
             " INNER JOIN Doctors d ON (a.doctor_id = d.doctor_id)" +
             " INNER JOIN ClinicPersons cp ON (p.clinic_person_id = cp.clinic_person_id)" +
             " INNER JOIN ClinicPersons cpd ON (d.clinic_person_id = cpd.clinic_person_id)" +
-            " WHERE 1=2";
-            if (!String.IsNullOrWhiteSpace(firstName))
-            {
-                selectStatement += " OR cp.first_name LIKE @FirstName";
-            }
-            if (!String.IsNullOrWhiteSpace(lastName))
-            {
-                selectStatement += " OR cp.last_name LIKE @LastName";
-            }
-            if (dateOfBirth != null)
-            {
-                selectStatement += " OR cp.date_of_birth = @DateOfBirth";
-            }
-            selectStatement += ";";
+            " WHERE p.patient_id=@PatientId;";
 
             List<AppointmentSearchResult> AppointmentSearchResults = new List<AppointmentSearchResult>();
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
@@ -167,18 +151,7 @@ namespace SmartClinic.DAL
                 connection.Open();
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    if (!String.IsNullOrWhiteSpace(firstName))
-                    {
-                        selectCommand.Parameters.AddWithValue("@FirstName", '%' + firstName + '%');
-                    }
-                    if (!String.IsNullOrWhiteSpace(lastName))
-                    {
-                        selectCommand.Parameters.AddWithValue("@LastName", '%' + lastName + '%');
-                    }
-                    if (dateOfBirth != null)
-                    {
-                        selectCommand.Parameters.AddWithValue("@DateOfBirth", dateOfBirth.GetValueOrDefault().Date);
-                    }
+                    selectCommand.Parameters.AddWithValue("@PatientId", patientId);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())

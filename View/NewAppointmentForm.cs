@@ -11,12 +11,11 @@ namespace SmartClinic.View
     /// </summary>
     public partial class NewAppointmentForm : Form
     {
+        private Patient selectedPatient;
         private readonly Form newPatientForm;
         private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
-
-        private Patient selectedPatient;
 
         /// <summary>
         /// It builds and initializes the new appointment form.

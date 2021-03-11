@@ -30,16 +30,6 @@ namespace SmartClinic.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.patientFirstNameTextBox = new System.Windows.Forms.TextBox();
-            this.patientFirstNameLabel = new System.Windows.Forms.Label();
-            this.patientLastNameTextBox = new System.Windows.Forms.TextBox();
-            this.patientLastNameLabel = new System.Windows.Forms.Label();
-            this.patientDateOfBirthLabel = new System.Windows.Forms.Label();
-            this.patientDateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.clearSearchFieldsButton = new System.Windows.Forms.Button();
-            this.searchPatientsButton = new System.Windows.Forms.Button();
-            this.searchForAppointmentsGroupBox = new System.Windows.Forms.GroupBox();
-            this.resultsReturnedLabel = new System.Windows.Forms.Label();
             this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
             this.appointmentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,125 +39,22 @@ namespace SmartClinic.UserControls
             this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.viewAppointmentButton = new System.Windows.Forms.Button();
             this.deleteAppointmentButton = new System.Windows.Forms.Button();
-            this.searchForAppointmentsGroupBox.SuspendLayout();
+            this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
+            this.patientDateOfBirthValueLabel = new System.Windows.Forms.Label();
+            this.patientAddressValueLabel = new System.Windows.Forms.Label();
+            this.patientAddressLabel = new System.Windows.Forms.Label();
+            this.patientDateOfBirthLabel = new System.Windows.Forms.Label();
+            this.patientIdValueLabel = new System.Windows.Forms.Label();
+            this.patientIdLabel = new System.Windows.Forms.Label();
+            this.patientNameLabel = new System.Windows.Forms.Label();
+            this.patientFullNameValueLabel = new System.Windows.Forms.Label();
+            this.searchPatientButton = new System.Windows.Forms.Button();
+            this.appointmentsGroupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
+            this.searchForPatientsGroupBox.SuspendLayout();
+            this.appointmentsGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // patientFirstNameTextBox
-            // 
-            this.patientFirstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientFirstNameTextBox.Location = new System.Drawing.Point(212, 58);
-            this.patientFirstNameTextBox.Name = "patientFirstNameTextBox";
-            this.patientFirstNameTextBox.Size = new System.Drawing.Size(242, 44);
-            this.patientFirstNameTextBox.TabIndex = 3;
-            // 
-            // patientFirstNameLabel
-            // 
-            this.patientFirstNameLabel.AutoSize = true;
-            this.patientFirstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientFirstNameLabel.Location = new System.Drawing.Point(31, 61);
-            this.patientFirstNameLabel.Name = "patientFirstNameLabel";
-            this.patientFirstNameLabel.Size = new System.Drawing.Size(175, 37);
-            this.patientFirstNameLabel.TabIndex = 4;
-            this.patientFirstNameLabel.Text = "First Name";
-            // 
-            // patientLastNameTextBox
-            // 
-            this.patientLastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientLastNameTextBox.Location = new System.Drawing.Point(212, 126);
-            this.patientLastNameTextBox.Name = "patientLastNameTextBox";
-            this.patientLastNameTextBox.Size = new System.Drawing.Size(242, 44);
-            this.patientLastNameTextBox.TabIndex = 5;
-            // 
-            // patientLastNameLabel
-            // 
-            this.patientLastNameLabel.AutoSize = true;
-            this.patientLastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientLastNameLabel.Location = new System.Drawing.Point(33, 129);
-            this.patientLastNameLabel.Name = "patientLastNameLabel";
-            this.patientLastNameLabel.Size = new System.Drawing.Size(173, 37);
-            this.patientLastNameLabel.TabIndex = 6;
-            this.patientLastNameLabel.Text = "Last Name";
-            // 
-            // patientDateOfBirthLabel
-            // 
-            this.patientDateOfBirthLabel.AutoSize = true;
-            this.patientDateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientDateOfBirthLabel.Location = new System.Drawing.Point(11, 199);
-            this.patientDateOfBirthLabel.Name = "patientDateOfBirthLabel";
-            this.patientDateOfBirthLabel.Size = new System.Drawing.Size(195, 37);
-            this.patientDateOfBirthLabel.TabIndex = 9;
-            this.patientDateOfBirthLabel.Text = "Date of Birth";
-            // 
-            // patientDateOfBirthDateTimePicker
-            // 
-            this.patientDateOfBirthDateTimePicker.Checked = false;
-            this.patientDateOfBirthDateTimePicker.CustomFormat = "MM/dd/yyyy";
-            this.patientDateOfBirthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientDateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.patientDateOfBirthDateTimePicker.Location = new System.Drawing.Point(212, 196);
-            this.patientDateOfBirthDateTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.patientDateOfBirthDateTimePicker.MinDate = new System.DateTime(1890, 1, 1, 0, 0, 0, 0);
-            this.patientDateOfBirthDateTimePicker.Name = "patientDateOfBirthDateTimePicker";
-            this.patientDateOfBirthDateTimePicker.ShowCheckBox = true;
-            this.patientDateOfBirthDateTimePicker.Size = new System.Drawing.Size(242, 44);
-            this.patientDateOfBirthDateTimePicker.TabIndex = 10;
-            this.patientDateOfBirthDateTimePicker.Value = new System.DateTime(2021, 3, 6, 0, 0, 0, 0);
-            // 
-            // clearSearchFieldsButton
-            // 
-            this.clearSearchFieldsButton.AutoSize = true;
-            this.clearSearchFieldsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.clearSearchFieldsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearSearchFieldsButton.Location = new System.Drawing.Point(259, 265);
-            this.clearSearchFieldsButton.Name = "clearSearchFieldsButton";
-            this.clearSearchFieldsButton.Size = new System.Drawing.Size(121, 47);
-            this.clearSearchFieldsButton.TabIndex = 12;
-            this.clearSearchFieldsButton.Text = "Clear";
-            this.clearSearchFieldsButton.UseVisualStyleBackColor = true;
-            this.clearSearchFieldsButton.Click += new System.EventHandler(this.ClearSearchFieldsButton_Click);
-            // 
-            // searchPatientsButton
-            // 
-            this.searchPatientsButton.AutoSize = true;
-            this.searchPatientsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchPatientsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPatientsButton.Location = new System.Drawing.Point(78, 265);
-            this.searchPatientsButton.Name = "searchPatientsButton";
-            this.searchPatientsButton.Size = new System.Drawing.Size(128, 47);
-            this.searchPatientsButton.TabIndex = 11;
-            this.searchPatientsButton.Text = "Search";
-            this.searchPatientsButton.UseVisualStyleBackColor = true;
-            this.searchPatientsButton.Click += new System.EventHandler(this.SearchPatientsButton_Click);
-            // 
-            // searchForAppointmentsGroupBox
-            // 
-            this.searchForAppointmentsGroupBox.Controls.Add(this.resultsReturnedLabel);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.clearSearchFieldsButton);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.patientFirstNameTextBox);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.searchPatientsButton);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.patientFirstNameLabel);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.patientDateOfBirthLabel);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.patientLastNameLabel);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.patientDateOfBirthDateTimePicker);
-            this.searchForAppointmentsGroupBox.Controls.Add(this.patientLastNameTextBox);
-            this.searchForAppointmentsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchForAppointmentsGroupBox.Location = new System.Drawing.Point(12, 46);
-            this.searchForAppointmentsGroupBox.Name = "searchForAppointmentsGroupBox";
-            this.searchForAppointmentsGroupBox.Size = new System.Drawing.Size(496, 368);
-            this.searchForAppointmentsGroupBox.TabIndex = 13;
-            this.searchForAppointmentsGroupBox.TabStop = false;
-            this.searchForAppointmentsGroupBox.Text = "Search for Appointments";
-            // 
-            // resultsReturnedLabel
-            // 
-            this.resultsReturnedLabel.AutoSize = true;
-            this.resultsReturnedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultsReturnedLabel.Location = new System.Drawing.Point(131, 325);
-            this.resultsReturnedLabel.Name = "resultsReturnedLabel";
-            this.resultsReturnedLabel.Size = new System.Drawing.Size(0, 31);
-            this.resultsReturnedLabel.TabIndex = 13;
             // 
             // appointmentsDataGridView
             // 
@@ -183,14 +70,14 @@ namespace SmartClinic.UserControls
             this.patientAddressDataGridViewTextBoxColumn,
             this.doctorFullNameDataGridViewTextBoxColumn});
             this.appointmentsDataGridView.DataSource = this.appointmentSearchResultBindingSource;
-            this.appointmentsDataGridView.Location = new System.Drawing.Point(524, 20);
+            this.appointmentsDataGridView.Location = new System.Drawing.Point(19, 52);
             this.appointmentsDataGridView.MultiSelect = false;
             this.appointmentsDataGridView.Name = "appointmentsDataGridView";
             this.appointmentsDataGridView.ReadOnly = true;
             this.appointmentsDataGridView.RowHeadersWidth = 82;
             this.appointmentsDataGridView.RowTemplate.Height = 33;
             this.appointmentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.appointmentsDataGridView.Size = new System.Drawing.Size(914, 474);
+            this.appointmentsDataGridView.Size = new System.Drawing.Size(1160, 340);
             this.appointmentsDataGridView.TabIndex = 14;
             this.appointmentsDataGridView.SelectionChanged += new System.EventHandler(this.AppointmentsDataGridView_SelectionChanged);
             this.appointmentsDataGridView.DoubleClick += new System.EventHandler(this.AppointmentsDataGridView_DoubleClick);
@@ -245,7 +132,7 @@ namespace SmartClinic.UserControls
             this.viewAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.viewAppointmentButton.Enabled = false;
             this.viewAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewAppointmentButton.Location = new System.Drawing.Point(552, 509);
+            this.viewAppointmentButton.Location = new System.Drawing.Point(312, 715);
             this.viewAppointmentButton.Name = "viewAppointmentButton";
             this.viewAppointmentButton.Size = new System.Drawing.Size(474, 47);
             this.viewAppointmentButton.TabIndex = 14;
@@ -259,42 +146,157 @@ namespace SmartClinic.UserControls
             this.deleteAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteAppointmentButton.Enabled = false;
             this.deleteAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteAppointmentButton.Location = new System.Drawing.Point(1065, 509);
+            this.deleteAppointmentButton.Location = new System.Drawing.Point(825, 715);
             this.deleteAppointmentButton.Name = "deleteAppointmentButton";
             this.deleteAppointmentButton.Size = new System.Drawing.Size(340, 47);
             this.deleteAppointmentButton.TabIndex = 15;
             this.deleteAppointmentButton.Text = "Delete Appointment";
             this.deleteAppointmentButton.UseVisualStyleBackColor = true;
             // 
+            // searchForPatientsGroupBox
+            // 
+            this.searchForPatientsGroupBox.Controls.Add(this.patientDateOfBirthValueLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientAddressValueLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientAddressLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientDateOfBirthLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientIdValueLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientIdLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientNameLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.patientFullNameValueLabel);
+            this.searchForPatientsGroupBox.Controls.Add(this.searchPatientButton);
+            this.searchForPatientsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchForPatientsGroupBox.Location = new System.Drawing.Point(12, 22);
+            this.searchForPatientsGroupBox.Name = "searchForPatientsGroupBox";
+            this.searchForPatientsGroupBox.Size = new System.Drawing.Size(1202, 226);
+            this.searchForPatientsGroupBox.TabIndex = 20;
+            this.searchForPatientsGroupBox.TabStop = false;
+            this.searchForPatientsGroupBox.Text = "Search for a patient";
+            // 
+            // patientDateOfBirthValueLabel
+            // 
+            this.patientDateOfBirthValueLabel.AutoSize = true;
+            this.patientDateOfBirthValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientDateOfBirthValueLabel.Location = new System.Drawing.Point(931, 89);
+            this.patientDateOfBirthValueLabel.Name = "patientDateOfBirthValueLabel";
+            this.patientDateOfBirthValueLabel.Size = new System.Drawing.Size(27, 37);
+            this.patientDateOfBirthValueLabel.TabIndex = 36;
+            this.patientDateOfBirthValueLabel.Text = "-";
+            // 
+            // patientAddressValueLabel
+            // 
+            this.patientAddressValueLabel.AutoSize = true;
+            this.patientAddressValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientAddressValueLabel.Location = new System.Drawing.Point(453, 149);
+            this.patientAddressValueLabel.Name = "patientAddressValueLabel";
+            this.patientAddressValueLabel.Size = new System.Drawing.Size(27, 37);
+            this.patientAddressValueLabel.TabIndex = 38;
+            this.patientAddressValueLabel.Text = "-";
+            // 
+            // patientAddressLabel
+            // 
+            this.patientAddressLabel.AutoSize = true;
+            this.patientAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientAddressLabel.Location = new System.Drawing.Point(317, 149);
+            this.patientAddressLabel.Name = "patientAddressLabel";
+            this.patientAddressLabel.Size = new System.Drawing.Size(144, 37);
+            this.patientAddressLabel.TabIndex = 37;
+            this.patientAddressLabel.Text = "Address:";
+            // 
+            // patientDateOfBirthLabel
+            // 
+            this.patientDateOfBirthLabel.AutoSize = true;
+            this.patientDateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientDateOfBirthLabel.Location = new System.Drawing.Point(733, 89);
+            this.patientDateOfBirthLabel.Name = "patientDateOfBirthLabel";
+            this.patientDateOfBirthLabel.Size = new System.Drawing.Size(204, 37);
+            this.patientDateOfBirthLabel.TabIndex = 35;
+            this.patientDateOfBirthLabel.Text = "Date of Birth:";
+            // 
+            // patientIdValueLabel
+            // 
+            this.patientIdValueLabel.AutoSize = true;
+            this.patientIdValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIdValueLabel.Location = new System.Drawing.Point(370, 34);
+            this.patientIdValueLabel.Name = "patientIdValueLabel";
+            this.patientIdValueLabel.Size = new System.Drawing.Size(27, 37);
+            this.patientIdValueLabel.TabIndex = 34;
+            this.patientIdValueLabel.Text = "-";
+            // 
+            // patientIdLabel
+            // 
+            this.patientIdLabel.AutoSize = true;
+            this.patientIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIdLabel.Location = new System.Drawing.Point(317, 34);
+            this.patientIdLabel.Name = "patientIdLabel";
+            this.patientIdLabel.Size = new System.Drawing.Size(57, 37);
+            this.patientIdLabel.TabIndex = 33;
+            this.patientIdLabel.Text = "ID:";
+            // 
+            // patientNameLabel
+            // 
+            this.patientNameLabel.AutoSize = true;
+            this.patientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientNameLabel.Location = new System.Drawing.Point(317, 89);
+            this.patientNameLabel.Name = "patientNameLabel";
+            this.patientNameLabel.Size = new System.Drawing.Size(112, 37);
+            this.patientNameLabel.TabIndex = 32;
+            this.patientNameLabel.Text = "Name:";
+            // 
+            // patientFullNameValueLabel
+            // 
+            this.patientFullNameValueLabel.AutoSize = true;
+            this.patientFullNameValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientFullNameValueLabel.Location = new System.Drawing.Point(425, 89);
+            this.patientFullNameValueLabel.Name = "patientFullNameValueLabel";
+            this.patientFullNameValueLabel.Size = new System.Drawing.Size(27, 37);
+            this.patientFullNameValueLabel.TabIndex = 31;
+            this.patientFullNameValueLabel.Text = "-";
+            // 
+            // searchPatientButton
+            // 
+            this.searchPatientButton.AutoSize = true;
+            this.searchPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchPatientButton.Location = new System.Drawing.Point(29, 84);
+            this.searchPatientButton.Name = "searchPatientButton";
+            this.searchPatientButton.Size = new System.Drawing.Size(250, 47);
+            this.searchPatientButton.TabIndex = 15;
+            this.searchPatientButton.Text = "Search Patient";
+            this.searchPatientButton.UseVisualStyleBackColor = true;
+            this.searchPatientButton.Click += new System.EventHandler(this.SearchPatientButton_Click);
+            // 
+            // appointmentsGroupBox
+            // 
+            this.appointmentsGroupBox.Controls.Add(this.appointmentsDataGridView);
+            this.appointmentsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentsGroupBox.Location = new System.Drawing.Point(12, 278);
+            this.appointmentsGroupBox.Name = "appointmentsGroupBox";
+            this.appointmentsGroupBox.Size = new System.Drawing.Size(1202, 412);
+            this.appointmentsGroupBox.TabIndex = 21;
+            this.appointmentsGroupBox.TabStop = false;
+            this.appointmentsGroupBox.Text = "Appointments";
+            // 
             // AppointmentsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.searchForPatientsGroupBox);
             this.Controls.Add(this.deleteAppointmentButton);
             this.Controls.Add(this.viewAppointmentButton);
-            this.Controls.Add(this.appointmentsDataGridView);
-            this.Controls.Add(this.searchForAppointmentsGroupBox);
+            this.Controls.Add(this.appointmentsGroupBox);
             this.Name = "AppointmentsUserControl";
-            this.Size = new System.Drawing.Size(1456, 578);
-            this.searchForAppointmentsGroupBox.ResumeLayout(false);
-            this.searchForAppointmentsGroupBox.PerformLayout();
+            this.Size = new System.Drawing.Size(1236, 790);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
+            this.searchForPatientsGroupBox.ResumeLayout(false);
+            this.searchForPatientsGroupBox.PerformLayout();
+            this.appointmentsGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox patientFirstNameTextBox;
-        private System.Windows.Forms.Label patientFirstNameLabel;
-        private System.Windows.Forms.TextBox patientLastNameTextBox;
-        private System.Windows.Forms.Label patientLastNameLabel;
-        private System.Windows.Forms.Label patientDateOfBirthLabel;
-        private System.Windows.Forms.DateTimePicker patientDateOfBirthDateTimePicker;
-        private System.Windows.Forms.Button clearSearchFieldsButton;
-        private System.Windows.Forms.Button searchPatientsButton;
-        private System.Windows.Forms.GroupBox searchForAppointmentsGroupBox;
         private System.Windows.Forms.DataGridView appointmentsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn appointmentDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientFullNameDataGridViewTextBoxColumn;
@@ -302,8 +304,18 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn patientAddressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorFullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource appointmentSearchResultBindingSource;
-        private System.Windows.Forms.Label resultsReturnedLabel;
         private System.Windows.Forms.Button viewAppointmentButton;
         private System.Windows.Forms.Button deleteAppointmentButton;
+        private System.Windows.Forms.GroupBox searchForPatientsGroupBox;
+        private System.Windows.Forms.Label patientDateOfBirthValueLabel;
+        private System.Windows.Forms.Label patientAddressValueLabel;
+        private System.Windows.Forms.Label patientAddressLabel;
+        private System.Windows.Forms.Label patientDateOfBirthLabel;
+        private System.Windows.Forms.Label patientIdValueLabel;
+        private System.Windows.Forms.Label patientIdLabel;
+        private System.Windows.Forms.Label patientNameLabel;
+        private System.Windows.Forms.Label patientFullNameValueLabel;
+        private System.Windows.Forms.Button searchPatientButton;
+        private System.Windows.Forms.GroupBox appointmentsGroupBox;
     }
 }
