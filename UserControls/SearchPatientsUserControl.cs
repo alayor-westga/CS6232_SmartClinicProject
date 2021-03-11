@@ -192,15 +192,27 @@ namespace SmartClinic.UserControls
         {
             if (patientsDataGridView.SelectedRows.Count > 0)
             {
-                foreach (SelectionListener<Patient> listener in selectionListeners)
+                if (formMode == SearchFormMode.SearchAndEdit)
                 {
-                    Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
-                    listener.OnDoubleClickSelect(patient);
+                    OpenUpdatePatientForm();
+                }
+                else
+                {
+                    foreach (SelectionListener<Patient> listener in selectionListeners)
+                    {
+                        Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
+                        listener.OnDoubleClickSelect(patient);
+                    }
                 }
             }
         }
 
         private void EditPatientButton_Click(object sender, EventArgs e)
+        {
+            OpenUpdatePatientForm();
+        }
+
+        private void OpenUpdatePatientForm()
         {
             Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
             updatePatientForm.ShowForPatient(patient.PatientId);
