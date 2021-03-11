@@ -186,6 +186,7 @@ namespace SmartClinic.UserControls
             dobCombinedDatePicker.Value = DateTime.Now;
             lastNameCombinedTextBox.Text = "";
             patientsDataGridView.DataSource = null;
+            searchMessageLabel.Text = "";
         }
 
         private void PatientsDataGridView_DoubleClick(object sender, EventArgs e)

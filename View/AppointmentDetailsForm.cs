@@ -72,10 +72,8 @@ namespace SmartClinic.View
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            TimeSpan difference = GetCurrentAppointmentDateTime() - DateTime.Now;
-            if(difference.TotalHours < 24)
+            if(!ValidateUpdateTimeLimit())
             {
-                MessageBox.Show("The appointment cannot be edited 24 hours prior the appointment date.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             appointmentDatePicker.Enabled = true;
@@ -84,6 +82,17 @@ namespace SmartClinic.View
             reasonForVisitTextBox.Enabled = true;
             saveButton.Enabled = true;
             deleteButton.Enabled = true;
+        }
+
+        private bool ValidateUpdateTimeLimit()
+        {
+            TimeSpan difference = GetCurrentAppointmentDateTime() - DateTime.Now;
+            if (difference.TotalHours < 24)
+            {
+                MessageBox.Show("The appointment cannot be edited 24 hours prior the appointment date.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private DateTime GetCurrentAppointmentDateTime()
@@ -100,7 +109,10 @@ namespace SmartClinic.View
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
- 
+            if (!ValidateUpdateTimeLimit())
+            {
+                return;
+            }
             Appointment appointmentChanges = new Appointment()
             {
                 AppointmentId = appointment.AppointmentId,
