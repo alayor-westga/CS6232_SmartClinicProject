@@ -57,12 +57,10 @@ namespace SmartClinic.UserControls
             if (appointmentsDataGridView.SelectedRows.Count > 0)
             {
                 viewAppointmentButton.Enabled = true;
-                deleteAppointmentButton.Enabled = true;
             }
             else
             {
                 viewAppointmentButton.Enabled = false;
-                deleteAppointmentButton.Enabled = false;
             }
         }
 

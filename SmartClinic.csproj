@@ -237,6 +237,12 @@
     <Compile Include="UserControls\AppointmentsUserControl.Designer.cs">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\NewAppointmentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NewAppointmentUserControl.Designer.cs">
+      <DependentUpon>NewAppointmentUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PatientVisitsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -302,6 +308,9 @@
   <ItemGroup>
     <EmbeddedResource Include="UserControls\AppointmentsUserControl.resx">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NewAppointmentUserControl.resx">
+      <DependentUpon>NewAppointmentUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientVisitsUserControl.resx">
       <DependentUpon>PatientVisitsUserControl.cs</DependentUpon>

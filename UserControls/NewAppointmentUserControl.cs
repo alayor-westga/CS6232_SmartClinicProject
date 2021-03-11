@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using SmartClinic.Controller;
 using SmartClinic.Model;
+using SmartClinic.View;
 
-namespace SmartClinic.View
+namespace SmartClinic.UserControls
 {
-    /// <summary>
-    /// It renders the form to create appointments for patients.
-    /// </summary>
-    public partial class NewAppointmentForm : Form
+    public partial class NewAppointmentUserControl : UserControl
     {
         private Patient selectedPatient;
         private readonly Form newPatientForm;
         private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
-
-        /// <summary>
-        /// It builds and initializes the new appointment form.
-        /// </summary>
-        public NewAppointmentForm()
+        public NewAppointmentUserControl()
         {
             InitializeComponent();
             newPatientForm = new NewPatientForm();
@@ -29,12 +23,10 @@ namespace SmartClinic.View
             appointmentController = new AppointmentController();
         }
 
-        private void NewAppointmentForm_Load(object sender, EventArgs e)
+        private void NewAppointmentUserControl_Load(object sender, EventArgs e)
         {
             PopulateDoctors();
-            ClearPatientInfo();
-            ClearNewAppointmentForm();
-            DisableNewAppointmentSection();
+            Clear();
             appointmentDatePicker.Value = DateTime.Now;
             appointmentTimePicker.Value = DateTime.Parse("1970-01-01 09:00 AM");
         }
@@ -71,7 +63,14 @@ namespace SmartClinic.View
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            Close();
+            Clear();
+        }
+
+        private void Clear()
+        {
+            ClearPatientInfo();
+            ClearNewAppointmentForm();
+            DisableNewAppointmentSection();
         }
 
         private void AddAppointmentButton_Click(object sender, EventArgs e)
@@ -93,7 +92,7 @@ namespace SmartClinic.View
             {
                 appointmentController.Create(newAppointment);
                 MessageBox.Show("A new apointment has been created", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
+                Clear();
             }
             catch (ArgumentException ex)
             {
@@ -152,6 +151,18 @@ namespace SmartClinic.View
             appointmentReasonErrorLabel.Text = "";
         }
 
+        private void SearchPatientButton_Click(object sender, EventArgs e)
+        {
+            searchPatientsForm.ShowDialog();
+            if (searchPatientsForm.SelectedPatient != null)
+            {
+                selectedPatient = searchPatientsForm.SelectedPatient;
+                ShowPatientInfo();
+                newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+                newAppoinmentGroupBox.Enabled = true;
+            }
+        }
+
         private void AppointmentDatePicker_MouseDown(object sender, MouseEventArgs e)
         {
             appointmentDatePicker.CustomFormat = "dd/MM/yyyy";
@@ -172,18 +183,6 @@ namespace SmartClinic.View
         private void ReasonForVisitTextBox_TextChanged(object sender, EventArgs e)
         {
             appointmentReasonErrorLabel.Text = "";
-        }
-
-        private void SearchPatientButton_Click(object sender, EventArgs e)
-        {
-            searchPatientsForm.ShowDialog();
-            if (searchPatientsForm.SelectedPatient != null)
-            {
-                selectedPatient = searchPatientsForm.SelectedPatient;
-                ShowPatientInfo();
-                newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
-                newAppoinmentGroupBox.Enabled = true;
-            }
         }
 
         private void ShowPatientInfo()
