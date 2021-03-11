@@ -86,7 +86,7 @@ namespace SmartClinic.Controller
         /// </summary>
         /// <param name="appointmentId">The appointment id to be deleted.</param>
         /// <returns>The number of deleted rows.</returns>
-        public int Delete(int appointmentId)
+        public void Delete(int appointmentId)
         {
             if (appointmentId < 0)
             {
@@ -97,7 +97,8 @@ namespace SmartClinic.Controller
                 throw new ArgumentException("There is an assigned visit to this appointment. Thus, it cannot be deleted.");
             }
             int deletedRows = appointmentSource.Delete(appointmentId);
-            if (deletedRows < 1) 
+            if (deletedRows < 1)
+            { 
                 throw new ArgumentException("The appointment couldn't get deleted.");
             }
         }
