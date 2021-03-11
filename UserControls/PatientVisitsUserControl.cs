@@ -124,10 +124,13 @@ namespace SmartClinic.UserControls
         {
             if (searchByDOBOnlyRadioButton.Checked)
             {
-                patientSearchResultDataGridView.DataSource = patientController.SearchByDOB(dobOnlyDatePicker.Value);
+                patientSearchResultDataGridView.DataSource = patientController.SearchPatientVisitsByDOB(dobOnlyDatePicker.Value);
+                
             }
             else if (searchByNamesRadioButton.Checked)
             {
+                
+
                 patientSearchResultDataGridView.DataSource = patientController.SearchByName(
                     firstNameTextBox.Text,
                     lastNameTextBox.Text
@@ -135,6 +138,8 @@ namespace SmartClinic.UserControls
             }
             else if (searchByDOBAndLastNameRadioButton.Checked)
             {
+                
+
                 patientSearchResultDataGridView.DataSource = patientController.SearchByDOBAndLastName(
                     dobCombinedDatePicker.Value,
                     lastNameCombinedTextBox.Text

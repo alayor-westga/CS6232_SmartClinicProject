@@ -69,6 +69,14 @@ namespace SmartClinic.Controller
             return patientSource.SearchByDOBAndLastName(dateOfBirth, lastName);
         }
 
+        public List<PatientVisits> SearchPatientVisitsByDOB(DateTime dateOfBirth)
+        {
+            if (dateOfBirth == null)
+            {
+                throw new ArgumentNullException("dateOfBirth");
+            }
+            return patientSource.SearchPatientVisitsByDOB(dateOfBirth);
+        }
         public bool PatientHasNoAppointments(int patientID)
         {
             return this.patientSource.PatientHasNoAppointments(patientID);

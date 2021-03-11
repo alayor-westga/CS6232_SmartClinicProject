@@ -142,6 +142,68 @@ namespace SmartClinic.DAL
             }
         }
 
+        public List<PatientVisits> SearchPatientVisitsByDOB(DateTime dateOfBirth)
+        {
+            if (dateOfBirth == null)
+            {
+                throw new ArgumentNullException("dateOfBirth");
+            }
+            string selectStatement =
+            "SELECT p.patient_id as 'PID', a.appointment_id as 'AID', cpp.first_name + ' ' + cpp.last_name as 'Patient'," +
+            "cpd.first_name + ' ' + cpd.last_name as 'Doctor', a.date as 'Visit Date' " +
+
+            "FROM Appointments a " +
+            "JOIN Visits v on a.appointment_id = v.appointment_id " +
+            "JOIN Patients p on a.patient_id = p.patient_id " +
+            "JOIN Doctors d on d.doctor_id = a.doctor_id " +
+            "JOIN Nurses n on n.nurse_id = v.nurse_id " +
+            "JOIN ClinicPersons cpp on cpp.clinic_person_id = p.clinic_person_id " +
+            "JOIN ClinicPersons cpd on cpd.clinic_person_id = d.clinic_person_id " +
+            "JOIN ClinicPersons cpn on cpn.clinic_person_id = n.clinic_person_id " +
+            "WHERE cpp.date_of_birth = @DateOfBirth";
+
+            return SelectManyPatientVisits(selectStatement, new Hashtable()
+                {
+                    {"@DateOfBirth", dateOfBirth.Date}
+                }
+            );
+        }
+
+        internal List<PatientVisits> SelectManyPatientVisits(string selectStatement, Hashtable parameters = null)
+        {
+            List<PatientVisits> patientVisitList = new List<PatientVisits>();
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    if (parameters != null)
+                    {
+                        foreach (DictionaryEntry param in parameters)
+                        {
+                            selectCommand.Parameters.AddWithValue((String)param.Key, param.Value);
+                        }
+                    }
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            PatientVisits patientVisit = new PatientVisits()
+                            {
+                                AppointmentID = Int32.Parse(reader["AID"].ToString()),
+                                PatientID = Int32.Parse(reader["PID"].ToString()),                             
+                                VisitDate = DateTime.Parse(reader["Visit Date"].ToString()),
+                                Patient = reader["Patient"].ToString(),
+                                Doctor = reader["Doctor"].ToString(),
+                            };
+                            patientVisitList.Add(patientVisit);
+                        }
+                    }
+                }
+                return patientVisitList;
+            }
+        }
+
         internal bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient) //here is where I am currently working
         {
             string updateStatement =

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmartClinic.Model
 {
-    class PatientVisits
+    public class PatientVisits
     {
         public int AppointmentID { get; set; }
         public int PatientID { get; set; }
