@@ -33,8 +33,6 @@ namespace SmartClinic.UserControls
             this.doubleClickOptionToViewPatientLabel = new System.Windows.Forms.Label();
             this.viewOrEditPatientVisitDetailsButton = new System.Windows.Forms.Button();
             this.searchForPatientVisitLabel = new System.Windows.Forms.Label();
-            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientVisitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
             this.lastNameCombinedTextBox = new System.Windows.Forms.TextBox();
             this.lastNameCombinedLabel = new System.Windows.Forms.Label();
@@ -53,15 +51,16 @@ namespace SmartClinic.UserControls
             this.searchButton = new System.Windows.Forms.Button();
             this.searchMessageLabel = new System.Windows.Forms.Label();
             this.patientSearchResultDataGridView = new System.Windows.Forms.DataGridView();
-            this.AppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientVisitsBindingSource)).BeginInit();
+            this.patientVisitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchForPatientsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchResultDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // doubleClickOptionToViewPatientLabel
@@ -93,14 +92,6 @@ namespace SmartClinic.UserControls
             this.searchForPatientVisitLabel.Size = new System.Drawing.Size(226, 25);
             this.searchForPatientVisitLabel.TabIndex = 30;
             this.searchForPatientVisitLabel.Text = "Search For Patient Visits";
-            // 
-            // appointmentSearchResultBindingSource
-            // 
-            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
-            // 
-            // patientVisitsBindingSource
-            // 
-            this.patientVisitsBindingSource.DataSource = typeof(SmartClinic.Model.PatientVisits);
             // 
             // searchForPatientsGroupBox
             // 
@@ -310,7 +301,6 @@ namespace SmartClinic.UserControls
             this.patientSearchResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.patientSearchResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientSearchResultDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AppointmentID,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -320,16 +310,9 @@ namespace SmartClinic.UserControls
             this.patientSearchResultDataGridView.Name = "patientSearchResultDataGridView";
             this.patientSearchResultDataGridView.RowHeadersWidth = 51;
             this.patientSearchResultDataGridView.RowTemplate.Height = 24;
+            this.patientSearchResultDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientSearchResultDataGridView.Size = new System.Drawing.Size(559, 444);
             this.patientSearchResultDataGridView.TabIndex = 48;
-            // 
-            // AppointmentID
-            // 
-            this.AppointmentID.DataPropertyName = "AppointmentID";
-            this.AppointmentID.FillWeight = 30F;
-            this.AppointmentID.HeaderText = "AID";
-            this.AppointmentID.MinimumWidth = 6;
-            this.AppointmentID.Name = "AppointmentID";
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -361,6 +344,14 @@ namespace SmartClinic.UserControls
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
+            // patientVisitsBindingSource
+            // 
+            this.patientVisitsBindingSource.DataSource = typeof(SmartClinic.Model.PatientVisits);
+            // 
+            // appointmentSearchResultBindingSource
+            // 
+            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
+            // 
             // PatientVisitsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -375,11 +366,11 @@ namespace SmartClinic.UserControls
             this.Controls.Add(this.searchForPatientVisitLabel);
             this.Name = "PatientVisitsUserControl";
             this.Size = new System.Drawing.Size(996, 551);
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientVisitsBindingSource)).EndInit();
             this.searchForPatientsGroupBox.ResumeLayout(false);
             this.searchForPatientsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientSearchResultDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,7 +400,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label searchMessageLabel;
         private System.Windows.Forms.DataGridView patientSearchResultDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AppointmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

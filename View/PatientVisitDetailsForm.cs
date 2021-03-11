@@ -35,7 +35,15 @@ namespace SmartClinic.View
 
         private void PopulateForm()
         {
-            appointmentDateTextBox.Text = this.visit.AppointmentID.ToString();
+            this.apptIDTextBox.Text = this.visit.AppointmentID.ToString();
+            this.patientIDTextBox.Text = this.visit.PatientID.ToString();
+            //this.patientNameTextBox.Text = this.visit.Patient.ToString();
+            //this.doctorTextBox.Text = this.visit.Doctor.ToString();
+            //this.nurseTextBox.Text = this.visit.Nurse.ToString();
+            //this.appointmentDateTextBox.Text = this.visit.VisitDate.ToString();
+
+
+
            
             MakeAllFieldsReadOnly();
         }
