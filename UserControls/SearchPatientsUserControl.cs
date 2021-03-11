@@ -12,11 +12,33 @@ namespace SmartClinic.UserControls
     {
         private List<SelectionListener<Patient>> selectionListeners;
         private readonly PatientController patientController;
+        public enum SearchFormMode
+        { 
+            OnlySearch,
+            SearchAndEdit
+        }
+        private SearchFormMode formMode;
         public SearchPatientsUserControl()
         {
             InitializeComponent();
+            formMode = SearchFormMode.OnlySearch;
             patientController = new PatientController();
             selectionListeners = new List<SelectionListener<Patient>>();
+        }
+
+        public void ChangeFormMode(SearchFormMode formMode)
+        {
+            this.formMode = formMode;
+            if (this.formMode == SearchFormMode.SearchAndEdit)
+            {
+                editPatientButton.Visible = true;
+                deletePatientButton.Visible = true;
+            }
+            else
+            {
+                editPatientButton.Visible = false;
+                deletePatientButton.Visible = false;
+            }
         }
 
         public void AddSelectionListener(SelectionListener<Patient> selectionListener)
@@ -127,6 +149,11 @@ namespace SmartClinic.UserControls
         {
             if (patientsDataGridView.SelectedRows.Count > 0)
             {
+                if (formMode == SearchFormMode.SearchAndEdit)
+                {
+                    editPatientButton.Enabled = true;
+                    deletePatientButton.Enabled = true;
+                }
                 foreach (SelectionListener<Patient> listener in selectionListeners)
                 {
                     Patient patient = (Patient) patientsDataGridView.SelectedRows[0].DataBoundItem;
@@ -135,6 +162,8 @@ namespace SmartClinic.UserControls
             }
            else
             {
+                editPatientButton.Enabled = false;
+                deletePatientButton.Enabled = false;
                 foreach (SelectionListener<Patient> listener in selectionListeners)
                 {
                     listener.OnSelectionCleared();

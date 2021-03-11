@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SmartClinic.Model;
+using SmartClinic.UserControls;
 
 namespace SmartClinic.View
 {
@@ -22,6 +23,7 @@ namespace SmartClinic.View
             this.loginForm = loginForm;
             this.newAppointmentForm = new NewAppointmentForm();
             this.newPatientForm = new NewPatientForm();
+            this.searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
         }
 
         /// <summary>
