@@ -10,9 +10,9 @@ namespace SmartClinic.UserControls
 {
     public partial class PatientVisitsUserControl : UserControl
     {
-        private List<SelectionListener<Patient>> selectionListeners;
+        private List<SelectionListener<PatientVisits>> selectionListeners;
         private readonly PatientController patientController;
-        private readonly UpdatePatientForm updatePatientForm;
+        private readonly PatientVisitDetailsForm patientVisitDetailsForm;
         public enum SearchFormMode
         {
             OnlySearch,
@@ -24,8 +24,8 @@ namespace SmartClinic.UserControls
             InitializeComponent();
             formMode = SearchFormMode.OnlySearch;
             patientController = new PatientController();
-            selectionListeners = new List<SelectionListener<Patient>>();
-            updatePatientForm = new UpdatePatientForm();
+            selectionListeners = new List<SelectionListener<PatientVisits>>();
+            this.patientVisitDetailsForm = new PatientVisitDetailsForm();
         }
 
         public void ChangeFormMode(SearchFormMode formMode)
@@ -41,7 +41,7 @@ namespace SmartClinic.UserControls
             }
         }
 
-        public void AddSelectionListener(SelectionListener<Patient> selectionListener)
+        public void AddSelectionListener(SelectionListener<PatientVisits> selectionListener)
         {
             if (!selectionListeners.Contains(selectionListener))
             {
@@ -158,16 +158,16 @@ namespace SmartClinic.UserControls
                 {
                     viewOrEditPatientVisitDetailsButton.Enabled = true;
                 }
-                foreach (SelectionListener<Patient> listener in selectionListeners)
+                foreach (SelectionListener<PatientVisits> listener in selectionListeners)
                 {
-                    Patient patient = (Patient)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
-                    listener.OnSelect(patient);
+                    PatientVisits appointmentID = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
+                    listener.OnSelect(appointmentID);
                 }
             }
             else
             {
                 viewOrEditPatientVisitDetailsButton.Enabled = false;
-                foreach (SelectionListener<Patient> listener in selectionListeners)
+                foreach (SelectionListener<PatientVisits> listener in selectionListeners)
                 {
                     listener.OnSelectionCleared();
                 }
@@ -199,10 +199,10 @@ namespace SmartClinic.UserControls
                 }
                 else
                 {
-                    foreach (SelectionListener<Patient> listener in selectionListeners)
+                    foreach (SelectionListener<PatientVisits> listener in selectionListeners)
                     {
-                        Patient patient = (Patient)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
-                        listener.OnDoubleClickSelect(patient);
+                        PatientVisits patientVisit = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
+                        listener.OnDoubleClickSelect(patientVisit);
                     }
                 }
             }
@@ -215,8 +215,10 @@ namespace SmartClinic.UserControls
 
         private void OpenUpdatePatientForm()
         {
-            Patient patient = (Patient)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
-            updatePatientForm.ShowForPatient(patient.PatientId);
+            //PatientVisits patientVisit = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
+            PatientVisits patientVisit = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
+            Console.WriteLine("PatientVisit: " + patientVisit.AppointmentID);
+            patientVisitDetailsForm.ShowForPatientVisit(patientVisit.AppointmentID);
         }
     }
 }

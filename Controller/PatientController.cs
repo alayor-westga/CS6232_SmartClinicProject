@@ -25,6 +25,7 @@ namespace SmartClinic.Controller
             return this.patientSource.GetClinicPerson(patientID);
         }
 
+
         /// <summary>
         /// It searches patients by their date of birth.
         /// </summary>

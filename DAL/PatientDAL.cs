@@ -37,6 +37,8 @@ namespace SmartClinic.DAL
             );
         }
 
+       
+
         /// <summary>
         /// It searches patients by their names.
         /// </summary>

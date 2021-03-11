@@ -49,20 +49,18 @@ namespace SmartClinic.View
             this.initialDiagnosisTextBox = new System.Windows.Forms.TextBox();
             this.systolicTextBox = new System.Windows.Forms.TextBox();
             this.symptomsTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dobTextBox = new System.Windows.Forms.Label();
+            this.timeTextBox = new System.Windows.Forms.Label();
             this.dobLabel = new System.Windows.Forms.Label();
             this.nurse = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.firstNameLabel = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.doctorTextBox = new System.Windows.Forms.Label();
+            this.PatientNameLabel = new System.Windows.Forms.Label();
+            this.appointmentDateTextBox = new System.Windows.Forms.Label();
+            this.nurseTextBox = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.appointmentDateLabel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lastNameLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.patientIDTextBox = new System.Windows.Forms.Label();
+            this.patientNameTextBox = new System.Windows.Forms.Label();
             this.doctorLabel = new System.Windows.Forms.Label();
             this.patientIDLabel = new System.Windows.Forms.Label();
             this.slashLabel = new System.Windows.Forms.Label();
@@ -248,31 +246,31 @@ namespace SmartClinic.View
             this.symptomsTextBox.Size = new System.Drawing.Size(396, 196);
             this.symptomsTextBox.TabIndex = 54;
             // 
-            // label2
+            // dobTextBox
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(786, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 23);
-            this.label2.TabIndex = 53;
+            this.dobTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dobTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dobTextBox.Location = new System.Drawing.Point(713, 23);
+            this.dobTextBox.Name = "dobTextBox";
+            this.dobTextBox.Size = new System.Drawing.Size(164, 23);
+            this.dobTextBox.TabIndex = 53;
             // 
-            // label1
+            // timeTextBox
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(787, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 23);
-            this.label1.TabIndex = 52;
+            this.timeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.timeTextBox.Location = new System.Drawing.Point(511, 67);
+            this.timeTextBox.Name = "timeTextBox";
+            this.timeTextBox.Size = new System.Drawing.Size(164, 23);
+            this.timeTextBox.TabIndex = 52;
             // 
             // dobLabel
             // 
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dobLabel.ForeColor = System.Drawing.Color.Black;
-            this.dobLabel.Location = new System.Drawing.Point(704, 65);
+            this.dobLabel.Location = new System.Drawing.Point(651, 23);
             this.dobLabel.Name = "dobLabel";
-            this.dobLabel.Size = new System.Drawing.Size(76, 23);
+            this.dobLabel.Size = new System.Drawing.Size(66, 23);
             this.dobLabel.TabIndex = 51;
             this.dobLabel.Text = "DOB:";
             this.dobLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -281,65 +279,56 @@ namespace SmartClinic.View
             // 
             this.nurse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nurse.ForeColor = System.Drawing.Color.Black;
-            this.nurse.Location = new System.Drawing.Point(36, 157);
+            this.nurse.Location = new System.Drawing.Point(405, 112);
             this.nurse.Name = "nurse";
             this.nurse.Size = new System.Drawing.Size(100, 23);
             this.nurse.TabIndex = 50;
             this.nurse.Text = "Nurse:";
             this.nurse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label12
+            // doctorTextBox
             // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label12.Location = new System.Drawing.Point(142, 111);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(213, 23);
-            this.label12.TabIndex = 49;
+            this.doctorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doctorTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.doctorTextBox.Location = new System.Drawing.Point(152, 112);
+            this.doctorTextBox.Name = "doctorTextBox";
+            this.doctorTextBox.Size = new System.Drawing.Size(213, 23);
+            this.doctorTextBox.TabIndex = 49;
             // 
-            // firstNameLabel
+            // PatientNameLabel
             // 
-            this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.firstNameLabel.Location = new System.Drawing.Point(15, 65);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(121, 23);
-            this.firstNameLabel.TabIndex = 48;
-            this.firstNameLabel.Text = "First Name:";
-            this.firstNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.PatientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientNameLabel.ForeColor = System.Drawing.Color.Black;
+            this.PatientNameLabel.Location = new System.Drawing.Point(263, 21);
+            this.PatientNameLabel.Name = "PatientNameLabel";
+            this.PatientNameLabel.Size = new System.Drawing.Size(140, 23);
+            this.PatientNameLabel.TabIndex = 48;
+            this.PatientNameLabel.Text = "Patient Name:";
+            this.PatientNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label10
+            // appointmentDateTextBox
             // 
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label10.Location = new System.Drawing.Point(485, 111);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(224, 23);
-            this.label10.TabIndex = 47;
+            this.appointmentDateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentDateTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.appointmentDateTextBox.Location = new System.Drawing.Point(161, 67);
+            this.appointmentDateTextBox.Name = "appointmentDateTextBox";
+            this.appointmentDateTextBox.Size = new System.Drawing.Size(224, 23);
+            this.appointmentDateTextBox.TabIndex = 47;
             // 
-            // label9
+            // nurseTextBox
             // 
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label9.Location = new System.Drawing.Point(485, 65);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(224, 23);
-            this.label9.TabIndex = 46;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label8.Location = new System.Drawing.Point(142, 157);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(213, 23);
-            this.label8.TabIndex = 45;
+            this.nurseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nurseTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.nurseTextBox.Location = new System.Drawing.Point(511, 112);
+            this.nurseTextBox.Name = "nurseTextBox";
+            this.nurseTextBox.Size = new System.Drawing.Size(213, 23);
+            this.nurseTextBox.TabIndex = 45;
             // 
             // timeLabel
             // 
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLabel.ForeColor = System.Drawing.Color.Black;
-            this.timeLabel.Location = new System.Drawing.Point(704, 111);
+            this.timeLabel.Location = new System.Drawing.Point(428, 67);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(77, 23);
             this.timeLabel.TabIndex = 44;
@@ -350,47 +339,36 @@ namespace SmartClinic.View
             // 
             this.appointmentDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateLabel.ForeColor = System.Drawing.Color.Black;
-            this.appointmentDateLabel.Location = new System.Drawing.Point(353, 111);
+            this.appointmentDateLabel.Location = new System.Drawing.Point(29, 67);
             this.appointmentDateLabel.Name = "appointmentDateLabel";
             this.appointmentDateLabel.Size = new System.Drawing.Size(126, 23);
             this.appointmentDateLabel.TabIndex = 43;
             this.appointmentDateLabel.Text = "Appt. Date:";
             this.appointmentDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label5
+            // patientIDTextBox
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(142, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 23);
-            this.label5.TabIndex = 42;
+            this.patientIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIDTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.patientIDTextBox.Location = new System.Drawing.Point(152, 22);
+            this.patientIDTextBox.Name = "patientIDTextBox";
+            this.patientIDTextBox.Size = new System.Drawing.Size(105, 23);
+            this.patientIDTextBox.TabIndex = 42;
             // 
-            // lastNameLabel
+            // patientNameTextBox
             // 
-            this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.lastNameLabel.Location = new System.Drawing.Point(358, 65);
-            this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(121, 23);
-            this.lastNameLabel.TabIndex = 41;
-            this.lastNameLabel.Text = "Last Name:";
-            this.lastNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(142, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(213, 23);
-            this.label3.TabIndex = 40;
+            this.patientNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientNameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.patientNameTextBox.Location = new System.Drawing.Point(409, 22);
+            this.patientNameTextBox.Name = "patientNameTextBox";
+            this.patientNameTextBox.Size = new System.Drawing.Size(213, 23);
+            this.patientNameTextBox.TabIndex = 40;
             // 
             // doctorLabel
             // 
             this.doctorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doctorLabel.ForeColor = System.Drawing.Color.Black;
-            this.doctorLabel.Location = new System.Drawing.Point(36, 111);
+            this.doctorLabel.Location = new System.Drawing.Point(55, 111);
             this.doctorLabel.Name = "doctorLabel";
             this.doctorLabel.Size = new System.Drawing.Size(100, 23);
             this.doctorLabel.TabIndex = 39;
@@ -401,7 +379,7 @@ namespace SmartClinic.View
             // 
             this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.patientIDLabel.Location = new System.Drawing.Point(26, 21);
+            this.patientIDLabel.Location = new System.Drawing.Point(45, 21);
             this.patientIDLabel.Name = "patientIDLabel";
             this.patientIDLabel.Size = new System.Drawing.Size(110, 23);
             this.patientIDLabel.TabIndex = 38;
@@ -443,20 +421,18 @@ namespace SmartClinic.View
             this.Controls.Add(this.initialDiagnosisTextBox);
             this.Controls.Add(this.systolicTextBox);
             this.Controls.Add(this.symptomsTextBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dobTextBox);
+            this.Controls.Add(this.timeTextBox);
             this.Controls.Add(this.dobLabel);
             this.Controls.Add(this.nurse);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.firstNameLabel);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.doctorTextBox);
+            this.Controls.Add(this.PatientNameLabel);
+            this.Controls.Add(this.appointmentDateTextBox);
+            this.Controls.Add(this.nurseTextBox);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.appointmentDateLabel);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lastNameLabel);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.patientIDTextBox);
+            this.Controls.Add(this.patientNameTextBox);
             this.Controls.Add(this.doctorLabel);
             this.Controls.Add(this.patientIDLabel);
             this.Controls.Add(this.slashLabel);
@@ -489,20 +465,18 @@ namespace SmartClinic.View
         private System.Windows.Forms.TextBox initialDiagnosisTextBox;
         private System.Windows.Forms.TextBox systolicTextBox;
         private System.Windows.Forms.TextBox symptomsTextBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label dobTextBox;
+        private System.Windows.Forms.Label timeTextBox;
         private System.Windows.Forms.Label dobLabel;
         private System.Windows.Forms.Label nurse;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label firstNameLabel;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label doctorTextBox;
+        private System.Windows.Forms.Label PatientNameLabel;
+        private System.Windows.Forms.Label appointmentDateTextBox;
+        private System.Windows.Forms.Label nurseTextBox;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label appointmentDateLabel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label patientIDTextBox;
+        private System.Windows.Forms.Label patientNameTextBox;
         private System.Windows.Forms.Label doctorLabel;
         private System.Windows.Forms.Label patientIDLabel;
         private System.Windows.Forms.Label slashLabel;
