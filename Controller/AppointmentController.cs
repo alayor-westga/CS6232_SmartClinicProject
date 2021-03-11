@@ -11,6 +11,7 @@ namespace SmartClinic.Controller
     public class AppointmentController
     {
         private readonly AppointmentDAL appointmentSource;
+        private readonly VisitDAL visitSource;
 
         /// <summary>
         /// It creates a AppointmentController object.
@@ -18,6 +19,7 @@ namespace SmartClinic.Controller
         public AppointmentController()
         {
             appointmentSource = new AppointmentDAL();
+            visitSource = new VisitDAL();
         }
 
         /// <summary>
@@ -89,6 +91,10 @@ namespace SmartClinic.Controller
             if (appointmentId < 0)
             {
                 throw new ArgumentException("The appointmentId must not be negative.");
+            }
+            if (visitSource.ExistsForAppointmentId(appointmentId))
+            {
+                throw new ArgumentException("There is an assigned visit to this appointment. Thus, it cannot be deleted.");
             }
             int deletedRows = appointmentSource.Delete(appointmentId);
             {
