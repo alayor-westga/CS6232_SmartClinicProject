@@ -44,7 +44,8 @@ namespace SmartClinic.DAL
         /// </summary>
         /// <param name="existingAppointment">The existing appoinment.</param>
         /// <param name="newAppointment">The appointment to be updated.</param>
-        public void Update(Appointment existingAppointment, Appointment appointmentChanges)
+        /// <returns>The number of deleted rows.</returns>
+        public int Update(Appointment existingAppointment, Appointment appointmentChanges)
         {
             if (appointmentChanges == null)
             {
@@ -70,11 +71,32 @@ namespace SmartClinic.DAL
                     updateCommand.Parameters.AddWithValue("@ExistingDate", existingAppointment.Date);
                     updateCommand.Parameters.AddWithValue("@ExistingDoctorId", existingAppointment.DoctorId);
                     updateCommand.Parameters.AddWithValue("@ExistingReason", existingAppointment.Reason);
-                    int result = updateCommand.ExecuteNonQuery();
-                    if (result == 0)
-                    {
-                        throw new Exception("Now rows were updated");
-                    }
+                    return updateCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// It deletes an appointment from the data base.
+        /// </summary>
+        /// <param name="appointmentId">The appointment id to be deleted.</param>
+        /// <returns>The number of deleted rows.</returns>
+        public int Delete(int appointmentId)
+        {
+            if (appointmentId < 0)
+            {
+                throw new ArgumentException("The appointmentId must not be negative.");
+            }
+            string updateStatement = "DELETE Appointments" +
+            " WHERE appointment_id = @AppointmentId;";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@AppointmentId", appointmentId);
+                    return updateCommand.ExecuteNonQuery();
                 }
             }
         }

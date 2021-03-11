@@ -72,7 +72,28 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The appointment date cannot be in the past.");
             }
-            appointmentSource.Update(existingAppointment, appointmentChanges);
+            int updatedRows = appointmentSource.Update(existingAppointment, appointmentChanges);
+            if (updatedRows < 1) 
+            {
+                throw new ArgumentException("The appointment couldn't get updated. It may have changed by other user.");
+            }
+        }
+
+        /// <summary>
+        /// It deletes an appointment from the data base.
+        /// </summary>
+        /// <param name="appointmentId">The appointment id to be deleted.</param>
+        /// <returns>The number of deleted rows.</returns>
+        public int Delete(int appointmentId)
+        {
+            if (appointmentId < 0)
+            {
+                throw new ArgumentException("The appointmentId must not be negative.");
+            }
+            int deletedRows = appointmentSource.Delete(appointmentId);
+            {
+                throw new ArgumentException("The appointment couldn't get deleted.");
+            }
         }
 
         private bool HasAnyUpdateChanges(Appointment existingAppointment, Appointment appointmentChanges)

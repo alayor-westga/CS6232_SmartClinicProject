@@ -138,5 +138,30 @@ namespace SmartClinic.View
                 return;
             }
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (!ValidateUpdateTimeLimit())
+            {
+                return;
+            }
+            try
+            {
+                appointmentController.Delete(appointment.AppointmentId);
+                MessageBox.Show("The apointment has been deleted", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("The appointment could not get deleted.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
     }
 }
