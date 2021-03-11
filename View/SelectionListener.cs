@@ -7,8 +7,10 @@ namespace SmartClinic.View
 {
     public interface SelectionListener<T>
     {
-       void OnSelect(T selectedValue);
+        void OnSelect(T selectedValue);
 
-       void OnSelectionCleared();
+        void OnDoubleClickSelect(T selectedValue);
+
+        void OnSelectionCleared();
     }
 }

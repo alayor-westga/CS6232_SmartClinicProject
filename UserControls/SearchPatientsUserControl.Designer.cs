@@ -284,6 +284,7 @@ namespace SmartClinic.UserControls
             this.patientsDataGridView.Size = new System.Drawing.Size(1162, 238);
             this.patientsDataGridView.TabIndex = 38;
             this.patientsDataGridView.SelectionChanged += new System.EventHandler(this.PatientsDataGridView_SelectionChanged);
+            this.patientsDataGridView.DoubleClick += new System.EventHandler(this.PatientsDataGridView_DoubleClick);
             // 
             // patientIdDataGridViewTextBoxColumn
             // 

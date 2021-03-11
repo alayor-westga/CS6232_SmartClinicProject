@@ -29,6 +29,7 @@ namespace SmartClinic.UserControls
 
         private void SearchPatientsUserControl_Load(object sender, EventArgs e)
         {
+            Clear();
             searchByDOBOnlyRadioButton.Checked = true;
         }
 
@@ -140,12 +141,29 @@ namespace SmartClinic.UserControls
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            Clear();
+        }
+
+        private void Clear()
+        {
             dobOnlyDatePicker.Value = DateTime.Now;
             firstNameTextBox.Text = "";
             lastNameTextBox.Text = "";
             dobCombinedDatePicker.Value = DateTime.Now;
             lastNameCombinedTextBox.Text = "";
             patientsDataGridView.DataSource = null;
+        }
+
+        private void PatientsDataGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (patientsDataGridView.SelectedRows.Count > 0)
+            {
+                foreach (SelectionListener<Patient> listener in selectionListeners)
+                {
+                    Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
+                    listener.OnDoubleClickSelect(patient);
+                }
+            }
         }
     }
 }
