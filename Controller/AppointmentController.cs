@@ -97,7 +97,7 @@ namespace SmartClinic.Controller
                 throw new ArgumentException("There is an assigned visit to this appointment. Thus, it cannot be deleted.");
             }
             int deletedRows = appointmentSource.Delete(appointmentId);
-            {
+            if (deletedRows < 1) 
                 throw new ArgumentException("The appointment couldn't get deleted.");
             }
         }
