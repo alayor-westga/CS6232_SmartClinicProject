@@ -1,7 +1,7 @@
 ﻿
 namespace SmartClinic.View
 {
-    partial class UpdatePatient
+    partial class UpdatePatientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace SmartClinic.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.patientIDLabel = new System.Windows.Forms.Label();
+            this.patientIdLabel = new System.Windows.Forms.Label();
             this.dobErrorLabel = new System.Windows.Forms.Label();
             this.zipCodeErrorLabel = new System.Windows.Forms.Label();
             this.stateErrorLabel = new System.Windows.Forms.Label();
@@ -68,16 +68,16 @@ namespace SmartClinic.View
             this.ssnLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // patientIDLabel
+            // patientIdLabel
             // 
-            this.patientIDLabel.Enabled = false;
-            this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.patientIDLabel.Location = new System.Drawing.Point(792, 112);
-            this.patientIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.patientIDLabel.Name = "patientIDLabel";
-            this.patientIDLabel.Size = new System.Drawing.Size(390, 36);
-            this.patientIDLabel.TabIndex = 67;
+            this.patientIdLabel.Enabled = false;
+            this.patientIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIdLabel.ForeColor = System.Drawing.Color.Black;
+            this.patientIdLabel.Location = new System.Drawing.Point(792, 112);
+            this.patientIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.patientIdLabel.Name = "patientIdLabel";
+            this.patientIdLabel.Size = new System.Drawing.Size(390, 36);
+            this.patientIdLabel.TabIndex = 67;
             // 
             // dobErrorLabel
             // 
@@ -448,7 +448,7 @@ namespace SmartClinic.View
             this.ssnLabel.TabIndex = 69;
             this.ssnLabel.Text = "SSN:";
             // 
-            // UpdatePatient
+            // UpdatePatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -457,7 +457,7 @@ namespace SmartClinic.View
             this.Controls.Add(this.ssnTextBox);
             this.Controls.Add(this.ssnLabel);
             this.Controls.Add(this.saveChangesAndCloseButton);
-            this.Controls.Add(this.patientIDLabel);
+            this.Controls.Add(this.patientIdLabel);
             this.Controls.Add(this.dobErrorLabel);
             this.Controls.Add(this.zipCodeErrorLabel);
             this.Controls.Add(this.stateErrorLabel);
@@ -494,7 +494,7 @@ namespace SmartClinic.View
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "UpdatePatient";
+            this.Name = "UpdatePatientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Patient";
             this.ResumeLayout(false);
@@ -504,7 +504,7 @@ namespace SmartClinic.View
 
         #endregion
 
-        private System.Windows.Forms.Label patientIDLabel;
+        private System.Windows.Forms.Label patientIdLabel;
         private System.Windows.Forms.Label dobErrorLabel;
         private System.Windows.Forms.Label zipCodeErrorLabel;
         private System.Windows.Forms.Label stateErrorLabel;

@@ -414,7 +414,7 @@ namespace SmartClinic.DAL
                             patient.State = (string)reader["state"];
                             patient.ZipCode = (string)reader["zip_code"];
                             patient.Phone = (string)reader["phone_number"];
-                            patient.SSN = (string)reader["ssn"];
+                            patient.SSN = reader["ssn"] == DBNull.Value ? "" : (string)reader["ssn"];
                         }
                     }
                 }

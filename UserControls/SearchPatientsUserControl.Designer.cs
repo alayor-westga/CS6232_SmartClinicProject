@@ -300,6 +300,7 @@ namespace SmartClinic.UserControls
             this.editPatientButton.Text = "View/Edit Patient";
             this.editPatientButton.UseVisualStyleBackColor = true;
             this.editPatientButton.Visible = false;
+            this.editPatientButton.Click += new System.EventHandler(this.EditPatientButton_Click);
             // 
             // deletePatientButton
             // 

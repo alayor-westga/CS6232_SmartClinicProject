@@ -12,6 +12,7 @@ namespace SmartClinic.UserControls
     {
         private List<SelectionListener<Patient>> selectionListeners;
         private readonly PatientController patientController;
+        private readonly UpdatePatientForm updatePatientForm;
         public enum SearchFormMode
         { 
             OnlySearch,
@@ -24,6 +25,7 @@ namespace SmartClinic.UserControls
             formMode = SearchFormMode.OnlySearch;
             patientController = new PatientController();
             selectionListeners = new List<SelectionListener<Patient>>();
+            updatePatientForm = new UpdatePatientForm();
         }
 
         public void ChangeFormMode(SearchFormMode formMode)
@@ -196,6 +198,12 @@ namespace SmartClinic.UserControls
                     listener.OnDoubleClickSelect(patient);
                 }
             }
+        }
+
+        private void EditPatientButton_Click(object sender, EventArgs e)
+        {
+            Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
+            updatePatientForm.ShowForPatient(patient.PatientId);
         }
     }
 }

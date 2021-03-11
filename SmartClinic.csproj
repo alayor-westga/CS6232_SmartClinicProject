@@ -291,11 +291,11 @@
       <DependentUpon>SearchPatientsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SelectionListener.cs" />
-    <Compile Include="View\UpdatePatient.cs">
+    <Compile Include="View\UpdatePatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\UpdatePatient.Designer.cs">
-      <DependentUpon>UpdatePatient.cs</DependentUpon>
+    <Compile Include="View\UpdatePatientForm.Designer.cs">
+      <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -329,8 +329,8 @@
     <EmbeddedResource Include="View\SearchPatientsForm.resx">
       <DependentUpon>SearchPatientsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UpdatePatient.resx">
-      <DependentUpon>UpdatePatient.cs</DependentUpon>
+    <EmbeddedResource Include="View\UpdatePatientForm.resx">
+      <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
