@@ -42,9 +42,17 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The reason must not be empty.");
             }
+            if (newAppointment.Date < DateTime.Now.AddMinutes(-1))
+            {
+                throw new ArgumentException("The appointment date cannot be in the past.");
+            }
             if (appointmentSource.ExistsForDoctorAndDate(newAppointment.DoctorId, newAppointment.Date))
             {
                 throw new ArgumentException("The doctor has an existing appointment at the specified time.");
+            }
+            if (appointmentSource.ExistsForPatientAndDate(newAppointment.PatientId, newAppointment.Date))
+            {
+                throw new ArgumentException("The patient has an existing appointment at the specified time.");
             }
             appointmentSource.Insert(newAppointment);
         }
@@ -59,6 +67,10 @@ namespace SmartClinic.Controller
             if (!HasAnyUpdateChanges(existingAppointment, appointmentChanges))
             {
                 throw new ArgumentException("No changes have been detected.");
+            }
+            if (appointmentChanges.Date < DateTime.Now.AddMinutes(-1))
+            {
+                throw new ArgumentException("The appointment date cannot be in the past.");
             }
             appointmentSource.Update(existingAppointment, appointmentChanges);
         }

@@ -59,6 +59,11 @@ namespace SmartClinic.UserControls
 
         private void SearchByDOBOnlyRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            EnableSearchByDOBOnlySection();
+        }
+
+        private void EnableSearchByDOBOnlySection()
+        {
             EnableSearchByDOBOnly();
             DisableNamesSearch();
             DisableDOBLastNameSearch();
@@ -66,12 +71,22 @@ namespace SmartClinic.UserControls
 
         private void SearchByNamesRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            EnableNamesSearchSection();
+        }
+
+        private void EnableNamesSearchSection()
+        {
             DisableSearchByDOBOnly();
             EnableNamesSearch();
             DisableDOBLastNameSearch();
         }
 
         private void SearchByDOBAndLastNameRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            EnableDOBLastNameSearchSection();
+        }
+
+        private void EnableDOBLastNameSearchSection()
         {
             DisableSearchByDOBOnly();
             DisableNamesSearch();
@@ -217,6 +232,31 @@ namespace SmartClinic.UserControls
         {
             Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
             updatePatientForm.ShowForPatient(patient.PatientId);
+        }
+
+        private void DobOnlyLabel_Click(object sender, EventArgs e)
+        {
+            searchByDOBOnlyRadioButton.Checked = true;
+        }
+
+        private void FirstNameLabel_Click(object sender, EventArgs e)
+        {
+            searchByNamesRadioButton.Checked = true;
+        }
+
+        private void LastNameLabel_Click(object sender, EventArgs e)
+        {
+            searchByNamesRadioButton.Checked = true;
+        }
+
+        private void DobCombinedLabel_Click(object sender, EventArgs e)
+        {
+            searchByDOBAndLastNameRadioButton.Checked = true;
+        }
+
+        private void LastNameCombinedLabel_Click(object sender, EventArgs e)
+        {
+            searchByDOBAndLastNameRadioButton.Checked = true;
         }
     }
 }

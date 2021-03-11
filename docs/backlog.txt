@@ -11,7 +11,7 @@ APPOINTMENTS
 
 * (#5) As Nurse, I want to make sure there are no double appointments with the same doctor at the same time.
 
-* As Nurse, I want to delete an appointment if there is no visit associated with it yet.
+* (#19) As Nurse, I want to delete an appointment if there is no visit associated with it yet.
 
 * (#6) As Nurse, I want to edit an appointments within 24 hours before the appointment date time.
 
@@ -21,7 +21,7 @@ APPOINTMENTS
 PATIENTS
 * (#3) As Nurse, I want to edit the personal information of existing patients.
 
-* As Nurse, I want to delete existing patients if they have no scheduled appointments.
+* (#20) As Nurse, I want to delete existing patients if they have no scheduled appointments.
 
 
  VISITS
@@ -31,9 +31,9 @@ PATIENTS
 
 * (#11) As Nurse, I want to capture all the visit details (check up, symptoms, etc) even if I didn't scheduled the appointment.
 
-* As Nurse, I want to see the information of the doctor that was associated with the appointment.
+* (#21) As Nurse, I want to see the information of the doctor that was associated with the appointment.
 
-* As Nurse, I want to capture the initial diagnosis on behalf of the doctor.
+* (#22) As Nurse, I want to capture the initial diagnosis on behalf of the doctor.
 
 * (#12) As Nurse, I want to see the patient's past visits information (e.g. routine check results and any tests ordered and the results if available)
 

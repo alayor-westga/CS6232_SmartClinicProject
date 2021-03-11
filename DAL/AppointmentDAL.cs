@@ -120,6 +120,7 @@ namespace SmartClinic.DAL
                 return patientVisit;
             }
         }
+
         /// <summary>
         /// It verifies if an appoinment exists for the same doctor and date.
         /// </summary>
@@ -148,6 +149,50 @@ namespace SmartClinic.DAL
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
                     selectCommand.Parameters.AddWithValue("@DoctorId", doctorId);
+                    selectCommand.Parameters.AddWithValue("@AppointmentDate", appointmentDate);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// It verifies if an appoinment exists for the same patient and date.
+        /// </summary>
+        /// <param name="patientId">The appointment's patientId.</param>
+        /// <param name="appointmentDate">The appointment's date time.</param>
+        /// <returns>True if exists. False otherwise.</returns>
+        public bool ExistsForPatientAndDate(int patientId, DateTime appointmentDate)
+        {
+            if (patientId < 0)
+            {
+                throw new ArgumentException("patientId must not be negative.");
+            }
+            if (appointmentDate == null)
+            {
+                throw new ArgumentNullException("appointmentDate");
+            }
+            string selectStatement =
+            " SELECT appointment_id" +
+            " FROM Appointments" +
+            " WHERE patient_id = @PatientId" +
+            " AND date = @AppointmentDate;";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@PatientId", patientId);
                     selectCommand.Parameters.AddWithValue("@AppointmentDate", appointmentDate);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {

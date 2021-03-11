@@ -137,7 +137,7 @@ namespace SmartClinic.View
             // 
             // appointmentDatePicker
             // 
-            this.appointmentDatePicker.CustomFormat = "dd/MM/yyyy";
+            this.appointmentDatePicker.CustomFormat = "MM/dd/yyyy";
             this.appointmentDatePicker.Enabled = false;
             this.appointmentDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;

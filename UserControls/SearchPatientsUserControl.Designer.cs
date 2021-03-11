@@ -47,14 +47,14 @@ namespace SmartClinic.UserControls
             this.clearButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
-            this.editPatientButton = new System.Windows.Forms.Button();
-            this.deletePatientButton = new System.Windows.Forms.Button();
-            this.searchMessageLabel = new System.Windows.Forms.Label();
             this.patientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.editPatientButton = new System.Windows.Forms.Button();
+            this.deletePatientButton = new System.Windows.Forms.Button();
+            this.searchMessageLabel = new System.Windows.Forms.Label();
             this.searchForPatientsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
@@ -104,6 +104,7 @@ namespace SmartClinic.UserControls
             this.lastNameCombinedLabel.Size = new System.Drawing.Size(182, 37);
             this.lastNameCombinedLabel.TabIndex = 34;
             this.lastNameCombinedLabel.Text = "Last Name:";
+            this.lastNameCombinedLabel.Click += new System.EventHandler(this.LastNameCombinedLabel_Click);
             // 
             // searchByDOBAndLastNameRadioButton
             // 
@@ -140,6 +141,7 @@ namespace SmartClinic.UserControls
             this.firstNameLabel.Size = new System.Drawing.Size(184, 37);
             this.firstNameLabel.TabIndex = 16;
             this.firstNameLabel.Text = "First Name:";
+            this.firstNameLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
             // 
             // dobCombinedLabel
             // 
@@ -152,6 +154,7 @@ namespace SmartClinic.UserControls
             this.dobCombinedLabel.Size = new System.Drawing.Size(204, 37);
             this.dobCombinedLabel.TabIndex = 31;
             this.dobCombinedLabel.Text = "Date of Birth:";
+            this.dobCombinedLabel.Click += new System.EventHandler(this.DobCombinedLabel_Click);
             // 
             // lastNameLabel
             // 
@@ -164,6 +167,7 @@ namespace SmartClinic.UserControls
             this.lastNameLabel.Size = new System.Drawing.Size(182, 37);
             this.lastNameLabel.TabIndex = 17;
             this.lastNameLabel.Text = "Last Name:";
+            this.lastNameLabel.Click += new System.EventHandler(this.LastNameLabel_Click);
             // 
             // searchByNamesRadioButton
             // 
@@ -232,6 +236,7 @@ namespace SmartClinic.UserControls
             this.dobOnlyLabel.Size = new System.Drawing.Size(204, 37);
             this.dobOnlyLabel.TabIndex = 15;
             this.dobOnlyLabel.Text = "Date of Birth:";
+            this.dobOnlyLabel.Click += new System.EventHandler(this.DobOnlyLabel_Click);
             // 
             // clearButton
             // 
@@ -286,6 +291,42 @@ namespace SmartClinic.UserControls
             this.patientsDataGridView.SelectionChanged += new System.EventHandler(this.PatientsDataGridView_SelectionChanged);
             this.patientsDataGridView.DoubleClick += new System.EventHandler(this.PatientsDataGridView_DoubleClick);
             // 
+            // patientIdDataGridViewTextBoxColumn
+            // 
+            this.patientIdDataGridViewTextBoxColumn.DataPropertyName = "PatientId";
+            this.patientIdDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.patientIdDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.patientIdDataGridViewTextBoxColumn.Name = "patientIdDataGridViewTextBoxColumn";
+            this.patientIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.fullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
+            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
+            // 
             // editPatientButton
             // 
             this.editPatientButton.AutoSize = true;
@@ -325,42 +366,6 @@ namespace SmartClinic.UserControls
             this.searchMessageLabel.Name = "searchMessageLabel";
             this.searchMessageLabel.Size = new System.Drawing.Size(276, 49);
             this.searchMessageLabel.TabIndex = 25;
-            // 
-            // patientIdDataGridViewTextBoxColumn
-            // 
-            this.patientIdDataGridViewTextBoxColumn.DataPropertyName = "PatientId";
-            this.patientIdDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.patientIdDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.patientIdDataGridViewTextBoxColumn.Name = "patientIdDataGridViewTextBoxColumn";
-            this.patientIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fullNameDataGridViewTextBoxColumn
-            // 
-            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.fullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
-            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
-            this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
-            this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
             // 
             // SearchPatientsUserControl
             // 

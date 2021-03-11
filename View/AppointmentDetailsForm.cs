@@ -86,7 +86,7 @@ namespace SmartClinic.View
 
         private bool ValidateUpdateTimeLimit()
         {
-            TimeSpan difference = GetCurrentAppointmentDateTime() - DateTime.Now;
+            TimeSpan difference = appointment.Date - DateTime.Now;
             if (difference.TotalHours < 24)
             {
                 MessageBox.Show("The appointment cannot be edited 24 hours prior the appointment date.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
