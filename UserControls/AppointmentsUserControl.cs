@@ -42,6 +42,9 @@ namespace SmartClinic.UserControls
                 return;
             }
             appointmentsDataGridView.DataSource = appointments;
+            searchMessageLabel.Text = appointments.Count > 0 ?
+                appointments.Count + " Result(s) Returned" :
+                "No Results Returned";
         }
 
         private void ClearSearchFieldsButton_Click(object sender, EventArgs e)

@@ -31,12 +31,6 @@ namespace SmartClinic.UserControls
         {
             this.components = new System.ComponentModel.Container();
             this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
-            this.appointmentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientDateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.viewAppointmentButton = new System.Windows.Forms.Button();
             this.deleteAppointmentButton = new System.Windows.Forms.Button();
             this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
@@ -50,10 +44,17 @@ namespace SmartClinic.UserControls
             this.patientFullNameValueLabel = new System.Windows.Forms.Label();
             this.searchPatientButton = new System.Windows.Forms.Button();
             this.appointmentsGroupBox = new System.Windows.Forms.GroupBox();
+            this.searchMessageLabel = new System.Windows.Forms.Label();
+            this.appointmentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientDateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
             this.searchForPatientsGroupBox.SuspendLayout();
             this.appointmentsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // appointmentsDataGridView
@@ -81,50 +82,6 @@ namespace SmartClinic.UserControls
             this.appointmentsDataGridView.TabIndex = 14;
             this.appointmentsDataGridView.SelectionChanged += new System.EventHandler(this.AppointmentsDataGridView_SelectionChanged);
             this.appointmentsDataGridView.DoubleClick += new System.EventHandler(this.AppointmentsDataGridView_DoubleClick);
-            // 
-            // appointmentDateDataGridViewTextBoxColumn
-            // 
-            this.appointmentDateDataGridViewTextBoxColumn.DataPropertyName = "AppointmentDate";
-            this.appointmentDateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.appointmentDateDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.appointmentDateDataGridViewTextBoxColumn.Name = "appointmentDateDataGridViewTextBoxColumn";
-            this.appointmentDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientFullNameDataGridViewTextBoxColumn
-            // 
-            this.patientFullNameDataGridViewTextBoxColumn.DataPropertyName = "PatientFullName";
-            this.patientFullNameDataGridViewTextBoxColumn.HeaderText = "Patient";
-            this.patientFullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.patientFullNameDataGridViewTextBoxColumn.Name = "patientFullNameDataGridViewTextBoxColumn";
-            this.patientFullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientDateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.patientDateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "PatientDateOfBirth";
-            this.patientDateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
-            this.patientDateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.patientDateOfBirthDataGridViewTextBoxColumn.Name = "patientDateOfBirthDataGridViewTextBoxColumn";
-            this.patientDateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // patientAddressDataGridViewTextBoxColumn
-            // 
-            this.patientAddressDataGridViewTextBoxColumn.DataPropertyName = "PatientAddress";
-            this.patientAddressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.patientAddressDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.patientAddressDataGridViewTextBoxColumn.Name = "patientAddressDataGridViewTextBoxColumn";
-            this.patientAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // doctorFullNameDataGridViewTextBoxColumn
-            // 
-            this.doctorFullNameDataGridViewTextBoxColumn.DataPropertyName = "DoctorFullName";
-            this.doctorFullNameDataGridViewTextBoxColumn.HeaderText = "Doctor";
-            this.doctorFullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.doctorFullNameDataGridViewTextBoxColumn.Name = "doctorFullNameDataGridViewTextBoxColumn";
-            this.doctorFullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // appointmentSearchResultBindingSource
-            // 
-            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
             // 
             // viewAppointmentButton
             // 
@@ -267,6 +224,7 @@ namespace SmartClinic.UserControls
             // 
             // appointmentsGroupBox
             // 
+            this.appointmentsGroupBox.Controls.Add(this.searchMessageLabel);
             this.appointmentsGroupBox.Controls.Add(this.appointmentsDataGridView);
             this.appointmentsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentsGroupBox.Location = new System.Drawing.Point(12, 278);
@@ -275,6 +233,60 @@ namespace SmartClinic.UserControls
             this.appointmentsGroupBox.TabIndex = 21;
             this.appointmentsGroupBox.TabStop = false;
             this.appointmentsGroupBox.Text = "Appointments";
+            // 
+            // searchMessageLabel
+            // 
+            this.searchMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.searchMessageLabel.Location = new System.Drawing.Point(885, 20);
+            this.searchMessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchMessageLabel.Name = "searchMessageLabel";
+            this.searchMessageLabel.Size = new System.Drawing.Size(268, 29);
+            this.searchMessageLabel.TabIndex = 26;
+            // 
+            // appointmentDateDataGridViewTextBoxColumn
+            // 
+            this.appointmentDateDataGridViewTextBoxColumn.DataPropertyName = "AppointmentDate";
+            this.appointmentDateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.appointmentDateDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.appointmentDateDataGridViewTextBoxColumn.Name = "appointmentDateDataGridViewTextBoxColumn";
+            this.appointmentDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientFullNameDataGridViewTextBoxColumn
+            // 
+            this.patientFullNameDataGridViewTextBoxColumn.DataPropertyName = "PatientFullName";
+            this.patientFullNameDataGridViewTextBoxColumn.HeaderText = "Patient";
+            this.patientFullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.patientFullNameDataGridViewTextBoxColumn.Name = "patientFullNameDataGridViewTextBoxColumn";
+            this.patientFullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientDateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.patientDateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "PatientDateOfBirth";
+            this.patientDateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
+            this.patientDateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.patientDateOfBirthDataGridViewTextBoxColumn.Name = "patientDateOfBirthDataGridViewTextBoxColumn";
+            this.patientDateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientAddressDataGridViewTextBoxColumn
+            // 
+            this.patientAddressDataGridViewTextBoxColumn.DataPropertyName = "PatientAddress";
+            this.patientAddressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.patientAddressDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.patientAddressDataGridViewTextBoxColumn.Name = "patientAddressDataGridViewTextBoxColumn";
+            this.patientAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // doctorFullNameDataGridViewTextBoxColumn
+            // 
+            this.doctorFullNameDataGridViewTextBoxColumn.DataPropertyName = "DoctorFullName";
+            this.doctorFullNameDataGridViewTextBoxColumn.HeaderText = "Doctor";
+            this.doctorFullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.doctorFullNameDataGridViewTextBoxColumn.Name = "doctorFullNameDataGridViewTextBoxColumn";
+            this.doctorFullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // appointmentSearchResultBindingSource
+            // 
+            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
             // 
             // AppointmentsUserControl
             // 
@@ -287,10 +299,10 @@ namespace SmartClinic.UserControls
             this.Name = "AppointmentsUserControl";
             this.Size = new System.Drawing.Size(1236, 790);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
             this.searchForPatientsGroupBox.ResumeLayout(false);
             this.searchForPatientsGroupBox.PerformLayout();
             this.appointmentsGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +329,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.Label patientFullNameValueLabel;
         private System.Windows.Forms.Button searchPatientButton;
         private System.Windows.Forms.GroupBox appointmentsGroupBox;
+        private System.Windows.Forms.Label searchMessageLabel;
     }
 }

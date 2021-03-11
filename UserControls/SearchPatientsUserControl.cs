@@ -118,6 +118,9 @@ namespace SmartClinic.UserControls
                     lastNameCombinedTextBox.Text
                 );
             }
+            searchMessageLabel.Text = patientsDataGridView.Rows.Count > 0 ? 
+                    patientsDataGridView.Rows.Count + " Result(s) Returned" : 
+                    "No Results Returned";
         }
 
         private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)
