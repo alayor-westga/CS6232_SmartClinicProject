@@ -8,6 +8,8 @@ namespace SmartClinic.Model
 {
     public enum States
     {
+        [Description("")]
+        noSelection,
         [Description("AL")]
         AL,
         [Description("AK")]

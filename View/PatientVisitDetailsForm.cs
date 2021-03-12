@@ -93,7 +93,7 @@ namespace SmartClinic.View
             throw new NotImplementedException();
         }
 
-/*
+
 
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
@@ -142,8 +142,13 @@ namespace SmartClinic.View
 
         private void ClearErrorMessages()
         {
-            //dobErrorLabel.Text = "";
-
+            symptomsMessageLabel.Text = "";
+            initialDiagnosisMessageLabel.Text = "";
+            bloodPressureLabel.Text = ";";
+            pulseMessageLabel.Text = ";";
+            weightMessageLabel.Text = ";";
+            finalDiagnosisMessageLabel.Text = ";";
+            temperatureMessageLabel.Text = ";";         
         }
 
 
@@ -151,87 +156,43 @@ namespace SmartClinic.View
         {
             string requiredField = "Required Field";
             var isValid = true;
-            if (firstNameTextBox.Text.Length == 0)
+            if (symptomsTextBox.Text.Length == 0)
             {
                 isValid = false;
-                firstNameErrorLabel.Text = requiredField;
+                symptomsMessageLabel.Text = requiredField;
             }
-            if (lastNameTextBox.Text.Length == 0)
+            if (initialDiagnosisTextBox.Text.Length == 0)
             {
                 isValid = false;
-                lastNameErrorLabel.Text = requiredField;
+                initialDiagnosisLabel.Text = requiredField;
             }
-            if (dob.Text.Length == 0)
+            if (weightTextBox.Text.Length == 0)
             {
                 isValid = false;
-                dobErrorLabel.Text = requiredField;
+                weightMessageLabel.Text = requiredField;
             }
-            if (!(genderTextBox.Text == "M" || genderTextBox.Text == "F" || genderTextBox.Text == "X"))
+            if (tempTextBox.Text.Length == 0)
             {
                 isValid = false;
-                genderErrorLabel.Text = "Accepts 'M', 'F' or 'X'";
+                temperatureLabel.Text = requiredField;
             }
-            if (address1TextBox.Text.Length == 0)
+            if (systolicTextBox.Text.Length == 0)
             {
                 isValid = false;
-                address1ErrorLabel.Text = requiredField;
+                bloodPressureLabel.Text = requiredField;
+            }         
+            if (diastolicTextBox.Text.Length == 0)
+            {
+                isValid = false;
+                bloodPressureLabel.Text = requiredField;
             }
-            if (cityTextBox.Text.Length == 0)
+            if (pulseTextBox.Text.Length == 0)
             {
                 isValid = false;
-                cityErrorLabel.Text = requiredField;
-            }
-            Regex stateRegex = new Regex("[A-Z]{2}");
-            if (!stateRegex.IsMatch(stateTextBox.Text))
-            {
-                isValid = false;
-                stateErrorLabel.Text = "2 letter state code requried";
-            }
-            if (stateTextBox.Text.Length != 2)
-            {
-                isValid = false;
-                stateErrorLabel.Text = "2 letter state code required";
-            }
-            if (stateTextBox.Text.Length == 0)
-            {
-                isValid = false;
-                stateErrorLabel.Text = requiredField;
-            }
-            if (zipCodeTextBox.Text.Length == 0)
-            {
-                isValid = false;
-                zipCodeErrorLabel.Text = requiredField;
-            }
-            Regex phoneRegex = new Regex("[0-9]{10}");
-            if (!phoneRegex.IsMatch(phoneTextBox.Text))
-            {
-                isValid = false;
-                phoneErrorLabel.Text = "only 10 numbers permitted";
-            }
-            if (phoneTextBox.Text.Length != 10)
-            {
-                isValid = false;
-                phoneErrorLabel.Text = "10 digits required";
-            }
-            if (phoneTextBox.Text.Length == 0)
-            {
-                isValid = false;
-                phoneErrorLabel.Text = requiredField;
-            }
-            if (ssnTextBox.Text.Length != 9)
-            {
-                isValid = false;
-                ssnErrorLabel.Text = "9 digits required";
-            }
-            if (ssnTextBox.Text.Length == 0)
-            {
-                isValid = false;
-                ssnErrorLabel.Text = requiredField;
+                pulseMessageLabel.Text = requiredField;
             }
             return isValid;
         }
-*/
-
     }
 }
 
