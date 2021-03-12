@@ -135,6 +135,12 @@ namespace SmartClinic.View
             this.Close();
         }
 
+        private void GetPatientVisit()
+        {
+
+            this.visit = this.patientVisitController.GetPatientVisitByAppointmentID(visit.AppointmentID);
+        }
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -144,11 +150,11 @@ namespace SmartClinic.View
         {
             symptomsMessageLabel.Text = "";
             initialDiagnosisMessageLabel.Text = "";
-            bloodPressureLabel.Text = ";";
-            pulseMessageLabel.Text = ";";
-            weightMessageLabel.Text = ";";
-            finalDiagnosisMessageLabel.Text = ";";
-            temperatureMessageLabel.Text = ";";         
+            bloodPressureLabel.Text = "";
+            pulseMessageLabel.Text = "";
+            weightMessageLabel.Text = "";
+            finalDiagnosisMessageLabel.Text = "";
+            temperatureMessageLabel.Text = "";         
         }
 
 
