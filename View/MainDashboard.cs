@@ -55,5 +55,7 @@ namespace SmartClinic.View
         {
             newPatientForm.ShowDialog();
         }
+
+
     }
 }
