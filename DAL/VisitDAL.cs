@@ -49,6 +49,11 @@ namespace SmartClinic.DAL
             }
         }
 
+        internal bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
+        {
+            throw new NotImplementedException();
+        }
+
         internal PatientVisits GetPatientVisitByAppointmentID(int appointmentID)
         {
             PatientVisits patientVisit = new PatientVisits();
@@ -165,6 +170,32 @@ namespace SmartClinic.DAL
                     }
                 }
                 return patientVisitList;
+            }
+        }
+
+        public bool AppointmentHasNoAssociatedVisit(int appointmentID)
+        {
+            string selectStatement =
+
+                "SELECT count(*) FROM Appointments WHERE appointment_id = @AppointmentID";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentID);
+
+                    if ((Int32)selectCommand.ExecuteScalar() == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
         }
     }

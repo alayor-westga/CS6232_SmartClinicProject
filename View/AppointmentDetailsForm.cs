@@ -14,6 +14,8 @@ namespace SmartClinic.View
         private Appointment appointment;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
+        private readonly PatientVisitController patientVisitController;
+        private PatientVisitDetailsForm patientVisitDetailsForm;
         List<Doctor> doctors;
 
         /// <summary>
@@ -24,6 +26,8 @@ namespace SmartClinic.View
             InitializeComponent();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
+            patientVisitController = new PatientVisitController();
+            this.patientVisitDetailsForm = new PatientVisitDetailsForm();
             doctors = new List<Doctor>();
         }
 
@@ -172,6 +176,19 @@ namespace SmartClinic.View
             Doctor selectedDoctor = doctors[doctorComboBox.SelectedIndex];
             doctorPhoneNumberValueLabel.Text = selectedDoctor.Phone;
             doctorIdValueLabel.Text = selectedDoctor.DoctorId.ToString();
+        }
+
+        private void PatientVisitDetailsButton_Click(object sender, EventArgs e)
+        {
+            if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.appointment.AppointmentId))
+            {
+
+            }
+            else
+            {
+                PatientVisits patientVisit = this.patientVisitController.GetPatientVisitByAppointmentID(this.appointment.AppointmentId);
+                patientVisitDetailsForm.ShowForPatientVisit(patientVisit);
+            }
         }
     }
 }

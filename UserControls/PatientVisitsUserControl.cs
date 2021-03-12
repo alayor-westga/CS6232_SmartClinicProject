@@ -75,7 +75,7 @@ namespace SmartClinic.UserControls
             OpenAppoinmentDetailsDialog();
         }
 
-        private void OpenAppoinmentDetailsDialog()//need to modify this one too to link to PatientVisitDetails
+        private void OpenAppoinmentDetailsDialog()
         {
             PatientVisits patientVisits = (PatientVisits)patientVisitsDataGridView.SelectedRows[0].DataBoundItem;
             patientVisitDetailsForm.ShowForPatientVisit(patientVisits);

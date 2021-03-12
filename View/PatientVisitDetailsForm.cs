@@ -28,14 +28,8 @@ namespace SmartClinic.View
             this.visit = visit;
             PopulateForm();
             ShowDialog();
-        }
-
-        /*
-        private void GetPatientVisit()
-        {
-            this.visit = this.patientVisitController.GetPatientVisit(this.visit.AppointmentID);
-        }
-        */
+        }       
+        
         private void PopulateForm()
         {
             this.apptIDTextBox.Text = this.visit.AppointmentID.ToString();
@@ -138,7 +132,7 @@ namespace SmartClinic.View
         private void GetPatientVisit()
         {
 
-            this.visit = this.patientVisitController.GetPatientVisitByAppointmentID(visit.AppointmentID);
+            this.visit = this.patientVisitController.GetPatientVisitByAppointmentID(this.visit.AppointmentID);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

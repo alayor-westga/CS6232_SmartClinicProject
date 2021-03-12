@@ -30,5 +30,15 @@ namespace SmartClinic.Controller
         {
             return this.visitSource.GetPatientVisitByAppointmentID(appointmentID);
         }
+
+        public bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
+        {
+            return this.visitSource.UpdatePatientVisitInformation(oldVisit, newVisit);
+        }
+
+        public bool AppointmentHasNoAssociatedVisit(int appointmentID)
+        {
+            return this.visitSource.AppointmentHasNoAssociatedVisit(appointmentID);
+        }
     }
 }
