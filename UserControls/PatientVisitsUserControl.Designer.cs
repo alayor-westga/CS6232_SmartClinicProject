@@ -31,6 +31,7 @@ namespace SmartClinic.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchForPatientsGroupBox = new System.Windows.Forms.GroupBox();
             this.newPatientButton = new System.Windows.Forms.Button();
             this.patientDateOfBirthValueLabel = new System.Windows.Forms.Label();
@@ -255,13 +256,24 @@ namespace SmartClinic.UserControls
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn6});
             this.patientVisitsDataGridView.DataSource = this.patientVisitsBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.patientVisitsDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.patientVisitsDataGridView.Location = new System.Drawing.Point(21, 52);
             this.patientVisitsDataGridView.Name = "patientVisitsDataGridView";
             this.patientVisitsDataGridView.ReadOnly = true;
             this.patientVisitsDataGridView.RowHeadersWidth = 51;
             this.patientVisitsDataGridView.RowTemplate.Height = 24;
+            this.patientVisitsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientVisitsDataGridView.Size = new System.Drawing.Size(765, 206);
             this.patientVisitsDataGridView.TabIndex = 14;
+            this.patientVisitsDataGridView.SelectionChanged += new System.EventHandler(this.AppointmentsDataGridView_SelectionChanged);
+            this.patientVisitsDataGridView.DoubleClick += new System.EventHandler(this.AppointmentsDataGridView_DoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
