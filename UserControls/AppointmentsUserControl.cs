@@ -15,6 +15,7 @@ namespace SmartClinic.UserControls
         private Patient selectedPatient;
         private readonly SearchPatientsForm searchPatientsForm;
         private readonly AppointmentDetailsForm appointmentDetailsForm;
+        private readonly Form newPatientForm;
         private readonly AppointmentController appointmentController;
 
         /// <summary>
@@ -26,6 +27,7 @@ namespace SmartClinic.UserControls
             searchPatientsForm = new SearchPatientsForm();
             appointmentDetailsForm = new AppointmentDetailsForm();
             appointmentController = new AppointmentController();
+            newPatientForm = new NewPatientForm();
         }
 
 
@@ -98,6 +100,11 @@ namespace SmartClinic.UserControls
             patientFullNameValueLabel.Text = selectedPatient.FullName;
             patientDateOfBirthValueLabel.Text = selectedPatient.DateOfBirth.ToShortDateString();
             patientAddressValueLabel.Text = selectedPatient.Address;
+        }
+
+        private void NewPatientButton_Click(object sender, EventArgs e)
+        {
+            newPatientForm.ShowDialog();
         }
     }
 }

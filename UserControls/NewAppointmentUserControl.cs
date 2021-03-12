@@ -192,5 +192,10 @@ namespace SmartClinic.UserControls
             patientDateOfBirthValueLabel.Text = selectedPatient.DateOfBirth.ToShortDateString();
             patientAddressValueLabel.Text = selectedPatient.Address;
         }
+
+        private void NewPatientButton_Click(object sender, EventArgs e)
+        {
+            newPatientForm.ShowDialog();
+        }
     }
 }

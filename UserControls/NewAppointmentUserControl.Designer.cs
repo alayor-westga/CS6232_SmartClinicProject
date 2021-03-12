@@ -54,12 +54,14 @@ namespace SmartClinic.UserControls
             this.appointmentTimeLabel = new System.Windows.Forms.Label();
             this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
             this.appointmentDateLabel = new System.Windows.Forms.Label();
+            this.newPatientButton = new System.Windows.Forms.Button();
             this.searchForPatientsGroupBox.SuspendLayout();
             this.newAppoinmentGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchForPatientsGroupBox
             // 
+            this.searchForPatientsGroupBox.Controls.Add(this.newPatientButton);
             this.searchForPatientsGroupBox.Controls.Add(this.patientDateOfBirthValueLabel);
             this.searchForPatientsGroupBox.Controls.Add(this.patientAddressValueLabel);
             this.searchForPatientsGroupBox.Controls.Add(this.patientAddressLabel);
@@ -70,7 +72,7 @@ namespace SmartClinic.UserControls
             this.searchForPatientsGroupBox.Controls.Add(this.patientFullNameValueLabel);
             this.searchForPatientsGroupBox.Controls.Add(this.searchPatientButton);
             this.searchForPatientsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchForPatientsGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.searchForPatientsGroupBox.Location = new System.Drawing.Point(11, 20);
             this.searchForPatientsGroupBox.Name = "searchForPatientsGroupBox";
             this.searchForPatientsGroupBox.Size = new System.Drawing.Size(1202, 226);
             this.searchForPatientsGroupBox.TabIndex = 21;
@@ -162,7 +164,7 @@ namespace SmartClinic.UserControls
             this.searchPatientButton.AutoSize = true;
             this.searchPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPatientButton.Location = new System.Drawing.Point(29, 84);
+            this.searchPatientButton.Location = new System.Drawing.Point(29, 67);
             this.searchPatientButton.Name = "searchPatientButton";
             this.searchPatientButton.Size = new System.Drawing.Size(250, 47);
             this.searchPatientButton.TabIndex = 15;
@@ -188,9 +190,9 @@ namespace SmartClinic.UserControls
             this.newAppoinmentGroupBox.Controls.Add(this.appointmentDateLabel);
             this.newAppoinmentGroupBox.Enabled = false;
             this.newAppoinmentGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newAppoinmentGroupBox.Location = new System.Drawing.Point(9, 249);
+            this.newAppoinmentGroupBox.Location = new System.Drawing.Point(17, 266);
             this.newAppoinmentGroupBox.Name = "newAppoinmentGroupBox";
-            this.newAppoinmentGroupBox.Size = new System.Drawing.Size(1202, 392);
+            this.newAppoinmentGroupBox.Size = new System.Drawing.Size(1196, 392);
             this.newAppoinmentGroupBox.TabIndex = 22;
             this.newAppoinmentGroupBox.TabStop = false;
             this.newAppoinmentGroupBox.Text = "New Appointment For -";
@@ -354,6 +356,20 @@ namespace SmartClinic.UserControls
             this.appointmentDateLabel.TabIndex = 17;
             this.appointmentDateLabel.Text = "Appointment Date";
             // 
+            // newPatientButton
+            // 
+            this.newPatientButton.AutoSize = true;
+            this.newPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPatientButton.Location = new System.Drawing.Point(29, 144);
+            this.newPatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newPatientButton.Name = "newPatientButton";
+            this.newPatientButton.Size = new System.Drawing.Size(250, 47);
+            this.newPatientButton.TabIndex = 40;
+            this.newPatientButton.Text = "New Patient";
+            this.newPatientButton.UseVisualStyleBackColor = true;
+            this.newPatientButton.Click += new System.EventHandler(this.NewPatientButton_Click);
+            // 
             // NewAppointmentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -361,7 +377,7 @@ namespace SmartClinic.UserControls
             this.Controls.Add(this.searchForPatientsGroupBox);
             this.Controls.Add(this.newAppoinmentGroupBox);
             this.Name = "NewAppointmentUserControl";
-            this.Size = new System.Drawing.Size(1210, 646);
+            this.Size = new System.Drawing.Size(1242, 682);
             this.Load += new System.EventHandler(this.NewAppointmentUserControl_Load);
             this.searchForPatientsGroupBox.ResumeLayout(false);
             this.searchForPatientsGroupBox.PerformLayout();
@@ -398,5 +414,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.Label appointmentTimeLabel;
         private System.Windows.Forms.DateTimePicker appointmentDatePicker;
         private System.Windows.Forms.Label appointmentDateLabel;
+        private System.Windows.Forms.Button newPatientButton;
     }
 }

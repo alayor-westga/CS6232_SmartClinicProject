@@ -21,9 +21,9 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.loginForm = loginForm;
-            this.newAppointmentForm = new NewAppointmentForm();
-            this.newPatientForm = new NewPatientForm();
-            this.searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
+            newAppointmentForm = new NewAppointmentForm();
+            newPatientForm = new NewPatientForm();
+            searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
         }
 
         /// <summary>

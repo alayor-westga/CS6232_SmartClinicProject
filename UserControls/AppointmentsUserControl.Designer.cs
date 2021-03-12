@@ -50,6 +50,7 @@ namespace SmartClinic.UserControls
             this.searchPatientButton = new System.Windows.Forms.Button();
             this.appointmentsGroupBox = new System.Windows.Forms.GroupBox();
             this.searchMessageLabel = new System.Windows.Forms.Label();
+            this.newPatientButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
             this.searchForPatientsGroupBox.SuspendLayout();
@@ -142,6 +143,7 @@ namespace SmartClinic.UserControls
             // 
             // searchForPatientsGroupBox
             // 
+            this.searchForPatientsGroupBox.Controls.Add(this.newPatientButton);
             this.searchForPatientsGroupBox.Controls.Add(this.patientDateOfBirthValueLabel);
             this.searchForPatientsGroupBox.Controls.Add(this.patientAddressValueLabel);
             this.searchForPatientsGroupBox.Controls.Add(this.patientAddressLabel);
@@ -244,7 +246,7 @@ namespace SmartClinic.UserControls
             this.searchPatientButton.AutoSize = true;
             this.searchPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.searchPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPatientButton.Location = new System.Drawing.Point(29, 84);
+            this.searchPatientButton.Location = new System.Drawing.Point(31, 68);
             this.searchPatientButton.Name = "searchPatientButton";
             this.searchPatientButton.Size = new System.Drawing.Size(250, 47);
             this.searchPatientButton.TabIndex = 15;
@@ -274,6 +276,20 @@ namespace SmartClinic.UserControls
             this.searchMessageLabel.Name = "searchMessageLabel";
             this.searchMessageLabel.Size = new System.Drawing.Size(268, 29);
             this.searchMessageLabel.TabIndex = 26;
+            // 
+            // newPatientButton
+            // 
+            this.newPatientButton.AutoSize = true;
+            this.newPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPatientButton.Location = new System.Drawing.Point(31, 139);
+            this.newPatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newPatientButton.Name = "newPatientButton";
+            this.newPatientButton.Size = new System.Drawing.Size(250, 47);
+            this.newPatientButton.TabIndex = 39;
+            this.newPatientButton.Text = "New Patient";
+            this.newPatientButton.UseVisualStyleBackColor = true;
+            this.newPatientButton.Click += new System.EventHandler(this.NewPatientButton_Click);
             // 
             // AppointmentsUserControl
             // 
@@ -314,5 +330,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.Button searchPatientButton;
         private System.Windows.Forms.GroupBox appointmentsGroupBox;
         private System.Windows.Forms.Label searchMessageLabel;
+        private System.Windows.Forms.Button newPatientButton;
     }
 }
