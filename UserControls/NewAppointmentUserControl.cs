@@ -156,10 +156,7 @@ namespace SmartClinic.UserControls
             searchPatientsForm.ShowDialog();
             if (searchPatientsForm.SelectedPatient != null)
             {
-                selectedPatient = searchPatientsForm.SelectedPatient;
-                ShowPatientInfo();
-                newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
-                newAppoinmentGroupBox.Enabled = true;
+                SetPatientAndEnableAddAppointment(searchPatientsForm.SelectedPatient);
             }
         }
 
@@ -198,9 +195,16 @@ namespace SmartClinic.UserControls
             newPatientForm.ShowDialog();
             if (newPatientForm.SelectedPatient != null)
             {
-                selectedPatient = newPatientForm.SelectedPatient;
-                ShowPatientInfo();
+                SetPatientAndEnableAddAppointment(newPatientForm.SelectedPatient);
             }
+        }
+        
+        private void SetPatientAndEnableAddAppointment(Patient patient)
+        {
+            selectedPatient = newPatientForm.SelectedPatient;
+            ShowPatientInfo();
+            newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+            newAppoinmentGroupBox.Enabled = true;
         }
     }
 }
