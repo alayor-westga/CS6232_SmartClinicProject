@@ -18,6 +18,7 @@ namespace SmartClinic.Controller
         /// </summary>
         public PatientVisitController()
         {
+            this.visitSource = new VisitDAL();
         }
 
         public List<PatientVisits> GetPatientVisitsByPatientId(int patientId)

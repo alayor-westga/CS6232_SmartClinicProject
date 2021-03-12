@@ -45,7 +45,7 @@ namespace SmartClinic.UserControls
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            appointmentsDataGridView.DataSource = appointments;
+            patientVisitsDataGridView.DataSource = appointments;
             searchMessageLabel.Text = appointments.Count > 0 ?
                 appointments.Count + " Result(s) Returned" :
                 "No Results Returned";
@@ -53,12 +53,12 @@ namespace SmartClinic.UserControls
 
         private void ClearSearchFieldsButton_Click(object sender, EventArgs e)
         {
-            appointmentsDataGridView.DataSource = null;
+            patientVisitsDataGridView.DataSource = null;
         }
 
         private void AppointmentsDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if (appointmentsDataGridView.SelectedRows.Count > 0)
+            if (patientVisitsDataGridView.SelectedRows.Count > 0)
             {
                 viewAppointmentButton.Enabled = true;
             }
@@ -75,7 +75,7 @@ namespace SmartClinic.UserControls
 
         private void OpenAppoinmentDetailsDialog()//need to modify this one too to link to PatientVisitDetails
         {
-            AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult)appointmentsDataGridView.SelectedRows[0].DataBoundItem;
+            AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult)patientVisitsDataGridView.SelectedRows[0].DataBoundItem;
             appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);
             SearchAppointments();
         }
