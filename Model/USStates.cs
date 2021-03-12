@@ -8,107 +8,107 @@ namespace SmartClinic.Model
 {
     public enum States
     {
-        [Description("Alabama")]
+        [Description("AL")]
         AL,
-        [Description("Alaska")]
+        [Description("AK")]
         AK,
-        [Description("Arkansas")]
+        [Description("AR")]
         AR,
-        [Description("Arizona")]
+        [Description("AZ")]
         AZ,
-        [Description("California")]
+        [Description("CA")]
         CA,
-        [Description("Colorado")]
+        [Description("CO")]
         CO,
-        [Description("Connecticut")]
+        [Description("CT")]
         CT,
         [Description("D.C.")]
         DC,
-        [Description("Delaware")]
+        [Description("DE")]
         DE,
-        [Description("Florida")]
+        [Description("FL")]
         FL,
-        [Description("Georgia")]
+        [Description("GA")]
         GA,
-        [Description("Hawaii")]
+        [Description("HI")]
         HI,
-        [Description("Iowa")]
+        [Description("TA")]
         IA,
-        [Description("Idaho")]
+        [Description("ID")]
         ID,
-        [Description("Illinois")]
+        [Description("IL")]
         IL,
-        [Description("Indiana")]
+        [Description("IN")]
         IN,
-        [Description("Kansas")]
+        [Description("KS")]
         KS,
-        [Description("Kentucky")]
+        [Description("KY")]
         KY,
-        [Description("Louisiana")]
+        [Description("LA")]
         LA,
-        [Description("Massachusetts")]
+        [Description("MA")]
         MA,
-        [Description("Maryland")]
+        [Description("MD")]
         MD,
-        [Description("Maine")]
+        [Description("ME")]
         ME,
-        [Description("Michigan")]
+        [Description("MI")]
         MI,
-        [Description("Minnesota")]
+        [Description("MN")]
         MN,
-        [Description("Missouri")]
+        [Description("MO")]
         MO,
-        [Description("Mississippi")]
+        [Description("MS")]
         MS,
-        [Description("Montana")]
+        [Description("MT")]
         MT,
-        [Description("North Carolina")]
+        [Description("NC")]
         NC,
-        [Description("North Dakota")]
+        [Description("ND")]
         ND,
-        [Description("Nebraska")]
+        [Description("NE")]
         NE,
-        [Description("New Hampshire")]
+        [Description("NH")]
         NH,
-        [Description("New Jersey")]
+        [Description("NJ")]
         NJ,
-        [Description("New Mexico")]
+        [Description("NM")]
         NM,
-        [Description("Nevada")]
+        [Description("NV")]
         NV,
-        [Description("New York")]
+        [Description("NY")]
         NY,
-        [Description("Oklahoma")]
+        [Description("OK")]
         OK,
-        [Description("Ohio")]
+        [Description("OH")]
         OH,
-        [Description("Oregon")]
+        [Description("OR")]
         OR,
-        [Description("Pennsylvania")]
+        [Description("PA")]
         PA,
-        [Description("Rhode Island")]
+        [Description("RI")]
         RI,
-        [Description("South Carolina")]
+        [Description("SC")]
         SC,
-        [Description("South Dakota")]
+        [Description("SD")]
         SD,
-        [Description("Tennessee")]
+        [Description("TN")]
         TN,
-        [Description("Texas")]
+        [Description("TX")]
         TX,
-        [Description("Utah")]
+        [Description("UT")]
         UT,
-        [Description("Virginia")]
+        [Description("VA")]
         VA,
-        [Description("Vermont")]
+        [Description("VT")]
         VT,
-        [Description("Washington")]
+        [Description("WA")]
         WA,
-        [Description("Wisconsin")]
+        [Description("WI")]
         WI,
-        [Description("West Virginia")]
+        [Description("WV")]
         WV,
-        [Description("Wyoming")]
+        [Description("WY")]
         WY
     }
 }

@@ -394,9 +394,9 @@ namespace SmartClinic.View
             // 
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(438, 250);
+            this.stateComboBox.Location = new System.Drawing.Point(435, 252);
             this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(89, 33);
+            this.stateComboBox.Size = new System.Drawing.Size(96, 33);
             this.stateComboBox.TabIndex = 38;
             // 
             // NewPatientForm

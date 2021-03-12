@@ -23,6 +23,8 @@ namespace SmartClinic.View
             this.patientController = new PatientController();
             //this.usStates = new States();
             LoadStateComboBox(this.stateComboBox);
+            stateComboBox.Text = "";
+            Console.WriteLine("in constructor");
         }
 
         public Patient SelectedPatient { get; set; }
@@ -196,6 +198,7 @@ namespace SmartClinic.View
         private void NewPatientForm_Load(object sender, EventArgs e)
         {
             ClearForm();
+            Console.WriteLine("in load form");
         }
 
         public static void LoadStateComboBox(ComboBox cbo)
@@ -204,13 +207,16 @@ namespace SmartClinic.View
                 .Cast<Enum>()
                 .Select(value => new
                 {
-                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
-                    value
+                   
+                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), 
+                    typeof(DescriptionAttribute)) as DescriptionAttribute).Description, value
                 })
                 .OrderBy(item => item.value)
                 .ToList();
             cbo.DisplayMember = "Description";
             cbo.ValueMember = "value";
+            
+
         }
     }
 
