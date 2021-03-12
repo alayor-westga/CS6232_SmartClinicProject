@@ -169,7 +169,9 @@ namespace SmartClinic.View
 
         private void DoctorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            doctorPhoneNumberValueLabel.Text = doctors[doctorComboBox.SelectedIndex].Phone;
+            Doctor selectedDoctor = doctors[doctorComboBox.SelectedIndex];
+            doctorPhoneNumberValueLabel.Text = selectedDoctor.Phone;
+            doctorIdValueLabel.Text = selectedDoctor.DoctorId.ToString();
         }
     }
 }

@@ -50,11 +50,13 @@ namespace SmartClinic.View
             this.cancelButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.patientGroupBox = new System.Windows.Forms.GroupBox();
-            this.patientSSNLabel = new System.Windows.Forms.Label();
             this.patientSSNValueLabel = new System.Windows.Forms.Label();
+            this.patientSSNLabel = new System.Windows.Forms.Label();
             this.doctorGroupBox = new System.Windows.Forms.GroupBox();
-            this.doctorPhoneNumberLabel = new System.Windows.Forms.Label();
             this.doctorPhoneNumberValueLabel = new System.Windows.Forms.Label();
+            this.doctorPhoneNumberLabel = new System.Windows.Forms.Label();
+            this.doctorIdLabel = new System.Windows.Forms.Label();
+            this.doctorIdValueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
             this.patientGroupBox.SuspendLayout();
             this.doctorGroupBox.SuspendLayout();
@@ -293,16 +295,6 @@ namespace SmartClinic.View
             this.patientGroupBox.TabStop = false;
             this.patientGroupBox.Text = "Patient";
             // 
-            // patientSSNLabel
-            // 
-            this.patientSSNLabel.AutoSize = true;
-            this.patientSSNLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientSSNLabel.Location = new System.Drawing.Point(446, 49);
-            this.patientSSNLabel.Name = "patientSSNLabel";
-            this.patientSSNLabel.Size = new System.Drawing.Size(92, 37);
-            this.patientSSNLabel.TabIndex = 6;
-            this.patientSSNLabel.Text = "SSN:";
-            // 
             // patientSSNValueLabel
             // 
             this.patientSSNValueLabel.AutoSize = true;
@@ -313,8 +305,20 @@ namespace SmartClinic.View
             this.patientSSNValueLabel.TabIndex = 7;
             this.patientSSNValueLabel.Text = "-";
             // 
+            // patientSSNLabel
+            // 
+            this.patientSSNLabel.AutoSize = true;
+            this.patientSSNLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientSSNLabel.Location = new System.Drawing.Point(446, 49);
+            this.patientSSNLabel.Name = "patientSSNLabel";
+            this.patientSSNLabel.Size = new System.Drawing.Size(92, 37);
+            this.patientSSNLabel.TabIndex = 6;
+            this.patientSSNLabel.Text = "SSN:";
+            // 
             // doctorGroupBox
             // 
+            this.doctorGroupBox.Controls.Add(this.doctorIdValueLabel);
+            this.doctorGroupBox.Controls.Add(this.doctorIdLabel);
             this.doctorGroupBox.Controls.Add(this.doctorPhoneNumberValueLabel);
             this.doctorGroupBox.Controls.Add(this.doctorPhoneNumberLabel);
             this.doctorGroupBox.Controls.Add(this.doctorComboBox);
@@ -326,25 +330,45 @@ namespace SmartClinic.View
             this.doctorGroupBox.TabStop = false;
             this.doctorGroupBox.Text = "Doctor";
             // 
+            // doctorPhoneNumberValueLabel
+            // 
+            this.doctorPhoneNumberValueLabel.AutoSize = true;
+            this.doctorPhoneNumberValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doctorPhoneNumberValueLabel.Location = new System.Drawing.Point(341, 112);
+            this.doctorPhoneNumberValueLabel.Name = "doctorPhoneNumberValueLabel";
+            this.doctorPhoneNumberValueLabel.Size = new System.Drawing.Size(23, 31);
+            this.doctorPhoneNumberValueLabel.TabIndex = 26;
+            this.doctorPhoneNumberValueLabel.Text = "-";
+            // 
             // doctorPhoneNumberLabel
             // 
             this.doctorPhoneNumberLabel.AutoSize = true;
             this.doctorPhoneNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorPhoneNumberLabel.Location = new System.Drawing.Point(385, 112);
+            this.doctorPhoneNumberLabel.Location = new System.Drawing.Point(229, 112);
             this.doctorPhoneNumberLabel.Name = "doctorPhoneNumberLabel";
             this.doctorPhoneNumberLabel.Size = new System.Drawing.Size(122, 31);
             this.doctorPhoneNumberLabel.TabIndex = 8;
             this.doctorPhoneNumberLabel.Text = "Phone #:";
             // 
-            // doctorPhoneNumberValueLabel
+            // doctorIdLabel
             // 
-            this.doctorPhoneNumberValueLabel.AutoSize = true;
-            this.doctorPhoneNumberValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorPhoneNumberValueLabel.Location = new System.Drawing.Point(503, 112);
-            this.doctorPhoneNumberValueLabel.Name = "doctorPhoneNumberValueLabel";
-            this.doctorPhoneNumberValueLabel.Size = new System.Drawing.Size(23, 31);
-            this.doctorPhoneNumberValueLabel.TabIndex = 26;
-            this.doctorPhoneNumberValueLabel.Text = "-";
+            this.doctorIdLabel.AutoSize = true;
+            this.doctorIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doctorIdLabel.Location = new System.Drawing.Point(19, 112);
+            this.doctorIdLabel.Name = "doctorIdLabel";
+            this.doctorIdLabel.Size = new System.Drawing.Size(50, 31);
+            this.doctorIdLabel.TabIndex = 27;
+            this.doctorIdLabel.Text = "ID:";
+            // 
+            // doctorIdValueLabel
+            // 
+            this.doctorIdValueLabel.AutoSize = true;
+            this.doctorIdValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doctorIdValueLabel.Location = new System.Drawing.Point(64, 112);
+            this.doctorIdValueLabel.Name = "doctorIdValueLabel";
+            this.doctorIdValueLabel.Size = new System.Drawing.Size(23, 31);
+            this.doctorIdValueLabel.TabIndex = 28;
+            this.doctorIdValueLabel.Text = "-";
             // 
             // AppointmentDetailsForm
             // 
@@ -407,5 +431,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.GroupBox doctorGroupBox;
         private System.Windows.Forms.Label doctorPhoneNumberValueLabel;
         private System.Windows.Forms.Label doctorPhoneNumberLabel;
+        private System.Windows.Forms.Label doctorIdValueLabel;
+        private System.Windows.Forms.Label doctorIdLabel;
     }
 }
