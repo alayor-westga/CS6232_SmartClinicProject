@@ -10,7 +10,7 @@ namespace SmartClinic.View
 {
     public partial class PatientVisitDetailsForm : Form
     {
-        private int appointmentID;
+       
         private PatientVisits visit;
         private readonly AppointmentController appointmentController;
         public PatientVisitDetailsForm()
@@ -20,32 +20,46 @@ namespace SmartClinic.View
             this.visit = new PatientVisits();
         }
 
-        public void ShowForPatientVisit(int appointmentID)
+        public void ShowForPatientVisit(PatientVisits visit)
         {
 
-            this.appointmentID = appointmentID;
-            GetVisitFromDB();
+            this.visit = visit;
             PopulateForm();
             ShowDialog();
         }
 
         private void GetVisitFromDB()
         {
-            this.visit = this.appointmentController.GetVisitFromDB(this.appointmentID);
+            this.visit = this.appointmentController.GetVisitFromDB(this.visit.AppointmentID);
         }
 
         private void PopulateForm()
         {
             this.apptIDTextBox.Text = this.visit.AppointmentID.ToString();
             this.patientIDTextBox.Text = this.visit.PatientID.ToString();
-            //this.patientNameTextBox.Text = this.visit.Patient.ToString();
-            //this.doctorTextBox.Text = this.visit.Doctor.ToString();
-            //this.nurseTextBox.Text = this.visit.Nurse.ToString();
-            //this.appointmentDateTextBox.Text = this.visit.VisitDate.ToString();
+            this.patientNameTextBox.Text = this.visit.Patient.ToString();
+            this.dobTextBox.Text = this.visit.DateOfBirth.ToString();
+            this.doctorTextBox.Text = this.visit.Doctor.ToString();
+            this.nurseTextBox.Text = this.visit.Nurse.ToString();
+            this.appointmentDateTextBox.Text = this.visit.VisitDate.ToString();
+            this.doctorIDTextBox.Text = this.visit.DoctorID.ToString();
+            this.doctorPhoneTextBox.Text = this.visit.DoctorPhone.ToString();
+            this.lastNurseIDTextBox.Text = this.visit.NurseID.ToString();
+            this.symptomsTextBox.Text = this.visit.Symptoms.ToString();
+            this.weightTextBox.Text = this.visit.Weight.ToString();
+            this.tempTextBox.Text = this.visit.BodyTemperature.ToString();
+            this.systolicTextBox.Text = this.visit.SystolicBP.ToString();
+            this.diastolicTextBox.Text = this.visit.DiastolicBP.ToString();
+            this.pulseTextBox.Text = this.visit.Pulse.ToString();
+            this.initialDiagnosisTextBox.Text = this.visit.InitialDiagnosis.ToString();
+            this.finalDiagnosisTextBox.Text = this.visit.FinalDiagnosis.ToString();
 
 
 
-           
+
+
+
+
             MakeAllFieldsReadOnly();
         }
 
