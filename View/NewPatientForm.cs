@@ -188,7 +188,7 @@ namespace SmartClinic.View
             address1TextBox.Text = "";
             address2TextBox.Text = "";
             cityTextBox.Text = "";
-            stateComboBox.Text = "";
+            stateComboBox.SelectedIndex = 0;
             zipCodeTextBox.Text = "";
             phoneTextBox.Text = "";
             ssnTextBox.Text = "";

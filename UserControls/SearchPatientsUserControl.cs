@@ -139,10 +139,15 @@ namespace SmartClinic.UserControls
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            Search();
+        }
+
+        private void Search()
+        {
             if (searchByDOBOnlyRadioButton.Checked)
             {
                 patientsDataGridView.DataSource = patientController.SearchByDOB(dobOnlyDatePicker.Value);
-            } 
+            }
             else if (searchByNamesRadioButton.Checked)
             {
                 patientsDataGridView.DataSource = patientController.SearchByName(
@@ -157,8 +162,8 @@ namespace SmartClinic.UserControls
                     lastNameCombinedTextBox.Text
                 );
             }
-            searchMessageLabel.Text = patientsDataGridView.Rows.Count > 0 ? 
-                    patientsDataGridView.Rows.Count + " Result(s) Returned" : 
+            searchMessageLabel.Text = patientsDataGridView.Rows.Count > 0 ?
+                    patientsDataGridView.Rows.Count + " Result(s) Returned" :
                     "No Results Returned";
         }
 
@@ -232,6 +237,7 @@ namespace SmartClinic.UserControls
         {
             Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
             updatePatientForm.ShowForPatient(patient.PatientId);
+            Search();
         }
 
         private void DobOnlyLabel_Click(object sender, EventArgs e)
