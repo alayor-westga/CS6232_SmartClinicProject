@@ -35,14 +35,14 @@ namespace SmartClinic.View
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.PatientsTabPage = new System.Windows.Forms.TabPage();
             this.newPatientButton = new System.Windows.Forms.Button();
-            this.searchPatientsUserControl1 = new SmartClinic.UserControls.SearchPatientsUserControl();
             this.patientVisitsTabPage = new System.Windows.Forms.TabPage();
-            this.patientVisitsUserControl1 = new SmartClinic.UserControls.PatientVisitsUserControl();
             this.appointmentsTabPage = new System.Windows.Forms.TabPage();
-            this.appointmentsUserControl1 = new SmartClinic.UserControls.AppointmentsUserControl();
             this.mainDashBoardTabControl = new System.Windows.Forms.TabControl();
             this.newAppoinmentTabPage = new System.Windows.Forms.TabPage();
             this.newAppointmentUserControl1 = new SmartClinic.UserControls.NewAppointmentUserControl();
+            this.appointmentsUserControl1 = new SmartClinic.UserControls.AppointmentsUserControl();
+            this.patientVisitsUserControl1 = new SmartClinic.UserControls.PatientVisitsUserControl();
+            this.searchPatientsUserControl1 = new SmartClinic.UserControls.SearchPatientsUserControl();
             this.userLayoutPanel.SuspendLayout();
             this.PatientsTabPage.SuspendLayout();
             this.patientVisitsTabPage.SuspendLayout();
@@ -56,7 +56,7 @@ namespace SmartClinic.View
             this.userLayoutPanel.ColumnCount = 3;
             this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.59447F));
             this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.40553F));
-            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.userLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.userLayoutPanel.Controls.Add(this.userNameLabel, 1, 0);
             this.userLayoutPanel.Controls.Add(this.logoutLinkLabel, 2, 0);
             this.userLayoutPanel.Controls.Add(this.welcomeLabel, 0, 0);
@@ -74,7 +74,7 @@ namespace SmartClinic.View
             this.userNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.userNameLabel.AutoSize = true;
             this.userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.Location = new System.Drawing.Point(734, 4);
+            this.userNameLabel.Location = new System.Drawing.Point(732, 4);
             this.userNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(0, 20);
@@ -85,7 +85,7 @@ namespace SmartClinic.View
             this.logoutLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.logoutLinkLabel.AutoSize = true;
             this.logoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutLinkLabel.Location = new System.Drawing.Point(909, 4);
+            this.logoutLinkLabel.Location = new System.Drawing.Point(908, 4);
             this.logoutLinkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.logoutLinkLabel.Name = "logoutLinkLabel";
             this.logoutLinkLabel.Size = new System.Drawing.Size(60, 20);
@@ -99,7 +99,7 @@ namespace SmartClinic.View
             this.welcomeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeLabel.Location = new System.Drawing.Point(651, 4);
+            this.welcomeLabel.Location = new System.Drawing.Point(649, 4);
             this.welcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(79, 20);
@@ -129,14 +129,6 @@ namespace SmartClinic.View
             this.newPatientButton.UseVisualStyleBackColor = true;
             this.newPatientButton.Click += new System.EventHandler(this.NewPatientButton_Click);
             // 
-            // searchPatientsUserControl1
-            // 
-            this.searchPatientsUserControl1.Location = new System.Drawing.Point(20, 79);
-            this.searchPatientsUserControl1.Margin = new System.Windows.Forms.Padding(1);
-            this.searchPatientsUserControl1.Name = "searchPatientsUserControl1";
-            this.searchPatientsUserControl1.Size = new System.Drawing.Size(781, 484);
-            this.searchPatientsUserControl1.TabIndex = 0;
-            // 
             // patientVisitsTabPage
             // 
             this.patientVisitsTabPage.Controls.Add(this.patientVisitsUserControl1);
@@ -148,13 +140,6 @@ namespace SmartClinic.View
             this.patientVisitsTabPage.Text = "Patient Visits";
             this.patientVisitsTabPage.UseVisualStyleBackColor = true;
             // 
-            // patientVisitsUserControl1
-            // 
-            this.patientVisitsUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.patientVisitsUserControl1.Name = "patientVisitsUserControl1";
-            this.patientVisitsUserControl1.Size = new System.Drawing.Size(824, 506);
-            this.patientVisitsUserControl1.TabIndex = 0;
-            // 
             // appointmentsTabPage
             // 
             this.appointmentsTabPage.Controls.Add(this.appointmentsUserControl1);
@@ -165,15 +150,6 @@ namespace SmartClinic.View
             this.appointmentsTabPage.TabIndex = 0;
             this.appointmentsTabPage.Text = "Appointments";
             this.appointmentsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // appointmentsUserControl1
-            // 
-            this.appointmentsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.appointmentsUserControl1.Location = new System.Drawing.Point(3, 3);
-            this.appointmentsUserControl1.Margin = new System.Windows.Forms.Padding(1);
-            this.appointmentsUserControl1.Name = "appointmentsUserControl1";
-            this.appointmentsUserControl1.Size = new System.Drawing.Size(990, 612);
-            this.appointmentsUserControl1.TabIndex = 0;
             // 
             // mainDashBoardTabControl
             // 
@@ -208,6 +184,30 @@ namespace SmartClinic.View
             this.newAppointmentUserControl1.Name = "newAppointmentUserControl1";
             this.newAppointmentUserControl1.Size = new System.Drawing.Size(992, 614);
             this.newAppointmentUserControl1.TabIndex = 0;
+            // 
+            // appointmentsUserControl1
+            // 
+            this.appointmentsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.appointmentsUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.appointmentsUserControl1.Margin = new System.Windows.Forms.Padding(1);
+            this.appointmentsUserControl1.Name = "appointmentsUserControl1";
+            this.appointmentsUserControl1.Size = new System.Drawing.Size(990, 612);
+            this.appointmentsUserControl1.TabIndex = 0;
+            // 
+            // patientVisitsUserControl1
+            // 
+            this.patientVisitsUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.patientVisitsUserControl1.Name = "patientVisitsUserControl1";
+            this.patientVisitsUserControl1.Size = new System.Drawing.Size(824, 506);
+            this.patientVisitsUserControl1.TabIndex = 0;
+            // 
+            // searchPatientsUserControl1
+            // 
+            this.searchPatientsUserControl1.Location = new System.Drawing.Point(20, 79);
+            this.searchPatientsUserControl1.Margin = new System.Windows.Forms.Padding(1);
+            this.searchPatientsUserControl1.Name = "searchPatientsUserControl1";
+            this.searchPatientsUserControl1.Size = new System.Drawing.Size(781, 484);
+            this.searchPatientsUserControl1.TabIndex = 0;
             // 
             // MainDashboard
             // 

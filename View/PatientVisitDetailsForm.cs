@@ -93,8 +93,8 @@ namespace SmartClinic.View
             throw new NotImplementedException();
         }
 
-
 /*
+
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
             this.ClearErrorMessages();
@@ -149,7 +149,7 @@ namespace SmartClinic.View
 
         private bool ValidateFields()
         {
-            string requiredField = "This field is required";
+            string requiredField = "Required Field";
             var isValid = true;
             if (firstNameTextBox.Text.Length == 0)
             {
