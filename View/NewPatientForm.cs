@@ -16,12 +16,22 @@ namespace SmartClinic.View
     {
         private readonly PatientController patientController;
         //private States usStates;
+        Dictionary<string, string> genders = new Dictionary<string, string>()
+        {
+            { "", "Select a value" },
+            { "F", "Female" },
+            { "M", "Male" },
+            { "X", "Non Binary" },
+        };
         
         public NewPatientForm()
         {
             InitializeComponent();
             this.patientController = new PatientController();
             //this.usStates = new States();
+            genderComboBox.DataSource = new BindingSource(genders, null);
+            genderComboBox.DisplayMember = "Value";
+            genderComboBox.ValueMember = "Key";
             LoadStateComboBox(this.stateComboBox);
         }
 
@@ -36,13 +46,13 @@ namespace SmartClinic.View
             {
                 Patient newPatient = new Patient();
                 newPatient.DateOfBirth = dateTimePickerForDOB.Value.Date;
-                newPatient.Gender = genderTextBox.Text;
+                newPatient.Gender = genderComboBox.SelectedValue.ToString();
                 newPatient.FirstName = firstNameTextBox.Text;
                 newPatient.LastName = lastNameTextBox.Text;
                 newPatient.Street1 = address1TextBox.Text;
                 newPatient.Street2 = address2TextBox.Text;
                 newPatient.City = cityTextBox.Text;
-                newPatient.State = stateComboBox.Text;
+                newPatient.State = stateComboBox.SelectedValue.ToString();
                 newPatient.ZipCode = zipCodeTextBox.Text;
                 newPatient.Phone = phoneTextBox.Text;
                 newPatient.SSN = ssnTextBox.Text;
@@ -108,10 +118,10 @@ namespace SmartClinic.View
                 isValid = false;
                 dobErrorLabel.Text = requiredField;
             }
-            if (!(genderTextBox.Text == "M" || genderTextBox.Text == "F" || genderTextBox.Text == "X"))
+            if (genderComboBox.SelectedValue.ToString() == "")
             {
                 isValid = false;
-                genderErrorLabel.Text = "Accepts 'M', 'F' or 'X'";
+                genderErrorLabel.Text = "Select a gender";
             }
             if (address1TextBox.Text.Length == 0)
             {
@@ -123,16 +133,10 @@ namespace SmartClinic.View
                 isValid = false;
                 cityErrorLabel.Text = requiredField;
             }
-            Regex stateRegex = new Regex("[A-Z]{2}");
-            if (!stateRegex.IsMatch(stateComboBox.Text))
+            if (stateComboBox.SelectedValue.ToString() == "NULL")
             {
                 isValid = false;
-                stateErrorLabel.Text = "2 letter state code requried";
-            }
-            if (stateComboBox.Text.Length != 2)
-            {
-                isValid = false;
-                stateErrorLabel.Text = "2 letter state code required";
+                stateErrorLabel.Text = "Select a state";
             }
             if (stateComboBox.Text.Length == 0)
             {
@@ -180,7 +184,7 @@ namespace SmartClinic.View
         private void ClearForm()
         {
             dateTimePickerForDOB.Value = DateTime.Now;
-            genderTextBox.Text = "";
+            genderComboBox.SelectedIndex = 0;
             firstNameTextBox.Text = "";
             lastNameTextBox.Text = "";
             address1TextBox.Text = "";

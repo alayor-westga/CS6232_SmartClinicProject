@@ -8,6 +8,8 @@ namespace SmartClinic.Model
 {
     public enum States
     {
+        [Description("Select a value")]
+        NULL,
         [Description("Alabama")]
         AL,
         [Description("Alaska")]
