@@ -19,5 +19,10 @@ namespace SmartClinic.Controller
         public PatientVisitController()
         {
         }
+
+        public List<PatientVisits> GetPatientVisitsByPatientId(int patientId)
+        {
+            return this.visitSource.GetPatientVisitsByPatientId(patientId);
+        }
     }
 }

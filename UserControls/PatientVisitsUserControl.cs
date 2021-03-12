@@ -17,6 +17,7 @@ namespace SmartClinic.UserControls
         private readonly AppointmentDetailsForm appointmentDetailsForm;
         private readonly NewPatientForm newPatientForm;
         private readonly AppointmentController appointmentController;
+        private readonly PatientVisitController patientVisitController;
 
         /// <summary>
         /// It builds and initializes the appointment search form.
@@ -72,7 +73,7 @@ namespace SmartClinic.UserControls
             OpenAppoinmentDetailsDialog();
         }
 
-        private void OpenAppoinmentDetailsDialog()
+        private void OpenAppoinmentDetailsDialog()//need to modify this one too to link to PatientVisitDetails
         {
             AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult)appointmentsDataGridView.SelectedRows[0].DataBoundItem;
             appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);

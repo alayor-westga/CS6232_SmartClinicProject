@@ -171,7 +171,7 @@ namespace SmartClinic.DAL
             );
         }
 
-        internal List<PatientVisits> SelectManyPatientVisits(string selectStatement, Hashtable parameters = null)
+        internal List<PatientVisits> SelectManyPatientVisits(string selectStatement, Hashtable parameters = null) //Don't need anymore
         {
             List<PatientVisits> patientVisitList = new List<PatientVisits>();
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
