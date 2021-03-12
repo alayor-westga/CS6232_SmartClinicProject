@@ -10,7 +10,7 @@ namespace SmartClinic.UserControls
     public partial class NewAppointmentUserControl : UserControl
     {
         private Patient selectedPatient;
-        private readonly Form newPatientForm;
+        private readonly NewPatientForm newPatientForm;
         private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
@@ -196,6 +196,11 @@ namespace SmartClinic.UserControls
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
             newPatientForm.ShowDialog();
+            if (newPatientForm.SelectedPatient != null)
+            {
+                selectedPatient = newPatientForm.SelectedPatient;
+                ShowPatientInfo();
+            }
         }
     }
 }

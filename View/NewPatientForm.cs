@@ -51,7 +51,7 @@ namespace SmartClinic.View
                 SelectedPatient = newPatient;
                 MessageBox.Show("The patient was successfully added to the database.",
                         "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                Close();
             }
             catch (ArgumentException argumentException)
             {
