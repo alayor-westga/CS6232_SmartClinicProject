@@ -21,6 +21,8 @@ namespace SmartClinic.View
             this.patientController = new PatientController();
         }
 
+        public Patient SelectedPatient { get; set; }
+
         private void AddPatientButton_Click(object sender, EventArgs e)
         {
             this.ClearErrorMessages();
@@ -28,50 +30,53 @@ namespace SmartClinic.View
             
             try
             {
-                ClinicPerson newPatient = new ClinicPerson();
-                newPatient.DateOfBirth = this.dateTimePickerForDOB.Value.Date;
-                newPatient.Gender = this.genderTextBox.Text;
-                newPatient.FirstName = this.firstNameTextBox.Text;
-                newPatient.LastName = this.lastNameTextBox.Text;
-                newPatient.Street1 = this.address1TextBox.Text;
-                newPatient.Street2 = this.address2TextBox.Text;
-                newPatient.City = this.cityTextBox.Text;
-                newPatient.State = this.stateTextBox.Text;
-                newPatient.ZipCode = this.zipCodeTextBox.Text;
-                newPatient.Phone = this.phoneTextBox.Text;
-                newPatient.SSN = this.ssnTextBox.Text;
+                Patient newPatient = new Patient();
+                newPatient.DateOfBirth = dateTimePickerForDOB.Value.Date;
+                newPatient.Gender = genderTextBox.Text;
+                newPatient.FirstName = firstNameTextBox.Text;
+                newPatient.LastName = lastNameTextBox.Text;
+                newPatient.Street1 = address1TextBox.Text;
+                newPatient.Street2 = address2TextBox.Text;
+                newPatient.City = cityTextBox.Text;
+                newPatient.State = stateTextBox.Text;
+                newPatient.ZipCode = zipCodeTextBox.Text;
+                newPatient.Phone = phoneTextBox.Text;
+                newPatient.SSN = ssnTextBox.Text;
 
-                int clinicPersonID = this.patientController.AddClinicPerson(newPatient);
-                this.patientIDLabel.Text = "Patient ID: " + this.patientController.AddPatient(clinicPersonID).ToString();
-
+                int clinicPersonID = patientController.AddClinicPerson(newPatient);
+                int patientId = patientController.AddPatient(clinicPersonID);
+                patientIDLabel.Text = "Patient ID: " + patientId.ToString();
+                newPatient.ClinicPersonID = clinicPersonID;
+                newPatient.PatientId = patientId;
+                SelectedPatient = newPatient;
                 MessageBox.Show("The patient was successfully added to the database.",
                         "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (ArgumentException argumentException)
             {
-                this.DisplayError(argumentException);
+                DisplayError(argumentException);
             }
         }
 
         private void ClearErrorMessages()
         {
-            this.dobErrorLabel.Text = "";
-            this.genderErrorLabel.Text = "";
-            this.firstNameErrorLabel.Text = "";
-            this.lastNameErrorLabel.Text = "";
-            this.address1ErrorLabel.Text = "";
-            this.cityErrorLabel.Text = "";
-            this.stateErrorLabel.Text = "";
-            this.zipCodeErrorLabel.Text = "";
-            this.phoneErrorLabel.Text = "";
-            this.patientIDLabel.Text = "";
-            this.ssnErrorLabel.Text = "";
+            dobErrorLabel.Text = "";
+            genderErrorLabel.Text = "";
+            firstNameErrorLabel.Text = "";
+            lastNameErrorLabel.Text = "";
+            address1ErrorLabel.Text = "";
+            cityErrorLabel.Text = "";
+            stateErrorLabel.Text = "";
+            zipCodeErrorLabel.Text = "";
+            phoneErrorLabel.Text = "";
+            patientIDLabel.Text = "";
+            ssnErrorLabel.Text = "";
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-           this.Close();
+           Close();
         }
 
         private void DisplayError(Exception errorMessage)
@@ -84,109 +89,109 @@ namespace SmartClinic.View
         {
             string requiredField = "This field is required";
             var isValid = true;
-            if (this.firstNameTextBox.Text.Length == 0)
+            if (firstNameTextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.firstNameErrorLabel.Text = requiredField;
+                firstNameErrorLabel.Text = requiredField;
             }
-            if (this.lastNameTextBox.Text.Length == 0)
+            if (lastNameTextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.lastNameErrorLabel.Text = requiredField;
+                lastNameErrorLabel.Text = requiredField;
             }
-            if (this.dobLabel.Text.Length == 0)
+            if (dobLabel.Text.Length == 0)
             {
                 isValid = false;
-                this.dobErrorLabel.Text = requiredField;
+                dobErrorLabel.Text = requiredField;
             }
-            if (!(this.genderTextBox.Text == "M" || this.genderTextBox.Text == "F" || this.genderTextBox.Text == "X"))
+            if (!(genderTextBox.Text == "M" || genderTextBox.Text == "F" || genderTextBox.Text == "X"))
             {
                 isValid = false;
-                this.genderErrorLabel.Text = "Accepts 'M', 'F' or 'X'";
+                genderErrorLabel.Text = "Accepts 'M', 'F' or 'X'";
             }
-            if (this.address1TextBox.Text.Length == 0)
+            if (address1TextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.address1ErrorLabel.Text = requiredField;
+                address1ErrorLabel.Text = requiredField;
             }
-            if (this.cityTextBox.Text.Length == 0)
+            if (cityTextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.cityErrorLabel.Text = requiredField;
+                cityErrorLabel.Text = requiredField;
             }
             Regex stateRegex = new Regex("[A-Z]{2}");
             if (!stateRegex.IsMatch(stateTextBox.Text))
             {
                 isValid = false;
-                this.stateErrorLabel.Text = "2 letter state code requried";
+                stateErrorLabel.Text = "2 letter state code requried";
             }
-            if (this.stateTextBox.Text.Length != 2)
+            if (stateTextBox.Text.Length != 2)
             {
                 isValid = false;
-                this.stateErrorLabel.Text = "2 letter state code required";
+                stateErrorLabel.Text = "2 letter state code required";
             }
-            if (this.stateTextBox.Text.Length == 0)
+            if (stateTextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.stateErrorLabel.Text = requiredField;
+                stateErrorLabel.Text = requiredField;
             }
-            if (this.zipCodeTextBox.Text.Length == 0)
+            if (zipCodeTextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.zipCodeErrorLabel.Text = requiredField;
+                zipCodeErrorLabel.Text = requiredField;
             }
             Regex phoneRegex = new Regex("[0-9]{10}");
             if (!phoneRegex.IsMatch(phoneTextBox.Text))
             {
                 isValid = false;
-                this.phoneErrorLabel.Text = "only 10 numbers permitted";
+                phoneErrorLabel.Text = "only 10 numbers permitted";
             }
-            if (this.phoneTextBox.Text.Length != 10)
+            if (phoneTextBox.Text.Length != 10)
             {
                 isValid = false;
-                this.phoneErrorLabel.Text = "10 digits required";
+                phoneErrorLabel.Text = "10 digits required";
             }
-            if (this.phoneTextBox.Text.Length == 0)
+            if (phoneTextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.phoneErrorLabel.Text = requiredField;
+                phoneErrorLabel.Text = requiredField;
             }
-            if (this.ssnTextBox.Text.Length != 9)
+            if (ssnTextBox.Text.Length != 9)
             {
                 isValid = false;
-                this.ssnErrorLabel.Text = "9 digits required";
+                ssnErrorLabel.Text = "9 digits required";
             }
-            if (this.ssnTextBox.Text.Length == 0)
+            if (ssnTextBox.Text.Length == 0)
             {
                 isValid = false;
-                this.ssnErrorLabel.Text = requiredField;
+                ssnErrorLabel.Text = requiredField;
             }
             return isValid;
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            this.ClearForm();
+            ClearForm();
         }
 
         private void ClearForm()
         {
-            this.dateTimePickerForDOB.Value = DateTime.Now;
-            this.genderTextBox.Text = "";
-            this.firstNameTextBox.Text = "";
-            this.lastNameTextBox.Text = "";
-            this.address1TextBox.Text = "";
-            this.address2TextBox.Text = "";
-            this.cityTextBox.Text = "";
-            this.stateTextBox.Text = "";
-            this.zipCodeTextBox.Text = "";
-            this.phoneTextBox.Text = "";
-            this.ssnTextBox.Text = "";
-            this.ClearErrorMessages();
+            dateTimePickerForDOB.Value = DateTime.Now;
+            genderTextBox.Text = "";
+            firstNameTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            address1TextBox.Text = "";
+            address2TextBox.Text = "";
+            cityTextBox.Text = "";
+            stateTextBox.Text = "";
+            zipCodeTextBox.Text = "";
+            phoneTextBox.Text = "";
+            ssnTextBox.Text = "";
+            ClearErrorMessages();
         }
 
         private void NewPatientForm_Load(object sender, EventArgs e)
         {
-            this.ClearForm();
+            ClearForm();
         }
     }
 
