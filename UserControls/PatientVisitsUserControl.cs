@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using SmartClinic.Controller;
 using SmartClinic.Model;
@@ -8,217 +7,110 @@ using SmartClinic.View;
 
 namespace SmartClinic.UserControls
 {
+    /// <summary>
+    /// It renders the form to search for appointments.
+    /// </summary>
     public partial class PatientVisitsUserControl : UserControl
     {
-        private List<SelectionListener<PatientVisits>> selectionListeners;
-        private readonly PatientController patientController;
-        private readonly PatientVisitDetailsForm patientVisitDetailsForm;
-        public enum SearchFormMode
-        {
-            OnlySearch,
-            SearchAndEdit
-        }
-        private SearchFormMode formMode;
+        private Patient selectedPatient;
+        private readonly SearchPatientsForm searchPatientsForm;
+        private readonly AppointmentDetailsForm appointmentDetailsForm;
+        private readonly NewPatientForm newPatientForm;
+        private readonly AppointmentController appointmentController;
+
+        /// <summary>
+        /// It builds and initializes the appointment search form.
+        /// </summary>
         public PatientVisitsUserControl()
         {
             InitializeComponent();
-            formMode = SearchFormMode.OnlySearch;
-            patientController = new PatientController();
-            selectionListeners = new List<SelectionListener<PatientVisits>>();
-            this.patientVisitDetailsForm = new PatientVisitDetailsForm();
+            searchPatientsForm = new SearchPatientsForm();
+            appointmentDetailsForm = new AppointmentDetailsForm();
+            appointmentController = new AppointmentController();
+            patientVisitController = new PatientVisitController();
+            newPatientForm = new NewPatientForm();
         }
 
-        public void ChangeFormMode(SearchFormMode formMode)
+
+        private void SearchAppointments()
         {
-            this.formMode = formMode;
-            if (this.formMode == SearchFormMode.SearchAndEdit)
+            List<PatientVisits> appointments = new List<PatientVisits>();
+            try
             {
-                viewOrEditPatientVisitDetailsButton.Visible = true;
+                appointments.AddRange(patientVisitController.GetPatientVisitsByPatientId(selectedPatient.PatientId));
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            appointmentsDataGridView.DataSource = appointments;
+            searchMessageLabel.Text = appointments.Count > 0 ?
+                appointments.Count + " Result(s) Returned" :
+                "No Results Returned";
+        }
+
+        private void ClearSearchFieldsButton_Click(object sender, EventArgs e)
+        {
+            appointmentsDataGridView.DataSource = null;
+        }
+
+        private void AppointmentsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (appointmentsDataGridView.SelectedRows.Count > 0)
+            {
+                viewAppointmentButton.Enabled = true;
             }
             else
             {
-                viewOrEditPatientVisitDetailsButton.Visible = false;
+                viewAppointmentButton.Enabled = false;
             }
         }
 
-        public void AddSelectionListener(SelectionListener<PatientVisits> selectionListener)
+        private void ViewAppointmentButton_Click(object sender, EventArgs e)
         {
-            if (!selectionListeners.Contains(selectionListener))
+            OpenAppoinmentDetailsDialog();
+        }
+
+        private void OpenAppoinmentDetailsDialog()
+        {
+            AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult)appointmentsDataGridView.SelectedRows[0].DataBoundItem;
+            appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);
+            SearchAppointments();
+        }
+
+        private void AppointmentsDataGridView_DoubleClick(object sender, EventArgs e)
+        {
+            OpenAppoinmentDetailsDialog();
+        }
+
+        private void SearchPatientButton_Click(object sender, EventArgs e)
+        {
+            searchPatientsForm.ShowDialog();
+            if (searchPatientsForm.SelectedPatient != null)
             {
-                selectionListeners.Add(selectionListener);
+                selectedPatient = searchPatientsForm.SelectedPatient;
+                ShowPatientInfo();
+                SearchAppointments();
             }
         }
 
-        private void SearchPatientsUserControl_Load(object sender, EventArgs e)
+        private void ShowPatientInfo()
         {
-            Clear();
-            searchByDOBOnlyRadioButton.Checked = true;
+            patientIdValueLabel.Text = selectedPatient.PatientId.ToString();
+            patientFullNameValueLabel.Text = selectedPatient.FullName;
+            patientDateOfBirthValueLabel.Text = selectedPatient.DateOfBirth.ToShortDateString();
+            patientAddressValueLabel.Text = selectedPatient.Address;
         }
 
-        private void SearchByDOBOnlyRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void NewPatientButton_Click(object sender, EventArgs e)
         {
-            EnableSearchByDOBOnly();
-            DisableNamesSearch();
-            DisableDOBLastNameSearch();
-        }
-
-        private void SearchByNamesRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            DisableSearchByDOBOnly();
-            EnableNamesSearch();
-            DisableDOBLastNameSearch();
-        }
-
-        private void SearchByDOBAndLastNameRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            DisableSearchByDOBOnly();
-            DisableNamesSearch();
-            EnableDOBLastNameSearch();
-        }
-
-        private void EnableSearchByDOBOnly()
-        {
-            dobOnlyLabel.ForeColor = SystemColors.ControlText;
-            dobOnlyDatePicker.Enabled = true;
-        }
-
-        private void DisableSearchByDOBOnly()
-        {
-            dobOnlyLabel.ForeColor = SystemColors.ControlDark;
-            dobOnlyDatePicker.Enabled = false;
-        }
-
-        private void EnableNamesSearch()
-        {
-            firstNameLabel.ForeColor = SystemColors.ControlText;
-            firstNameTextBox.Enabled = true;
-            lastNameLabel.ForeColor = SystemColors.ControlText;
-            lastNameTextBox.Enabled = true;
-        }
-
-        private void DisableNamesSearch()
-        {
-            firstNameLabel.ForeColor = SystemColors.ControlDark;
-            firstNameTextBox.Enabled = false;
-            lastNameLabel.ForeColor = SystemColors.ControlDark;
-            lastNameTextBox.Enabled = false;
-        }
-
-        private void EnableDOBLastNameSearch()
-        {
-            dobCombinedLabel.ForeColor = SystemColors.ControlText;
-            dobCombinedDatePicker.Enabled = true;
-            lastNameCombinedLabel.ForeColor = SystemColors.ControlText;
-            lastNameCombinedTextBox.Enabled = true;
-        }
-
-        private void DisableDOBLastNameSearch()
-        {
-            dobCombinedLabel.ForeColor = SystemColors.ControlDark;
-            dobCombinedDatePicker.Enabled = false;
-            lastNameCombinedLabel.ForeColor = SystemColors.ControlDark;
-            lastNameCombinedTextBox.Enabled = false;
-        }
-
-        private void SearchButton_Click(object sender, EventArgs e)
-        {
-            if (searchByDOBOnlyRadioButton.Checked)
+            newPatientForm.ShowDialog();
+            if (newPatientForm.SelectedPatient != null)
             {
-                patientSearchResultDataGridView.DataSource = patientController.SearchPatientVisitsByDOB(dobOnlyDatePicker.Value);
-                
+                selectedPatient = newPatientForm.SelectedPatient;
+                ShowPatientInfo();
             }
-            else if (searchByNamesRadioButton.Checked)
-            {
-                
-
-                patientSearchResultDataGridView.DataSource = patientController.SearchByName(
-                    firstNameTextBox.Text,
-                    lastNameTextBox.Text
-                );
-            }
-            else if (searchByDOBAndLastNameRadioButton.Checked)
-            {
-                
-
-                patientSearchResultDataGridView.DataSource = patientController.SearchByDOBAndLastName(
-                    dobCombinedDatePicker.Value,
-                    lastNameCombinedTextBox.Text
-                );
-            }
-            searchMessageLabel.Text = patientSearchResultDataGridView.Rows.Count > 0 ?
-                    patientSearchResultDataGridView.Rows.Count + " Result(s) Returned" :
-                    "No Results Returned";
-        }
-
-        private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (patientSearchResultDataGridView.SelectedRows.Count > 0)
-            {
-                if (formMode == SearchFormMode.SearchAndEdit)
-                {
-                    viewOrEditPatientVisitDetailsButton.Enabled = true;
-                }
-                foreach (SelectionListener<PatientVisits> listener in selectionListeners)
-                {
-                    PatientVisits appointmentID = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
-                    listener.OnSelect(appointmentID);
-                }
-            }
-            else
-            {
-                viewOrEditPatientVisitDetailsButton.Enabled = false;
-                foreach (SelectionListener<PatientVisits> listener in selectionListeners)
-                {
-                    listener.OnSelectionCleared();
-                }
-            }
-        }
-
-        private void ClearButton_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }
-
-        private void Clear()
-        {
-            dobOnlyDatePicker.Value = DateTime.Now;
-            firstNameTextBox.Text = "";
-            lastNameTextBox.Text = "";
-            dobCombinedDatePicker.Value = DateTime.Now;
-            lastNameCombinedTextBox.Text = "";
-            patientSearchResultDataGridView.DataSource = null;
-        }
-
-        private void PatientsDataGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (patientSearchResultDataGridView.SelectedRows.Count > 0)
-            {
-                if (formMode == SearchFormMode.SearchAndEdit)
-                {
-                    OpenUpdatePatientForm();
-                }
-                else
-                {
-                    foreach (SelectionListener<PatientVisits> listener in selectionListeners)
-                    {
-                        PatientVisits patientVisit = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
-                        listener.OnDoubleClickSelect(patientVisit);
-                    }
-                }
-            }
-        }
-
-        private void EditPatientButton_Click(object sender, EventArgs e)
-        {
-            OpenUpdatePatientForm();
-        }
-
-        private void OpenUpdatePatientForm()
-        {
-            //PatientVisits patientVisit = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
-            PatientVisits patientVisit = (PatientVisits)patientSearchResultDataGridView.SelectedRows[0].DataBoundItem;
-            Console.WriteLine("PatientVisit: " + patientVisit.AppointmentID);
-            patientVisitDetailsForm.ShowForPatientVisit(patientVisit.AppointmentID);
         }
     }
 }

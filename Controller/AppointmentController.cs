@@ -59,6 +59,11 @@ namespace SmartClinic.Controller
             appointmentSource.Insert(newAppointment);
         }
 
+        internal IEnumerable<PatientVisits> GetPatientVisitsByPatientId(int patientId)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// It updates an appointment.
         /// </summary>
