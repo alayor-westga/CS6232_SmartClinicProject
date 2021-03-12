@@ -15,10 +15,14 @@ namespace SmartClinic.View
     public partial class NewPatientForm : Form
     {
         private readonly PatientController patientController;
+        //private States usStates;
+        
         public NewPatientForm()
         {
             InitializeComponent();
             this.patientController = new PatientController();
+            //this.usStates = new States();
+            LoadStateComboBox(this.stateComboBox);
         }
 
         public Patient SelectedPatient { get; set; }
@@ -38,7 +42,7 @@ namespace SmartClinic.View
                 newPatient.Street1 = address1TextBox.Text;
                 newPatient.Street2 = address2TextBox.Text;
                 newPatient.City = cityTextBox.Text;
-                newPatient.State = stateTextBox.Text;
+                newPatient.State = stateComboBox.Text;
                 newPatient.ZipCode = zipCodeTextBox.Text;
                 newPatient.Phone = phoneTextBox.Text;
                 newPatient.SSN = ssnTextBox.Text;
@@ -120,17 +124,17 @@ namespace SmartClinic.View
                 cityErrorLabel.Text = requiredField;
             }
             Regex stateRegex = new Regex("[A-Z]{2}");
-            if (!stateRegex.IsMatch(stateTextBox.Text))
+            if (!stateRegex.IsMatch(stateComboBox.Text))
             {
                 isValid = false;
                 stateErrorLabel.Text = "2 letter state code requried";
             }
-            if (stateTextBox.Text.Length != 2)
+            if (stateComboBox.Text.Length != 2)
             {
                 isValid = false;
                 stateErrorLabel.Text = "2 letter state code required";
             }
-            if (stateTextBox.Text.Length == 0)
+            if (stateComboBox.Text.Length == 0)
             {
                 isValid = false;
                 stateErrorLabel.Text = requiredField;
@@ -182,7 +186,7 @@ namespace SmartClinic.View
             address1TextBox.Text = "";
             address2TextBox.Text = "";
             cityTextBox.Text = "";
-            stateTextBox.Text = "";
+            stateComboBox.Text = "";
             zipCodeTextBox.Text = "";
             phoneTextBox.Text = "";
             ssnTextBox.Text = "";
@@ -192,6 +196,21 @@ namespace SmartClinic.View
         private void NewPatientForm_Load(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        public static void LoadStateComboBox(ComboBox cbo)
+        {
+            cbo.DataSource = Enum.GetValues(typeof(States))
+                .Cast<Enum>()
+                .Select(value => new
+                {
+                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
+                    value
+                })
+                .OrderBy(item => item.value)
+                .ToList();
+            cbo.DisplayMember = "Description";
+            cbo.ValueMember = "value";
         }
     }
 
