@@ -3,6 +3,7 @@ using SmartClinic.Model;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace SmartClinic.View
 {
@@ -11,11 +12,21 @@ namespace SmartClinic.View
         private int patientId;
         private ClinicPerson patient;
         private readonly PatientController patientController;
+        Dictionary<string, string> genders = new Dictionary<string, string>()
+        {
+            { "", "Select a value" },
+            { "F", "Female" },
+            { "M", "Male" },
+            { "X", "Non Binary" },
+        };
         public UpdatePatientForm()
         {
             InitializeComponent();
             patientController = new PatientController();
             patient = new ClinicPerson();
+            genderComboBox.DataSource = new BindingSource(genders, null);
+            genderComboBox.DisplayMember = "Value";
+            genderComboBox.ValueMember = "Key";
         }
 
         public void ShowForPatient(int patientId)
@@ -37,7 +48,7 @@ namespace SmartClinic.View
             firstNameTextBox.Text = patient.FirstName;
             lastNameTextBox.Text = patient.LastName;
             dateTimePickerForDOB.Value = patient.DateOfBirth;
-            genderTextBox.Text = patient.Gender;
+            genderComboBox.SelectedValue = patient.Gender;
             address1TextBox.Text = patient.Street1;
             address2TextBox.Text = patient.Street2;
             cityTextBox.Text = patient.City;
@@ -54,7 +65,7 @@ namespace SmartClinic.View
             firstNameTextBox.ReadOnly = true;
             lastNameTextBox.ReadOnly = true;
             dateTimePickerForDOB.Enabled = false;
-            genderTextBox.ReadOnly = true;
+            genderComboBox.Enabled = false;
             address1TextBox.ReadOnly = true;
             address2TextBox.ReadOnly = true;
             cityTextBox.ReadOnly = true;
@@ -70,7 +81,7 @@ namespace SmartClinic.View
             firstNameTextBox.ReadOnly = false;
             lastNameTextBox.ReadOnly = false;
             dateTimePickerForDOB.Enabled = true;
-            genderTextBox.ReadOnly = false;
+            genderComboBox.Enabled = true;
             address1TextBox.ReadOnly = false;
             address2TextBox.ReadOnly = false;
             cityTextBox.ReadOnly = false;
@@ -87,7 +98,7 @@ namespace SmartClinic.View
 
             ClinicPerson updatedPatient = new ClinicPerson();
             updatedPatient.DateOfBirth = this.dateTimePickerForDOB.Value.Date;
-            updatedPatient.Gender = this.genderTextBox.Text;
+            updatedPatient.Gender = this.genderComboBox.SelectedValue.ToString();
             updatedPatient.FirstName = this.firstNameTextBox.Text;
             updatedPatient.LastName = this.lastNameTextBox.Text;
             updatedPatient.Street1 = this.address1TextBox.Text;
@@ -179,10 +190,10 @@ namespace SmartClinic.View
                 isValid = false;
                 dobErrorLabel.Text = requiredField;
             }
-            if (!(genderTextBox.Text == "M" || genderTextBox.Text == "F" || genderTextBox.Text == "X"))
+            if (genderComboBox.SelectedValue.ToString() == "")
             {
                 isValid = false;
-                genderErrorLabel.Text = "Accepts 'M', 'F' or 'X'";
+                genderErrorLabel.Text = "Select a gender";
             }
             if (address1TextBox.Text.Length == 0)
             {
