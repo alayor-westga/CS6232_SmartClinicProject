@@ -9,6 +9,7 @@ namespace SmartClinic.View
     {
         private readonly MainDashboard mainDashboard;
         private readonly NurseController nurseController;
+        private static Nurse nurse;
         public LoginForm()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace SmartClinic.View
             if (!ValidateFields()) return;
             string username = userNameTextBox.Text;
             string password = passwordTextBox.Text;
-            Nurse nurse = nurseController.Login(username, password);
+            nurse = nurseController.Login(username, password);
             if (nurse == null) {
                 errorMessageLabel.Text = "Invalid credentials";
             } else {
@@ -62,6 +63,11 @@ namespace SmartClinic.View
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        public static Nurse GetNurse()
+        {
+            return LoginForm.nurse;
         }
     }
 }

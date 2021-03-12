@@ -50,6 +50,10 @@ namespace SmartClinic.View
             this.pulseTextBox.Text = this.visit.Pulse.ToString();
             this.initialDiagnosisTextBox.Text = this.visit.InitialDiagnosis.ToString();
             this.finalDiagnosisTextBox.Text = this.visit.FinalDiagnosis.ToString();
+            this.loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " + 
+                LoginForm.GetNurse().LastName.ToString();
+            this.loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
+
 
             MakeAllFieldsReadOnly();
         }
