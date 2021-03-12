@@ -198,10 +198,10 @@ namespace SmartClinic.UserControls
                 SetPatientAndEnableAddAppointment(newPatientForm.SelectedPatient);
             }
         }
-        
+
         private void SetPatientAndEnableAddAppointment(Patient patient)
         {
-            selectedPatient = newPatientForm.SelectedPatient;
+            selectedPatient = patient;
             ShowPatientInfo();
             newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
             newAppoinmentGroupBox.Enabled = true;
