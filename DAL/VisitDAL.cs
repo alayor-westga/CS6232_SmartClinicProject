@@ -49,6 +49,32 @@ namespace SmartClinic.DAL
             }
         }
 
+        public void AddPatientVisit(PatientVisits newPatientVisit)
+        {
+            string insertStatement =
+          "INSERT Visits " +
+            "(appointment_id, nurse_id, weight, systolic_bp, diastolic_bp, body_temp, pulse, symptoms, intial_diagnosis, final_diagnosis) " +
+          "VALUES (@AppointmentID, @NurseID, @Weight, @SystolicBP, @DiastolicBP, @BodyTemp, @Pulse, @Symptoms, @InitialDiagnosis, @FinalDiagnosis)";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@AppointmentID", newPatientVisit.AppointmentID);
+                    insertCommand.Parameters.AddWithValue("@NurseID", newPatientVisit.NurseID);
+                    insertCommand.Parameters.AddWithValue("@Weight", newPatientVisit.Weight);
+                    insertCommand.Parameters.AddWithValue("@SystolicBP", newPatientVisit.SystolicBP);
+                    insertCommand.Parameters.AddWithValue("@DiastolicBP", newPatientVisit.DiastolicBP);
+                    insertCommand.Parameters.AddWithValue("@BodyTemp", newPatientVisit.BodyTemperature);
+                    insertCommand.Parameters.AddWithValue("@Pulse", newPatientVisit.Pulse);
+                    insertCommand.Parameters.AddWithValue("@Symptoms", newPatientVisit.Symptoms);
+                    insertCommand.Parameters.AddWithValue("@InitialDiagnosis", newPatientVisit.InitialDiagnosis);
+                    insertCommand.Parameters.AddWithValue("@FinalDiagnosis", newPatientVisit.FinalDiagnosis);
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+        }
         public PatientVisits GetInfoToCreatNewPatientVisit(int appointmentId)
         {
 
