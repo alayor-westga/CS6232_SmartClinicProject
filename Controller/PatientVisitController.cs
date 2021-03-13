@@ -10,7 +10,6 @@ namespace SmartClinic.Controller
     /// </summary>
     public class PatientVisitController
     {
-        private readonly AppointmentDAL appointmentSource;
         private readonly VisitDAL visitSource;
 
         /// <summary>

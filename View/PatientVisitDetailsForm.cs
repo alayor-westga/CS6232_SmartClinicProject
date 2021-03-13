@@ -14,14 +14,15 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             appointmentController = new AppointmentController();
-            this.patientVisitController = new PatientVisitController();
-            this.visit = new PatientVisits();
+            patientVisitController = new PatientVisitController();
+            visit = new PatientVisits();
         }
 
         public void ShowForNewPatientVisit(PatientVisits visit)
         {
             this.visit = visit;
             PopulateHeaderInformation();
+            ClearVisitInformation();
             ShowDialog();
         }
 
@@ -35,44 +36,58 @@ namespace SmartClinic.View
        
         private void PopulateHeaderInformation()
         {
-            this.apptIDTextBox.Text = this.visit.AppointmentID.ToString();
-            this.patientIDTextBox.Text = this.visit.PatientID.ToString();
-            this.patientNameTextBox.Text = this.visit.Patient.ToString();
-            this.dobTextBox.Text = this.visit.DateOfBirth.ToString();
-            this.doctorTextBox.Text = this.visit.Doctor.ToString();
-            this.appointmentDateTextBox.Text = this.visit.VisitDate.ToString();
-            this.doctorIDTextBox.Text = this.visit.DoctorID.ToString();
-            this.doctorPhoneTextBox.Text = this.visit.DoctorPhone.ToString();
-            this.loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " +
+            apptIDTextBox.Text = visit.AppointmentID.ToString();
+            patientIDTextBox.Text = visit.PatientID.ToString();
+            patientNameTextBox.Text = visit.Patient.ToString();
+            dobTextBox.Text = visit.DateOfBirth.ToString();
+            doctorTextBox.Text = visit.Doctor.ToString();
+            appointmentDateTextBox.Text = visit.VisitDate.ToString();
+            doctorIDTextBox.Text = visit.DoctorID.ToString();
+            doctorPhoneTextBox.Text = visit.DoctorPhone.ToString();
+            loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " +
                 LoginForm.GetNurse().LastName.ToString();
-            this.loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
+            loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
             MakeAllFieldsReadOnly();
         }
 
         private void PopulateVisitInformation()
         {
-            this.nurseTextBox.Text = this.visit.Nurse.ToString();
-            this.lastNurseIDTextBox.Text = this.visit.NurseID.ToString();
-            this.symptomsTextBox.Text = this.visit.Symptoms.ToString();
-            this.weightTextBox.Text = this.visit.Weight.ToString();
-            this.tempTextBox.Text = this.visit.BodyTemperature.ToString();
-            this.systolicTextBox.Text = this.visit.SystolicBP.ToString();
-            this.diastolicTextBox.Text = this.visit.DiastolicBP.ToString();
-            this.pulseTextBox.Text = this.visit.Pulse.ToString();
-            this.initialDiagnosisTextBox.Text = this.visit.InitialDiagnosis.ToString();
-            this.finalDiagnosisTextBox.Text = this.visit.FinalDiagnosis.ToString();
+            nurseTextBox.Text = visit.Nurse.ToString();
+            lastNurseIDTextBox.Text = visit.NurseID.ToString();
+            symptomsTextBox.Text = visit.Symptoms.ToString();
+            weightTextBox.Text = visit.Weight.ToString();
+            tempTextBox.Text = visit.BodyTemperature.ToString();
+            systolicTextBox.Text = visit.SystolicBP.ToString();
+            diastolicTextBox.Text = visit.DiastolicBP.ToString();
+            pulseTextBox.Text = visit.Pulse.ToString();
+            initialDiagnosisTextBox.Text = visit.InitialDiagnosis.ToString();
+            finalDiagnosisTextBox.Text = visit.FinalDiagnosis.ToString();
+        }
+
+        private void ClearVisitInformation()
+        {
+            nurseTextBox.Text = "";
+            lastNurseIDTextBox.Text = "";
+            symptomsTextBox.Text = "";
+            weightTextBox.Text = "";
+            tempTextBox.Text = "";
+            systolicTextBox.Text = "";
+            diastolicTextBox.Text = "";
+            pulseTextBox.Text = "";
+            initialDiagnosisTextBox.Text = "";
+            finalDiagnosisTextBox.Text = "";
         }
 
         private void MakeAllFieldsReadOnly()
         {
-            this.symptomsTextBox.ReadOnly = true;
-            this.weightTextBox.ReadOnly = true;
-            this.tempTextBox.ReadOnly = true;
-            this.systolicTextBox.ReadOnly = true;
-            this.diastolicTextBox.ReadOnly = true;
-            this.pulseTextBox.ReadOnly = true;
-            this.initialDiagnosisTextBox.ReadOnly = true;
-            this.finalDiagnosisTextBox.ReadOnly = true;
+            symptomsTextBox.ReadOnly = true;
+            weightTextBox.ReadOnly = true;
+            tempTextBox.ReadOnly = true;
+            systolicTextBox.ReadOnly = true;
+            diastolicTextBox.ReadOnly = true;
+            pulseTextBox.ReadOnly = true;
+            initialDiagnosisTextBox.ReadOnly = true;
+            finalDiagnosisTextBox.ReadOnly = true;
         }
 
         private void ClearErrorMessages()
@@ -88,26 +103,26 @@ namespace SmartClinic.View
 
         private void EditPatientButton_Click(object sender, EventArgs e)
         {
-            this.symptomsTextBox.ReadOnly = false;
-            this.weightTextBox.ReadOnly = false;
-            this.tempTextBox.ReadOnly = false;
-            this.systolicTextBox.ReadOnly = false;
-            this.diastolicTextBox.ReadOnly = false;
-            this.pulseTextBox.ReadOnly = false;
-            this.initialDiagnosisTextBox.ReadOnly = false;
-            this.finalDiagnosisTextBox.ReadOnly = false;
+            symptomsTextBox.ReadOnly = false;
+            weightTextBox.ReadOnly = false;
+            tempTextBox.ReadOnly = false;
+            systolicTextBox.ReadOnly = false;
+            diastolicTextBox.ReadOnly = false;
+            pulseTextBox.ReadOnly = false;
+            initialDiagnosisTextBox.ReadOnly = false;
+            finalDiagnosisTextBox.ReadOnly = false;
         }
      
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
-            this.ClearErrorMessages();
-            if (!this.ValidateFields()) return;
+            ClearErrorMessages();
+            if (!ValidateFields()) return;
 
             PatientVisits patientVisit = new PatientVisits();
 
-            patientVisit.AppointmentID = this.visit.AppointmentID;
+            patientVisit.AppointmentID = visit.AppointmentID;
             patientVisit.NurseID = LoginForm.GetNurse().NurseId;
-            patientVisit.Symptoms = this.symptomsTextBox.Text;
+            patientVisit.Symptoms = symptomsTextBox.Text;
             patientVisit.Weight = Decimal.Parse(weightTextBox.Text);
             patientVisit.BodyTemperature = Decimal.Parse(tempTextBox.Text);
             patientVisit.SystolicBP = Int32.Parse(systolicTextBox.Text);
@@ -116,23 +131,25 @@ namespace SmartClinic.View
             patientVisit.InitialDiagnosis = initialDiagnosisTextBox.Text;
             patientVisit.FinalDiagnosis = finalDiagnosisTextBox.Text;
 
-            if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.visit.AppointmentID))
+            if (patientVisitController.AppointmentHasNoAssociatedVisit(visit.AppointmentID))
             {
-                this.patientVisitController.AddPatientVisit(patientVisit);
-                this.Close();
+                patientVisitController.AddPatientVisit(patientVisit);
+                MessageBox.Show("The visit information was successfully saved.",
+                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
             }
             else
             {
                 try
                 {
-                    if (!this.patientVisitController.UpdatePatientVisitInformation(this.visit, patientVisit))
+                    if (!patientVisitController.UpdatePatientVisitInformation(visit, patientVisit))
                     {
                         MessageBox.Show("This patient's information has been\nmodified since it has been retrieved."
                         + "\n\nThe form has been updated to reflect those changes.",
                             "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.GetPatientVisit();
-                        this.PopulateHeaderInformation();
-                        this.PopulateVisitInformation();
+                        GetPatientVisit();
+                        PopulateHeaderInformation();
+                        PopulateVisitInformation();
                         return;
                     }
                     MessageBox.Show("The changes were successfully amended to the database.",
@@ -144,19 +161,19 @@ namespace SmartClinic.View
                     MessageBox.Show(argumentException.Message,
                             "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                this.Close();
+                Close();
             }         
         }
 
         private void GetPatientVisit()
         {
 
-            this.visit = this.patientVisitController.GetPatientVisitByAppointmentID(this.visit.AppointmentID);
+            visit = patientVisitController.GetPatientVisitByAppointmentID(visit.AppointmentID);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private bool ValidateFields()
