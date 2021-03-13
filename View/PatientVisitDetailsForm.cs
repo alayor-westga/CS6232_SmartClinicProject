@@ -101,12 +101,7 @@ namespace SmartClinic.View
 
         }
 
-        internal void ShowWithAppointment(PatientVisits patientVisits)
-        {
-            throw new NotImplementedException();
-        }
-
-
+      
 
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
@@ -125,6 +120,20 @@ namespace SmartClinic.View
             patientVisit.Pulse = Int32.Parse(pulseTextBox.Text);
             patientVisit.InitialDiagnosis = initialDiagnosisTextBox.Text;
             patientVisit.FinalDiagnosis = finalDiagnosisTextBox.Text;
+
+            ////////
+            Console.WriteLine(visit.AppointmentID);
+            Console.WriteLine(visit.NurseID);
+            Console.WriteLine(visit.Symptoms);
+            Console.WriteLine(visit.Weight);
+            Console.WriteLine(visit.FinalDiagnosis);
+           
+
+
+
+
+
+            ////////
 
             if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.visit.AppointmentID))
             {
@@ -155,9 +164,7 @@ namespace SmartClinic.View
                             "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 this.Close();
-            }
-
-           
+            }         
         }
 
         private void GetPatientVisit()

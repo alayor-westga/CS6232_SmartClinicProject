@@ -121,26 +121,27 @@ namespace SmartClinic.DAL
         public bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
         {
             string updateStatement =
-               "UPDATE Visit SET " +
+               "UPDATE Visits SET " +
                     "nurse_id = @NewNurseID, " +
                     "weight = @NewWeight, " +
-                    "systolic_by = @NewSystolicBP, " +
-                    "diastolicBP = @NewDiastolicBP, " +
+                    "systolic_bp = @NewSystolicBP, " +
+                    "diastolic_bp = @NewDiastolicBP, " +
                     "body_temp = @NewBodyTemp, " +
                     "pulse = @NewPulse, " +
                     "symptoms = @NewSymptoms, " +
                     "initial_diagnosis = @NewInitialDiagnosis, " +
                     "final_diagnosis = @NewFinalDiagnosis " +
                 "WHERE appointment_id = @OldAppointmentID " +
-                    "nurse_id = @OldNurseID, " +
-                    "weight = @OldWeight, " +
-                    "systolic_by = @OldSystolicBP, " +
-                    "diastolicBP = @OldDiastolicBP, " +
-                    "body_temp = @OldBodyTemp, " +
-                    "pulse = @OldPulse, " +
-                    "symptoms = @OldSymptoms, " +
-                    "initial_diagnosis = @OldInitialDiagnosis, " +
-                    "final_diagnosis = @OldFinalDiagnosis";
+                    "AND nurse_id = @OldNurseID " +
+                    "AND weight = @OldWeight " +
+                    "AND systolic_bp = @OldSystolicBP " +
+                    "AND diastolic_bp = @OldDiastolicBP " +
+                    "AND body_temp = @OldBodyTemp " +
+                    "AND pulse = @OldPulse " +
+                    "AND symptoms = @OldSymptoms " +
+                    "AND initial_diagnosis = @OldInitialDiagnosis " +
+                    "AND final_diagnosis = @OldFinalDiagnosis " +
+                    "OR  final_diagnosis IS NULL AND @OldFinalDiagnosis IS NULL";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -157,7 +158,6 @@ namespace SmartClinic.DAL
                     updateCommand.Parameters.AddWithValue("@NewSymptoms", newVisit.Symptoms);
                     updateCommand.Parameters.AddWithValue("@NewInitialDiagnosis", newVisit.InitialDiagnosis);
                     updateCommand.Parameters.AddWithValue("@NewFinalDiagnosis", newVisit.FinalDiagnosis);
-
 
                     updateCommand.Parameters.AddWithValue("@OldAppointmentID", oldVisit.AppointmentID);
                     updateCommand.Parameters.AddWithValue("@OldNurseID", oldVisit.NurseID);
