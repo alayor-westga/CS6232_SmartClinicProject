@@ -49,6 +49,49 @@ namespace SmartClinic.DAL
             }
         }
 
+        public PatientVisits GetInfoToCreatNewPatientVisit(int appointmentId)
+        {
+
+            PatientVisits newPatientVisit = new PatientVisits();
+            string selectStatement =
+
+                "SELECT p.patient_id, a.appointment_id, cpp.first_name + ' ' + cpp.last_name as 'Patient', cpp.date_of_birth, " +
+                    "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpd.phone_number, a.date " +
+                "FROM Appointments a " +
+                    "JOIN Patients p on a.patient_id = p.patient_id " +
+                    "JOIN Doctors d on d.doctor_id = a.doctor_id " +
+                    "JOIN ClinicPersons cpp on cpp.clinic_person_id = p.clinic_person_id " +
+                    "JOIN ClinicPersons cpd on cpd.clinic_person_id = d.clinic_person_id " +
+                "WHERE a.appointment_id = @AppointmentID";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentId);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
+
+                    {
+                        while (reader.Read())
+                        {
+                            newPatientVisit.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
+                            newPatientVisit.PatientID = Int32.Parse(reader["patient_id"].ToString());
+                            newPatientVisit.Patient = reader["Patient"].ToString();
+                            newPatientVisit.DateOfBirth = DateTime.Parse(reader["date_of_birth"].ToString());
+                            newPatientVisit.Doctor = reader["Doctor"].ToString();
+                            newPatientVisit.DoctorID = Int32.Parse(reader["doctor_id"].ToString());
+                            newPatientVisit.DoctorPhone = reader["phone_number"].ToString();                          
+                            newPatientVisit.VisitDate= DateTime.Parse(reader["date"].ToString());                          
+                        }
+                    }
+                }
+                return newPatientVisit;
+            }
+        }
+
         internal bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
         {
             throw new NotImplementedException();
@@ -71,7 +114,7 @@ namespace SmartClinic.DAL
             "JOIN ClinicPersons cpp on cpp.clinic_person_id = p.clinic_person_id " +
             "JOIN ClinicPersons cpd on cpd.clinic_person_id = d.clinic_person_id " +
             "JOIN ClinicPersons cpn on cpn.clinic_person_id = n.clinic_person_id " +
-            "WHERE a.appointment_id = @AppointmentID";
+            "WHERE v.appointment_id = @AppointmentID";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -177,7 +220,7 @@ namespace SmartClinic.DAL
         {
             string selectStatement =
 
-                "SELECT count(*) FROM Appointments WHERE appointment_id = @AppointmentID";
+                "SELECT count(*) FROM Visits WHERE appointment_id = @AppointmentID";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {

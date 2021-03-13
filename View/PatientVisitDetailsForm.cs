@@ -22,25 +22,46 @@ namespace SmartClinic.View
             this.visit = new PatientVisits();
         }
 
-        public void ShowForPatientVisit(PatientVisits visit)
+        public void ShowForNewPatientVisit(PatientVisits visit)
         {
 
             this.visit = visit;
-            PopulateForm();
+            PopulateHeaderInformation();
             ShowDialog();
-        }       
+        }
+
+        public void ShowForExistingPatientVisit(PatientVisits visit)
+        {
+
+            this.visit = visit;
+            PopulateHeaderInformation();
+            PopulateVisitInformation();
+            ShowDialog();
+        }
+
         
-        private void PopulateForm()
+
+        private void PopulateHeaderInformation()
         {
             this.apptIDTextBox.Text = this.visit.AppointmentID.ToString();
             this.patientIDTextBox.Text = this.visit.PatientID.ToString();
             this.patientNameTextBox.Text = this.visit.Patient.ToString();
             this.dobTextBox.Text = this.visit.DateOfBirth.ToString();
             this.doctorTextBox.Text = this.visit.Doctor.ToString();
-            this.nurseTextBox.Text = this.visit.Nurse.ToString();
+
             this.appointmentDateTextBox.Text = this.visit.VisitDate.ToString();
             this.doctorIDTextBox.Text = this.visit.DoctorID.ToString();
             this.doctorPhoneTextBox.Text = this.visit.DoctorPhone.ToString();
+
+            this.loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " +
+                LoginForm.GetNurse().LastName.ToString();
+            this.loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
+            MakeAllFieldsReadOnly();
+        }
+
+        private void PopulateVisitInformation()
+        {
+            this.nurseTextBox.Text = this.visit.Nurse.ToString();
             this.lastNurseIDTextBox.Text = this.visit.NurseID.ToString();
             this.symptomsTextBox.Text = this.visit.Symptoms.ToString();
             this.weightTextBox.Text = this.visit.Weight.ToString();
@@ -50,12 +71,6 @@ namespace SmartClinic.View
             this.pulseTextBox.Text = this.visit.Pulse.ToString();
             this.initialDiagnosisTextBox.Text = this.visit.InitialDiagnosis.ToString();
             this.finalDiagnosisTextBox.Text = this.visit.FinalDiagnosis.ToString();
-            this.loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " + 
-                LoginForm.GetNurse().LastName.ToString();
-            this.loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
-
-
-            MakeAllFieldsReadOnly();
         }
 
         private void MakeAllFieldsReadOnly()
@@ -118,7 +133,8 @@ namespace SmartClinic.View
                     + "\n\nThe form has been updated to reflect those changes.",
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.GetPatientVisit();
-                    this.PopulateForm();
+                    this.PopulateHeaderInformation();
+                    this.PopulateVisitInformation();
                     return;
                 }
                 MessageBox.Show("The changes were successfully amended to the database.",

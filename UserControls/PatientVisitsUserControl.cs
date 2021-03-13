@@ -78,7 +78,7 @@ namespace SmartClinic.UserControls
         private void OpenAppoinmentDetailsDialog()
         {
             PatientVisits patientVisits = (PatientVisits)patientVisitsDataGridView.SelectedRows[0].DataBoundItem;
-            patientVisitDetailsForm.ShowForPatientVisit(patientVisits);
+            patientVisitDetailsForm.ShowForExistingPatientVisit(patientVisits);
             SearchAppointments();
         }
 

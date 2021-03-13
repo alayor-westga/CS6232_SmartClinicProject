@@ -182,12 +182,14 @@ namespace SmartClinic.View
         {
             if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.appointment.AppointmentId))
             {
-
+                PatientVisits appointmentInfoForNewVisit = new PatientVisits();
+                appointmentInfoForNewVisit = this.patientVisitController.GetInfoToCreatNewPatientVisit(this.appointment.AppointmentId);
+                patientVisitDetailsForm.ShowForNewPatientVisit(appointmentInfoForNewVisit);
             }
             else
             {
                 PatientVisits patientVisit = this.patientVisitController.GetPatientVisitByAppointmentID(this.appointment.AppointmentId);
-                patientVisitDetailsForm.ShowForPatientVisit(patientVisit);
+                patientVisitDetailsForm.ShowForExistingPatientVisit(patientVisit);
             }
         }
     }
