@@ -140,8 +140,8 @@ namespace SmartClinic.DAL
                     "AND pulse = @OldPulse " +
                     "AND symptoms = @OldSymptoms " +
                     "AND initial_diagnosis = @OldInitialDiagnosis " +
-                    "AND final_diagnosis = @OldFinalDiagnosis " +
-                    "OR  final_diagnosis IS NULL AND @OldFinalDiagnosis IS NULL";
+                    "AND final_diagnosis = @OldFinalDiagnosis";
+                    
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {

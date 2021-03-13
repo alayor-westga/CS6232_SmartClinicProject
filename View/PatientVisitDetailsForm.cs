@@ -193,6 +193,7 @@ namespace SmartClinic.View
         private bool ValidateFields()
         {
             string requiredField = "Required Field";
+            string integerValueOnly = "Requires an Integer";
             var isValid = true;
             if (symptomsTextBox.Text.Length == 0)
             {
@@ -202,7 +203,7 @@ namespace SmartClinic.View
             if (initialDiagnosisTextBox.Text.Length == 0)
             {
                 isValid = false;
-                initialDiagnosisLabel.Text = requiredField;
+                initialDiagnosisMessageLabel.Text = requiredField;
             }
             if (weightTextBox.Text.Length == 0)
             {
@@ -212,22 +213,38 @@ namespace SmartClinic.View
             if (tempTextBox.Text.Length == 0)
             {
                 isValid = false;
-                temperatureLabel.Text = requiredField;
+                temperatureMessageLabel.Text = requiredField;
             }
             if (systolicTextBox.Text.Length == 0)
             {
                 isValid = false;
-                bloodPressureLabel.Text = requiredField;
-            }         
+                bloodPressureMessageLabel.Text = requiredField;
+            }
+
+            if (!int.TryParse(systolicTextBox.Text, out _))
+            {
+                isValid = false;
+                bloodPressureMessageLabel.Text = integerValueOnly;
+            }
             if (diastolicTextBox.Text.Length == 0)
             {
                 isValid = false;
-                bloodPressureLabel.Text = requiredField;
+                bloodPressureMessageLabel.Text = requiredField;
+            }
+            if (!int.TryParse(diastolicTextBox.Text, out _))
+            {
+                isValid = false;
+                bloodPressureMessageLabel.Text = integerValueOnly;
             }
             if (pulseTextBox.Text.Length == 0)
             {
                 isValid = false;
                 pulseMessageLabel.Text = requiredField;
+            }
+            if (!int.TryParse(pulseTextBox.Text, out _))
+            {
+                isValid = false;
+                pulseMessageLabel.Text = integerValueOnly;
             }
             return isValid;
         }
