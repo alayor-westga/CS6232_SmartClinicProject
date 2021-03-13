@@ -4,6 +4,8 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel;
 
 namespace SmartClinic.View
 {
@@ -27,6 +29,7 @@ namespace SmartClinic.View
             genderComboBox.DataSource = new BindingSource(genders, null);
             genderComboBox.DisplayMember = "Value";
             genderComboBox.ValueMember = "Key";
+            LoadStateComboBox(this.stateComboBox);
         }
 
         public void ShowForPatient(int patientId)
@@ -52,7 +55,7 @@ namespace SmartClinic.View
             address1TextBox.Text = patient.Street1;
             address2TextBox.Text = patient.Street2;
             cityTextBox.Text = patient.City;
-            stateTextBox.Text = patient.State;
+            stateComboBox.Text = patient.State;
             zipCodeTextBox.Text = patient.ZipCode;
             phoneTextBox.Text = patient.Phone;
             ssnTextBox.Text = patient.SSN;
@@ -69,7 +72,7 @@ namespace SmartClinic.View
             address1TextBox.ReadOnly = true;
             address2TextBox.ReadOnly = true;
             cityTextBox.ReadOnly = true;
-            stateTextBox.ReadOnly = true;
+            stateComboBox.Enabled = false;
             zipCodeTextBox.ReadOnly = true;
             phoneTextBox.ReadOnly = true;
             ssnTextBox.ReadOnly = true;
@@ -85,7 +88,7 @@ namespace SmartClinic.View
             address1TextBox.ReadOnly = false;
             address2TextBox.ReadOnly = false;
             cityTextBox.ReadOnly = false;
-            stateTextBox.ReadOnly = false;
+            stateComboBox.Enabled = true;
             zipCodeTextBox.ReadOnly = false;
             phoneTextBox.ReadOnly = false;
             ssnTextBox.ReadOnly = false;
@@ -104,7 +107,7 @@ namespace SmartClinic.View
             updatedPatient.Street1 = this.address1TextBox.Text;
             updatedPatient.Street2 = this.address2TextBox.Text;
             updatedPatient.City = this.cityTextBox.Text;
-            updatedPatient.State = this.stateTextBox.Text;
+            updatedPatient.State = this.stateComboBox.Text;
             updatedPatient.ZipCode = this.zipCodeTextBox.Text;
             updatedPatient.Phone = this.phoneTextBox.Text;
             updatedPatient.SSN = this.ssnTextBox.Text;
@@ -206,17 +209,17 @@ namespace SmartClinic.View
                 cityErrorLabel.Text = requiredField;
             }
             Regex stateRegex = new Regex("[A-Z]{2}");
-            if (!stateRegex.IsMatch(stateTextBox.Text))
+            if (!stateRegex.IsMatch(stateComboBox.Text))
             {
                 isValid = false;
                 stateErrorLabel.Text = "2 letter state code requried";
             }
-            if (stateTextBox.Text.Length != 2)
+            if (stateComboBox.Text.Length != 2)
             {
                 isValid = false;
                 stateErrorLabel.Text = "2 letter state code required";
             }
-            if (stateTextBox.Text.Length == 0)
+            if (stateComboBox.Text.Length == 0)
             {
                 isValid = false;
                 stateErrorLabel.Text = requiredField;
@@ -253,6 +256,24 @@ namespace SmartClinic.View
                 ssnErrorLabel.Text = requiredField;
             }
             return isValid;
+        }
+        public static void LoadStateComboBox(ComboBox cbo)
+        {
+            cbo.DataSource = Enum.GetValues(typeof(States))
+                .Cast<Enum>()
+                .Select(value => new
+                {
+
+                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()),
+                    typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
+                    value
+                })
+                .OrderBy(item => item.value)
+                .ToList();
+            cbo.DisplayMember = "Description";
+            cbo.ValueMember = "value";
+
+
         }
     }
 }

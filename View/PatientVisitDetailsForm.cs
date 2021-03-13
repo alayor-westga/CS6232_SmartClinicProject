@@ -1,16 +1,12 @@
-﻿
-
-using SmartClinic.Controller;
+﻿using SmartClinic.Controller;
 using SmartClinic.Model;
 using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SmartClinic.View
 {
     public partial class PatientVisitDetailsForm : Form
     {
-
         private PatientVisits visit;
         private readonly AppointmentController appointmentController;
         private readonly PatientVisitController patientVisitController;
@@ -24,7 +20,6 @@ namespace SmartClinic.View
 
         public void ShowForNewPatientVisit(PatientVisits visit)
         {
-
             this.visit = visit;
             PopulateHeaderInformation();
             ShowDialog();
@@ -32,15 +27,12 @@ namespace SmartClinic.View
 
         public void ShowForExistingPatientVisit(PatientVisits visit)
         {
-
             this.visit = visit;
             PopulateHeaderInformation();
             PopulateVisitInformation();
             ShowDialog();
         }
-
-        
-
+       
         private void PopulateHeaderInformation()
         {
             this.apptIDTextBox.Text = this.visit.AppointmentID.ToString();
@@ -48,11 +40,9 @@ namespace SmartClinic.View
             this.patientNameTextBox.Text = this.visit.Patient.ToString();
             this.dobTextBox.Text = this.visit.DateOfBirth.ToString();
             this.doctorTextBox.Text = this.visit.Doctor.ToString();
-
             this.appointmentDateTextBox.Text = this.visit.VisitDate.ToString();
             this.doctorIDTextBox.Text = this.visit.DoctorID.ToString();
             this.doctorPhoneTextBox.Text = this.visit.DoctorPhone.ToString();
-
             this.loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " +
                 LoginForm.GetNurse().LastName.ToString();
             this.loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
@@ -75,7 +65,6 @@ namespace SmartClinic.View
 
         private void MakeAllFieldsReadOnly()
         {
-
             this.symptomsTextBox.ReadOnly = true;
             this.weightTextBox.ReadOnly = true;
             this.tempTextBox.ReadOnly = true;
@@ -84,12 +73,21 @@ namespace SmartClinic.View
             this.pulseTextBox.ReadOnly = true;
             this.initialDiagnosisTextBox.ReadOnly = true;
             this.finalDiagnosisTextBox.ReadOnly = true;
+        }
 
+        private void ClearErrorMessages()
+        {
+            symptomsMessageLabel.Text = "";
+            initialDiagnosisMessageLabel.Text = "";
+            bloodPressureMessageLabel.Text = "";
+            pulseMessageLabel.Text = "";
+            weightMessageLabel.Text = "";
+            finalDiagnosisMessageLabel.Text = "";
+            temperatureMessageLabel.Text = "";
         }
 
         private void EditPatientButton_Click(object sender, EventArgs e)
         {
-
             this.symptomsTextBox.ReadOnly = false;
             this.weightTextBox.ReadOnly = false;
             this.tempTextBox.ReadOnly = false;
@@ -98,11 +96,8 @@ namespace SmartClinic.View
             this.pulseTextBox.ReadOnly = false;
             this.initialDiagnosisTextBox.ReadOnly = false;
             this.finalDiagnosisTextBox.ReadOnly = false;
-
         }
-
-      
-
+     
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
             this.ClearErrorMessages();
@@ -120,20 +115,6 @@ namespace SmartClinic.View
             patientVisit.Pulse = Int32.Parse(pulseTextBox.Text);
             patientVisit.InitialDiagnosis = initialDiagnosisTextBox.Text;
             patientVisit.FinalDiagnosis = finalDiagnosisTextBox.Text;
-
-            ////////
-            Console.WriteLine(visit.AppointmentID);
-            Console.WriteLine(visit.NurseID);
-            Console.WriteLine(visit.Symptoms);
-            Console.WriteLine(visit.Weight);
-            Console.WriteLine(visit.FinalDiagnosis);
-           
-
-
-
-
-
-            ////////
 
             if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.visit.AppointmentID))
             {
@@ -178,83 +159,69 @@ namespace SmartClinic.View
             this.Close();
         }
 
-        private void ClearErrorMessages()
-        {
-            symptomsMessageLabel.Text = "";
-            initialDiagnosisMessageLabel.Text = "";
-            bloodPressureMessageLabel.Text = "";
-            pulseMessageLabel.Text = "";
-            weightMessageLabel.Text = "";
-            finalDiagnosisMessageLabel.Text = "";
-            temperatureMessageLabel.Text = "";         
-        }
-
-
         private bool ValidateFields()
-        {
-            string requiredField = "Required Field";
-            string integerValueOnly = "Integer Required";
+        {         
             var isValid = true;
             if (symptomsTextBox.Text.Length == 0)
             {
                 isValid = false;
-                symptomsMessageLabel.Text = requiredField;
+                symptomsMessageLabel.Text = "Required Field";
             }
             if (initialDiagnosisTextBox.Text.Length == 0)
             {
                 isValid = false;
-                initialDiagnosisMessageLabel.Text = requiredField;
+                initialDiagnosisMessageLabel.Text = "Required Field";
             }
             if (weightTextBox.Text.Length == 0)
             {
                 isValid = false;
-                weightMessageLabel.Text = requiredField;
+                weightMessageLabel.Text = "Required Field";
             }
             if (!decimal.TryParse(weightTextBox.Text, out _))
             {
                 isValid = false;
-                weightMessageLabel.Text = "Requires a Number";
+                weightMessageLabel.Text = "Number Required";
             }
             if (tempTextBox.Text.Length == 0)
             {
                 isValid = false;
-                temperatureMessageLabel.Text = requiredField;
+                temperatureMessageLabel.Text = "Required Field";
             }
             if (!decimal.TryParse(tempTextBox.Text, out _))
             {
                 isValid = false;
-                temperatureMessageLabel.Text = "Requires a Number";
+                temperatureMessageLabel.Text = "Number Required";
             }
             if (systolicTextBox.Text.Length == 0)
             {
                 isValid = false;
-                bloodPressureMessageLabel.Text = requiredField;
+                bloodPressureMessageLabel.Text = "Required Field";
             }
 
             if (!int.TryParse(systolicTextBox.Text, out _))
             {
                 isValid = false;
-                bloodPressureMessageLabel.Text = integerValueOnly;
+                bloodPressureMessageLabel.Text = "Integer Required";
             }
             if (diastolicTextBox.Text.Length == 0)
             {
                 isValid = false;
-                bloodPressureMessageLabel.Text = requiredField;
+                bloodPressureMessageLabel.Text = "Required Field";
             }
             if (!int.TryParse(diastolicTextBox.Text, out _))
             {
                 isValid = false;
-                bloodPressureMessageLabel.Text = integerValueOnly;
+                bloodPressureMessageLabel.Text = "Integer Required";
             }
             if (pulseTextBox.Text.Length == 0)
             {
                 isValid = false;
-                pulseMessageLabel.Text = requiredField;
+                pulseMessageLabel.Text = "Required Field";
             }
             if (!int.TryParse(pulseTextBox.Text, out _))
             {
                 isValid = false;
-                pulseMessageLabel.Text = integerValueOnly;
+                pulseMessageLabel.Text = "Integer Required";
             }
             return isValid;
         }

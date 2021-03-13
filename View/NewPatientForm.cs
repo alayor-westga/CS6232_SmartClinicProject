@@ -26,13 +26,11 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.patientController = new PatientController();
-            //this.usStates = new States();
             genderComboBox.DataSource = new BindingSource(genders, null);
             genderComboBox.DisplayMember = "Value";
             genderComboBox.ValueMember = "Key";
             LoadStateComboBox(this.stateComboBox);
-            stateComboBox.Text = "";
-            Console.WriteLine("in constructor");
+            //stateComboBox.Text = "";
         }
 
         public Patient SelectedPatient { get; set; }
