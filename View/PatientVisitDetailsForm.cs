@@ -113,40 +113,51 @@ namespace SmartClinic.View
             this.ClearErrorMessages();
             if (!this.ValidateFields()) return;
 
-            PatientVisits updatedPatientVisit = new PatientVisits();
+            PatientVisits patientVisit = new PatientVisits();
 
-            updatedPatientVisit.Symptoms = this.symptomsTextBox.Text;
-            updatedPatientVisit.Weight = Decimal.Parse(weightTextBox.Text);
-            updatedPatientVisit.BodyTemperature = Decimal.Parse(tempTextBox.Text);
-            updatedPatientVisit.SystolicBP = Int32.Parse(systolicTextBox.Text);
-            updatedPatientVisit.DiastolicBP = Int32.Parse(diastolicTextBox.Text);
-            updatedPatientVisit.Pulse = Int32.Parse(pulseTextBox.Text);
-            updatedPatientVisit.InitialDiagnosis = initialDiagnosisTextBox.Text;
-            updatedPatientVisit.FinalDiagnosis = finalDiagnosisTextBox.Text;
+            patientVisit.AppointmentID = this.visit.AppointmentID;
+            patientVisit.NurseID = LoginForm.GetNurse().NurseId;
+            patientVisit.Symptoms = this.symptomsTextBox.Text;
+            patientVisit.Weight = Decimal.Parse(weightTextBox.Text);
+            patientVisit.BodyTemperature = Decimal.Parse(tempTextBox.Text);
+            patientVisit.SystolicBP = Int32.Parse(systolicTextBox.Text);
+            patientVisit.DiastolicBP = Int32.Parse(diastolicTextBox.Text);
+            patientVisit.Pulse = Int32.Parse(pulseTextBox.Text);
+            patientVisit.InitialDiagnosis = initialDiagnosisTextBox.Text;
+            patientVisit.FinalDiagnosis = finalDiagnosisTextBox.Text;
 
-
-            try
+            if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.visit.AppointmentID))
             {
-                if (!this.patientVisitController.UpdatePatientVisitInformation(this.visit, updatedPatientVisit))
+                this.patientVisitController.AddPatientVisit(patientVisit);
+                this.Close();
+            }
+            else
+            {
+                try
                 {
-                    MessageBox.Show("This patient's information has been\nmodified since it has been retrieved."
-                    + "\n\nThe form has been updated to reflect those changes.",
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.GetPatientVisit();
-                    this.PopulateHeaderInformation();
-                    this.PopulateVisitInformation();
-                    return;
-                }
-                MessageBox.Show("The changes were successfully amended to the database.",
-                        "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!this.patientVisitController.UpdatePatientVisitInformation(this.visit, patientVisit))
+                    {
+                        MessageBox.Show("This patient's information has been\nmodified since it has been retrieved."
+                        + "\n\nThe form has been updated to reflect those changes.",
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.GetPatientVisit();
+                        this.PopulateHeaderInformation();
+                        this.PopulateVisitInformation();
+                        return;
+                    }
+                    MessageBox.Show("The changes were successfully amended to the database.",
+                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show(argumentException.Message,
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                this.Close();
             }
-            catch (ArgumentException argumentException)
-            {
-                MessageBox.Show(argumentException.Message,
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            this.Close();
+
+           
         }
 
         private void GetPatientVisit()

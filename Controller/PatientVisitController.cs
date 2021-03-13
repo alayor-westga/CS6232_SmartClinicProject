@@ -45,5 +45,10 @@ namespace SmartClinic.Controller
         {
             return this.visitSource.GetInfoToCreatNewPatientVisit(appointmentId);
         }
+
+        public void AddPatientVisit(PatientVisits patientVisit)
+        {
+            this.visitSource.AddPatientVisit(patientVisit);
+        }
     }
 }

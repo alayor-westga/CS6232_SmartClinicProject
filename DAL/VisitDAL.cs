@@ -53,7 +53,7 @@ namespace SmartClinic.DAL
         {
             string insertStatement =
           "INSERT Visits " +
-            "(appointment_id, nurse_id, weight, systolic_bp, diastolic_bp, body_temp, pulse, symptoms, intial_diagnosis, final_diagnosis) " +
+            "(appointment_id, nurse_id, weight, systolic_bp, diastolic_bp, body_temp, pulse, symptoms, initial_diagnosis, final_diagnosis) " +
           "VALUES (@AppointmentID, @NurseID, @Weight, @SystolicBP, @DiastolicBP, @BodyTemp, @Pulse, @Symptoms, @InitialDiagnosis, @FinalDiagnosis)";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
