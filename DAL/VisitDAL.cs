@@ -118,9 +118,65 @@ namespace SmartClinic.DAL
             }
         }
 
-        internal bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
+        public bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
         {
-            throw new NotImplementedException();
+            string updateStatement =
+               "UPDATE Visit SET " +
+                    "nurse_id = @NewNurseID, " +
+                    "weight = @NewWeight, " +
+                    "systolic_by = @NewSystolicBP, " +
+                    "diastolicBP = @NewDiastolicBP, " +
+                    "body_temp = @NewBodyTemp, " +
+                    "pulse = @NewPulse, " +
+                    "symptoms = @NewSymptoms, " +
+                    "initial_diagnosis = @NewInitialDiagnosis, " +
+                    "final_diagnosis = @NewFinalDiagnosis " +
+                "WHERE appointment_id = @OldAppointmentID " +
+                    "nurse_id = @OldNurseID, " +
+                    "weight = @OldWeight, " +
+                    "systolic_by = @OldSystolicBP, " +
+                    "diastolicBP = @OldDiastolicBP, " +
+                    "body_temp = @OldBodyTemp, " +
+                    "pulse = @OldPulse, " +
+                    "symptoms = @OldSymptoms, " +
+                    "initial_diagnosis = @OldInitialDiagnosis, " +
+                    "final_diagnosis = @OldFinalDiagnosis";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@NewNurseID", newVisit.NurseID);
+                    updateCommand.Parameters.AddWithValue("@NewWeight", newVisit.Weight);
+                    updateCommand.Parameters.AddWithValue("@NewSystolicBP", newVisit.SystolicBP);
+                    updateCommand.Parameters.AddWithValue("@NewDiastolicBP", newVisit.DiastolicBP);
+                    updateCommand.Parameters.AddWithValue("@NewBodyTemp", newVisit.BodyTemperature);
+                    updateCommand.Parameters.AddWithValue("@NewPulse", newVisit.Pulse);
+                    updateCommand.Parameters.AddWithValue("@NewSymptoms", newVisit.Symptoms);
+                    updateCommand.Parameters.AddWithValue("@NewInitialDiagnosis", newVisit.InitialDiagnosis);
+                    updateCommand.Parameters.AddWithValue("@NewFinalDiagnosis", newVisit.FinalDiagnosis);
+
+
+                    updateCommand.Parameters.AddWithValue("@OldAppointmentID", oldVisit.AppointmentID);
+                    updateCommand.Parameters.AddWithValue("@OldNurseID", oldVisit.NurseID);
+                    updateCommand.Parameters.AddWithValue("@OldWeight", oldVisit.Weight);
+                    updateCommand.Parameters.AddWithValue("@OldSystolicBP", oldVisit.SystolicBP);
+                    updateCommand.Parameters.AddWithValue("@OldDiastolicBP", oldVisit.DiastolicBP);
+                    updateCommand.Parameters.AddWithValue("@OldBodyTemp", oldVisit.BodyTemperature);
+                    updateCommand.Parameters.AddWithValue("@OldPulse", oldVisit.Pulse);
+                    updateCommand.Parameters.AddWithValue("@OldSymptoms", oldVisit.Symptoms);
+                    updateCommand.Parameters.AddWithValue("@OldInitialDiagnosis", oldVisit.InitialDiagnosis);
+                    updateCommand.Parameters.AddWithValue("@OldFinalDiagnosis", oldVisit.FinalDiagnosis);
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    if (count > 0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
         }
 
         internal PatientVisits GetPatientVisitByAppointmentID(int appointmentID)

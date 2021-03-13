@@ -206,7 +206,7 @@ namespace SmartClinic.DAL
             }
         }
 
-        internal bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient) //here is where I am currently working
+        public bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient) 
         {
             string updateStatement =
                "UPDATE ClinicPersons SET " +
@@ -272,10 +272,10 @@ namespace SmartClinic.DAL
                     else
                         return false;
                 }
-            };
+            }
         }
 
-        internal void DeletePatient(int patientID)
+        public void DeletePatient(int patientID)
         {
             string insertStatement = "DELETE FROM Patients WHERE patient_id = @PatientID";
 
