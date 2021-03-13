@@ -182,7 +182,7 @@ namespace SmartClinic.View
         {
             symptomsMessageLabel.Text = "";
             initialDiagnosisMessageLabel.Text = "";
-            bloodPressureLabel.Text = "";
+            bloodPressureMessageLabel.Text = "";
             pulseMessageLabel.Text = "";
             weightMessageLabel.Text = "";
             finalDiagnosisMessageLabel.Text = "";
