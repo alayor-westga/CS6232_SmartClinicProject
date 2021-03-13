@@ -193,7 +193,7 @@ namespace SmartClinic.View
         private bool ValidateFields()
         {
             string requiredField = "Required Field";
-            string integerValueOnly = "Requires an Integer";
+            string integerValueOnly = "Integer Required";
             var isValid = true;
             if (symptomsTextBox.Text.Length == 0)
             {
@@ -210,10 +210,20 @@ namespace SmartClinic.View
                 isValid = false;
                 weightMessageLabel.Text = requiredField;
             }
+            if (!decimal.TryParse(weightTextBox.Text, out _))
+            {
+                isValid = false;
+                weightMessageLabel.Text = "Requires a Number";
+            }
             if (tempTextBox.Text.Length == 0)
             {
                 isValid = false;
                 temperatureMessageLabel.Text = requiredField;
+            }
+            if (!decimal.TryParse(tempTextBox.Text, out _))
+            {
+                isValid = false;
+                temperatureMessageLabel.Text = "Requires a Number";
             }
             if (systolicTextBox.Text.Length == 0)
             {
