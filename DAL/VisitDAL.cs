@@ -139,9 +139,9 @@ namespace SmartClinic.DAL
                     "AND body_temp = @OldBodyTemp " +
                     "AND pulse = @OldPulse " +
                     "AND symptoms = @OldSymptoms " +
-                    "AND initial_diagnosis = @OldInitialDiagnosis " +
-                    "AND final_diagnosis = @OldFinalDiagnosis";
-                    
+                    "AND initial_diagnosis = @OldInitialDiagnosis ";
+            updateStatement += oldVisit.FinalDiagnosis == null ? "AND final_diagnosis IS NULL;" : "AND final_diagnosis = @OldFinalDiagnosis;";
+
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -168,8 +168,10 @@ namespace SmartClinic.DAL
                     updateCommand.Parameters.AddWithValue("@OldPulse", oldVisit.Pulse);
                     updateCommand.Parameters.AddWithValue("@OldSymptoms", oldVisit.Symptoms);
                     updateCommand.Parameters.AddWithValue("@OldInitialDiagnosis", oldVisit.InitialDiagnosis);
-                    updateCommand.Parameters.AddWithValue("@OldFinalDiagnosis", oldVisit.FinalDiagnosis);
-
+                    if (oldVisit.FinalDiagnosis != null) 
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldFinalDiagnosis", oldVisit.FinalDiagnosis);
+                    }
                     int count = updateCommand.ExecuteNonQuery();
                     if (count > 0)
                         return true;
@@ -211,25 +213,25 @@ namespace SmartClinic.DAL
                     {
                         while (reader.Read())
                         {
-                            patientVisit.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
-                            patientVisit.PatientID = Int32.Parse(reader["patient_id"].ToString());
+                            patientVisit.AppointmentID = int.Parse(reader["appointment_id"].ToString());
+                            patientVisit.PatientID = int.Parse(reader["patient_id"].ToString());
                             patientVisit.Patient = reader["Patient"].ToString();
                             patientVisit.DateOfBirth = DateTime.Parse(reader["date_of_birth"].ToString());
                             patientVisit.Doctor = reader["Doctor"].ToString();
-                            patientVisit.DoctorID = Int32.Parse(reader["doctor_id"].ToString());
+                            patientVisit.DoctorID = int.Parse(reader["doctor_id"].ToString());
                             patientVisit.DoctorPhone = reader["phone_number"].ToString();
                             patientVisit.Nurse = reader["Nurse"].ToString();
-                            patientVisit.NurseID = Int32.Parse(reader["nurse_id"].ToString());
+                            patientVisit.NurseID = int.Parse(reader["nurse_id"].ToString());
                             patientVisit.VisitDate = DateTime.Parse(reader["date"].ToString());
                             patientVisit.Weight = reader.GetDecimal(reader.GetOrdinal("weight"));
-                            patientVisit.SystolicBP = Int32.Parse(reader["systolic_bp"].ToString());
-                            patientVisit.DiastolicBP = Int32.Parse(reader["diastolic_bp"].ToString());
+                            patientVisit.SystolicBP = int.Parse(reader["systolic_bp"].ToString());
+                            patientVisit.DiastolicBP = int.Parse(reader["diastolic_bp"].ToString());
                             patientVisit.BodyTemperature = reader.GetDecimal(reader.GetOrdinal("body_temp"));
-                            patientVisit.Pulse = Int32.Parse(reader["pulse"].ToString());
+                            patientVisit.Pulse = int.Parse(reader["pulse"].ToString());
                             patientVisit.Symptoms = reader["symptoms"].ToString();
                             patientVisit.Reason = reader["reason"].ToString();
                             patientVisit.InitialDiagnosis = reader["initial_diagnosis"].ToString();
-                            patientVisit.FinalDiagnosis = reader["final_diagnosis"].ToString();
+                            patientVisit.FinalDiagnosis = reader["final_diagnosis"] == DBNull.Value ? null : (string) reader["final_diagnosis"];
                         }
                     }
                 }

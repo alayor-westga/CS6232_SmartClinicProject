@@ -52,16 +52,16 @@ namespace SmartClinic.View
 
         private void PopulateVisitInformation()
         {
-            nurseTextBox.Text = visit.Nurse.ToString();
+            nurseTextBox.Text = visit.Nurse;
             lastNurseIDTextBox.Text = visit.NurseID.ToString();
-            symptomsTextBox.Text = visit.Symptoms.ToString();
+            symptomsTextBox.Text = visit.Symptoms;
             weightTextBox.Text = visit.Weight.ToString();
             tempTextBox.Text = visit.BodyTemperature.ToString();
             systolicTextBox.Text = visit.SystolicBP.ToString();
             diastolicTextBox.Text = visit.DiastolicBP.ToString();
             pulseTextBox.Text = visit.Pulse.ToString();
-            initialDiagnosisTextBox.Text = visit.InitialDiagnosis.ToString();
-            finalDiagnosisTextBox.Text = visit.FinalDiagnosis.ToString();
+            initialDiagnosisTextBox.Text = visit.InitialDiagnosis;
+            finalDiagnosisTextBox.Text = visit.FinalDiagnosis;
         }
 
         private void ClearVisitInformation()
