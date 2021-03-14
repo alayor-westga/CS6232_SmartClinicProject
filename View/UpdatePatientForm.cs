@@ -245,6 +245,12 @@ namespace SmartClinic.View
                 isValid = false;
                 phoneErrorLabel.Text = requiredField;
             }
+            Regex ssnRegex = new Regex("[0-9]{9}");
+            if (!ssnRegex.IsMatch(ssnTextBox.Text))
+            {
+                isValid = false;
+                ssnErrorLabel.Text = "9 digits required";
+            }
             if (ssnTextBox.Text.Length != 9)
             {
                 isValid = false;
@@ -254,6 +260,12 @@ namespace SmartClinic.View
             {
                 isValid = false;
                 ssnErrorLabel.Text = requiredField;
+                return isValid;
+            }
+            if (this.patientController.SsnIsNotUnique(this.ssnTextBox.Text))
+            {
+                isValid = false;
+                ssnErrorLabel.Text = "SSN Assigned to Another Patient";
             }
             return isValid;
         }

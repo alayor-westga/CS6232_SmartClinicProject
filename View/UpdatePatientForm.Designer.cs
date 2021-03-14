@@ -397,17 +397,19 @@ namespace SmartClinic.View
             // 
             // genderComboBox
             // 
+            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.Enabled = false;
             this.genderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(130, 67);
-            this.genderComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.genderComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(172, 33);
             this.genderComboBox.TabIndex = 72;
             // 
             // stateComboBox
             // 
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.Location = new System.Drawing.Point(444, 311);
