@@ -106,6 +106,37 @@ namespace SmartClinic.DAL
             return SelectMany(selectStatement, parameters);
         }
 
+        /// <summary>
+        /// Checks if a ClinicPerson exists via UQ and NOT NULL key ssn
+        /// </summary>
+        /// <param name="ssn">ssn</param>
+        /// <returns>true if ssn is not unique, false otherwise</returns>
+        internal bool SsnIsNotUnique(string ssn)
+        {
+            string selectStatement =
+
+                "SELECT count(*) FROM ClinicPersons WHERE ssn = @SSN";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@SSN", ssn);
+
+                    if ((Int32)selectCommand.ExecuteScalar() == 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
         internal List<Patient> SelectMany(string selectStatement, Hashtable parameters = null)
         {
             List<Patient> patientList = new List<Patient>();

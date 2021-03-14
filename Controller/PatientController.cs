@@ -111,5 +111,10 @@ namespace SmartClinic.Controller
         {
             return this.patientSource.UpdatePatientInformation(oldPatient, newPatient);
         }
+
+        internal bool SsnIsNotUnique(string ssn)
+        {
+            return this.patientSource.SsnIsNotUnique(ssn);
+        }
     }
 }

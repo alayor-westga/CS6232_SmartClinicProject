@@ -13,7 +13,6 @@ namespace SmartClinic.View
     public partial class NewPatientForm : Form
     {
         private readonly PatientController patientController;
-        //private States usStates;
         Dictionary<string, string> genders = new Dictionary<string, string>()
         {
             { "", "Select a value" },
@@ -150,7 +149,7 @@ namespace SmartClinic.View
             if (!phoneRegex.IsMatch(phoneTextBox.Text))
             {
                 isValid = false;
-                phoneErrorLabel.Text = "only 10 numbers permitted";
+                phoneErrorLabel.Text = "10 digits required";
             }
             if (phoneTextBox.Text.Length != 10)
             {
@@ -162,6 +161,12 @@ namespace SmartClinic.View
                 isValid = false;
                 phoneErrorLabel.Text = requiredField;
             }
+            Regex ssnRegex = new Regex("[0-9]{9}");
+            if (!ssnRegex.IsMatch(ssnTextBox.Text))
+            {
+                isValid = false;
+                ssnErrorLabel.Text = "9 digits required";
+            }
             if (ssnTextBox.Text.Length != 9)
             {
                 isValid = false;
@@ -171,6 +176,12 @@ namespace SmartClinic.View
             {
                 isValid = false;
                 ssnErrorLabel.Text = requiredField;
+                return isValid;
+            }
+            if (this.patientController.SsnIsNotUnique(this.ssnTextBox.Text))
+            {
+                isValid = false;
+                ssnErrorLabel.Text = "SSN Assigned";
             }
             return isValid;
         }
