@@ -123,20 +123,28 @@ namespace SmartClinic.View
             patientVisit.AppointmentID = visit.AppointmentID;
             patientVisit.NurseID = LoginForm.GetNurse().NurseId;
             patientVisit.Symptoms = symptomsTextBox.Text;
-            patientVisit.Weight = Decimal.Parse(weightTextBox.Text);
-            patientVisit.BodyTemperature = Decimal.Parse(tempTextBox.Text);
-            patientVisit.SystolicBP = Int32.Parse(systolicTextBox.Text);
-            patientVisit.DiastolicBP = Int32.Parse(diastolicTextBox.Text);
-            patientVisit.Pulse = Int32.Parse(pulseTextBox.Text);
+            patientVisit.Weight = decimal.Parse(weightTextBox.Text);
+            patientVisit.BodyTemperature = decimal.Parse(tempTextBox.Text);
+            patientVisit.SystolicBP = int.Parse(systolicTextBox.Text);
+            patientVisit.DiastolicBP = int.Parse(diastolicTextBox.Text);
+            patientVisit.Pulse = int.Parse(pulseTextBox.Text);
             patientVisit.InitialDiagnosis = initialDiagnosisTextBox.Text;
             patientVisit.FinalDiagnosis = finalDiagnosisTextBox.Text;
 
             if (patientVisitController.AppointmentHasNoAssociatedVisit(visit.AppointmentID))
             {
                 patientVisitController.AddPatientVisit(patientVisit);
-                MessageBox.Show("The visit information was successfully saved.",
+                try
+                {
+                    MessageBox.Show("The visit information was successfully saved.",
                             "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
+                    Close();
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show(argumentException.Message,
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -154,14 +162,13 @@ namespace SmartClinic.View
                     }
                     MessageBox.Show("The changes were successfully amended to the database.",
                             "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    Close();
                 }
                 catch (ArgumentException argumentException)
                 {
                     MessageBox.Show(argumentException.Message,
                             "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                Close();
+                }   
             }         
         }
 
