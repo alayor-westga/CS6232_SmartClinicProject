@@ -9,6 +9,14 @@ using System.ComponentModel;
 
 namespace SmartClinic.View
 {
+    /// <summary>
+    /// Author:  Mike Hamel
+    /// Secondary Author: Alonso Ortego
+    /// 
+    /// Date:3-12-21
+    /// 
+    /// Class that manages an update to patient information
+    /// </summary>
     public partial class UpdatePatientForm : Form
     {
         private int patientId;
@@ -21,6 +29,10 @@ namespace SmartClinic.View
             { "M", "Male" },
             { "X", "Non Binary" },
         };
+
+        /// <summary>
+        /// Constructor to instantiate instance variables
+        /// </summary>
         public UpdatePatientForm()
         {
             InitializeComponent();
@@ -32,6 +44,11 @@ namespace SmartClinic.View
             LoadStateComboBox(this.stateComboBox);
         }
 
+        /// <summary>
+        /// method called when view/edit clicked from another page or tab; 
+        /// will call helper methods to populate form and show this dialog
+        /// </summary>
+        /// <param name="patientId"></param>
         public void ShowForPatient(int patientId)
         {
             this.patientId = patientId;
@@ -40,11 +57,17 @@ namespace SmartClinic.View
             ShowDialog();
         }
 
+        /// <summary>
+        /// helper method that gets one patient from the db basedon on patientID
+        /// </summary>
         private void GetPatientFromDB()
         {
             this.patient = this.patientController.GetClinicPerson(patientId);
         }
 
+        /// <summary>
+        /// populates the form with data
+        /// </summary>
         private void PopulateForm()
         {
             patientIdLabel.Text = "Patient ID: " + patientId.ToString();
@@ -62,6 +85,9 @@ namespace SmartClinic.View
             MakeAllFieldsReadOnly();
         }
 
+        /// <summary>
+        /// locks the form so it cannot be edited
+        /// </summary>
         private void MakeAllFieldsReadOnly()
         {
             patientIdLabel.Text = "Patient ID: " + patientId.ToString();
@@ -78,6 +104,11 @@ namespace SmartClinic.View
             ssnTextBox.ReadOnly = true;
         }
 
+        /// <summary>
+        /// enables all form fields so the form can be edited
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditPatientButton_Click(object sender, EventArgs e)
         {
             patientIdLabel.Text = "Patient ID: " + patientId.ToString();
@@ -94,6 +125,11 @@ namespace SmartClinic.View
             ssnTextBox.ReadOnly = false;
         }
 
+        /// <summary>
+        /// saves updates to the patient form fields, after input validation performed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
             this.ClearErrorMessages();
@@ -135,11 +171,21 @@ namespace SmartClinic.View
             this.Close();
         }
 
+        /// <summary>
+        /// closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// deletes a patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogResultVerifyClose = MessageBox.Show("Are you sure you want to delete this patient?\n" +
@@ -159,6 +205,10 @@ namespace SmartClinic.View
                 }
             }
         }
+
+        /// <summary>
+        /// clear all error messages on form
+        /// </summary>
         private void ClearErrorMessages()
         {
             dobErrorLabel.Text = "";
@@ -174,6 +224,10 @@ namespace SmartClinic.View
             ssnErrorLabel.Text = "";
         }
 
+        /// <summary>
+        /// input validation for form fields
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateFields()
         {
             string requiredField = "This field is required";
@@ -269,13 +323,17 @@ namespace SmartClinic.View
             }
             return isValid;
         }
+
+        /// <summary>
+        /// populates combo box with state codes
+        /// </summary>
+        /// <param name="cbo"></param>
         public static void LoadStateComboBox(ComboBox cbo)
         {
             cbo.DataSource = Enum.GetValues(typeof(States))
                 .Cast<Enum>()
                 .Select(value => new
                 {
-
                     (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()),
                     typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
                     value

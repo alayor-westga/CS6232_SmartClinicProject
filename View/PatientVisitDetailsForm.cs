@@ -43,7 +43,10 @@ namespace SmartClinic.View
             doctorTextBox.Text = visit.Doctor.ToString();
             appointmentDateTextBox.Text = visit.VisitDate.ToString();
             doctorIDTextBox.Text = visit.DoctorID.ToString();
-            doctorPhoneTextBox.Text = visit.DoctorPhone.ToString();
+            
+            string docPhone = visit.DoctorPhone.ToString();
+            doctorPhoneTextBox.Text = "(" + docPhone.Substring(0, 3) + ") " + docPhone.Substring(3, 3) + " - " + docPhone.Substring(6, 4);
+
             loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " +
                 LoginForm.GetNurse().LastName.ToString();
             loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
