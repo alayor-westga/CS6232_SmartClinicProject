@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\script.sql" />
+    <Content Include="DB\script2.sql" />
     <Content Include="docs\backlog.txt" />
     <Content Include="read_me.txt">
       <SubType>Form</SubType>
