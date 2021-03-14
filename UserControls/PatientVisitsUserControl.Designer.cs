@@ -193,7 +193,7 @@ namespace SmartClinic.UserControls
             this.appointmentsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentsGroupBox.Location = new System.Drawing.Point(18, 275);
             this.appointmentsGroupBox.Name = "appointmentsGroupBox";
-            this.appointmentsGroupBox.Size = new System.Drawing.Size(1209, 506);
+            this.appointmentsGroupBox.Size = new System.Drawing.Size(1209, 490);
             this.appointmentsGroupBox.TabIndex = 23;
             this.appointmentsGroupBox.TabStop = false;
             this.appointmentsGroupBox.Text = "Patient Visits";
@@ -229,7 +229,7 @@ namespace SmartClinic.UserControls
             this.patientVisitsDataGridView.RowHeadersWidth = 51;
             this.patientVisitsDataGridView.RowTemplate.Height = 24;
             this.patientVisitsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.patientVisitsDataGridView.Size = new System.Drawing.Size(1148, 322);
+            this.patientVisitsDataGridView.Size = new System.Drawing.Size(1148, 340);
             this.patientVisitsDataGridView.TabIndex = 14;
             this.patientVisitsDataGridView.SelectionChanged += new System.EventHandler(this.AppointmentsDataGridView_SelectionChanged);
             this.patientVisitsDataGridView.DoubleClick += new System.EventHandler(this.AppointmentsDataGridView_DoubleClick);
@@ -298,7 +298,7 @@ namespace SmartClinic.UserControls
             this.Controls.Add(this.appointmentsGroupBox);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PatientVisitsUserControl";
-            this.Size = new System.Drawing.Size(1236, 795);
+            this.Size = new System.Drawing.Size(1236, 787);
             this.searchForPatientsGroupBox.ResumeLayout(false);
             this.searchForPatientsGroupBox.PerformLayout();
             this.appointmentsGroupBox.ResumeLayout(false);

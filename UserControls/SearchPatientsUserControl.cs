@@ -34,12 +34,10 @@ namespace SmartClinic.UserControls
             if (this.formMode == SearchFormMode.SearchAndEdit)
             {
                 editPatientButton.Visible = true;
-                deletePatientButton.Visible = true;
             }
             else
             {
                 editPatientButton.Visible = false;
-                deletePatientButton.Visible = false;
             }
         }
 
@@ -174,7 +172,6 @@ namespace SmartClinic.UserControls
                 if (formMode == SearchFormMode.SearchAndEdit)
                 {
                     editPatientButton.Enabled = true;
-                    deletePatientButton.Enabled = true;
                 }
                 foreach (SelectionListener<Patient> listener in selectionListeners)
                 {
@@ -185,7 +182,6 @@ namespace SmartClinic.UserControls
            else
             {
                 editPatientButton.Enabled = false;
-                deletePatientButton.Enabled = false;
                 foreach (SelectionListener<Patient> listener in selectionListeners)
                 {
                     listener.OnSelectionCleared();

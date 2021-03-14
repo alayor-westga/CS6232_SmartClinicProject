@@ -47,16 +47,18 @@ namespace SmartClinic.UserControls
             this.clearButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
+            this.editPatientButton = new System.Windows.Forms.Button();
+            this.searchMessageLabel = new System.Windows.Forms.Label();
+            this.patientsGroupBox = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.patientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.editPatientButton = new System.Windows.Forms.Button();
-            this.deletePatientButton = new System.Windows.Forms.Button();
-            this.searchMessageLabel = new System.Windows.Forms.Label();
             this.searchForPatientsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
+            this.patientsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +80,7 @@ namespace SmartClinic.UserControls
             this.searchForPatientsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchForPatientsGroupBox.Location = new System.Drawing.Point(3, 3);
             this.searchForPatientsGroupBox.Name = "searchForPatientsGroupBox";
-            this.searchForPatientsGroupBox.Size = new System.Drawing.Size(559, 416);
+            this.searchForPatientsGroupBox.Size = new System.Drawing.Size(559, 410);
             this.searchForPatientsGroupBox.TabIndex = 37;
             this.searchForPatientsGroupBox.TabStop = false;
             this.searchForPatientsGroupBox.Text = "Select a search option";
@@ -279,17 +281,53 @@ namespace SmartClinic.UserControls
             this.dateOfBirthDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn});
             this.patientsDataGridView.DataSource = this.patientBindingSource;
-            this.patientsDataGridView.Location = new System.Drawing.Point(3, 437);
+            this.patientsDataGridView.Location = new System.Drawing.Point(6, 42);
             this.patientsDataGridView.MultiSelect = false;
             this.patientsDataGridView.Name = "patientsDataGridView";
             this.patientsDataGridView.ReadOnly = true;
             this.patientsDataGridView.RowHeadersWidth = 82;
             this.patientsDataGridView.RowTemplate.Height = 33;
             this.patientsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.patientsDataGridView.Size = new System.Drawing.Size(1162, 238);
+            this.patientsDataGridView.Size = new System.Drawing.Size(1118, 238);
             this.patientsDataGridView.TabIndex = 38;
             this.patientsDataGridView.SelectionChanged += new System.EventHandler(this.PatientsDataGridView_SelectionChanged);
             this.patientsDataGridView.DoubleClick += new System.EventHandler(this.PatientsDataGridView_DoubleClick);
+            // 
+            // editPatientButton
+            // 
+            this.editPatientButton.AutoSize = true;
+            this.editPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editPatientButton.Enabled = false;
+            this.editPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editPatientButton.Location = new System.Drawing.Point(868, 721);
+            this.editPatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.editPatientButton.Name = "editPatientButton";
+            this.editPatientButton.Size = new System.Drawing.Size(268, 47);
+            this.editPatientButton.TabIndex = 41;
+            this.editPatientButton.Text = "View/Edit";
+            this.editPatientButton.UseVisualStyleBackColor = true;
+            this.editPatientButton.Visible = false;
+            this.editPatientButton.Click += new System.EventHandler(this.EditPatientButton_Click);
+            // 
+            // searchMessageLabel
+            // 
+            this.searchMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.searchMessageLabel.Location = new System.Drawing.Point(884, 385);
+            this.searchMessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchMessageLabel.Name = "searchMessageLabel";
+            this.searchMessageLabel.Size = new System.Drawing.Size(276, 49);
+            this.searchMessageLabel.TabIndex = 25;
+            // 
+            // patientsGroupBox
+            // 
+            this.patientsGroupBox.Controls.Add(this.patientsDataGridView);
+            this.patientsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientsGroupBox.Location = new System.Drawing.Point(12, 419);
+            this.patientsGroupBox.Name = "patientsGroupBox";
+            this.patientsGroupBox.Size = new System.Drawing.Size(1138, 294);
+            this.patientsGroupBox.TabIndex = 43;
+            this.patientsGroupBox.TabStop = false;
+            this.patientsGroupBox.Text = "Patients";
             // 
             // patientIdDataGridViewTextBoxColumn
             // 
@@ -327,63 +365,23 @@ namespace SmartClinic.UserControls
             // 
             this.patientBindingSource.DataSource = typeof(SmartClinic.Model.Patient);
             // 
-            // editPatientButton
-            // 
-            this.editPatientButton.AutoSize = true;
-            this.editPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editPatientButton.Enabled = false;
-            this.editPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editPatientButton.Location = new System.Drawing.Point(677, 693);
-            this.editPatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.editPatientButton.Name = "editPatientButton";
-            this.editPatientButton.Size = new System.Drawing.Size(268, 55);
-            this.editPatientButton.TabIndex = 41;
-            this.editPatientButton.Text = "View/Edit Patient";
-            this.editPatientButton.UseVisualStyleBackColor = true;
-            this.editPatientButton.Visible = false;
-            this.editPatientButton.Click += new System.EventHandler(this.EditPatientButton_Click);
-            // 
-            // deletePatientButton
-            // 
-            this.deletePatientButton.AutoSize = true;
-            this.deletePatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deletePatientButton.Enabled = false;
-            this.deletePatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deletePatientButton.Location = new System.Drawing.Point(977, 693);
-            this.deletePatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.deletePatientButton.Name = "deletePatientButton";
-            this.deletePatientButton.Size = new System.Drawing.Size(188, 55);
-            this.deletePatientButton.TabIndex = 42;
-            this.deletePatientButton.Text = "Delete";
-            this.deletePatientButton.UseVisualStyleBackColor = true;
-            this.deletePatientButton.Visible = false;
-            // 
-            // searchMessageLabel
-            // 
-            this.searchMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchMessageLabel.Location = new System.Drawing.Point(884, 385);
-            this.searchMessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.searchMessageLabel.Name = "searchMessageLabel";
-            this.searchMessageLabel.Size = new System.Drawing.Size(276, 49);
-            this.searchMessageLabel.TabIndex = 25;
-            // 
             // SearchPatientsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.deletePatientButton);
             this.Controls.Add(this.editPatientButton);
-            this.Controls.Add(this.patientsDataGridView);
             this.Controls.Add(this.searchForPatientsGroupBox);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchMessageLabel);
+            this.Controls.Add(this.patientsGroupBox);
             this.Name = "SearchPatientsUserControl";
-            this.Size = new System.Drawing.Size(1172, 756);
+            this.Size = new System.Drawing.Size(1172, 782);
             this.Load += new System.EventHandler(this.SearchPatientsUserControl_Load);
             this.searchForPatientsGroupBox.ResumeLayout(false);
             this.searchForPatientsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
+            this.patientsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -410,12 +408,13 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView patientsDataGridView;
         private System.Windows.Forms.Button editPatientButton;
-        private System.Windows.Forms.Button deletePatientButton;
         private System.Windows.Forms.BindingSource patientBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label searchMessageLabel;
+        private System.Windows.Forms.GroupBox patientsGroupBox;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
