@@ -255,10 +255,12 @@ namespace SmartClinic.View
 
         private void appointmentDetailsButton_Click(object sender, EventArgs e)
         {
+          
             using(AppointmentDetailsForm appointmentDetailsForm = new AppointmentDetailsForm())
-            {
-                Appointment appointment = this.appointmentController.GetAppointmentByAppointmentId(this.visit.AppointmentID);
-                appointmentDetailsForm.ShowWithAppointment(appointment);
+            {                             
+                    Appointment appointment = this.appointmentController.GetAppointmentByAppointmentId(this.visit.AppointmentID);
+                    appointmentDetailsForm.ShowWithAppointment(appointment);
+                               
             }
         }
     }
