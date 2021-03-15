@@ -262,8 +262,8 @@ namespace SmartClinic.DAL
                     "AND city = @OldCity " +
                     "AND state = @OldState " +
                     "AND zip_code = @OldZipCode " +
-                    "AND phone_number = @OldPhoneNumber ";
-            updateStatement += oldPatient.SSN == null ? "AND ssn IS NULL;" : "AND ssn = @OldSSN;";
+                    "AND phone_number = @OldPhoneNumber " +
+                    "AND ssn = @OldSSN;";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -295,10 +295,7 @@ namespace SmartClinic.DAL
                     updateCommand.Parameters.AddWithValue("@OldState", oldPatient.State);
                     updateCommand.Parameters.AddWithValue("@OldZipCode", oldPatient.ZipCode);
                     updateCommand.Parameters.AddWithValue("@OldPhoneNumber", oldPatient.Phone);
-                    if (oldPatient.SSN != null) 
-                    {
-                        updateCommand.Parameters.AddWithValue("@OldSSN", oldPatient.SSN);
-                    }
+                    updateCommand.Parameters.AddWithValue("@OldSSN", oldPatient.SSN);
 
                     int count = updateCommand.ExecuteNonQuery();
                     if (count > 0)
@@ -512,7 +509,7 @@ namespace SmartClinic.DAL
                             patient.State = (string)reader["state"];
                             patient.ZipCode = (string)reader["zip_code"];
                             patient.Phone = (string)reader["phone_number"];
-                            patient.SSN = reader["ssn"] == DBNull.Value ? null : (string)reader["ssn"];
+                            patient.SSN = (string)reader["ssn"];
                         }
                     }
                 }

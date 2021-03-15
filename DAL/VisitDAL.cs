@@ -142,7 +142,6 @@ namespace SmartClinic.DAL
                     "AND initial_diagnosis = @OldInitialDiagnosis ";
             updateStatement += oldVisit.FinalDiagnosis == null ? "AND final_diagnosis IS NULL;" : "AND final_diagnosis = @OldFinalDiagnosis;";
 
-
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
                 connection.Open();

@@ -44,12 +44,12 @@ namespace SmartClinic.UserControls
             this.appointmentsGroupBox = new System.Windows.Forms.GroupBox();
             this.searchMessageLabel = new System.Windows.Forms.Label();
             this.patientVisitsDataGridView = new System.Windows.Forms.DataGridView();
-            this.viewAppointmentButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientVisitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewAppointmentButton = new System.Windows.Forms.Button();
             this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchForPatientsGroupBox.SuspendLayout();
             this.appointmentsGroupBox.SuspendLayout();
@@ -200,13 +200,12 @@ namespace SmartClinic.UserControls
             // 
             // searchMessageLabel
             // 
-            this.searchMessageLabel.AutoSize = true;
             this.searchMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchMessageLabel.Location = new System.Drawing.Point(754, 41);
+            this.searchMessageLabel.Location = new System.Drawing.Point(885, 20);
             this.searchMessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.searchMessageLabel.Name = "searchMessageLabel";
-            this.searchMessageLabel.Size = new System.Drawing.Size(0, 31);
+            this.searchMessageLabel.Size = new System.Drawing.Size(268, 30);
             this.searchMessageLabel.TabIndex = 15;
             // 
             // patientVisitsDataGridView
@@ -233,20 +232,6 @@ namespace SmartClinic.UserControls
             this.patientVisitsDataGridView.TabIndex = 14;
             this.patientVisitsDataGridView.SelectionChanged += new System.EventHandler(this.AppointmentsDataGridView_SelectionChanged);
             this.patientVisitsDataGridView.DoubleClick += new System.EventHandler(this.AppointmentsDataGridView_DoubleClick);
-            // 
-            // viewAppointmentButton
-            // 
-            this.viewAppointmentButton.AutoSize = true;
-            this.viewAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.viewAppointmentButton.Enabled = false;
-            this.viewAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewAppointmentButton.Location = new System.Drawing.Point(901, 418);
-            this.viewAppointmentButton.Name = "viewAppointmentButton";
-            this.viewAppointmentButton.Size = new System.Drawing.Size(250, 47);
-            this.viewAppointmentButton.TabIndex = 14;
-            this.viewAppointmentButton.Text = "View / Edit";
-            this.viewAppointmentButton.UseVisualStyleBackColor = true;
-            this.viewAppointmentButton.Click += new System.EventHandler(this.ViewAppointmentButton_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -285,6 +270,20 @@ namespace SmartClinic.UserControls
             // patientVisitsBindingSource
             // 
             this.patientVisitsBindingSource.DataSource = typeof(SmartClinic.Model.PatientVisits);
+            // 
+            // viewAppointmentButton
+            // 
+            this.viewAppointmentButton.AutoSize = true;
+            this.viewAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.viewAppointmentButton.Enabled = false;
+            this.viewAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewAppointmentButton.Location = new System.Drawing.Point(901, 418);
+            this.viewAppointmentButton.Name = "viewAppointmentButton";
+            this.viewAppointmentButton.Size = new System.Drawing.Size(250, 47);
+            this.viewAppointmentButton.TabIndex = 14;
+            this.viewAppointmentButton.Text = "View / Edit";
+            this.viewAppointmentButton.UseVisualStyleBackColor = true;
+            this.viewAppointmentButton.Click += new System.EventHandler(this.ViewAppointmentButton_Click);
             // 
             // appointmentSearchResultBindingSource
             // 

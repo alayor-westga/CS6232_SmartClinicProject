@@ -79,6 +79,14 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The appointment date cannot be in the past.");
             }
+            if (appointmentSource.ExistsForDoctorAndDate(existingAppointment.DoctorId, appointmentChanges.Date))
+            {
+                throw new ArgumentException("The doctor has an existing appointment at the specified time.");
+            }
+           if (appointmentSource.ExistsForPatientAndDate(existingAppointment.PatientId, appointmentChanges.Date))
+            {
+                throw new ArgumentException("The patient has an existing appointment at the specified time.");
+            }
             int updatedRows = appointmentSource.Update(existingAppointment, appointmentChanges);
             if (updatedRows < 1) 
             {
