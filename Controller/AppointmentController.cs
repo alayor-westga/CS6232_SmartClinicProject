@@ -134,5 +134,10 @@ namespace SmartClinic.Controller
         {
             return this.appointmentSource.GetVisitFromDB(appointmentID);
         }
+
+        internal Appointment GetAppointmentByAppointmentId(int appointmentID)
+        {
+            return this.appointmentSource.GetAppointmentByAppointmentId(appointmentID);
+        }
     }
 }

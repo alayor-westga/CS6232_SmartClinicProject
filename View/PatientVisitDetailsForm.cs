@@ -123,7 +123,7 @@ namespace SmartClinic.View
 
             PatientVisits patientVisit = new PatientVisits();
 
-            patientVisit.AppointmentID = visit.AppointmentID;
+            patientVisit.AppointmentID = this.visit.AppointmentID;
             patientVisit.NurseID = LoginForm.GetNurse().NurseId;
             patientVisit.Symptoms = symptomsTextBox.Text;
             patientVisit.Weight = decimal.Parse(weightTextBox.Text);
@@ -251,6 +251,15 @@ namespace SmartClinic.View
                 pulseMessageLabel.Text = "Integer Required";
             }
             return isValid;
+        }
+
+        private void appointmentDetailsButton_Click(object sender, EventArgs e)
+        {
+            using(AppointmentDetailsForm appointmentDetailsForm = new AppointmentDetailsForm())
+            {
+                Appointment appointment = this.appointmentController.GetAppointmentByAppointmentId(this.visit.AppointmentID);
+                appointmentDetailsForm.ShowWithAppointment(appointment);
+            }
         }
     }
 }
