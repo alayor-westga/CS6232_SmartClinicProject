@@ -5,11 +5,18 @@ using SmartClinic.Model;
 
 namespace SmartClinic.View
 {
+    /// <summary>
+    /// It renders the login form.
+    /// </summary>
     public partial class LoginForm : Form
     {
         private readonly MainDashboard mainDashboard;
         private readonly NurseController nurseController;
         private static Nurse nurse;
+
+        /// <summary>
+        /// It builds and initializes the login form.
+        /// </summary>
         public LoginForm()
         {
             InitializeComponent();

@@ -16,7 +16,7 @@ namespace SmartClinic.View
         private readonly AppointmentController appointmentController;
         private readonly PatientVisitController patientVisitController;
         private PatientVisitDetailsForm patientVisitDetailsForm;
-        List<Doctor> doctors;
+        private List<Doctor> doctors;
 
         /// <summary>
         /// It builds and initializes the appointment view details form.
@@ -31,6 +31,10 @@ namespace SmartClinic.View
             doctors = new List<Doctor>();
         }
 
+        /// <summary>
+        /// It renders the details form showing info for the provided appoinment.
+        /// <param name="appointment">The appointment info to be shown.</param>
+        /// </summary>
         public void ShowWithAppointment(Appointment appointment) 
         {
             this.appointment = appointment;

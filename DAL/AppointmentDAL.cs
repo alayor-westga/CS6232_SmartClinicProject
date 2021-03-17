@@ -101,48 +101,6 @@ namespace SmartClinic.DAL
             }
         }
 
-        internal PatientVisits GetVisitFromDB(int appointmentID)
-        {
-            PatientVisits patientVisit = new PatientVisits();
-            string selectStatement =
-
-               "SELECT p.patient_id as 'PID', a.appointment_id as 'AID', cpp.first_name + ' ' + cpp.last_name as 'Patient'," +
-            "cpd.first_name + ' ' + cpd.last_name as 'Doctor', a.date as 'Visit Date' " +
-
-            "FROM Appointments a " +
-            "JOIN Visits v on a.appointment_id = v.appointment_id " +
-            "JOIN Patients p on a.patient_id = p.patient_id " +
-            "JOIN Doctors d on d.doctor_id = a.doctor_id " +
-            "JOIN Nurses n on n.nurse_id = v.nurse_id " +
-            "JOIN ClinicPersons cpp on cpp.clinic_person_id = p.clinic_person_id " +
-            "JOIN ClinicPersons cpd on cpd.clinic_person_id = d.clinic_person_id " +
-            "JOIN ClinicPersons cpn on cpn.clinic_person_id = n.clinic_person_id " +
-            "WHERE a.appointment_id = @AppointmentID";
-
-            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentID);
-
-                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
-
-                    {
-                        while (reader.Read())
-                        {
-                            patientVisit.AppointmentID = (int)reader["AID"];
-                            
-                            //patient.DateOfBirth = (DateTime)reader["date_of_birth"];
-                           
-                        }
-                    }
-                }
-                return patientVisit;
-            }
-        }
-
         /// <summary>
         /// It verifies if an appoinment exists for the same doctor and date.
         /// </summary>

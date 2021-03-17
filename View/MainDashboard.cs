@@ -14,6 +14,7 @@ namespace SmartClinic.View
         private readonly Form newAppointmentForm;
         private readonly Form newPatientForm;
         private Nurse nurse;
+
         /// <summary>
         /// It builds and initializes the main dashboard.
         /// </summary>
@@ -55,7 +56,5 @@ namespace SmartClinic.View
         {
             newPatientForm.ShowDialog();
         }
-
-
     }
 }

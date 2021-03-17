@@ -5,11 +5,18 @@ using System.Windows.Forms;
 
 namespace SmartClinic.View
 {
+    /// <summary>
+    /// It shows the patient details form.
+    /// </summary>
     public partial class PatientVisitDetailsForm : Form
     {
         private PatientVisits visit;
         private readonly AppointmentController appointmentController;
         private readonly PatientVisitController patientVisitController;
+
+        /// <summary>
+        /// It builds and initializes the patient details form.
+        /// </summary>
         public PatientVisitDetailsForm()
         {
             InitializeComponent();
@@ -18,6 +25,11 @@ namespace SmartClinic.View
             visit = new PatientVisits();
         }
 
+
+        /// <summary>
+        /// It renders the form for a new visit.
+        /// <param name="visit">The visit details to be rendered.</param>
+        /// </summary>
         public void ShowForNewPatientVisit(PatientVisits visit)
         {
             this.visit = visit;
@@ -26,6 +38,10 @@ namespace SmartClinic.View
             ShowDialog();
         }
 
+        /// <summary>
+        /// It renders the form for an existing visit.
+        /// <param name="visit">The visit details to be rendered.</param>
+        /// </summary>
         public void ShowForExistingPatientVisit(PatientVisits visit)
         {
             this.visit = visit;

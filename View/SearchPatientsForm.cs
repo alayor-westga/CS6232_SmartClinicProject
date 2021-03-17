@@ -4,9 +4,16 @@ using SmartClinic.Model;
 
 namespace SmartClinic.View
 {
+    /// <summary>
+    /// It shows the search patient form.
+    /// </summary>
     public partial class SearchPatientsForm : Form, SelectionListener<Patient>
     {
         private Patient patient;
+
+        /// <summary>
+        /// It builds and initializes the search patient form.
+        /// </summary>
         public SearchPatientsForm()
         {
             InitializeComponent();
@@ -14,6 +21,9 @@ namespace SmartClinic.View
             patient = null;
         }
 
+        /// <summary>
+        /// It sets and gets the selected patient from the grid view.
+        /// </summary>
         public Patient SelectedPatient { get; set; }
 
         private void CancelButton_Click(object sender, EventArgs e)

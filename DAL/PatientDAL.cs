@@ -111,7 +111,7 @@ namespace SmartClinic.DAL
         /// </summary>
         /// <param name="ssn">ssn</param>
         /// <returns>true if ssn is not unique, false otherwise</returns>
-        internal bool SsnIsNotUnique(string ssn)
+        public bool SsnIsNotUnique(string ssn)
         {
             string selectStatement =
 
@@ -175,33 +175,6 @@ namespace SmartClinic.DAL
             }
         }
 
-        public List<PatientVisits> SearchPatientVisitsByDOB(DateTime dateOfBirth)
-        {
-            if (dateOfBirth == null)
-            {
-                throw new ArgumentNullException("dateOfBirth");
-            }
-            string selectStatement =
-            "SELECT p.patient_id as 'PID', a.appointment_id as 'AID', cpp.first_name + ' ' + cpp.last_name as 'Patient'," +
-            "cpd.first_name + ' ' + cpd.last_name as 'Doctor', a.date as 'Visit Date' " +
-
-            "FROM Appointments a " +
-            "JOIN Visits v on a.appointment_id = v.appointment_id " +
-            "JOIN Patients p on a.patient_id = p.patient_id " +
-            "JOIN Doctors d on d.doctor_id = a.doctor_id " +
-            "JOIN Nurses n on n.nurse_id = v.nurse_id " +
-            "JOIN ClinicPersons cpp on cpp.clinic_person_id = p.clinic_person_id " +
-            "JOIN ClinicPersons cpd on cpd.clinic_person_id = d.clinic_person_id " +
-            "JOIN ClinicPersons cpn on cpn.clinic_person_id = n.clinic_person_id " +
-            "WHERE cpp.date_of_birth = @DateOfBirth";
-
-            return SelectManyPatientVisits(selectStatement, new Hashtable()
-                {
-                    {"@DateOfBirth", dateOfBirth.Date}
-                }
-            );
-        }
-
         internal List<PatientVisits> SelectManyPatientVisits(string selectStatement, Hashtable parameters = null) //Don't need anymore
         {
             List<PatientVisits> patientVisitList = new List<PatientVisits>();
@@ -237,6 +210,12 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// It updates a patient in the DB.
+        /// </summary>
+        /// <param name="oldPatient">The old patient info.</param>
+        /// <param name="newPatient">The new patient info.</param>
+        /// <returns>True if the update was successful. False otherwise</returns>
         public bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient) 
         {
             string updateStatement =
@@ -306,6 +285,10 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// It removes a patient from the DB.
+        /// </summary>
+        /// <param name="patientID">The patient to be removed.</param>
         public void DeletePatient(int patientID)
         {
             string insertStatement = "DELETE FROM Patients WHERE patient_id = @PatientID";
@@ -318,35 +301,6 @@ namespace SmartClinic.DAL
                 {
                     insertCommand.Parameters.AddWithValue("@PatientID", patientID);
                     insertCommand.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public bool PatientIsNotADoctor(int patientID) //may not need this class, but keeping just in case
-        {
-            string selectStatement =
-
-                "select count(*) from Patients p, ClinicPersons cp, Doctors d " +
-                "where p.clinic_person_id = cp.clinic_person_id and " +
-                "cp.clinic_person_id = d.clinic_person_id and " +
-                "p.patient_id = @PatientID";
-
-            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    selectCommand.Parameters.AddWithValue("@PatientID", patientID);
-
-                    if ((Int32)selectCommand.ExecuteScalar() == 0)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
                 }
             }
         }
@@ -377,7 +331,12 @@ namespace SmartClinic.DAL
             }
         }
 
-        internal int AddPatient(int clinicPersonID)
+        /// <summary>
+        /// It adds a patient to the DB.
+        /// </summary>
+        /// <param name="clinicPersonID">The clinic person id of the patient.</param>
+        /// <returns>The number of rows affected.</returns>
+        public int AddPatient(int clinicPersonID)
         {
             string insertStatement =
                        "INSERT Patients " +

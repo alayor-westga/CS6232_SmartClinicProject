@@ -8,17 +8,28 @@ using SmartClinic.View;
 
 namespace SmartClinic.UserControls
 {
+    /// <summary>
+    /// It renders the form to search for patients.
+    /// </summary>
     public partial class SearchPatientsUserControl : UserControl
     {
         private List<SelectionListener<Patient>> selectionListeners;
         private readonly PatientController patientController;
         private readonly UpdatePatientForm updatePatientForm;
+
+        /// <summary>
+        /// It indicates if the control will enable the edition UI controls.
+        /// </summary>  
         public enum SearchFormMode
         { 
             OnlySearch,
             SearchAndEdit
         }
         private SearchFormMode formMode;
+
+        /// <summary>
+        /// It builds and initializes the patient search user control.
+        /// </summary>   
         public SearchPatientsUserControl()
         {
             InitializeComponent();
@@ -28,6 +39,10 @@ namespace SmartClinic.UserControls
             updatePatientForm = new UpdatePatientForm();
         }
 
+        /// <summary>
+        /// It changes the mode of this control to avoid or prevent edition.
+        /// <param name="formMode">The search form to be applied.</param>
+        /// </summary>  
         public void ChangeFormMode(SearchFormMode formMode)
         {
             this.formMode = formMode;
@@ -41,6 +56,10 @@ namespace SmartClinic.UserControls
             }
         }
 
+        /// <summary>
+        /// It adds a selection listener that will be called when a patient is selected.
+        /// <param name="selectionListener">The listener to be added.</param>
+        /// </summary>  
         public void AddSelectionListener(SelectionListener<Patient> selectionListener)
         {
             if (!selectionListeners.Contains(selectionListener))

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace SmartClinic.View
 {
+    /// <summary>
+    /// It shows the new patient form.
+    /// </summary>
     public partial class NewPatientForm : Form
     {
         private readonly PatientController patientController;
@@ -21,6 +24,9 @@ namespace SmartClinic.View
             { "X", "Non Binary" },
         };
         
+        /// <summary>
+        /// It builds and initializes the new patient form.
+        /// </summary>
         public NewPatientForm()
         {
             InitializeComponent();
@@ -32,6 +38,9 @@ namespace SmartClinic.View
             //stateComboBox.Text = "";
         }
 
+        /// <summary>
+        /// It is the new created patient.
+        /// </summary>
         public Patient SelectedPatient { get; set; }
 
         private void AddPatientButton_Click(object sender, EventArgs e)
@@ -185,6 +194,7 @@ namespace SmartClinic.View
             }
             return isValid;
         }
+
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -212,7 +222,7 @@ namespace SmartClinic.View
             Console.WriteLine("in load form");
         }
 
-        public static void LoadStateComboBox(ComboBox cbo)
+        private static void LoadStateComboBox(ComboBox cbo)
         {
             cbo.DataSource = Enum.GetValues(typeof(States))
                 .Cast<Enum>()
@@ -226,8 +236,6 @@ namespace SmartClinic.View
                 .ToList();
             cbo.DisplayMember = "Description";
             cbo.ValueMember = "value";
-            
-
         }
     }
 

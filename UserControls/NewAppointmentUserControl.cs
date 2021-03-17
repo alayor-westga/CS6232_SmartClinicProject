@@ -7,6 +7,9 @@ using SmartClinic.View;
 
 namespace SmartClinic.UserControls
 {
+    /// <summary>
+    /// It renders the form to create appointments.
+    /// </summary>
     public partial class NewAppointmentUserControl : UserControl
     {
         private Patient selectedPatient;
@@ -14,6 +17,10 @@ namespace SmartClinic.UserControls
         private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
+
+        /// <summary>
+        /// It builds and initializes the new appointment user control.
+        /// </summary>        
         public NewAppointmentUserControl()
         {
             InitializeComponent();

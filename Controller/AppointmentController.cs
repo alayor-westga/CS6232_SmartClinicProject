@@ -83,7 +83,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The doctor has an existing appointment at the specified time.");
             }
-           if (appointmentSource.ExistsForPatientAndDate(existingAppointment.PatientId, appointmentChanges.Date))
+            if (appointmentSource.ExistsForPatientAndDate(existingAppointment.PatientId, appointmentChanges.Date))
             {
                 throw new ArgumentException("The patient has an existing appointment at the specified time.");
             }
@@ -135,12 +135,6 @@ namespace SmartClinic.Controller
                 throw new ArgumentException("The patientId must not be negative");
             }
             return appointmentSource.GetAppointmentsByPatientId(patientId);
-        }
-
-
-        public PatientVisits GetVisitFromDB(int appointmentID)
-        {
-            return this.appointmentSource.GetVisitFromDB(appointmentID);
         }
 
         internal Appointment GetAppointmentByAppointmentId(int appointmentID)

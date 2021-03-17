@@ -8,7 +8,7 @@ using SmartClinic.View;
 namespace SmartClinic.UserControls
 {
     /// <summary>
-    /// It renders the form to search for appointments.
+    /// It renders the form to search show patient visits.
     /// </summary>
     public partial class PatientVisitsUserControl : UserControl
     {
@@ -21,7 +21,7 @@ namespace SmartClinic.UserControls
         private readonly PatientVisitDetailsForm patientVisitDetailsForm;
 
         /// <summary>
-        /// It builds and initializes the appointment search form.
+        /// It builds and initializes the patient visits user control.
         /// </summary>
         public PatientVisitsUserControl()
         {
@@ -33,7 +33,6 @@ namespace SmartClinic.UserControls
             newPatientForm = new NewPatientForm();
             patientVisitDetailsForm = new PatientVisitDetailsForm();
         }
-
 
         private void SearchAppointments()
         {
