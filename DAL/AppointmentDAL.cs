@@ -259,6 +259,11 @@ namespace SmartClinic.DAL
             return AppointmentSearchResults;
         }
 
+        /// <summary>
+        /// It returns an appointment by its ID.
+        /// </summary>
+        /// <param name="appointmentID">The ID of the appoinment to be retrieved.</param>
+        /// <returns>The found appoinment.</returns>
         public Appointment GetAppointmentByAppointmentId(int appointmentId)
         {
             Appointment appointment = new Appointment();
@@ -273,7 +278,6 @@ namespace SmartClinic.DAL
             " INNER JOIN ClinicPersons cp ON (p.clinic_person_id = cp.clinic_person_id)" +
             " INNER JOIN ClinicPersons cpd ON (d.clinic_person_id = cpd.clinic_person_id)" +
             " WHERE a.appointment_id=@AppointmentId;";
-
             
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -304,15 +308,13 @@ namespace SmartClinic.DAL
                                 Phone = reader["doctor_phone_number"].ToString(),
                             };
 
-
                             appointment.AppointmentId = Int32.Parse(reader["appointment_id"].ToString());
                             appointment.PatientId = Int32.Parse(reader["patient_id"].ToString());
                             appointment.Patient = patient;
                             appointment.Date = DateTime.Parse(reader["date"].ToString());
                             appointment.DoctorId = Int32.Parse(reader["doctor_id"].ToString());
                             appointment.Doctor = doctor;
-                            appointment.Reason = reader["reason"].ToString();
-                                                    
+                            appointment.Reason = reader["reason"].ToString();                    
                         }
                     }
                 }

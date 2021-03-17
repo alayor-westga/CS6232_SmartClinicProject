@@ -68,7 +68,7 @@ namespace SmartClinic.Controller
         /// It updates an appointment.
         /// </summary>
         /// <param name="existingAppointment">The existing appoinment.</param>
-        /// <param name="newAppointment">The appointment to be updated.</param>
+        /// <param name="appointmentChanges">The appointment to be updated.</param>
         public void Update(Appointment existingAppointment, Appointment appointmentChanges)
         {
             if (!HasAnyUpdateChanges(existingAppointment, appointmentChanges))
@@ -137,7 +137,12 @@ namespace SmartClinic.Controller
             return appointmentSource.GetAppointmentsByPatientId(patientId);
         }
 
-        internal Appointment GetAppointmentByAppointmentId(int appointmentID)
+        /// <summary>
+        /// It returns an appointment by its ID.
+        /// </summary>
+        /// <param name="appointmentID">The ID of the appoinment to be retrieved.</param>
+        /// <returns>The found appoinment.</returns>
+        public Appointment GetAppointmentByAppointmentId(int appointmentID)
         {
             return this.appointmentSource.GetAppointmentByAppointmentId(appointmentID);
         }
