@@ -316,7 +316,7 @@ namespace SmartClinic.View
                 ssnErrorLabel.Text = requiredField;
                 return isValid;
             }
-            if (this.patientController.SsnIsNotUnique(this.ssnTextBox.Text))
+            if (this.patientController.SsnIsNotUnique(this.ssnTextBox.Text) && ssnTextBox.Text != this.patient.SSN)
             {
                 isValid = false;
                 ssnErrorLabel.Text = "SSN Assigned to Another Patient";
