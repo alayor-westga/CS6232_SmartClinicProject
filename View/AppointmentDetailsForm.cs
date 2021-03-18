@@ -29,6 +29,8 @@ namespace SmartClinic.View
             patientVisitController = new PatientVisitController();
             this.patientVisitDetailsForm = new PatientVisitDetailsForm();
             doctors = new List<Doctor>();
+            Console.WriteLine("ApptDetailsForm");
+
         }
 
         /// <summary>

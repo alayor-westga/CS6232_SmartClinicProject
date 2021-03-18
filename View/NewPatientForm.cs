@@ -35,7 +35,8 @@ namespace SmartClinic.View
             genderComboBox.DisplayMember = "Value";
             genderComboBox.ValueMember = "Key";
             LoadStateComboBox(this.stateComboBox);
-            //stateComboBox.Text = "";
+            Console.WriteLine("NewPatientForm");
+
         }
 
         /// <summary>

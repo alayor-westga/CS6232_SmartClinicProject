@@ -37,6 +37,8 @@ namespace SmartClinic.UserControls
             patientController = new PatientController();
             selectionListeners = new List<SelectionListener<Patient>>();
             updatePatientForm = new UpdatePatientForm();
+            Console.WriteLine("SearchPatientUserControl");
+
         }
 
         /// <summary>

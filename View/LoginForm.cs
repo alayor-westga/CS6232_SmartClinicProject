@@ -22,6 +22,8 @@ namespace SmartClinic.View
             InitializeComponent();
             nurseController = new NurseController();
             mainDashboard = new MainDashboard(this);
+            Console.WriteLine("LoginForm");
+
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

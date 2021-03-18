@@ -25,6 +25,8 @@ namespace SmartClinic.View
             newAppointmentForm = new NewAppointmentForm();
             newPatientForm = new NewPatientForm();
             searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
+            Console.WriteLine("MainDashboard");
+
         }
 
         /// <summary>

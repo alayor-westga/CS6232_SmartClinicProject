@@ -19,6 +19,8 @@ namespace SmartClinic.View
             InitializeComponent();
             searchPatientsUserControl.AddSelectionListener(this);
             patient = null;
+            Console.WriteLine("SearchPatientsForm");
+
         }
 
         /// <summary>

@@ -28,6 +28,8 @@ namespace SmartClinic.UserControls
             searchPatientsForm = new SearchPatientsForm();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
+            Console.WriteLine("NewApptUserControl");
+
         }
 
         private void NewAppointmentUserControl_Load(object sender, EventArgs e)
