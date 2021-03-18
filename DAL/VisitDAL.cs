@@ -9,6 +9,10 @@ namespace SmartClinic.DAL
 {
     /// <summary>
     /// Class that communicates with the Visits table in the DB. 
+    /// 
+    /// Author: Mike Hamel
+    /// Author: Alonso Ortega
+    /// Date: 3-17-21
     /// </summary>
     public class VisitDAL
     {
@@ -49,6 +53,10 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// Adds a new Patient Visit to the Visit table
+        /// </summary>
+        /// <param name="newPatientVisit">a PatientVisits object</param>
         public void AddPatientVisit(PatientVisits newPatientVisit)
         {
             string insertStatement =
@@ -75,6 +83,13 @@ namespace SmartClinic.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Retrieves the required information from the Appointments table to create a 
+        /// new Patient Visit
+        /// </summary>
+        /// <param name="appointmentId">appointmentID from an existing Appointment</param>
+        /// <returns>a new PatientVisits object</returns>
         public PatientVisits GetInfoToCreatNewPatientVisit(int appointmentId)
         {
 
@@ -118,6 +133,15 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// Updates an existing PatientVisit
+        /// </summary>
+        /// <param name="oldVisit">the original PatientVisit pulled from the db</param>
+        /// <param name="newVisit">the updated PatientVisit information the user entered, to be
+        /// appended to the db</param>
+        /// <returns>true if the update was successful, false otherwise; a false return means
+        /// the information in the db has changed since it was retrieved by the user now 
+        /// trying to append it</returns>
         public bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
         {
             string updateStatement =
@@ -180,6 +204,11 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// Will return a PatientVisit object based on the given appointmentID (primary key)
+        /// </summary>
+        /// <param name="appointmentID">appointmentID</param>
+        /// <returns>a PatientVisit object</returns>
         internal PatientVisits GetPatientVisitByAppointmentID(int appointmentID)
         {
             PatientVisits patientVisit = new PatientVisits();
@@ -238,6 +267,11 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// Retrieves all PatientVisits that are associated with a patientID - may be 0 to many
+        /// </summary>
+        /// <param name="patientID">patientID</param>
+        /// <returns>List of PatientVisit objects</returns>
         public List<PatientVisits> GetPatientVisitsByPatientId(int patientID)
         {
 
@@ -299,6 +333,11 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// Will check if there is a PatientVisit associated with the given appointmentID
+        /// </summary>
+        /// <param name="appointmentID">appointmentID</param>
+        /// <returns>true if there is an associated PatientVisit with an Appointment, false otherwise </returns>
         public bool AppointmentHasNoAssociatedVisit(int appointmentID)
         {
             string selectStatement =
