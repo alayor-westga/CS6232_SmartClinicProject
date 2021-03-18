@@ -80,7 +80,7 @@ namespace SmartClinic.View
             address1TextBox.Text = patient.Street1;
             address2TextBox.Text = patient.Street2;
             cityTextBox.Text = patient.City;
-            stateComboBox.Text = patient.State;
+            stateComboBox.SelectedValue = Enum.Parse(typeof(States), patient.State);
             zipCodeTextBox.Text = patient.ZipCode;
             phoneTextBox.Text = patient.Phone;
             ssnTextBox.Text = patient.SSN;
@@ -145,7 +145,7 @@ namespace SmartClinic.View
             updatedPatient.Street1 = this.address1TextBox.Text;
             updatedPatient.Street2 = this.address2TextBox.Text;
             updatedPatient.City = this.cityTextBox.Text;
-            updatedPatient.State = this.stateComboBox.Text;
+            updatedPatient.State = this.stateComboBox.SelectedValue.ToString();
             updatedPatient.ZipCode = this.zipCodeTextBox.Text;
             updatedPatient.Phone = this.phoneTextBox.Text;
             updatedPatient.SSN = this.ssnTextBox.Text;
@@ -264,16 +264,10 @@ namespace SmartClinic.View
                 isValid = false;
                 cityErrorLabel.Text = requiredField;
             }
-            Regex stateRegex = new Regex("[A-Z]{2}");
-            if (!stateRegex.IsMatch(stateComboBox.Text))
+            if (stateComboBox.SelectedValue.ToString() == "")
             {
                 isValid = false;
-                stateErrorLabel.Text = "2 letter state code requried";
-            }
-            if (stateComboBox.Text.Length != 2)
-            {
-                isValid = false;
-                stateErrorLabel.Text = "2 letter state code required";
+                genderErrorLabel.Text = "Select a state";
             }
             if (stateComboBox.Text.Length == 0)
             {

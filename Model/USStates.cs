@@ -8,109 +8,109 @@ namespace SmartClinic.Model
 {
     public enum States
     {
-        [Description("")]
+        [Description("Select a state")]
         noSelection,
-        [Description("AL")]
+        [Description("Alabama")]
         AL,
-        [Description("AK")]
+        [Description("Alaska")]
         AK,
-        [Description("AR")]
+        [Description("Arkansas")]
         AR,
-        [Description("AZ")]
+        [Description("Arizona")]
         AZ,
-        [Description("CA")]
+        [Description("California")]
         CA,
-        [Description("CO")]
+        [Description("Colorado")]
         CO,
-        [Description("CT")]
+        [Description("Connecticut")]
         CT,
-        [Description("D.C.")]
+        [Description("District of Columbia")]
         DC,
-        [Description("DE")]
+        [Description("Delaware")]
         DE,
-        [Description("FL")]
+        [Description("Florida")]
         FL,
-        [Description("GA")]
+        [Description("Georgia")]
         GA,
-        [Description("HI")]
+        [Description("Hawaii")]
         HI,
         [Description("TA")]
         IA,
-        [Description("ID")]
+        [Description("Idaho")]
         ID,
-        [Description("IL")]
+        [Description("Illinois")]
         IL,
-        [Description("IN")]
+        [Description("Indiana")]
         IN,
-        [Description("KS")]
+        [Description("Kansas")]
         KS,
-        [Description("KY")]
+        [Description("Kentucky")]
         KY,
-        [Description("LA")]
+        [Description("Louisiana")]
         LA,
-        [Description("MA")]
+        [Description("Massachusetts")]
         MA,
-        [Description("MD")]
+        [Description("Maryland")]
         MD,
-        [Description("ME")]
+        [Description("Maine")]
         ME,
-        [Description("MI")]
+        [Description("Michigan")]
         MI,
-        [Description("MN")]
+        [Description("Minnesota")]
         MN,
-        [Description("MO")]
+        [Description("Missouri")]
         MO,
-        [Description("MS")]
+        [Description("Mississippi")]
         MS,
-        [Description("MT")]
+        [Description("Montana")]
         MT,
-        [Description("NC")]
+        [Description("North Carolina")]
         NC,
-        [Description("ND")]
+        [Description("North Dakota")]
         ND,
-        [Description("NE")]
+        [Description("Nebraska")]
         NE,
-        [Description("NH")]
+        [Description("New Hampshire")]
         NH,
-        [Description("NJ")]
+        [Description("New Jersey")]
         NJ,
-        [Description("NM")]
+        [Description("New Mexico")]
         NM,
-        [Description("NV")]
+        [Description("Nevada")]
         NV,
-        [Description("NY")]
+        [Description("New York")]
         NY,
-        [Description("OK")]
+        [Description("Oklahoma")]
         OK,
-        [Description("OH")]
+        [Description("Ohio")]
         OH,
-        [Description("OR")]
+        [Description("Oregon")]
         OR,
-        [Description("PA")]
+        [Description("Pennsylvania")]
         PA,
-        [Description("RI")]
+        [Description("Rhode Island")]
         RI,
-        [Description("SC")]
+        [Description("South Carolina")]
         SC,
-        [Description("SD")]
+        [Description("South Dakota")]
         SD,
-        [Description("TN")]
+        [Description("Tennessee")]
         TN,
-        [Description("TX")]
+        [Description("Texas")]
         TX,
-        [Description("UT")]
+        [Description("Utah")]
         UT,
-        [Description("VA")]
+        [Description("Virginia")]
         VA,
-        [Description("VT")]
+        [Description("Vermont")]
         VT,
-        [Description("WA")]
+        [Description("Washington")]
         WA,
-        [Description("WI")]
+        [Description("Wisconsin")]
         WI,
-        [Description("WV")]
+        [Description("West Virginia")]
         WV,
-        [Description("WY")]
+        [Description("Wyoming")]
         WY
     }
 }
