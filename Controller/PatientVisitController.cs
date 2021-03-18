@@ -6,6 +6,9 @@ using SmartClinic.Model;
 namespace SmartClinic.Controller
 {
     /// <summary>
+    /// Author: Mike Hamel
+    /// Date: 3-17-21
+    /// 
     /// Middleware between the AppointmentDAL and the View.
     /// </summary>
     public class PatientVisitController
@@ -20,31 +23,63 @@ namespace SmartClinic.Controller
             this.visitSource = new VisitDAL();
         }
 
+        /// <summary>
+        /// Gets all PatientVisits associated with the given patientID
+        /// </summary>
+        /// <param name="patientId">patientID</param>
+        /// <returns>List of PatientVisits</returns>
         public List<PatientVisits> GetPatientVisitsByPatientId(int patientId)
         {
             return this.visitSource.GetPatientVisitsByPatientId(patientId);
         }
 
+        /// <summary>
+        /// Gets the PatientVisit by it primary key, appointmentID
+        /// </summary>
+        /// <param name="appointmentID">appointmentID</param>
+        /// <returns>a PatientVisits object</returns>
         public PatientVisits GetPatientVisitByAppointmentID(int appointmentID)
         {
             return this.visitSource.GetPatientVisitByAppointmentID(appointmentID);
         }
 
+        /// <summary>
+        /// Updates a PatientVisit, providing the object hasn't changed in the db since retrieved
+        /// by the user
+        /// </summary>
+        /// <param name="oldVisit">the original PatientVisit retrieved by the user</param>
+        /// <param name="newVisit">the new PatientVisit information to be appended to the db</param>
+        /// <returns></returns>
         public bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
         {
             return this.visitSource.UpdatePatientVisitInformation(oldVisit, newVisit);
         }
 
+        /// <summary>
+        /// Checks if the given Appointment has an associated PatientVisit
+        /// </summary>
+        /// <param name="appointmentID">appointmentID</param>
+        /// <returns>true if no associated PatientVisit with Appointment, false otherwise</returns>
         public bool AppointmentHasNoAssociatedVisit(int appointmentID)
         {
             return this.visitSource.AppointmentHasNoAssociatedVisit(appointmentID);
         }
 
+        /// <summary>
+        /// Retrieves the required AppointmentInformation to create a new PatientVisit
+        /// and populate a UI form
+        /// </summary>
+        /// <param name="appointmentId">appointmentID</param>
+        /// <returns>a PatientVisits object</returns>
         public PatientVisits GetInfoToCreatNewPatientVisit(int appointmentId)
         {
             return this.visitSource.GetInfoToCreatNewPatientVisit(appointmentId);
         }
 
+        /// <summary>
+        /// Adds a PatientVisit to the db
+        /// </summary>
+        /// <param name="patientVisit">patientID</param>
         public void AddPatientVisit(PatientVisits patientVisit)
         {
             this.visitSource.AddPatientVisit(patientVisit);
