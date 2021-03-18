@@ -36,7 +36,6 @@ namespace SmartClinic.View
             genderComboBox.ValueMember = "Key";
             LoadStateComboBox(this.stateComboBox);
             Console.WriteLine("NewPatientForm");
-
         }
 
         /// <summary>
@@ -125,10 +124,10 @@ namespace SmartClinic.View
                 isValid = false;
                 dobErrorLabel.Text = requiredField;
             }
-            if (genderComboBox.SelectedValue.ToString() == "")
+            if (genderComboBox.SelectedIndex == 0)
             {
                 isValid = false;
-                genderErrorLabel.Text = "Select a gender";
+                genderErrorLabel.Text = requiredField;
             }
             if (address1TextBox.Text.Length == 0)
             {
@@ -140,12 +139,7 @@ namespace SmartClinic.View
                 isValid = false;
                 cityErrorLabel.Text = requiredField;
             }
-            if (stateComboBox.SelectedValue.ToString() == "NULL")
-            {
-                isValid = false;
-                stateErrorLabel.Text = "Select a state";
-            }
-            if (stateComboBox.Text.Length == 0)
+            if (stateComboBox.SelectedIndex == 0)
             {
                 isValid = false;
                 stateErrorLabel.Text = requiredField;
