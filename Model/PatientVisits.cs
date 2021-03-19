@@ -7,6 +7,7 @@ namespace SmartClinic.Model
 {
     public class PatientVisits
     {
+        //TODO: Add XML Comments
         public int AppointmentID { get; set; }
         public int PatientID { get; set; }
         public string Patient { get; set; }

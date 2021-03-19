@@ -28,7 +28,6 @@ namespace SmartClinic.View
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
             Console.WriteLine("NewAppointmentForm");
-
         }
 
         private void NewAppointmentForm_Load(object sender, EventArgs e)

@@ -83,7 +83,7 @@ namespace SmartClinic.View
             doctorComboBox.DataSource = doctors;
         }
 
-        private void editButton_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
             if(!ValidateUpdateTimeLimit())
             {

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace SmartClinic.Model
 {
+    //TODO: Add XML Comments
     public enum States
     {
         [Description("Select a state")]

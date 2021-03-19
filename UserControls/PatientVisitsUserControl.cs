@@ -33,7 +33,6 @@ namespace SmartClinic.UserControls
             newPatientForm = new NewPatientForm();
             patientVisitDetailsForm = new PatientVisitDetailsForm();
             Console.WriteLine("PatientVisitUserControl");
-
         }
 
         private void SearchAppointments()

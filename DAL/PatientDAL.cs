@@ -308,7 +308,6 @@ namespace SmartClinic.DAL
         public bool PatientHasNoAppointments(int patientID)
         {
             string selectStatement =
-
                 "SELECT count(*) FROM Appointments WHERE patient_id = @PatientID";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
@@ -356,7 +355,6 @@ namespace SmartClinic.DAL
             return this.GetLastPatientID();
         }
 
-
         private int GetLastPatientID()
         {
             int lastPatientID = 0;
@@ -383,7 +381,11 @@ namespace SmartClinic.DAL
             return lastPatientID;
         }
 
-
+        /// <summary>
+        /// It adds a clinic person to the DB.
+        /// </summary>
+        /// <param name="newPatient">The new clinic person.</param>
+        /// <returns>The number of rows affected.</returns>
         public int AddClinicPerson(ClinicPerson newPatient)
         {
             string insertStatement =
@@ -501,6 +503,5 @@ namespace SmartClinic.DAL
             }
             return lastClinicPersonID;
         }
-
     }
 }

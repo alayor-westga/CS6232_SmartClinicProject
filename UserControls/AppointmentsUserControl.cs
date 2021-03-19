@@ -32,7 +32,6 @@ namespace SmartClinic.UserControls
 
         }
 
-
         private void SearchAppointments()
         {
             List<AppointmentSearchResult> appointments = new List<AppointmentSearchResult>();

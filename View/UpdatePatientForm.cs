@@ -22,13 +22,7 @@ namespace SmartClinic.View
         private int patientId;
         private ClinicPerson patient;
         private readonly PatientController patientController;
-        Dictionary<string, string> genders = new Dictionary<string, string>()
-        {
-            { "", "Select a value" },
-            { "F", "Female" },
-            { "M", "Male" },
-            { "X", "Non Binary" },
-        };
+        private readonly Dictionary<string, string> genders;
 
         /// <summary>
         /// Constructor to instantiate instance variables
@@ -38,6 +32,13 @@ namespace SmartClinic.View
             InitializeComponent();
             patientController = new PatientController();
             patient = new ClinicPerson();
+            genders = new Dictionary<string, string>()
+            {
+                { "", "Select a value" },
+                { "F", "Female" },
+                { "M", "Male" },
+                { "X", "Non Binary" },
+            };
             genderComboBox.DataSource = new BindingSource(genders, null);
             genderComboBox.DisplayMember = "Value";
             genderComboBox.ValueMember = "Key";

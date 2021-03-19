@@ -16,13 +16,7 @@ namespace SmartClinic.View
     public partial class NewPatientForm : Form
     {
         private readonly PatientController patientController;
-        Dictionary<string, string> genders = new Dictionary<string, string>()
-        {
-            { "", "Select a value" },
-            { "F", "Female" },
-            { "M", "Male" },
-            { "X", "Non Binary" },
-        };
+        private readonly Dictionary<string, string> genders;
         
         /// <summary>
         /// It builds and initializes the new patient form.
@@ -31,6 +25,13 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.patientController = new PatientController();
+            genders = new Dictionary<string, string>()
+            {
+                { "", "Select a value" },
+                { "F", "Female" },
+                { "M", "Male" },
+                { "X", "Non Binary" },
+            };
             genderComboBox.DataSource = new BindingSource(genders, null);
             genderComboBox.DisplayMember = "Value";
             genderComboBox.ValueMember = "Key";
@@ -233,6 +234,4 @@ namespace SmartClinic.View
             cbo.ValueMember = "value";
         }
     }
-
-
 }

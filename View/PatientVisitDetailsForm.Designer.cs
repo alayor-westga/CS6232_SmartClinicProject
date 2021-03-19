@@ -108,7 +108,7 @@ namespace SmartClinic.View
             this.appointmentDetailsButton.TabIndex = 73;
             this.appointmentDetailsButton.Text = "Appointment Details";
             this.appointmentDetailsButton.UseVisualStyleBackColor = true;
-            this.appointmentDetailsButton.Click += new System.EventHandler(this.appointmentDetailsButton_Click);
+            this.appointmentDetailsButton.Click += new System.EventHandler(this.AppointmentDetailsButton_Click);
             // 
             // saveChangesAndCloseButton
             // 

@@ -24,7 +24,6 @@ namespace SmartClinic.View
             patientVisitController = new PatientVisitController();
             visit = new PatientVisits();
             Console.WriteLine("PatientVisitDetailsForm");
-
         }
 
 
@@ -195,7 +194,6 @@ namespace SmartClinic.View
 
         private void GetPatientVisit()
         {
-
             visit = patientVisitController.GetPatientVisitByAppointmentID(visit.AppointmentID);
         }
 
@@ -271,9 +269,8 @@ namespace SmartClinic.View
             return isValid;
         }
 
-        private void appointmentDetailsButton_Click(object sender, EventArgs e)
+        private void AppointmentDetailsButton_Click(object sender, EventArgs e)
         {
-          
             using(AppointmentDetailsForm appointmentDetailsForm = new AppointmentDetailsForm())
             {                             
                     Appointment appointment = this.appointmentController.GetAppointmentByAppointmentId(this.visit.AppointmentID);

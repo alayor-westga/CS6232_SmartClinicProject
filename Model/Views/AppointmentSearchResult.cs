@@ -8,11 +8,7 @@ namespace SmartClinic.Model
     public class AppointmentSearchResult
     {
         private Appointment appointment;
-        
-        public AppointmentSearchResult()
-        {
 
-        }
         /// <summary>
         /// It initializes the appointment property.
         /// </summary>
