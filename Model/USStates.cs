@@ -6,7 +6,9 @@ using System.Text;
 
 namespace SmartClinic.Model
 {
-    //TODO: Add XML Comments
+    /// <summary>
+    /// enum of US States for dropdown box in form field
+    /// </summary>
     public enum States
     {
         [Description("Select a state")]
