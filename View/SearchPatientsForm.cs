@@ -34,19 +34,19 @@ namespace SmartClinic.View
             Close();
         }
 
-        void SelectionListener<Patient>.OnSelect(Patient selectedValue)
+        private void SelectionListener<Patient>.OnSelect(Patient selectedValue)
         {
             patient = selectedValue;
             selectPatientButton.Enabled = true;
         }
 
-        void SelectionListener<Patient>.OnDoubleClickSelect(Patient selectedValue)
+        private void SelectionListener<Patient>.OnDoubleClickSelect(Patient selectedValue)
         {
             patient = selectedValue;
             SelectAndClose();
         }
 
-        void SelectionListener<Patient>.OnSelectionCleared()
+        private void SelectionListener<Patient>.OnSelectionCleared()
         {
             selectPatientButton.Enabled = false;
         }
