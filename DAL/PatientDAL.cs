@@ -37,8 +37,6 @@ namespace SmartClinic.DAL
             );
         }
 
-       
-
         /// <summary>
         /// It searches patients by their names.
         /// </summary>
@@ -172,41 +170,6 @@ namespace SmartClinic.DAL
                     }
                 }
                 return patientList;
-            }
-        }
-
-        internal List<PatientVisits> SelectManyPatientVisits(string selectStatement, Hashtable parameters = null) //Don't need anymore
-        {
-            List<PatientVisits> patientVisitList = new List<PatientVisits>();
-            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
-            {
-                connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    if (parameters != null)
-                    {
-                        foreach (DictionaryEntry param in parameters)
-                        {
-                            selectCommand.Parameters.AddWithValue((String)param.Key, param.Value);
-                        }
-                    }
-                    using (SqlDataReader reader = selectCommand.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            PatientVisits patientVisit = new PatientVisits()
-                            {
-                                AppointmentID = Int32.Parse(reader["AID"].ToString()),
-                                PatientID = Int32.Parse(reader["PID"].ToString()),                             
-                                VisitDate = DateTime.Parse(reader["Visit Date"].ToString()),
-                                Patient = reader["Patient"].ToString(),
-                                Doctor = reader["Doctor"].ToString(),
-                            };
-                            patientVisitList.Add(patientVisit);
-                        }
-                    }
-                }
-                return patientVisitList;
             }
         }
 

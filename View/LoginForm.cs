@@ -27,16 +27,27 @@ namespace SmartClinic.View
             if (!ValidateFields()) return;
             string username = userNameTextBox.Text;
             string password = passwordTextBox.Text;
-            nurse = nurseController.Login(username, password);
-            if (nurse == null) {
-                errorMessageLabel.Text = "Invalid credentials";
-            } else {
-                using (MainDashboard mainDashboard = new MainDashboard(this))
+            try
+            {
+                nurse = nurseController.Login(username, password);
+                if (nurse == null)
                 {
-                    mainDashboard.SetNurse(nurse);
-                    Hide();
-                    mainDashboard.ShowDialog();
-                }            
+                    errorMessageLabel.Text = "Invalid credentials";
+                }
+                else
+                {
+                    using (MainDashboard mainDashboard = new MainDashboard(this))
+                    {
+                        mainDashboard.SetNurse(nurse);
+                        Hide();
+                        mainDashboard.ShowDialog();
+                    }
+                }
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -182,24 +182,33 @@ namespace SmartClinic.View
 
         private void PatientVisitDetailsButton_Click(object sender, EventArgs e)
         {
-            if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.appointment.AppointmentId))
+
+            try
             {
-                PatientVisits appointmentInfoForNewVisit = new PatientVisits();
-                appointmentInfoForNewVisit = this.patientVisitController.GetInfoToCreatNewPatientVisit(this.appointment.AppointmentId);
-                using (PatientVisitDetailsForm patientVisitDetailsForm = new PatientVisitDetailsForm())
+                if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.appointment.AppointmentId))
                 {
-                    patientVisitDetailsForm.ShowForNewPatientVisit(appointmentInfoForNewVisit);
+                    PatientVisits appointmentInfoForNewVisit = new PatientVisits();
+                    appointmentInfoForNewVisit = this.patientVisitController.GetInfoToCreatNewPatientVisit(this.appointment.AppointmentId);
+                    using (PatientVisitDetailsForm patientVisitDetailsForm = new PatientVisitDetailsForm())
+                    {
+                        patientVisitDetailsForm.ShowForNewPatientVisit(appointmentInfoForNewVisit);
+                    }
+
                 }
-                
+                else
+                {
+                    PatientVisits patientVisit = this.patientVisitController.GetPatientVisitByAppointmentID(this.appointment.AppointmentId);
+                    using (PatientVisitDetailsForm patientVisitDetailsForm = new PatientVisitDetailsForm())
+                    {
+                        patientVisitDetailsForm.ShowForExistingPatientVisit(patientVisit);
+                    }
+
+                }
             }
-            else
+            catch (ArgumentException argumentException)
             {
-                PatientVisits patientVisit = this.patientVisitController.GetPatientVisitByAppointmentID(this.appointment.AppointmentId);
-                using (PatientVisitDetailsForm patientVisitDetailsForm = new PatientVisitDetailsForm())
-                {
-                    patientVisitDetailsForm.ShowForExistingPatientVisit(patientVisit);
-                }
-                
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

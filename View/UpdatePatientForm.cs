@@ -194,15 +194,22 @@ namespace SmartClinic.View
 
             if (dialogResultVerifyClose == DialogResult.Yes)
             {
-                if (this.patientController.PatientHasNoAppointments(patientId))
+                try
                 {
-                    //need try-catch
-                    this.patientController.DeletePatient(patientId);
-                    this.Close();
+                    if (this.patientController.PatientHasNoAppointments(patientId))
+                    {
+                        this.patientController.DeletePatient(patientId);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("This patient has associated appointments\nand cannot be deleted.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
+                catch (ArgumentException argumentException)
                 {
-                    MessageBox.Show("This patient has associated appointments\nand cannot be deleted.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(argumentException.Message,
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

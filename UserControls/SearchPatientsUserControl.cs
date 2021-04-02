@@ -159,27 +159,35 @@ namespace SmartClinic.UserControls
 
         private void Search()
         {
-            if (searchByDOBOnlyRadioButton.Checked)
+            try
             {
-                patientsDataGridView.DataSource = patientController.SearchByDOB(dobOnlyDatePicker.Value);
+                if (searchByDOBOnlyRadioButton.Checked)
+                {
+                    patientsDataGridView.DataSource = patientController.SearchByDOB(dobOnlyDatePicker.Value);
+                }
+                else if (searchByNamesRadioButton.Checked)
+                {
+                    patientsDataGridView.DataSource = patientController.SearchByName(
+                        firstNameTextBox.Text,
+                        lastNameTextBox.Text
+                    );
+                }
+                else if (searchByDOBAndLastNameRadioButton.Checked)
+                {
+                    patientsDataGridView.DataSource = patientController.SearchByDOBAndLastName(
+                        dobCombinedDatePicker.Value,
+                        lastNameCombinedTextBox.Text
+                    );
+                }
+                searchMessageLabel.Text = patientsDataGridView.Rows.Count > 0 ?
+                        patientsDataGridView.Rows.Count + " Result(s) Returned" :
+                        "No Results Returned";
             }
-            else if (searchByNamesRadioButton.Checked)
+            catch (ArgumentException argumentException)
             {
-                patientsDataGridView.DataSource = patientController.SearchByName(
-                    firstNameTextBox.Text,
-                    lastNameTextBox.Text
-                );
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (searchByDOBAndLastNameRadioButton.Checked)
-            {
-                patientsDataGridView.DataSource = patientController.SearchByDOBAndLastName(
-                    dobCombinedDatePicker.Value,
-                    lastNameCombinedTextBox.Text
-                );
-            }
-            searchMessageLabel.Text = patientsDataGridView.Rows.Count > 0 ?
-                    patientsDataGridView.Rows.Count + " Result(s) Returned" :
-                    "No Results Returned";
         }
 
         private void PatientsDataGridView_SelectionChanged(object sender, EventArgs e)

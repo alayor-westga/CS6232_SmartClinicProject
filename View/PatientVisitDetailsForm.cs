@@ -150,45 +150,53 @@ namespace SmartClinic.View
             patientVisit.InitialDiagnosis = initialDiagnosisTextBox.Text;
             patientVisit.FinalDiagnosis = finalDiagnosisTextBox.Text;
 
-            if (patientVisitController.AppointmentHasNoAssociatedVisit(visit.AppointmentID))
+            try
             {
-                patientVisitController.AddPatientVisit(patientVisit);
-                try
+                if (patientVisitController.AppointmentHasNoAssociatedVisit(visit.AppointmentID))
                 {
-                    MessageBox.Show("The visit information was successfully saved.",
-                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
+                    try
+                    {
+                        patientVisitController.AddPatientVisit(patientVisit);
+                        MessageBox.Show("The visit information was successfully saved.",
+                                "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Close();
+                    }
+                    catch (ArgumentException argumentException)
+                    {
+                        MessageBox.Show(argumentException.Message,
+                                "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (ArgumentException argumentException)
+                else
                 {
-                    MessageBox.Show(argumentException.Message,
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        if (!patientVisitController.UpdatePatientVisitInformation(visit, patientVisit))
+                        {
+                            MessageBox.Show("This patient's information has been\nmodified since it has been retrieved."
+                            + "\n\nThe form has been updated to reflect those changes.",
+                                "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            GetPatientVisit();
+                            PopulateHeaderInformation();
+                            PopulateVisitInformation();
+                            return;
+                        }
+                        MessageBox.Show("The changes were successfully amended to the database.",
+                                "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Close();
+                    }
+                    catch (ArgumentException argumentException)
+                    {
+                        MessageBox.Show(argumentException.Message,
+                                "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-            else
+            catch (ArgumentException argumentException)
             {
-                try
-                {
-                    if (!patientVisitController.UpdatePatientVisitInformation(visit, patientVisit))
-                    {
-                        MessageBox.Show("This patient's information has been\nmodified since it has been retrieved."
-                        + "\n\nThe form has been updated to reflect those changes.",
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        GetPatientVisit();
-                        PopulateHeaderInformation();
-                        PopulateVisitInformation();
-                        return;
-                    }
-                    MessageBox.Show("The changes were successfully amended to the database.",
-                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
-                }
-                catch (ArgumentException argumentException)
-                {
-                    MessageBox.Show(argumentException.Message,
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }   
-            }         
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GetPatientVisit()

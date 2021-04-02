@@ -12,8 +12,7 @@ namespace SmartClinic.UserControls
     /// </summary>
     public partial class PatientVisitsUserControl : UserControl
     {
-        private Patient selectedPatient;
-        private readonly AppointmentController appointmentController;
+        private Patient selectedPatient;   
         private readonly PatientVisitController patientVisitController;
 
         /// <summary>
@@ -22,7 +21,6 @@ namespace SmartClinic.UserControls
         public PatientVisitsUserControl()
         {
             InitializeComponent();
-            appointmentController = new AppointmentController();
             patientVisitController = new PatientVisitController();
         }
 
@@ -105,7 +103,6 @@ namespace SmartClinic.UserControls
 
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
-
             using (NewPatientForm newPatientForm = new NewPatientForm())
             {
                 DialogResult result = newPatientForm.ShowDialog();
