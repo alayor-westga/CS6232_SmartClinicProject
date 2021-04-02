@@ -13,7 +13,7 @@ namespace SmartClinic.UserControls
     public partial class PatientVisitsUserControl : UserControl
     {
         private Patient selectedPatient;
-        private readonly SearchPatientsForm searchPatientsForm;
+        //private readonly SearchPatientsForm searchPatientsForm;
         //private readonly AppointmentDetailsForm appointmentDetailsForm;
         //private readonly NewPatientForm newPatientForm;
         private readonly AppointmentController appointmentController;
@@ -26,7 +26,7 @@ namespace SmartClinic.UserControls
         public PatientVisitsUserControl()
         {
             InitializeComponent();
-            searchPatientsForm = new SearchPatientsForm();
+            //searchPatientsForm = new SearchPatientsForm();
             //appointmentDetailsForm = new AppointmentDetailsForm();
             appointmentController = new AppointmentController();
             patientVisitController = new PatientVisitController();
@@ -92,13 +92,16 @@ namespace SmartClinic.UserControls
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
-            searchPatientsForm.ShowDialog();
-            if (searchPatientsForm.SelectedPatient != null)
+            using (SearchPatientsForm searchPatientsForm = new SearchPatientsForm())
             {
-                selectedPatient = searchPatientsForm.SelectedPatient;
-                ShowPatientInfo();
-                SearchAppointments();
-            }
+                searchPatientsForm.ShowDialog();
+                if (searchPatientsForm.SelectedPatient != null)
+                {
+                    selectedPatient = searchPatientsForm.SelectedPatient;
+                    ShowPatientInfo();
+                    SearchAppointments();
+                }
+            }          
         }
 
         private void ShowPatientInfo()

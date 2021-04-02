@@ -30,7 +30,7 @@ namespace SmartClinic.View
         private void InitializeComponent()
         {
             this.cancelButton = new System.Windows.Forms.Button();
-            this.selectPatientButton = new System.Windows.Forms.Button();
+            this.selectPatientButton = new System.Windows.Forms.Button();           
             this.searchPatientsUserControl = new SmartClinic.UserControls.SearchPatientsUserControl();
             this.SuspendLayout();
             // 

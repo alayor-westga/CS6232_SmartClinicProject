@@ -24,7 +24,9 @@ namespace SmartClinic.View
             this.loginForm = loginForm;
             //newAppointmentForm = new NewAppointmentForm();
             //newPatientForm = new NewPatientForm();
-            searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);         
+            searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
+            Console.WriteLine("In Main Dash");
+
         }
 
         /// <summary>

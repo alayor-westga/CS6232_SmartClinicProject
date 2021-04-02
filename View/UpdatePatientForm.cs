@@ -42,7 +42,9 @@ namespace SmartClinic.View
             genderComboBox.DataSource = new BindingSource(genders, null);
             genderComboBox.DisplayMember = "Value";
             genderComboBox.ValueMember = "Key";
-            LoadStateComboBox(this.stateComboBox);        
+            LoadStateComboBox(this.stateComboBox);
+            Console.WriteLine("In UPF");
+
         }
 
         /// <summary>
