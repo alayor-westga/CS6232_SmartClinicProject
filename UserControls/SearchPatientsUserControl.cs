@@ -15,7 +15,7 @@ namespace SmartClinic.UserControls
     {
         private List<SelectionListener<Patient>> selectionListeners;
         private readonly PatientController patientController;
-        private readonly UpdatePatientForm updatePatientForm;
+        //private readonly UpdatePatientForm updatePatientForm;
 
         /// <summary>
         /// It indicates if the control will enable the edition UI controls.
@@ -36,7 +36,7 @@ namespace SmartClinic.UserControls
             formMode = SearchFormMode.OnlySearch;
             patientController = new PatientController();
             selectionListeners = new List<SelectionListener<Patient>>();
-            updatePatientForm = new UpdatePatientForm();
+            //updatePatientForm = new UpdatePatientForm();
             Console.WriteLine("SearchPatientUserControl");
 
         }
@@ -253,7 +253,10 @@ namespace SmartClinic.UserControls
         private void OpenUpdatePatientForm()
         {
             Patient patient = (Patient)patientsDataGridView.SelectedRows[0].DataBoundItem;
-            updatePatientForm.ShowForPatient(patient.PatientId);
+            using (UpdatePatientForm updatePatientForm = new UpdatePatientForm())
+            {
+                updatePatientForm.ShowForPatient(patient.PatientId);
+            }
             Search();
         }
 
