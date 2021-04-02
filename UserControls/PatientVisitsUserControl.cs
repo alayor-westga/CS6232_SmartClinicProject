@@ -13,12 +13,8 @@ namespace SmartClinic.UserControls
     public partial class PatientVisitsUserControl : UserControl
     {
         private Patient selectedPatient;
-        //private readonly SearchPatientsForm searchPatientsForm;
-        //private readonly AppointmentDetailsForm appointmentDetailsForm;
-        //private readonly NewPatientForm newPatientForm;
         private readonly AppointmentController appointmentController;
         private readonly PatientVisitController patientVisitController;
-        //private readonly PatientVisitDetailsForm patientVisitDetailsForm;
 
         /// <summary>
         /// It builds and initializes the patient visits user control.
@@ -26,13 +22,8 @@ namespace SmartClinic.UserControls
         public PatientVisitsUserControl()
         {
             InitializeComponent();
-            //searchPatientsForm = new SearchPatientsForm();
-            //appointmentDetailsForm = new AppointmentDetailsForm();
             appointmentController = new AppointmentController();
             patientVisitController = new PatientVisitController();
-            //newPatientForm = new NewPatientForm();
-            //patientVisitDetailsForm = new PatientVisitDetailsForm();
-            Console.WriteLine("PatientVisitUserControl");
         }
 
         private void SearchAppointments()

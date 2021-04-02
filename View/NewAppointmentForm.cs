@@ -12,8 +12,6 @@ namespace SmartClinic.View
     public partial class NewAppointmentForm : Form
     {
         private Patient selectedPatient;
-        private readonly Form newPatientForm;
-        //private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
 
@@ -23,11 +21,8 @@ namespace SmartClinic.View
         public NewAppointmentForm()
         {
             InitializeComponent();
-            newPatientForm = new NewPatientForm();
-            //searchPatientsForm = new SearchPatientsForm();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
-            Console.WriteLine("NewAppointmentForm");
         }
 
         private void NewAppointmentForm_Load(object sender, EventArgs e)
@@ -191,15 +186,7 @@ namespace SmartClinic.View
                         newAppoinmentGroupBox.Enabled = true;
                     }
                 }
-            }
-            //searchPatientsForm.ShowDialog();
-            //if (searchPatientsForm.SelectedPatient != null)
-            //{
-            //selectedPatient = searchPatientsForm.SelectedPatient;
-            //ShowPatientInfo();
-            //newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
-            //newAppoinmentGroupBox.Enabled = true;
-            //}
+            }           
         }
 
         private void ShowPatientInfo()

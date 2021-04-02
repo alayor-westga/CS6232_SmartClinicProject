@@ -13,8 +13,6 @@ namespace SmartClinic.UserControls
     public partial class NewAppointmentUserControl : UserControl
     {
         private Patient selectedPatient;
-        //private readonly NewPatientForm newPatientForm;
-        //private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
 
@@ -24,12 +22,8 @@ namespace SmartClinic.UserControls
         public NewAppointmentUserControl()
         {
             InitializeComponent();
-            //newPatientForm = new NewPatientForm();
-            //searchPatientsForm = new SearchPatientsForm();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
-            Console.WriteLine("NewApptUserControl");
-
         }
 
         private void NewAppointmentUserControl_Load(object sender, EventArgs e)

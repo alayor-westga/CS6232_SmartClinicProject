@@ -10,7 +10,6 @@ namespace SmartClinic.View
     /// </summary>
     public partial class LoginForm : Form
     {
-        //private readonly MainDashboard mainDashboard;
         private readonly NurseController nurseController;
         private static Nurse nurse;
 
@@ -21,9 +20,6 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             nurseController = new NurseController();
-            //mainDashboard = new MainDashboard(this);
-            Console.WriteLine("LoginForm");
-
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

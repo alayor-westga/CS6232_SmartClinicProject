@@ -23,8 +23,6 @@ namespace SmartClinic.View
             appointmentController = new AppointmentController();
             patientVisitController = new PatientVisitController();
             visit = new PatientVisits();
-            Console.WriteLine("In PDF");
-
         }
 
 

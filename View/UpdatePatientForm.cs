@@ -43,8 +43,6 @@ namespace SmartClinic.View
             genderComboBox.DisplayMember = "Value";
             genderComboBox.ValueMember = "Key";
             LoadStateComboBox(this.stateComboBox);
-            Console.WriteLine("In UPF");
-
         }
 
         /// <summary>
@@ -334,8 +332,6 @@ namespace SmartClinic.View
                 .ToList();
             cbo.DisplayMember = "Description";
             cbo.ValueMember = "value";
-
-
         }
     }
 }

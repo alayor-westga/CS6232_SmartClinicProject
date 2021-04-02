@@ -15,7 +15,6 @@ namespace SmartClinic.UserControls
     {
         private List<SelectionListener<Patient>> selectionListeners;
         private readonly PatientController patientController;
-        //private readonly UpdatePatientForm updatePatientForm;
 
         /// <summary>
         /// It indicates if the control will enable the edition UI controls.
@@ -36,9 +35,6 @@ namespace SmartClinic.UserControls
             formMode = SearchFormMode.OnlySearch;
             patientController = new PatientController();
             selectionListeners = new List<SelectionListener<Patient>>();
-            //updatePatientForm = new UpdatePatientForm();
-            Console.WriteLine("SearchPatientUserControl");
-
         }
 
         /// <summary>

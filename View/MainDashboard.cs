@@ -11,8 +11,6 @@ namespace SmartClinic.View
     public partial class MainDashboard : Form
     {
         private readonly Form loginForm;
-        //private readonly Form newAppointmentForm;
-        //private readonly Form newPatientForm;
         private Nurse nurse;
 
         /// <summary>
@@ -22,11 +20,7 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.loginForm = loginForm;
-            //newAppointmentForm = new NewAppointmentForm();
-            //newPatientForm = new NewPatientForm();
             searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
-            Console.WriteLine("In Main Dash");
-
         }
 
         /// <summary>

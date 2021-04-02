@@ -15,7 +15,6 @@ namespace SmartClinic.View
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
         private readonly PatientVisitController patientVisitController;
-        //private PatientVisitDetailsForm patientVisitDetailsForm;
         private List<Doctor> doctors;
 
         /// <summary>
@@ -27,9 +26,7 @@ namespace SmartClinic.View
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
             patientVisitController = new PatientVisitController();
-            //this.patientVisitDetailsForm = new PatientVisitDetailsForm();
             doctors = new List<Doctor>();
-            Console.WriteLine("In ADF");
         }
 
         /// <summary>
