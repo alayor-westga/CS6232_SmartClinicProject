@@ -15,7 +15,7 @@ namespace SmartClinic.View
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
         private readonly PatientVisitController patientVisitController;
-        private PatientVisitDetailsForm patientVisitDetailsForm;
+        //private PatientVisitDetailsForm patientVisitDetailsForm;
         private List<Doctor> doctors;
 
         /// <summary>
@@ -27,10 +27,8 @@ namespace SmartClinic.View
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
             patientVisitController = new PatientVisitController();
-            this.patientVisitDetailsForm = new PatientVisitDetailsForm();
+            //this.patientVisitDetailsForm = new PatientVisitDetailsForm();
             doctors = new List<Doctor>();
-            Console.WriteLine("ApptDetailsForm");
-
         }
 
         /// <summary>
@@ -190,12 +188,20 @@ namespace SmartClinic.View
             {
                 PatientVisits appointmentInfoForNewVisit = new PatientVisits();
                 appointmentInfoForNewVisit = this.patientVisitController.GetInfoToCreatNewPatientVisit(this.appointment.AppointmentId);
-                patientVisitDetailsForm.ShowForNewPatientVisit(appointmentInfoForNewVisit);
+                using (PatientVisitDetailsForm patientVisitDetailsForm = new PatientVisitDetailsForm())
+                {
+                    patientVisitDetailsForm.ShowForNewPatientVisit(appointmentInfoForNewVisit);
+                }
+                
             }
             else
             {
                 PatientVisits patientVisit = this.patientVisitController.GetPatientVisitByAppointmentID(this.appointment.AppointmentId);
-                patientVisitDetailsForm.ShowForExistingPatientVisit(patientVisit);
+                using (PatientVisitDetailsForm patientVisitDetailsForm = new PatientVisitDetailsForm())
+                {
+                    patientVisitDetailsForm.ShowForExistingPatientVisit(patientVisit);
+                }
+                
             }
         }
     }
