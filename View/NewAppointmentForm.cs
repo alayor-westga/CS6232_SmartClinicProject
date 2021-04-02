@@ -13,7 +13,7 @@ namespace SmartClinic.View
     {
         private Patient selectedPatient;
         private readonly Form newPatientForm;
-        private readonly SearchPatientsForm searchPatientsForm;
+        //private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
 
@@ -24,7 +24,7 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             newPatientForm = new NewPatientForm();
-            searchPatientsForm = new SearchPatientsForm();
+            //searchPatientsForm = new SearchPatientsForm();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
             Console.WriteLine("NewAppointmentForm");
@@ -177,14 +177,29 @@ namespace SmartClinic.View
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
-            searchPatientsForm.ShowDialog();
-            if (searchPatientsForm.SelectedPatient != null)
+            using (SearchPatientsForm searchPatientsForm = new SearchPatientsForm())
             {
-                selectedPatient = searchPatientsForm.SelectedPatient;
-                ShowPatientInfo();
-                newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
-                newAppoinmentGroupBox.Enabled = true;
+                DialogResult result = searchPatientsForm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    if (searchPatientsForm.SelectedPatient != null)
+                    {
+                        selectedPatient = searchPatientsForm.SelectedPatient;
+                        ShowPatientInfo();
+                        newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+                        newAppoinmentGroupBox.Enabled = true;
+                    }
+                }
             }
+            //searchPatientsForm.ShowDialog();
+            //if (searchPatientsForm.SelectedPatient != null)
+            //{
+            //selectedPatient = searchPatientsForm.SelectedPatient;
+            //ShowPatientInfo();
+            //newAppoinmentGroupBox.Text = "New Appointment For " + selectedPatient.FirstName + " " + selectedPatient.LastName;
+            //newAppoinmentGroupBox.Enabled = true;
+            //}
         }
 
         private void ShowPatientInfo()
