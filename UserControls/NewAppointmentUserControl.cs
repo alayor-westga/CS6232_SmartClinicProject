@@ -13,8 +13,8 @@ namespace SmartClinic.UserControls
     public partial class NewAppointmentUserControl : UserControl
     {
         private Patient selectedPatient;
-        private readonly NewPatientForm newPatientForm;
-        private readonly SearchPatientsForm searchPatientsForm;
+        //private readonly NewPatientForm newPatientForm;
+        //private readonly SearchPatientsForm searchPatientsForm;
         private readonly DoctorController doctorController;
         private readonly AppointmentController appointmentController;
 
@@ -24,8 +24,8 @@ namespace SmartClinic.UserControls
         public NewAppointmentUserControl()
         {
             InitializeComponent();
-            newPatientForm = new NewPatientForm();
-            searchPatientsForm = new SearchPatientsForm();
+            //newPatientForm = new NewPatientForm();
+            //searchPatientsForm = new SearchPatientsForm();
             doctorController = new DoctorController();
             appointmentController = new AppointmentController();
             Console.WriteLine("NewApptUserControl");
@@ -162,11 +162,17 @@ namespace SmartClinic.UserControls
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
-            searchPatientsForm.ShowDialog();
-            if (searchPatientsForm.SelectedPatient != null)
+            using (SearchPatientsForm searchPatientsForm = new SearchPatientsForm())
             {
-                SetPatientAndEnableAddAppointment(searchPatientsForm.SelectedPatient);
-            }
+                DialogResult result = searchPatientsForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    if (searchPatientsForm.SelectedPatient != null)
+                    {
+                        SetPatientAndEnableAddAppointment(searchPatientsForm.SelectedPatient);
+                    }
+                }
+            }           
         }
 
         private void AppointmentDatePicker_MouseDown(object sender, MouseEventArgs e)
@@ -201,11 +207,17 @@ namespace SmartClinic.UserControls
 
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
-            newPatientForm.ShowDialog();
-            if (newPatientForm.SelectedPatient != null)
+            using (NewPatientForm newPatientForm = new NewPatientForm())
             {
-                SetPatientAndEnableAddAppointment(newPatientForm.SelectedPatient);
-            }
+                DialogResult result = newPatientForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    if (newPatientForm.SelectedPatient != null)
+                    {
+                        SetPatientAndEnableAddAppointment(newPatientForm.SelectedPatient);
+                    }
+                }
+            }          
         }
 
         private void SetPatientAndEnableAddAppointment(Patient patient)
