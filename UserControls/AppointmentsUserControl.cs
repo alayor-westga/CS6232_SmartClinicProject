@@ -13,9 +13,9 @@ namespace SmartClinic.UserControls
     public partial class AppointmentsUserControl : UserControl
     {
         private Patient selectedPatient;
-        private readonly SearchPatientsForm searchPatientsForm;
-        private readonly AppointmentDetailsForm appointmentDetailsForm;
-        private readonly NewPatientForm newPatientForm;
+        ///private readonly SearchPatientsForm searchPatientsForm;
+        ///private readonly AppointmentDetailsForm appointmentDetailsForm;
+        ///private readonly NewPatientForm newPatientForm;
         private readonly AppointmentController appointmentController;
 
         /// <summary>
@@ -24,10 +24,10 @@ namespace SmartClinic.UserControls
         public AppointmentsUserControl()
         {
             InitializeComponent();
-            searchPatientsForm = new SearchPatientsForm();
-            appointmentDetailsForm = new AppointmentDetailsForm();
+            ///searchPatientsForm = new SearchPatientsForm();
+            ///appointmentDetailsForm = new AppointmentDetailsForm();
             appointmentController = new AppointmentController();
-            newPatientForm = new NewPatientForm();
+            ///newPatientForm = new NewPatientForm();
             Console.WriteLine("ApptUserControl");
 
         }
@@ -75,7 +75,10 @@ namespace SmartClinic.UserControls
         private void OpenAppoinmentDetailsDialog()
         {
             AppointmentSearchResult appointmentSearchResult = (AppointmentSearchResult)appointmentsDataGridView.SelectedRows[0].DataBoundItem;
-            appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);
+            using (AppointmentDetailsForm appointmentDetailsForm = new AppointmentDetailsForm())
+            {
+                appointmentDetailsForm.ShowWithAppointment(appointmentSearchResult.Appointment);
+            }
             SearchAppointments();
         }
 
@@ -86,13 +89,19 @@ namespace SmartClinic.UserControls
 
         private void SearchPatientButton_Click(object sender, EventArgs e)
         {
-            searchPatientsForm.ShowDialog();
-            if (searchPatientsForm.SelectedPatient != null)
+            using (SearchPatientsForm searchPatientsForm = new SearchPatientsForm())
             {
-                selectedPatient = searchPatientsForm.SelectedPatient;
-                ShowPatientInfo();
-                SearchAppointments();
-            }
+                DialogResult result = searchPatientsForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    if (searchPatientsForm.SelectedPatient != null)
+                    {
+                        selectedPatient = searchPatientsForm.SelectedPatient;
+                        ShowPatientInfo();
+                        SearchAppointments();
+                    }
+                }
+            }          
         }
 
         private void ShowPatientInfo()
@@ -105,12 +114,19 @@ namespace SmartClinic.UserControls
 
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
-            newPatientForm.ShowDialog();
-            if (newPatientForm.SelectedPatient != null)
+            using (NewPatientForm newPatientForm = new NewPatientForm())
             {
-                selectedPatient = newPatientForm.SelectedPatient;
-                ShowPatientInfo();
-            }
+                DialogResult result = newPatientForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    if (newPatientForm.SelectedPatient != null)
+                    {
+                        selectedPatient = newPatientForm.SelectedPatient;
+                        ShowPatientInfo();
+                        SearchAppointments();
+                    }
+                }
+            }          
         }
     }
 }
