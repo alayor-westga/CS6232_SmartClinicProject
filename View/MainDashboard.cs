@@ -11,8 +11,8 @@ namespace SmartClinic.View
     public partial class MainDashboard : Form
     {
         private readonly Form loginForm;
-        private readonly Form newAppointmentForm;
-        private readonly Form newPatientForm;
+        //private readonly Form newAppointmentForm;
+        //private readonly Form newPatientForm;
         private Nurse nurse;
 
         /// <summary>
@@ -22,11 +22,9 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.loginForm = loginForm;
-            newAppointmentForm = new NewAppointmentForm();
-            newPatientForm = new NewPatientForm();
-            searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
-            Console.WriteLine("MainDashboard");
-
+            //newAppointmentForm = new NewAppointmentForm();
+            //newPatientForm = new NewPatientForm();
+            searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);         
         }
 
         /// <summary>
@@ -51,12 +49,19 @@ namespace SmartClinic.View
 
         private void NewAppointmentButton_Click(object sender, EventArgs e)
         {
-            newAppointmentForm.ShowDialog();
+            using (NewAppointmentForm newAppointmentForm = new NewAppointmentForm())
+            {
+                newAppointmentForm.ShowDialog();
+            }
+           
         }
 
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
-            newPatientForm.ShowDialog();
+            using (NewPatientForm newPatientForm = new NewPatientForm())
+            {
+                newPatientForm.ShowDialog();
+            }
         }
     }
 }
