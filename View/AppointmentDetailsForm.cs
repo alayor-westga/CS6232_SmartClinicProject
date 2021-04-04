@@ -156,9 +156,14 @@ namespace SmartClinic.View
             }
             try
             {
-                appointmentController.Delete(appointment.AppointmentId);
-                MessageBox.Show("The apointment has been deleted", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
+                var confirmResult = MessageBox.Show("Are you sure?", "Confirm Deletion",
+                                     MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    appointmentController.Delete(appointment.AppointmentId);
+                    MessageBox.Show("The apointment has been deleted", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
             }
             catch (ArgumentException ex)
             {
