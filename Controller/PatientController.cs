@@ -27,6 +27,10 @@ namespace SmartClinic.Controller
         /// </summary>
         public ClinicPerson GetClinicPerson(int patientID)
         {
+            if (patientID < 0)
+            {
+                throw new ArgumentException("The patientID must not be negative");
+            }
             return this.patientSource.GetClinicPerson(patientID);
         }
 
@@ -82,6 +86,10 @@ namespace SmartClinic.Controller
         /// <returns>True if the patient has appointments. False otherwise</returns>
         public bool PatientHasNoAppointments(int patientID)
         {
+            if (patientID < 0)
+            {
+                throw new ArgumentException("The patientID must not be negative");
+            }
             return this.patientSource.PatientHasNoAppointments(patientID);
         }
 
@@ -105,6 +113,10 @@ namespace SmartClinic.Controller
         /// <param name="patientID">The patient to be removed.</param>
         public void DeletePatient(int patientID)
         {
+            if (patientID < 0)
+            {
+                throw new ArgumentException("The patientID must not be negative");
+            }
             this.patientSource.DeletePatient(patientID);
         }
 
@@ -115,6 +127,10 @@ namespace SmartClinic.Controller
         /// <returns>The number of rows affected.</returns>
         public int AddPatient(int clinicPersonID)
         {
+            if (clinicPersonID < 0)
+            {
+                throw new ArgumentException("The clinicPersonID must not be negative");
+            }
             return this.patientSource.AddPatient(clinicPersonID);
         }
 
@@ -126,6 +142,14 @@ namespace SmartClinic.Controller
         /// <returns>True if the update was successful. False otherwise</returns>
         public bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient)
         {
+            if (oldPatient == null)
+            {
+                throw new ArgumentNullException("oldPatient");
+            }
+            if (newPatient == null)
+            {
+                throw new ArgumentNullException("newPatient");
+            }
             return this.patientSource.UpdatePatientInformation(oldPatient, newPatient);
         }
 
@@ -136,6 +160,10 @@ namespace SmartClinic.Controller
         /// <returns>true if ssn is not unique, false otherwise</returns>
         public bool SsnIsNotUnique(string ssn)
         {
+            if (String.IsNullOrWhiteSpace(ssn))
+            {
+                throw new ArgumentNullException("ssn");
+            }
             return this.patientSource.SsnIsNotUnique(ssn);
         }
     }

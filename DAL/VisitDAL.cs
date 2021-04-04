@@ -59,6 +59,10 @@ namespace SmartClinic.DAL
         /// <param name="newPatientVisit">a PatientVisits object</param>
         public void AddPatientVisit(PatientVisits newPatientVisit)
         {
+            if (newPatientVisit == null)
+            {
+                throw new ArgumentNullException("newPatientVisit");
+            }
             string insertStatement =
           "INSERT Visits " +
             "(appointment_id, nurse_id, weight, systolic_bp, diastolic_bp, body_temp, pulse, symptoms, initial_diagnosis, final_diagnosis) " +
@@ -92,10 +96,12 @@ namespace SmartClinic.DAL
         /// <returns>a new PatientVisits object</returns>
         public PatientVisits GetInfoToCreatNewPatientVisit(int appointmentId)
         {
-
+            if (appointmentId < 0)
+            {
+                throw new ArgumentException("The appointmentId must not be negative.");
+            }
             PatientVisits newPatientVisit = new PatientVisits();
             string selectStatement =
-
                 "SELECT p.patient_id, a.appointment_id, cpp.first_name + ' ' + cpp.last_name as 'Patient', cpp.date_of_birth, " +
                     "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpd.phone_number, a.date " +
                 "FROM Appointments a " +
@@ -144,6 +150,14 @@ namespace SmartClinic.DAL
         /// trying to append it</returns>
         public bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
         {
+            if (oldVisit == null)
+            {
+                throw new ArgumentNullException("oldVisit");
+            }
+            if (newVisit == null)
+            {
+                throw new ArgumentNullException("newVisit");
+            }
             string updateStatement =
                "UPDATE Visits SET " +
                     "nurse_id = @NewNurseID, " +
@@ -211,9 +225,12 @@ namespace SmartClinic.DAL
         /// <returns>a PatientVisit object</returns>
         internal PatientVisits GetPatientVisitByAppointmentID(int appointmentID)
         {
+            if (appointmentID < 0)
+            {
+                throw new ArgumentException("The appointmentID must not be negative.");
+            }
             PatientVisits patientVisit = new PatientVisits();
             string selectStatement =
-
             "SELECT p.patient_id, a.appointment_id, cpp.first_name + ' ' + cpp.last_name as 'Patient', cpp.date_of_birth, " +
             "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpd.phone_number, cpn.first_name + ' ' + cpn.last_name as 'Nurse', " +
             "n.nurse_id, a.date, weight, systolic_bp, diastolic_bp, body_temp, pulse, symptoms, reason, initial_diagnosis, final_diagnosis " +
@@ -274,7 +291,10 @@ namespace SmartClinic.DAL
         /// <returns>List of PatientVisit objects</returns>
         public List<PatientVisits> GetPatientVisitsByPatientId(int patientID)
         {
-
+            if (patientID < 0)
+            {
+                throw new ArgumentException("The patientID must not be negative.");
+            }
             string selectStatement =
             "SELECT p.patient_id, a.appointment_id, cpp.first_name + ' ' + cpp.last_name as 'Patient', cpp.date_of_birth, " +
             "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpd.phone_number, cpn.first_name + ' ' + cpn.last_name as 'Nurse', " +
@@ -340,8 +360,11 @@ namespace SmartClinic.DAL
         /// <returns>true if there is an associated PatientVisit with an Appointment, false otherwise </returns>
         public bool AppointmentHasNoAssociatedVisit(int appointmentID)
         {
+            if (appointmentID < 0)
+            {
+                throw new ArgumentException("The appointmentID must not be negative.");
+            }
             string selectStatement =
-
                 "SELECT count(*) FROM Visits WHERE appointment_id = @AppointmentID";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())

@@ -144,6 +144,10 @@ namespace SmartClinic.Controller
         /// <returns>The found appoinment.</returns>
         public Appointment GetAppointmentByAppointmentId(int appointmentID)
         {
+            if (appointmentID < 0)
+            {
+                throw new ArgumentException("The appointmentID must not be negative");
+            }
             return this.appointmentSource.GetAppointmentByAppointmentId(appointmentID);
         }
     }

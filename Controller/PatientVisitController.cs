@@ -30,6 +30,10 @@ namespace SmartClinic.Controller
         /// <returns>List of PatientVisits</returns>
         public List<PatientVisits> GetPatientVisitsByPatientId(int patientId)
         {
+            if (patientId < 0)
+            {
+                throw new ArgumentException("The patientId must not be negative");
+            }
             return this.visitSource.GetPatientVisitsByPatientId(patientId);
         }
 
@@ -40,6 +44,10 @@ namespace SmartClinic.Controller
         /// <returns>a PatientVisits object</returns>
         public PatientVisits GetPatientVisitByAppointmentID(int appointmentID)
         {
+            if (appointmentID < 0)
+            {
+                throw new ArgumentException("The appointmentID must not be negative");
+            }
             return this.visitSource.GetPatientVisitByAppointmentID(appointmentID);
         }
 
@@ -52,6 +60,14 @@ namespace SmartClinic.Controller
         /// <returns></returns>
         public bool UpdatePatientVisitInformation(PatientVisits oldVisit, PatientVisits newVisit)
         {
+            if (oldVisit == null)
+            {
+                throw new ArgumentNullException("oldVisit");
+            }
+            if (newVisit == null)
+            {
+                throw new ArgumentNullException("newVisit");
+            }
             return this.visitSource.UpdatePatientVisitInformation(oldVisit, newVisit);
         }
 
@@ -62,6 +78,10 @@ namespace SmartClinic.Controller
         /// <returns>true if no associated PatientVisit with Appointment, false otherwise</returns>
         public bool AppointmentHasNoAssociatedVisit(int appointmentID)
         {
+            if (appointmentID < 0)
+            {
+                throw new ArgumentException("The appointmentID must not be negative");
+            }
             return this.visitSource.AppointmentHasNoAssociatedVisit(appointmentID);
         }
 
@@ -73,6 +93,10 @@ namespace SmartClinic.Controller
         /// <returns>a PatientVisits object</returns>
         public PatientVisits GetInfoToCreatNewPatientVisit(int appointmentId)
         {
+            if (appointmentId < 0)
+            {
+                throw new ArgumentException("The appointmentId must not be negative");
+            }
             return this.visitSource.GetInfoToCreatNewPatientVisit(appointmentId);
         }
 
@@ -82,6 +106,10 @@ namespace SmartClinic.Controller
         /// <param name="patientVisit">patientID</param>
         public void AddPatientVisit(PatientVisits patientVisit)
         {
+            if (patientVisit == null)
+            {
+                throw new ArgumentNullException("patientVisit");
+            }
             this.visitSource.AddPatientVisit(patientVisit);
         }
     }

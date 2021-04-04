@@ -266,6 +266,10 @@ namespace SmartClinic.DAL
         /// <returns>The found appoinment.</returns>
         public Appointment GetAppointmentByAppointmentId(int appointmentId)
         {
+            if (appointmentId < 0)
+            {
+                throw new ArgumentException("The appointmentId must not be negative");
+            }
             Appointment appointment = new Appointment();
 
             string selectStatement =

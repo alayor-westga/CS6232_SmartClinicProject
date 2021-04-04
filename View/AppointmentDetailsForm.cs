@@ -156,8 +156,8 @@ namespace SmartClinic.View
             }
             try
             {
-                var confirmResult = MessageBox.Show("Are you sure?", "Confirm Deletion",
-                                     MessageBoxButtons.YesNo);
+            DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this appointment?\n" +
+               "This cannot be undone.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirmResult == DialogResult.Yes)
                 {
                     appointmentController.Delete(appointment.AppointmentId);

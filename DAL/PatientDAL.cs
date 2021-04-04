@@ -112,7 +112,6 @@ namespace SmartClinic.DAL
         public bool SsnIsNotUnique(string ssn)
         {
             string selectStatement =
-
                 "SELECT count(*) FROM ClinicPersons WHERE ssn = @SSN";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
@@ -181,6 +180,14 @@ namespace SmartClinic.DAL
         /// <returns>True if the update was successful. False otherwise</returns>
         public bool UpdatePatientInformation(ClinicPerson oldPatient, ClinicPerson newPatient) 
         {
+            if (oldPatient == null)
+            {
+                throw new ArgumentNullException("oldPatient");
+            }
+            if (newPatient == null)
+            {
+                throw new ArgumentNullException("newPatient");
+            }
             string updateStatement =
                "UPDATE ClinicPersons SET " +
                     "first_name = @NewFirstName, " +
@@ -254,6 +261,10 @@ namespace SmartClinic.DAL
         /// <param name="patientID">The patient to be removed.</param>
         public void DeletePatient(int patientID)
         {
+            if (patientID < 0)
+            {
+                throw new ArgumentException("The patientID must not be negative");
+            }
             string insertStatement = "DELETE FROM Patients WHERE patient_id = @PatientID";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
@@ -270,6 +281,10 @@ namespace SmartClinic.DAL
 
         public bool PatientHasNoAppointments(int patientID)
         {
+            if (patientID < 0)
+            {
+                throw new ArgumentException("The patientID must not be negative");
+            }
             string selectStatement =
                 "SELECT count(*) FROM Appointments WHERE patient_id = @PatientID";
 
@@ -300,6 +315,10 @@ namespace SmartClinic.DAL
         /// <returns>The number of rows affected.</returns>
         public int AddPatient(int clinicPersonID)
         {
+            if (clinicPersonID < 0)
+            {
+                throw new ArgumentException("The clinicPersonID must not be negative");
+            }
             string insertStatement =
                        "INSERT Patients " +
                          "(clinic_person_id) " +
@@ -351,6 +370,10 @@ namespace SmartClinic.DAL
         /// <returns>The number of rows affected.</returns>
         public int AddClinicPerson(ClinicPerson newPatient)
         {
+            if (newPatient == null)
+            {
+                throw new ArgumentNullException("newPatient");
+            }
             string insertStatement =
            "INSERT ClinicPersons " +
              "(date_of_birth, gender, first_name, last_name, street1, street2, city, state, zip_code, phone_number, ssn) " +
@@ -381,9 +404,12 @@ namespace SmartClinic.DAL
 
         public ClinicPerson GetClinicPerson(int patientID)
         {
+            if (patientID < 0)
+            {
+                throw new ArgumentException("patientID must not be negative");
+            }
             ClinicPerson patient = new ClinicPerson();
             string selectStatement =
-
                 "SELECT " +
                     "c.clinic_person_id, " +
                     "first_name, " +
