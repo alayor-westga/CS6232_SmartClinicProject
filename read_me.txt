@@ -2,6 +2,11 @@ Nurse
 username: jane
 password: 1234
 
+* Create DB
+    - Run the DB/script.sql
+        Note: You can also run the DB/script_dev.sql which is a manual script we 
+            created to manually recreate the DB when needed.
+
 * Steps to add check up (visit) details
     1) Click on the Appoinment tab
     2) Search and select a patient
