@@ -106,7 +106,7 @@ namespace SmartClinic.View
             // 
             this.patientDateOfBirthLabel.AutoSize = true;
             this.patientDateOfBirthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientDateOfBirthLabel.Location = new System.Drawing.Point(202, 48);
+            this.patientDateOfBirthLabel.Location = new System.Drawing.Point(172, 48);
             this.patientDateOfBirthLabel.Name = "patientDateOfBirthLabel";
             this.patientDateOfBirthLabel.Size = new System.Drawing.Size(95, 37);
             this.patientDateOfBirthLabel.TabIndex = 4;
@@ -116,7 +116,7 @@ namespace SmartClinic.View
             // 
             this.patientDateOfBirthValueLabel.AutoSize = true;
             this.patientDateOfBirthValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientDateOfBirthValueLabel.Location = new System.Drawing.Point(292, 48);
+            this.patientDateOfBirthValueLabel.Location = new System.Drawing.Point(259, 48);
             this.patientDateOfBirthValueLabel.Name = "patientDateOfBirthValueLabel";
             this.patientDateOfBirthValueLabel.Size = new System.Drawing.Size(27, 37);
             this.patientDateOfBirthValueLabel.TabIndex = 5;
@@ -300,7 +300,7 @@ namespace SmartClinic.View
             // 
             this.patientSSNValueLabel.AutoSize = true;
             this.patientSSNValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientSSNValueLabel.Location = new System.Drawing.Point(530, 48);
+            this.patientSSNValueLabel.Location = new System.Drawing.Point(499, 48);
             this.patientSSNValueLabel.Name = "patientSSNValueLabel";
             this.patientSSNValueLabel.Size = new System.Drawing.Size(27, 37);
             this.patientSSNValueLabel.TabIndex = 7;
@@ -310,7 +310,7 @@ namespace SmartClinic.View
             // 
             this.patientSSNLabel.AutoSize = true;
             this.patientSSNLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientSSNLabel.Location = new System.Drawing.Point(446, 48);
+            this.patientSSNLabel.Location = new System.Drawing.Point(421, 48);
             this.patientSSNLabel.Name = "patientSSNLabel";
             this.patientSSNLabel.Size = new System.Drawing.Size(92, 37);
             this.patientSSNLabel.TabIndex = 6;

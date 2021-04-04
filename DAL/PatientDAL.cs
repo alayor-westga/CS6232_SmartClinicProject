@@ -25,7 +25,7 @@ namespace SmartClinic.DAL
             }
             string selectStatement =
             " SELECT p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
-            " cp.street2, cp.city, cp.state" +
+            " cp.street2, cp.city, cp.state, cp.ssn" +
             " FROM Patients p" +
             " INNER JOIN ClinicPersons cp ON (p.clinic_person_id = cp.clinic_person_id)" +
             " WHERE cp.date_of_birth = @DateOfBirth";
@@ -51,7 +51,7 @@ namespace SmartClinic.DAL
             }
             string selectStatement =
             " SELECT p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
-            " cp.street2, cp.city, cp.state" +
+            " cp.street2, cp.city, cp.state, cp.ssn" +
             " FROM Patients p" +
             " INNER JOIN ClinicPersons cp ON (p.clinic_person_id = cp.clinic_person_id)" +
             " WHERE 1=1";
@@ -85,7 +85,7 @@ namespace SmartClinic.DAL
             }
             string selectStatement =
             " SELECT p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
-            " cp.street2, cp.city, cp.state" +
+            " cp.street2, cp.city, cp.state, cp.ssn" +
             " FROM Patients p" +
             " INNER JOIN ClinicPersons cp ON (p.clinic_person_id = cp.clinic_person_id)" +
             " WHERE cp.date_of_birth = @DateOfBirth";
@@ -163,6 +163,7 @@ namespace SmartClinic.DAL
                                 Street2 = reader["street2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
+                                SSN = reader["ssn"].ToString(),
                             };
                             patientList.Add(patient);
                         }

@@ -204,7 +204,7 @@ namespace SmartClinic.DAL
             string selectStatement =
             " SELECT a.appointment_id, a.date, a.reason, d.doctor_id, cpd.first_name AS doctor_first_name, " +
             " cpd.last_name AS doctor_last_name, cpd.phone_number AS doctor_phone_number, p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
-            " cp.street2, cp.city, cp.state" +
+            " cp.street2, cp.city, cp.state, cp.ssn" +
             " FROM Appointments a" +
             " INNER JOIN Patients p ON (a.patient_id = p.patient_id)" +
             " INNER JOIN Doctors d ON (a.doctor_id = d.doctor_id)" +
@@ -233,6 +233,7 @@ namespace SmartClinic.DAL
                                 Street2 = reader["street2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
+                                SSN = reader["ssn"].ToString(),
                             };
                             Doctor doctor = new Doctor()
                             {
@@ -275,7 +276,7 @@ namespace SmartClinic.DAL
             string selectStatement =
             " SELECT a.appointment_id, a.date, a.reason, d.doctor_id, cpd.first_name AS doctor_first_name, " +
             " cpd.last_name AS doctor_last_name, cpd.phone_number AS doctor_phone_number, p.patient_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
-            " cp.street2, cp.city, cp.state" +
+            " cp.street2, cp.city, cp.state, cp.ssn" +
             " FROM Appointments a" +
             " INNER JOIN Patients p ON (a.patient_id = p.patient_id)" +
             " INNER JOIN Doctors d ON (a.doctor_id = d.doctor_id)" +
@@ -303,6 +304,7 @@ namespace SmartClinic.DAL
                                 Street2 = reader["street2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
+                                SSN = reader["ssn"].ToString(),
                             };
                             Doctor doctor = new Doctor()
                             {

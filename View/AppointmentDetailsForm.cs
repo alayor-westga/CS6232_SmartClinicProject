@@ -44,6 +44,7 @@ namespace SmartClinic.View
             PopulateDoctors();
             patientIdValueLabel.Text = appointment.PatientId.ToString();
             patientNameValueLabel.Text = appointment.Patient.FullName;
+            patientSSNValueLabel.Text = appointment.Patient.SSN;
             patientDateOfBirthValueLabel.Text = appointment.Patient.DateOfBirth.ToShortDateString();
             appointmentDatePicker.Value = appointment.Date;
             appointmentTimePicker.Value = appointment.Date;
