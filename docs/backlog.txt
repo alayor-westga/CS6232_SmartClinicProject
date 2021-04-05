@@ -1,5 +1,5 @@
 AUTHENTICATION
-* As Admin, I want to login to the System by entering a username and password.
+* (#40) As Admin, I want to login to the System by entering a username and password.
 
 * (#1) As Nurse, I want to login to the System by entering a username and password.
 
@@ -37,31 +37,31 @@ PATIENTS
 
 * (#12) As Nurse, I want to see the patient's past visits information (e.g. routine check results and any tests ordered and the results if available)
 
-* As Nurse, once the final diagnosis has been entered, I want the System to restrict the edition of visit information and ordering more lab tests for that visit.
+* (#49) As Nurse, once the final diagnosis has been entered, I want the System to restrict the edition of visit information and ordering more lab tests for that visit.
 
 
 LAB TESTS
-* As Nurse, I want to see a list of tests.
+* (#41) As Nurse, I want to see a list of tests.
 
-* As Nurse, I want to see a search for tests.
+* (#42) As Nurse, I want to add order tests.
 
-* As Nurse, I want to add tests to the order.
+* (#47) As Nurse, I want to remove tests from the order.
 
-* As Nurse, I want to remove tests from the order.
+* (#48) As Nurse, I want to see a confirmation message before sending the order.
 
-* As Nurse, I want to see a confirmation message before sending the order.
+* (#44) As Nurse, I want to capture the date the test was performed.
 
-* As Nurse, I want to capture the date the test was performed.
+* (#43) As Nurse, I want to capture the test results. The test results can be anything (a numeric value, or a description). Each result can be normal or abnormal.
 
-* As Nurse, I want to capture the test results. he test results can be anything (a numeric value, or a description). Each result can be normal or abnormal.
+* (#45) As Nurse, I want to capture the final diagnosis on behalf of the doctor.
 
-* As Nurse, I want to capture the final diagnosis on behalf of the doctor.
+* (#46) As Nurse, I want to search for test orders and their results.
 
 
 ADMIN
-* As Admin, I want to add Nurses to the System.
+* (#51) As Admin, I want to add Nurses to the System.
 
-* As Admin, I want to view the list of Nurses.
+* (#52) As Admin, I want to view the list of Nurses.
 
 * As Admin, I want to view the personal info of a Nurse.
 
@@ -80,12 +80,7 @@ MISC
     * or name(last name and first name),
     * or the combination of DOB and last name.
 
-* As Nurse, I want to search for appointments information.
+* (#7) As Nurse, I want to search for appointments information.
     * date of birth,
     * or name(last name and first name),
     * or the combination of DOB and last name.
-    
-
-Questions:
-* Can there only be one future appointment? No, a patient may have many future appointments (e.g. may be with different doctors).
-
