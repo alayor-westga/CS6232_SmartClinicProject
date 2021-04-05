@@ -11,6 +11,7 @@ namespace SmartClinic.Controller
     public class LoginController
     {
         private readonly NurseDAL nurseSource;
+        private static Nurse nurse;
 
         /// <summary>
         /// It creates a LoginController object.
@@ -18,6 +19,11 @@ namespace SmartClinic.Controller
         public LoginController()
         {
             nurseSource = new NurseDAL();
+        }
+
+        public static Nurse GetNurse()
+        {
+            return LoginController.nurse;
         }
 
         /// <summary>
@@ -36,7 +42,8 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("password cannot be null or empty.");
             }
-            return this.nurseSource.GetByUserNameAndPassword(username, password);
+            nurse = this.nurseSource.GetByUserNameAndPassword(username, password);
+            return nurse;
         }
     }
 }

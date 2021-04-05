@@ -11,7 +11,6 @@ namespace SmartClinic.View
     public partial class LoginForm : Form
     {
         private readonly LoginController loginController;
-        private static Nurse nurse;
 
         /// <summary>
         /// It builds and initializes the login form.
@@ -29,7 +28,7 @@ namespace SmartClinic.View
             string password = passwordTextBox.Text;
             try
             {
-                nurse = loginController.Login(username, password);
+                Nurse nurse = loginController.Login(username, password);
                 if (nurse == null)
                 {
                     errorMessageLabel.Text = "Invalid credentials";
@@ -38,7 +37,6 @@ namespace SmartClinic.View
                 {
                     using (MainDashboard mainDashboard = new MainDashboard(this))
                     {
-                        mainDashboard.SetNurse(nurse);
                         Hide();
                         mainDashboard.ShowDialog();
                     }
@@ -82,11 +80,6 @@ namespace SmartClinic.View
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
-        }
-
-        public static Nurse GetNurse()
-        {
-            return LoginForm.nurse;
         }
     }
 }

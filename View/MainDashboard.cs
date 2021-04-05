@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using SmartClinic.Model;
 using SmartClinic.UserControls;
+using SmartClinic.Controller;
 
 namespace SmartClinic.View
 {
@@ -11,7 +12,6 @@ namespace SmartClinic.View
     public partial class MainDashboard : Form
     {
         private readonly Form loginForm;
-        private Nurse nurse;
 
         /// <summary>
         /// It builds and initializes the main dashboard.
@@ -21,14 +21,15 @@ namespace SmartClinic.View
             InitializeComponent();
             this.loginForm = loginForm;
             searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
+            ShowUserName();
         }
 
         /// <summary>
         /// It sets the nurse property.
         /// </summary>
-        public void SetNurse(Nurse nurse)
+        private void ShowUserName()
         {
-            this.nurse = nurse;
+            Nurse nurse = LoginController.GetNurse();
             userNameLabel.Text = nurse.FullName + " (" + nurse.UserName + ")";
         }
 

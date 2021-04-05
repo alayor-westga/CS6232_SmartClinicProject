@@ -63,9 +63,9 @@ namespace SmartClinic.View
             string docPhone = visit.DoctorPhone.ToString();
             doctorPhoneTextBox.Text = "(" + docPhone.Substring(0, 3) + ") " + docPhone.Substring(3, 3) + " - " + docPhone.Substring(6, 4);
 
-            loggedInNurseTextBox.Text = LoginForm.GetNurse().FirstName.ToString() + " " +
-                LoginForm.GetNurse().LastName.ToString();
-            loggedInNurseIDTextBox.Text = LoginForm.GetNurse().NurseId.ToString();
+            loggedInNurseTextBox.Text = LoginController.GetNurse().FirstName.ToString() + " " +
+                LoginController.GetNurse().LastName.ToString();
+            loggedInNurseIDTextBox.Text = LoginController.GetNurse().NurseId.ToString();
             MakeAllFieldsReadOnly();
         }
 
@@ -140,7 +140,7 @@ namespace SmartClinic.View
             PatientVisits patientVisit = new PatientVisits();
 
             patientVisit.AppointmentID = this.visit.AppointmentID;
-            patientVisit.NurseID = LoginForm.GetNurse().NurseId;
+            patientVisit.NurseID = LoginController.GetNurse().NurseId;
             patientVisit.Symptoms = symptomsTextBox.Text;
             patientVisit.Weight = decimal.Parse(weightTextBox.Text);
             patientVisit.BodyTemperature = decimal.Parse(tempTextBox.Text);
