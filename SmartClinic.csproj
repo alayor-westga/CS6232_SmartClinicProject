@@ -225,6 +225,7 @@
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\SmartClinitDBConnection.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\ClinicPerson.cs" />

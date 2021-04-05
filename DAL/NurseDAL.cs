@@ -47,7 +47,6 @@ namespace SmartClinic.DAL
                             Nurse nurse = new Nurse()
                             {
                                 NurseId = Int32.Parse(reader["nurse_id"].ToString()),
-                                UserName = reader["username"].ToString(),
                                 FirstName = reader["first_name"].ToString(),
                                 LastName = reader["last_name"].ToString(),
                             };

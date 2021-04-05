@@ -29,8 +29,8 @@ namespace SmartClinic.View
         /// </summary>
         private void ShowUserName()
         {
-            Nurse nurse = LoginController.GetNurse();
-            userNameLabel.Text = nurse.FullName + " (" + nurse.UserName + ")";
+            User user = LoginController.GetUser();
+            userNameLabel.Text = user.FullName + " (" + user.UserName + ")";
         }
 
         private void MainDashboard_FormClosed(object sender, FormClosedEventArgs e)
