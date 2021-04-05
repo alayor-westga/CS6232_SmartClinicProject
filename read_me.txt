@@ -2,6 +2,10 @@ Nurse
 username: jane
 password: 1234
 
+Admin
+username: max
+password: sw23
+
 * Create DB
     - Run the DB/script.sql
         Note: You can also run the DB/script_dev.sql which is a manual script we 

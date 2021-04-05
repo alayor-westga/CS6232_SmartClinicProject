@@ -39,6 +39,8 @@ namespace SmartClinic.View
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.userNameErrorLabel = new System.Windows.Forms.Label();
             this.passwordErrorLabel = new System.Windows.Forms.Label();
+            this.nurseRadioButton = new System.Windows.Forms.RadioButton();
+            this.adminRadioButton = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // smartLabel
@@ -56,7 +58,7 @@ namespace SmartClinic.View
             // userNameTextBox
             // 
             this.userNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameTextBox.Location = new System.Drawing.Point(279, 103);
+            this.userNameTextBox.Location = new System.Drawing.Point(279, 168);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(342, 49);
             this.userNameTextBox.TabIndex = 1;
@@ -65,7 +67,7 @@ namespace SmartClinic.View
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(279, 189);
+            this.passwordTextBox.Location = new System.Drawing.Point(279, 254);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(342, 49);
@@ -76,7 +78,7 @@ namespace SmartClinic.View
             // 
             this.userNameLabel.AutoSize = true;
             this.userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.Location = new System.Drawing.Point(67, 106);
+            this.userNameLabel.Location = new System.Drawing.Point(67, 171);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(206, 42);
             this.userNameLabel.TabIndex = 3;
@@ -86,7 +88,7 @@ namespace SmartClinic.View
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(90, 192);
+            this.passwordLabel.Location = new System.Drawing.Point(90, 257);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(183, 42);
             this.passwordLabel.TabIndex = 4;
@@ -97,7 +99,7 @@ namespace SmartClinic.View
             this.loginButton.AutoSize = true;
             this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.Location = new System.Drawing.Point(360, 301);
+            this.loginButton.Location = new System.Drawing.Point(360, 366);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(163, 52);
             this.loginButton.TabIndex = 3;
@@ -119,7 +121,7 @@ namespace SmartClinic.View
             // 
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.errorMessageLabel.Location = new System.Drawing.Point(434, 253);
+            this.errorMessageLabel.Location = new System.Drawing.Point(434, 318);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(0, 25);
             this.errorMessageLabel.TabIndex = 7;
@@ -128,7 +130,7 @@ namespace SmartClinic.View
             // 
             this.userNameErrorLabel.AutoSize = true;
             this.userNameErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.userNameErrorLabel.Location = new System.Drawing.Point(424, 156);
+            this.userNameErrorLabel.Location = new System.Drawing.Point(424, 221);
             this.userNameErrorLabel.Name = "userNameErrorLabel";
             this.userNameErrorLabel.Size = new System.Drawing.Size(0, 25);
             this.userNameErrorLabel.TabIndex = 8;
@@ -137,16 +139,41 @@ namespace SmartClinic.View
             // 
             this.passwordErrorLabel.AutoSize = true;
             this.passwordErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.passwordErrorLabel.Location = new System.Drawing.Point(424, 241);
+            this.passwordErrorLabel.Location = new System.Drawing.Point(424, 306);
             this.passwordErrorLabel.Name = "passwordErrorLabel";
             this.passwordErrorLabel.Size = new System.Drawing.Size(0, 25);
             this.passwordErrorLabel.TabIndex = 9;
+            // 
+            // nurseRadioButton
+            // 
+            this.nurseRadioButton.AutoSize = true;
+            this.nurseRadioButton.Checked = true;
+            this.nurseRadioButton.Location = new System.Drawing.Point(279, 106);
+            this.nurseRadioButton.Name = "nurseRadioButton";
+            this.nurseRadioButton.Size = new System.Drawing.Size(100, 29);
+            this.nurseRadioButton.TabIndex = 10;
+            this.nurseRadioButton.TabStop = true;
+            this.nurseRadioButton.Text = "Nurse";
+            this.nurseRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // adminRadioButton
+            // 
+            this.adminRadioButton.AutoSize = true;
+            this.adminRadioButton.Location = new System.Drawing.Point(452, 106);
+            this.adminRadioButton.Name = "adminRadioButton";
+            this.adminRadioButton.Size = new System.Drawing.Size(169, 29);
+            this.adminRadioButton.TabIndex = 11;
+            this.adminRadioButton.TabStop = true;
+            this.adminRadioButton.Text = "Administrator";
+            this.adminRadioButton.UseVisualStyleBackColor = true;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 378);
+            this.ClientSize = new System.Drawing.Size(800, 430);
+            this.Controls.Add(this.adminRadioButton);
+            this.Controls.Add(this.nurseRadioButton);
             this.Controls.Add(this.passwordErrorLabel);
             this.Controls.Add(this.userNameErrorLabel);
             this.Controls.Add(this.errorMessageLabel);
@@ -181,5 +208,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.Label userNameErrorLabel;
         private System.Windows.Forms.Label passwordErrorLabel;
+        private System.Windows.Forms.RadioButton nurseRadioButton;
+        private System.Windows.Forms.RadioButton adminRadioButton;
     }
 }
