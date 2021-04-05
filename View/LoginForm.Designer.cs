@@ -48,7 +48,7 @@ namespace SmartClinic.View
             this.smartLabel.AutoSize = true;
             this.smartLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.smartLabel.Font = new System.Drawing.Font("Consolas", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.smartLabel.Location = new System.Drawing.Point(242, 33);
+            this.smartLabel.Location = new System.Drawing.Point(260, 33);
             this.smartLabel.Name = "smartLabel";
             this.smartLabel.Size = new System.Drawing.Size(119, 43);
             this.smartLabel.TabIndex = 0;
@@ -99,7 +99,7 @@ namespace SmartClinic.View
             this.loginButton.AutoSize = true;
             this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.Location = new System.Drawing.Point(360, 366);
+            this.loginButton.Location = new System.Drawing.Point(360, 356);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(163, 52);
             this.loginButton.TabIndex = 3;
@@ -111,7 +111,7 @@ namespace SmartClinic.View
             // 
             this.clinicLabel.AutoSize = true;
             this.clinicLabel.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clinicLabel.Location = new System.Drawing.Point(347, 8);
+            this.clinicLabel.Location = new System.Drawing.Point(365, 8);
             this.clinicLabel.Name = "clinicLabel";
             this.clinicLabel.Size = new System.Drawing.Size(242, 75);
             this.clinicLabel.TabIndex = 6;
@@ -121,7 +121,7 @@ namespace SmartClinic.View
             // 
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.errorMessageLabel.Location = new System.Drawing.Point(434, 318);
+            this.errorMessageLabel.Location = new System.Drawing.Point(434, 311);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(0, 25);
             this.errorMessageLabel.TabIndex = 7;
