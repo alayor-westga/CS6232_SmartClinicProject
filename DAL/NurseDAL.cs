@@ -60,5 +60,15 @@ namespace SmartClinic.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// It inserts a nurse into the DB.
+        /// </summary>
+        /// <param name="clinicPersonID">The clinic person id of the nurse.</param>
+        /// <returns>The number of rows affected.</returns>
+        public int AddNurse(int clinicPersonID)
+        {
+            return 0;
+        }
     }
 }

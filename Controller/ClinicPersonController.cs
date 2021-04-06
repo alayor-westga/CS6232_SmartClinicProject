@@ -10,14 +10,14 @@ namespace SmartClinic.Controller
     /// </summary>
     public class ClinicPersonController
     {
-        private readonly PatientDAL patientSource;
+        private readonly ClinicPersonDAL clinicPersonSource;
 
         /// <summary>
-        /// It creates a PatientController object.
+        /// It creates a ClinicPersonController object.
         /// </summary>
         public ClinicPersonController()
         {
-            patientSource = new PatientDAL();
+            clinicPersonSource = new ClinicPersonDAL();
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentNullException("newClinicPerson");
             }
-            return this.patientSource.AddClinicPerson(newClinicPerson);
+            return this.clinicPersonSource.AddClinicPerson(newClinicPerson);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentNullException("ssn");
             }
-            return this.patientSource.SsnIsNotUnique(ssn);
+            return this.clinicPersonSource.SsnIsNotUnique(ssn);
         }
     }
 }

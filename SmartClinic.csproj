@@ -223,6 +223,7 @@
     <Compile Include="Controller\PatientVisitController.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
+    <Compile Include="DAL\ClinicPersonDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
