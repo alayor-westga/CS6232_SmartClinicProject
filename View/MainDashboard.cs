@@ -22,6 +22,7 @@ namespace SmartClinic.View
             this.loginForm = loginForm;
             searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
             ShowUserName();
+            ShowNursesTab();
         }
 
         /// <summary>
@@ -31,6 +32,16 @@ namespace SmartClinic.View
         {
             User user = LoginController.GetUser();
             userNameLabel.Text = user.FullName + " (" + user.UserName + ")";
+        }
+
+        private void ShowNursesTab()
+        {
+            mainDashBoardTabControl.TabPages.Remove(nursesTabPage);
+            User user = LoginController.GetUser();
+            if (user.Role == UserRole.Admin)
+            {
+                mainDashBoardTabControl.TabPages.Add(nursesTabPage);
+            }
         }
 
         private void MainDashboard_FormClosed(object sender, FormClosedEventArgs e)

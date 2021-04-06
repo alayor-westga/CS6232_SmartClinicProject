@@ -62,7 +62,9 @@ namespace SmartClinic.View
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(342, 49);
             this.userNameTextBox.TabIndex = 1;
+            this.userNameTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UserNameTextBox_MouseClick);
             this.userNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBox_TextChanged);
+            this.userNameTextBox.Enter += new System.EventHandler(this.UserNameTextBox_Enter);
             // 
             // passwordTextBox
             // 
@@ -72,7 +74,9 @@ namespace SmartClinic.View
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(342, 49);
             this.passwordTextBox.TabIndex = 2;
+            this.passwordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextBox_MouseClick);
             this.passwordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBox_TextChanged);
+            this.passwordTextBox.Enter += new System.EventHandler(this.PasswordTextBox_Enter);
             // 
             // userNameLabel
             // 

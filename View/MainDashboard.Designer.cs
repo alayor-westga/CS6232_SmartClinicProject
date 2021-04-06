@@ -43,6 +43,7 @@ namespace SmartClinic.View
             this.mainDashBoardTabControl = new System.Windows.Forms.TabControl();
             this.newAppoinmentTabPage = new System.Windows.Forms.TabPage();
             this.newAppointmentUserControl1 = new SmartClinic.UserControls.NewAppointmentUserControl();
+            this.nursesTabPage = new System.Windows.Forms.TabPage();
             this.userLayoutPanel.SuspendLayout();
             this.PatientsTabPage.SuspendLayout();
             this.patientVisitsTabPage.SuspendLayout();
@@ -183,6 +184,7 @@ namespace SmartClinic.View
             this.mainDashBoardTabControl.Controls.Add(this.appointmentsTabPage);
             this.mainDashBoardTabControl.Controls.Add(this.patientVisitsTabPage);
             this.mainDashBoardTabControl.Controls.Add(this.PatientsTabPage);
+            this.mainDashBoardTabControl.Controls.Add(this.nursesTabPage);
             this.mainDashBoardTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainDashBoardTabControl.Location = new System.Drawing.Point(0, 44);
             this.mainDashBoardTabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -210,6 +212,16 @@ namespace SmartClinic.View
             this.newAppointmentUserControl1.Name = "newAppointmentUserControl1";
             this.newAppointmentUserControl1.Size = new System.Drawing.Size(1484, 958);
             this.newAppointmentUserControl1.TabIndex = 0;
+            // 
+            // nursesTabPage
+            // 
+            this.nursesTabPage.Location = new System.Drawing.Point(8, 39);
+            this.nursesTabPage.Name = "nursesTabPage";
+            this.nursesTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.nursesTabPage.Size = new System.Drawing.Size(1490, 964);
+            this.nursesTabPage.TabIndex = 4;
+            this.nursesTabPage.Text = "Nurses";
+            this.nursesTabPage.UseVisualStyleBackColor = true;
             // 
             // MainDashboard
             // 
@@ -251,5 +263,6 @@ namespace SmartClinic.View
         private UserControls.NewAppointmentUserControl newAppointmentUserControl1;
         private UserControls.PatientVisitsUserControl patientVisitsUserControl1;
         private System.Windows.Forms.Button newPatientButton;
+        private System.Windows.Forms.TabPage nursesTabPage;
     }
 }

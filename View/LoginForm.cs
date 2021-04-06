@@ -40,6 +40,8 @@ namespace SmartClinic.View
                     {
                         Hide();
                         mainDashboard.ShowDialog();
+                        userNameTextBox.Clear();
+                        passwordTextBox.Clear();
                     }
                 }
             }
@@ -81,6 +83,26 @@ namespace SmartClinic.View
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void PasswordTextBox_Enter(object sender, EventArgs e)
+        {
+            passwordTextBox.SelectAll();
+        }
+
+        private void UserNameTextBox_Enter(object sender, EventArgs e)
+        {
+            userNameTextBox.SelectAll();
+        }
+
+        private void UserNameTextBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            userNameTextBox.SelectAll();
+        }
+
+        private void PasswordTextBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            passwordTextBox.SelectAll();
         }
     }
 }
