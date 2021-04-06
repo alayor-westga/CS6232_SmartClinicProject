@@ -132,7 +132,7 @@ namespace SmartClinic.UserControls
             // nurseIdDataGridViewTextBoxColumn
             // 
             this.nurseIdDataGridViewTextBoxColumn.DataPropertyName = "NurseId";
-            this.nurseIdDataGridViewTextBoxColumn.HeaderText = "NurseId";
+            this.nurseIdDataGridViewTextBoxColumn.HeaderText = "ID";
             this.nurseIdDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.nurseIdDataGridViewTextBoxColumn.Name = "nurseIdDataGridViewTextBoxColumn";
             this.nurseIdDataGridViewTextBoxColumn.ReadOnly = true;
@@ -140,7 +140,7 @@ namespace SmartClinic.UserControls
             // fullNameDataGridViewTextBoxColumn
             // 
             this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.fullNameDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
             this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -148,7 +148,7 @@ namespace SmartClinic.UserControls
             // dateOfBirthDataGridViewTextBoxColumn
             // 
             this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Date Of Birth";
             this.dateOfBirthDataGridViewTextBoxColumn.MinimumWidth = 10;
             this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
             this.dateOfBirthDataGridViewTextBoxColumn.ReadOnly = true;
@@ -195,11 +195,11 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridView nursesDataGridView;
         private System.Windows.Forms.BindingSource appointmentSearchResultBindingSource;
         private System.Windows.Forms.Button newNurseButton;
+        private System.Windows.Forms.BindingSource nurseBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn nurseIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sSNDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource nurseBindingSource;
     }
 }
