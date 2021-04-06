@@ -177,6 +177,7 @@ namespace SmartClinic.UserControls
             this.Controls.Add(this.nursesGroupBox);
             this.Name = "NursesUserControl";
             this.Size = new System.Drawing.Size(1236, 791);
+            this.Load += new System.EventHandler(this.NursesUserControl_Load);
             this.nursesGroupBox.ResumeLayout(false);
             this.nursesGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nursesDataGridView)).EndInit();

@@ -61,7 +61,7 @@ namespace SmartClinic.View
             this.userNameTextBox.Location = new System.Drawing.Point(279, 168);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(342, 49);
-            this.userNameTextBox.TabIndex = 1;
+            this.userNameTextBox.TabIndex = 3;
             this.userNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBox_TextChanged);
             // 
             // passwordTextBox
@@ -71,7 +71,7 @@ namespace SmartClinic.View
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(342, 49);
-            this.passwordTextBox.TabIndex = 2;
+            this.passwordTextBox.TabIndex = 4;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBox_TextChanged);
             // 
             // userNameLabel
@@ -102,7 +102,7 @@ namespace SmartClinic.View
             this.loginButton.Location = new System.Drawing.Point(360, 356);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(163, 52);
-            this.loginButton.TabIndex = 3;
+            this.loginButton.TabIndex = 5;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
@@ -151,7 +151,7 @@ namespace SmartClinic.View
             this.nurseRadioButton.Location = new System.Drawing.Point(279, 106);
             this.nurseRadioButton.Name = "nurseRadioButton";
             this.nurseRadioButton.Size = new System.Drawing.Size(100, 29);
-            this.nurseRadioButton.TabIndex = 10;
+            this.nurseRadioButton.TabIndex = 1;
             this.nurseRadioButton.TabStop = true;
             this.nurseRadioButton.Text = "Nurse";
             this.nurseRadioButton.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@ namespace SmartClinic.View
             this.adminRadioButton.Location = new System.Drawing.Point(452, 106);
             this.adminRadioButton.Name = "adminRadioButton";
             this.adminRadioButton.Size = new System.Drawing.Size(169, 29);
-            this.adminRadioButton.TabIndex = 11;
+            this.adminRadioButton.TabIndex = 2;
             this.adminRadioButton.TabStop = true;
             this.adminRadioButton.Text = "Administrator";
             this.adminRadioButton.UseVisualStyleBackColor = true;

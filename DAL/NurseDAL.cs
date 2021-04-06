@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using SmartClinic.Model;
+using System.Collections;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -11,6 +12,7 @@ namespace SmartClinic.DAL
     /// </summary>
     public class NurseDAL
     {
+
         /// <summary>
         /// It verifies if a nurse exists with the provided username and password.
         /// </summary>
@@ -92,6 +94,60 @@ namespace SmartClinic.DAL
                     insertCommand.ExecuteNonQuery();
                     return int.Parse(insertCommand.Parameters["@ID"].Value.ToString());
                 }
+            }
+        }
+
+        /// <summary>
+        /// It returns all the nurses in the system.
+        /// </summary>
+        /// <returns>The list of nurses.</returns>
+        public List<Nurse> GetAllNurses()
+        {
+            string selectStatement =
+            " SELECT n.nurse_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
+            " cp.street2, cp.city, cp.state, cp.ssn" +
+            " FROM Nurses n" +
+            " INNER JOIN ClinicPersons cp ON (n.clinic_person_id = cp.clinic_person_id);";
+
+            return SelectMany(selectStatement, null);
+        }
+
+        private List<Nurse> SelectMany(string selectStatement, Hashtable parameters = null)
+        {
+            List<Nurse> nurseList = new List<Nurse>();
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    if (parameters != null)
+                    {
+                        foreach (DictionaryEntry param in parameters)
+                        {
+                            selectCommand.Parameters.AddWithValue((String) param.Key, param.Value);
+                        }
+                    }
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                             Nurse Nurse = new Nurse()
+                            {
+                                NurseId = Int32.Parse(reader["nurse_id"].ToString()),
+                                FirstName = reader["first_name"].ToString(),
+                                LastName = reader["last_name"].ToString(),
+                                DateOfBirth = DateTime.Parse(reader["date_of_birth"].ToString()),
+                                Street1 = reader["street1"].ToString(),
+                                Street2 = reader["street2"].ToString(),
+                                City = reader["city"].ToString(),
+                                State = reader["state"].ToString(),
+                                SSN = reader["ssn"].ToString(),
+                            };
+                            nurseList.Add(Nurse);
+                        }
+                    }
+                }
+                return nurseList;
             }
         }
     }

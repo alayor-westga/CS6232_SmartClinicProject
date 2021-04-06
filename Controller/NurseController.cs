@@ -33,5 +33,14 @@ namespace SmartClinic.Controller
             }
             return nurseSource.AddNurse(clinicPersonID);
         }
+
+        /// <summary>
+        /// It returns all the nurses in the system.
+        /// </summary>
+        /// <returns>The list of nurses.</returns>
+        public List<Nurse> GetAllNurses()
+        {
+            return nurseSource.GetAllNurses();
+        }
     }
 }
