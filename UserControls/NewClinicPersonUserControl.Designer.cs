@@ -1,14 +1,14 @@
 ﻿
-namespace SmartClinic.View
+namespace SmartClinic.UserControls
 {
-    partial class NewNurseForm
+    partial class NewClinicPersonUserControl
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,10 +21,10 @@ namespace SmartClinic.View
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -60,7 +60,7 @@ namespace SmartClinic.View
             this.dobLabel = new System.Windows.Forms.Label();
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.dateTimePickerForDOB = new System.Windows.Forms.DateTimePicker();
-            this.addPatientButton = new System.Windows.Forms.Button();
+            this.addClinicPersonButton = new System.Windows.Forms.Button();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -72,7 +72,7 @@ namespace SmartClinic.View
             this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genderComboBox.FormattingEnabled = true;
-            this.genderComboBox.Location = new System.Drawing.Point(173, 114);
+            this.genderComboBox.Location = new System.Drawing.Point(174, 108);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(256, 45);
             this.genderComboBox.TabIndex = 75;
@@ -82,7 +82,7 @@ namespace SmartClinic.View
             this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(178, 457);
+            this.stateComboBox.Location = new System.Drawing.Point(179, 451);
             this.stateComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(527, 45);
@@ -91,7 +91,7 @@ namespace SmartClinic.View
             // ssnErrorLabel
             // 
             this.ssnErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.ssnErrorLabel.Location = new System.Drawing.Point(623, 597);
+            this.ssnErrorLabel.Location = new System.Drawing.Point(624, 591);
             this.ssnErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ssnErrorLabel.Name = "ssnErrorLabel";
             this.ssnErrorLabel.Size = new System.Drawing.Size(321, 36);
@@ -100,7 +100,7 @@ namespace SmartClinic.View
             // ssnTextBox
             // 
             this.ssnTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ssnTextBox.Location = new System.Drawing.Point(627, 547);
+            this.ssnTextBox.Location = new System.Drawing.Point(628, 541);
             this.ssnTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ssnTextBox.MaxLength = 9;
             this.ssnTextBox.Name = "ssnTextBox";
@@ -111,7 +111,7 @@ namespace SmartClinic.View
             // 
             this.ssnLabel.AutoSize = true;
             this.ssnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ssnLabel.Location = new System.Drawing.Point(527, 550);
+            this.ssnLabel.Location = new System.Drawing.Point(528, 544);
             this.ssnLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ssnLabel.Name = "ssnLabel";
             this.ssnLabel.Size = new System.Drawing.Size(92, 37);
@@ -123,7 +123,7 @@ namespace SmartClinic.View
             this.patientIDLabel.Enabled = false;
             this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.patientIDLabel.Location = new System.Drawing.Point(774, 100);
+            this.patientIDLabel.Location = new System.Drawing.Point(775, 94);
             this.patientIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.patientIDLabel.Name = "patientIDLabel";
             this.patientIDLabel.Size = new System.Drawing.Size(390, 36);
@@ -132,7 +132,7 @@ namespace SmartClinic.View
             // dobErrorLabel
             // 
             this.dobErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.dobErrorLabel.Location = new System.Drawing.Point(433, 177);
+            this.dobErrorLabel.Location = new System.Drawing.Point(434, 171);
             this.dobErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dobErrorLabel.Name = "dobErrorLabel";
             this.dobErrorLabel.Size = new System.Drawing.Size(363, 36);
@@ -141,7 +141,7 @@ namespace SmartClinic.View
             // zipCodeErrorLabel
             // 
             this.zipCodeErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.zipCodeErrorLabel.Location = new System.Drawing.Point(981, 507);
+            this.zipCodeErrorLabel.Location = new System.Drawing.Point(982, 501);
             this.zipCodeErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.zipCodeErrorLabel.Name = "zipCodeErrorLabel";
             this.zipCodeErrorLabel.Size = new System.Drawing.Size(219, 36);
@@ -150,7 +150,7 @@ namespace SmartClinic.View
             // stateErrorLabel
             // 
             this.stateErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.stateErrorLabel.Location = new System.Drawing.Point(174, 507);
+            this.stateErrorLabel.Location = new System.Drawing.Point(175, 501);
             this.stateErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stateErrorLabel.Name = "stateErrorLabel";
             this.stateErrorLabel.Size = new System.Drawing.Size(296, 36);
@@ -159,7 +159,7 @@ namespace SmartClinic.View
             // phoneErrorLabel
             // 
             this.phoneErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.phoneErrorLabel.Location = new System.Drawing.Point(181, 597);
+            this.phoneErrorLabel.Location = new System.Drawing.Point(182, 591);
             this.phoneErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.phoneErrorLabel.Name = "phoneErrorLabel";
             this.phoneErrorLabel.Size = new System.Drawing.Size(321, 36);
@@ -168,7 +168,7 @@ namespace SmartClinic.View
             // cityErrorLabel
             // 
             this.cityErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.cityErrorLabel.Location = new System.Drawing.Point(834, 408);
+            this.cityErrorLabel.Location = new System.Drawing.Point(835, 402);
             this.cityErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.cityErrorLabel.Name = "cityErrorLabel";
             this.cityErrorLabel.Size = new System.Drawing.Size(363, 36);
@@ -177,7 +177,7 @@ namespace SmartClinic.View
             // address1ErrorLabel
             // 
             this.address1ErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.address1ErrorLabel.Location = new System.Drawing.Point(181, 317);
+            this.address1ErrorLabel.Location = new System.Drawing.Point(182, 311);
             this.address1ErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.address1ErrorLabel.Name = "address1ErrorLabel";
             this.address1ErrorLabel.Size = new System.Drawing.Size(363, 36);
@@ -186,7 +186,7 @@ namespace SmartClinic.View
             // genderErrorLabel
             // 
             this.genderErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.genderErrorLabel.Location = new System.Drawing.Point(447, 117);
+            this.genderErrorLabel.Location = new System.Drawing.Point(448, 111);
             this.genderErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.genderErrorLabel.Name = "genderErrorLabel";
             this.genderErrorLabel.Size = new System.Drawing.Size(218, 36);
@@ -195,7 +195,7 @@ namespace SmartClinic.View
             // lastNameErrorLabel
             // 
             this.lastNameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.lastNameErrorLabel.Location = new System.Drawing.Point(733, 74);
+            this.lastNameErrorLabel.Location = new System.Drawing.Point(734, 68);
             this.lastNameErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lastNameErrorLabel.Name = "lastNameErrorLabel";
             this.lastNameErrorLabel.Size = new System.Drawing.Size(363, 36);
@@ -204,7 +204,7 @@ namespace SmartClinic.View
             // firstNameErrorLabel
             // 
             this.firstNameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.firstNameErrorLabel.Location = new System.Drawing.Point(173, 74);
+            this.firstNameErrorLabel.Location = new System.Drawing.Point(174, 68);
             this.firstNameErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.firstNameErrorLabel.Name = "firstNameErrorLabel";
             this.firstNameErrorLabel.Size = new System.Drawing.Size(363, 36);
@@ -215,19 +215,20 @@ namespace SmartClinic.View
             this.clearButton.AutoSize = true;
             this.clearButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(963, 643);
+            this.clearButton.Location = new System.Drawing.Point(964, 637);
             this.clearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(201, 58);
             this.clearButton.TabIndex = 55;
             this.clearButton.Text = "Clear Form";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // genderLabel
             // 
             this.genderLabel.AutoSize = true;
             this.genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderLabel.Location = new System.Drawing.Point(35, 117);
+            this.genderLabel.Location = new System.Drawing.Point(36, 111);
             this.genderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(141, 37);
@@ -237,7 +238,7 @@ namespace SmartClinic.View
             // phoneTextBox
             // 
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneTextBox.Location = new System.Drawing.Point(173, 547);
+            this.phoneTextBox.Location = new System.Drawing.Point(174, 541);
             this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.phoneTextBox.MaxLength = 10;
             this.phoneTextBox.Name = "phoneTextBox";
@@ -247,7 +248,7 @@ namespace SmartClinic.View
             // zipCodeTextBox
             // 
             this.zipCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipCodeTextBox.Location = new System.Drawing.Point(981, 453);
+            this.zipCodeTextBox.Location = new System.Drawing.Point(982, 447);
             this.zipCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(180, 44);
@@ -256,7 +257,7 @@ namespace SmartClinic.View
             // cityTextBox
             // 
             this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityTextBox.Location = new System.Drawing.Point(828, 354);
+            this.cityTextBox.Location = new System.Drawing.Point(829, 348);
             this.cityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(330, 44);
@@ -266,7 +267,7 @@ namespace SmartClinic.View
             // 
             this.phoneNumberLabel.AutoSize = true;
             this.phoneNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneNumberLabel.Location = new System.Drawing.Point(55, 550);
+            this.phoneNumberLabel.Location = new System.Drawing.Point(56, 544);
             this.phoneNumberLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.phoneNumberLabel.Name = "phoneNumberLabel";
             this.phoneNumberLabel.Size = new System.Drawing.Size(118, 37);
@@ -277,7 +278,7 @@ namespace SmartClinic.View
             // 
             this.zipCodeLabel.AutoSize = true;
             this.zipCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipCodeLabel.Location = new System.Drawing.Point(821, 460);
+            this.zipCodeLabel.Location = new System.Drawing.Point(822, 454);
             this.zipCodeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.zipCodeLabel.Name = "zipCodeLabel";
             this.zipCodeLabel.Size = new System.Drawing.Size(156, 37);
@@ -288,7 +289,7 @@ namespace SmartClinic.View
             // 
             this.cityLabel.AutoSize = true;
             this.cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityLabel.Location = new System.Drawing.Point(746, 361);
+            this.cityLabel.Location = new System.Drawing.Point(747, 355);
             this.cityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(80, 37);
@@ -298,7 +299,7 @@ namespace SmartClinic.View
             // address2TextBox
             // 
             this.address2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2TextBox.Location = new System.Drawing.Point(175, 360);
+            this.address2TextBox.Location = new System.Drawing.Point(176, 354);
             this.address2TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(530, 44);
@@ -308,7 +309,7 @@ namespace SmartClinic.View
             // 
             this.stateLabel.AutoSize = true;
             this.stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateLabel.Location = new System.Drawing.Point(74, 460);
+            this.stateLabel.Location = new System.Drawing.Point(75, 454);
             this.stateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(100, 37);
@@ -319,7 +320,7 @@ namespace SmartClinic.View
             // 
             this.address1Label.AutoSize = true;
             this.address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1Label.Location = new System.Drawing.Point(5, 271);
+            this.address1Label.Location = new System.Drawing.Point(6, 265);
             this.address1Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.address1Label.Name = "address1Label";
             this.address1Label.Size = new System.Drawing.Size(169, 37);
@@ -330,7 +331,7 @@ namespace SmartClinic.View
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.Location = new System.Drawing.Point(631, 27);
+            this.lastNameLabel.Location = new System.Drawing.Point(632, 21);
             this.lastNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(87, 37);
@@ -341,7 +342,7 @@ namespace SmartClinic.View
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(78, 27);
+            this.firstNameLabel.Location = new System.Drawing.Point(79, 21);
             this.firstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(89, 37);
@@ -352,7 +353,7 @@ namespace SmartClinic.View
             // 
             this.dobLabel.AutoSize = true;
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobLabel.Location = new System.Drawing.Point(45, 193);
+            this.dobLabel.Location = new System.Drawing.Point(46, 187);
             this.dobLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(95, 37);
@@ -362,7 +363,7 @@ namespace SmartClinic.View
             // address1TextBox
             // 
             this.address1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1TextBox.Location = new System.Drawing.Point(175, 267);
+            this.address1TextBox.Location = new System.Drawing.Point(176, 261);
             this.address1TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(990, 44);
@@ -372,29 +373,30 @@ namespace SmartClinic.View
             // 
             this.dateTimePickerForDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerForDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForDOB.Location = new System.Drawing.Point(173, 186);
+            this.dateTimePickerForDOB.Location = new System.Drawing.Point(174, 180);
             this.dateTimePickerForDOB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePickerForDOB.Name = "dateTimePickerForDOB";
             this.dateTimePickerForDOB.Size = new System.Drawing.Size(256, 44);
             this.dateTimePickerForDOB.TabIndex = 42;
             // 
-            // addPatientButton
+            // addClinicPersonButton
             // 
-            this.addPatientButton.AutoSize = true;
-            this.addPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addPatientButton.Location = new System.Drawing.Point(529, 643);
-            this.addPatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.addPatientButton.Name = "addPatientButton";
-            this.addPatientButton.Size = new System.Drawing.Size(216, 58);
-            this.addPatientButton.TabIndex = 50;
-            this.addPatientButton.Text = "Add Patient";
-            this.addPatientButton.UseVisualStyleBackColor = true;
+            this.addClinicPersonButton.AutoSize = true;
+            this.addClinicPersonButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addClinicPersonButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addClinicPersonButton.Location = new System.Drawing.Point(530, 637);
+            this.addClinicPersonButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.addClinicPersonButton.Name = "addClinicPersonButton";
+            this.addClinicPersonButton.Size = new System.Drawing.Size(216, 58);
+            this.addClinicPersonButton.TabIndex = 50;
+            this.addClinicPersonButton.Text = "Add";
+            this.addClinicPersonButton.UseVisualStyleBackColor = true;
+            this.addClinicPersonButton.Click += new System.EventHandler(this.AddClinicPersonButton_Click);
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(727, 22);
+            this.lastNameTextBox.Location = new System.Drawing.Point(728, 16);
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(434, 44);
@@ -403,7 +405,7 @@ namespace SmartClinic.View
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(169, 22);
+            this.firstNameTextBox.Location = new System.Drawing.Point(170, 16);
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(434, 44);
@@ -414,30 +416,30 @@ namespace SmartClinic.View
             this.cancelButton.AutoSize = true;
             this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(753, 643);
+            this.cancelButton.Location = new System.Drawing.Point(754, 637);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(201, 58);
             this.cancelButton.TabIndex = 53;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // address2Label
             // 
             this.address2Label.AutoSize = true;
             this.address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2Label.Location = new System.Drawing.Point(5, 361);
+            this.address2Label.Location = new System.Drawing.Point(6, 355);
             this.address2Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.address2Label.Name = "address2Label";
             this.address2Label.Size = new System.Drawing.Size(171, 37);
             this.address2Label.TabIndex = 56;
             this.address2Label.Text = "Address 2:";
             // 
-            // NewNurseForm
+            // NewClinicPersonUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 723);
             this.Controls.Add(this.genderComboBox);
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.ssnErrorLabel);
@@ -469,17 +471,14 @@ namespace SmartClinic.View
             this.Controls.Add(this.dobLabel);
             this.Controls.Add(this.address1TextBox);
             this.Controls.Add(this.dateTimePickerForDOB);
-            this.Controls.Add(this.addPatientButton);
+            this.Controls.Add(this.addClinicPersonButton);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.address2Label);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "NewNurseForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Nurse";
+            this.Name = "NewClinicPersonUserControl";
+            this.Size = new System.Drawing.Size(1230, 728);
+            this.Load += new System.EventHandler(this.NewClinicPersonUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,7 +517,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label dobLabel;
         private System.Windows.Forms.TextBox address1TextBox;
         private System.Windows.Forms.DateTimePicker dateTimePickerForDOB;
-        private System.Windows.Forms.Button addPatientButton;
+        private System.Windows.Forms.Button addClinicPersonButton;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.Button cancelButton;
