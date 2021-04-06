@@ -26,10 +26,11 @@ namespace SmartClinic.View
             if (!ValidateFields()) return;
             string username = userNameTextBox.Text;
             string password = passwordTextBox.Text;
+            UserRole role = nurseRadioButton.Checked ? UserRole.Nurse : UserRole.Admin;
             try
             {
-                Nurse nurse = loginController.Login(username, password);
-                if (nurse == null)
+                User loggedInUser = loginController.Login(username, password, role);
+                if (loggedInUser == null)
                 {
                     errorMessageLabel.Text = "Invalid credentials";
                 }

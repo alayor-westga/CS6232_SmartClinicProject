@@ -27,12 +27,13 @@ namespace SmartClinic.Controller
         }
 
         /// <summary>
-        /// It verifies the nurse credentials and returns a nurse object.
+        /// It verifies the user credentials and returns a user object.
         /// </summary>
-        /// <param name="username">The nurse's username.</param>
-        /// <param name="password">The nurse's password.</param>
-        /// <returns>The nurse info if credentials are correct. Null otherwise.</returns>
-        public Nurse Login(string username, string password)
+        /// <param name="username">The user's username.</param>
+        /// <param name="password">The user's password.</param>
+        /// <param name="role">The user's role.</param>
+        /// <returns>The user info if credentials are correct. Null otherwise.</returns>
+        public User Login(string username, string password, UserRole role)
         {
             if (String.IsNullOrWhiteSpace(username))
             {
@@ -46,9 +47,10 @@ namespace SmartClinic.Controller
             user = new User() {
                 UserId = nurse.NurseId,
                 UserName = username,
-                FullName = nurse.FullName
+                FullName = nurse.FullName,
+                Role = role
             };
-            return nurse;
+            return user;
         }
     }
 }

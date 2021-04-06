@@ -6,6 +6,13 @@ using System.Text;
 namespace SmartClinic.Model
 {
     /// <summary>
+    /// The Role of a user.
+    /// </summary>
+    public enum UserRole {
+        Admin, Nurse
+    }
+
+    /// <summary>
     /// The User model class.
     /// </summary>
     public class User
@@ -21,8 +28,18 @@ namespace SmartClinic.Model
         public string UserName { get; set; }
 
         /// <summary>
+        /// The User Password.
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
         /// The User Full Name.
         /// </summary>
         public string FullName { get; set; }
+
+        /// <summary>
+        /// The User Role.
+        /// </summary>
+        public UserRole Role { get; set; }
     }
 }
