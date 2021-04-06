@@ -84,25 +84,5 @@ namespace SmartClinic.View
         {
             Application.Exit();
         }
-
-        private void PasswordTextBox_Enter(object sender, EventArgs e)
-        {
-            passwordTextBox.SelectAll();
-        }
-
-        private void UserNameTextBox_Enter(object sender, EventArgs e)
-        {
-            userNameTextBox.SelectAll();
-        }
-
-        private void UserNameTextBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            userNameTextBox.SelectAll();
-        }
-
-        private void PasswordTextBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            passwordTextBox.SelectAll();
-        }
     }
 }

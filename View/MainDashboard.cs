@@ -71,5 +71,13 @@ namespace SmartClinic.View
                 newPatientForm.ShowDialog();
             }
         }
+
+        private void NewNurseButton_Click(object sender, EventArgs e)
+        {
+            using (NewNurseForm newNurseForm = new NewNurseForm())
+            {
+                newNurseForm.ShowDialog();
+            }
+        }
     }
 }
