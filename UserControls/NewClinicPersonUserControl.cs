@@ -1,5 +1,4 @@
-﻿using SmartClinic.Controller;
-using SmartClinic.Model;
+﻿using SmartClinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,17 +6,22 @@ using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using SmartClinic.View;
+using SmartClinic.Controller;
 
 namespace SmartClinic.UserControls
 {
     public partial class NewClinicPersonUserControl : UserControl
     {
-        private readonly PatientController patientController;
+        private readonly ClinicPersonController clinicPersonController;
+        private List<ClinicPersonAddedListener> clinicPersonAddedListeners;
+
         private readonly Dictionary<string, string> genders;
         public NewClinicPersonUserControl()
         {
             InitializeComponent();
-            this.patientController = new PatientController();
+            clinicPersonController = new ClinicPersonController();
+            clinicPersonAddedListeners = new List<ClinicPersonAddedListener>();
             genders = new Dictionary<string, string>()
             {
                 { "", "Select a value" },
@@ -31,16 +35,17 @@ namespace SmartClinic.UserControls
             LoadStateComboBox(this.stateComboBox);
         }
 
-
         /// <summary>
-        /// It is the new created clinic person.
-        /// </summary>
-        public ClinicPerson SelectedClinicPerson{ get; set; }
-
-        /// <summary>
-        /// It sets the parent form.
-        /// </summary>
-        public Form EnclosingForm { get; set; }
+        /// It adds a clinic person added listener to the list.
+        /// <param name="selectionListener">The listener to be added.</param>
+        /// </summary>  
+        public void AddClinicPersonAddedListener(ClinicPersonAddedListener listener)
+        {
+            if (!clinicPersonAddedListeners.Contains(listener))
+            {
+                clinicPersonAddedListeners.Add(listener);
+            }
+        }
 
         private static void LoadStateComboBox(ComboBox cbo)
         {
@@ -65,7 +70,7 @@ namespace SmartClinic.UserControls
 
             try
             {
-                ClinicPerson newClinicPerson = new Patient();
+                ClinicPerson newClinicPerson = new ClinicPerson();
                 newClinicPerson.DateOfBirth = dateTimePickerForDOB.Value.Date;
                 newClinicPerson.Gender = genderComboBox.SelectedValue.ToString();
                 newClinicPerson.FirstName = firstNameTextBox.Text;
@@ -77,18 +82,12 @@ namespace SmartClinic.UserControls
                 newClinicPerson.ZipCode = zipCodeTextBox.Text;
                 newClinicPerson.Phone = phoneTextBox.Text;
                 newClinicPerson.SSN = ssnTextBox.Text;
+                newClinicPerson.ClinicPersonID = clinicPersonController.AddClinicPerson(newClinicPerson);
 
-                int clinicPersonID = patientController.AddClinicPerson(newClinicPerson);
-                int patientId = patientController.AddPatient(clinicPersonID);
-                idLabel.Text = "ID: " + patientId.ToString();
-                newClinicPerson.ClinicPersonID = clinicPersonID;
-
-                //newPatient.PatientId = patientId;
-                SelectedClinicPerson = newClinicPerson;
-                MessageBox.Show("The record was successfully added to the database.",
-                        "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ParentForm.DialogResult = DialogResult.OK;
-                ParentForm.Close();
+                foreach (ClinicPersonAddedListener listener in clinicPersonAddedListeners)
+                {
+                    listener.OnAdded(newClinicPerson);
+                }
             }
             catch (ArgumentException argumentException)
             {
@@ -188,7 +187,7 @@ namespace SmartClinic.UserControls
                 ssnErrorLabel.Text = requiredField;
                 return isValid;
             }
-            if (this.patientController.SsnIsNotUnique(this.ssnTextBox.Text))
+            if (clinicPersonController.SsnIsNotUnique(this.ssnTextBox.Text))
             {
                 isValid = false;
                 ssnErrorLabel.Text = "SSN Assigned";

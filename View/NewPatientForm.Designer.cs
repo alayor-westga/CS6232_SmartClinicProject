@@ -37,7 +37,6 @@ namespace SmartClinic.View
             this.newClinicPersonUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newClinicPersonUserControl1.Location = new System.Drawing.Point(0, 0);
             this.newClinicPersonUserControl1.Name = "newClinicPersonUserControl1";
-            this.newClinicPersonUserControl1.SelectedClinicPerson = null;
             this.newClinicPersonUserControl1.Size = new System.Drawing.Size(1200, 719);
             this.newClinicPersonUserControl1.TabIndex = 0;
             // 
@@ -54,6 +53,7 @@ namespace SmartClinic.View
             this.Name = "NewPatientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Patient";
+            this.Load += new System.EventHandler(this.NewPatientForm_Load);
             this.ResumeLayout(false);
 
         }

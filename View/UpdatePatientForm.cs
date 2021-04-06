@@ -22,6 +22,7 @@ namespace SmartClinic.View
         private int patientId;
         private ClinicPerson patient;
         private readonly PatientController patientController;
+        private readonly ClinicPersonController clinicPersonController;
         private readonly Dictionary<string, string> genders;
 
         /// <summary>
@@ -31,6 +32,7 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             patientController = new PatientController();
+            clinicPersonController = new ClinicPersonController();
             patient = new ClinicPerson();
             genders = new Dictionary<string, string>()
             {
@@ -313,7 +315,7 @@ namespace SmartClinic.View
                 ssnErrorLabel.Text = requiredField;
                 return isValid;
             }
-            if (ssnTextBox.Text != this.patient.SSN && this.patientController.SsnIsNotUnique(this.ssnTextBox.Text))
+            if (ssnTextBox.Text != this.patient.SSN && clinicPersonController.SsnIsNotUnique(this.ssnTextBox.Text))
             {
                 isValid = false;
                 ssnErrorLabel.Text = "SSN Assigned to Another Patient";
