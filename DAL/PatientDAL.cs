@@ -283,7 +283,7 @@ namespace SmartClinic.DAL
         /// It adds a patient to the DB.
         /// </summary>
         /// <param name="clinicPersonID">The clinic person id of the patient.</param>
-        /// <returns>The number of rows affected.</returns>
+        /// <returns>The ID of the new patient.</returns>
         public int AddPatient(int clinicPersonID)
         {
             if (clinicPersonID < 0)
