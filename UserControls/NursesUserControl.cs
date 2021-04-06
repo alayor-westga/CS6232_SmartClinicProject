@@ -42,11 +42,11 @@ namespace SmartClinic.UserControls
                 setCredentialsButton.Enabled = true;
                 if (selectedNurse.HasCredentialsSet)
                 {
-                    setCredentialsButton.Text = "Update System Access Credentials";
+                    setCredentialsButton.Text = "Update Access Credentials";
                 }
                 else
                 {
-                    setCredentialsButton.Text = "Set System Access Credentials";
+                    setCredentialsButton.Text = "Set Access Credentials";
                 }
             }
             else

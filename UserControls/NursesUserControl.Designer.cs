@@ -34,14 +34,14 @@ namespace SmartClinic.UserControls
             this.nursesGroupBox = new System.Windows.Forms.GroupBox();
             this.setCredentialsButton = new System.Windows.Forms.Button();
             this.nursesDataGridView = new System.Windows.Forms.DataGridView();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.newNurseButton = new System.Windows.Forms.Button();
+            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nurseIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hasCredentialsSetDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.newNurseButton = new System.Windows.Forms.Button();
-            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nursesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nursesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
@@ -77,11 +77,11 @@ namespace SmartClinic.UserControls
             this.setCredentialsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.setCredentialsButton.Enabled = false;
             this.setCredentialsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setCredentialsButton.Location = new System.Drawing.Point(643, 594);
+            this.setCredentialsButton.Location = new System.Drawing.Point(725, 594);
             this.setCredentialsButton.Name = "setCredentialsButton";
-            this.setCredentialsButton.Size = new System.Drawing.Size(526, 47);
+            this.setCredentialsButton.Size = new System.Drawing.Size(444, 47);
             this.setCredentialsButton.TabIndex = 14;
-            this.setCredentialsButton.Text = "Update System Access Credentials";
+            this.setCredentialsButton.Text = "Update Access Credentials";
             this.setCredentialsButton.UseVisualStyleBackColor = true;
             this.setCredentialsButton.Click += new System.EventHandler(this.SetCredentialsButton_Click);
             // 
@@ -109,6 +109,27 @@ namespace SmartClinic.UserControls
             this.nursesDataGridView.Size = new System.Drawing.Size(1160, 523);
             this.nursesDataGridView.TabIndex = 14;
             this.nursesDataGridView.SelectionChanged += new System.EventHandler(this.NursesDataGridView_SelectionChanged);
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(SmartClinic.Model.Nurse);
+            // 
+            // newNurseButton
+            // 
+            this.newNurseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newNurseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newNurseButton.Location = new System.Drawing.Point(23, 32);
+            this.newNurseButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newNurseButton.Name = "newNurseButton";
+            this.newNurseButton.Size = new System.Drawing.Size(250, 47);
+            this.newNurseButton.TabIndex = 24;
+            this.newNurseButton.Text = "New Nurse";
+            this.newNurseButton.UseVisualStyleBackColor = true;
+            this.newNurseButton.Click += new System.EventHandler(this.NewNurseButton_Click);
+            // 
+            // appointmentSearchResultBindingSource
+            // 
+            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
             // 
             // nurseIdDataGridViewTextBoxColumn
             // 
@@ -146,32 +167,11 @@ namespace SmartClinic.UserControls
             // 
             this.hasCredentialsSetDataGridViewCheckBoxColumn.DataPropertyName = "HasCredentialsSet";
             this.hasCredentialsSetDataGridViewCheckBoxColumn.FalseValue = "";
-            this.hasCredentialsSetDataGridViewCheckBoxColumn.HeaderText = "Has System Access Credentials";
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.HeaderText = "Has Access Credentials";
             this.hasCredentialsSetDataGridViewCheckBoxColumn.MinimumWidth = 10;
             this.hasCredentialsSetDataGridViewCheckBoxColumn.Name = "hasCredentialsSetDataGridViewCheckBoxColumn";
             this.hasCredentialsSetDataGridViewCheckBoxColumn.ReadOnly = true;
             this.hasCredentialsSetDataGridViewCheckBoxColumn.TrueValue = "";
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(SmartClinic.Model.Nurse);
-            // 
-            // newNurseButton
-            // 
-            this.newNurseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.newNurseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newNurseButton.Location = new System.Drawing.Point(23, 32);
-            this.newNurseButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.newNurseButton.Name = "newNurseButton";
-            this.newNurseButton.Size = new System.Drawing.Size(250, 47);
-            this.newNurseButton.TabIndex = 24;
-            this.newNurseButton.Text = "New Nurse";
-            this.newNurseButton.UseVisualStyleBackColor = true;
-            this.newNurseButton.Click += new System.EventHandler(this.NewNurseButton_Click);
-            // 
-            // appointmentSearchResultBindingSource
-            // 
-            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
             // 
             // NursesUserControl
             // 
