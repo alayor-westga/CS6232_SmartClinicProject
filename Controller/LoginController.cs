@@ -59,6 +59,10 @@ namespace SmartClinic.Controller
         private User LoginAsNurse(string username, string password)
         {
             Nurse nurse = this.nurseSource.GetByUserNameAndPassword(username, password);
+            if (nurse == null)
+            {
+                return null;
+            }
             user = new User()
             {
                 UserId = nurse.NurseId,
@@ -72,6 +76,10 @@ namespace SmartClinic.Controller
         private User LoginAsAdmin(string username, string password)
         {
             Administrator admin = this.adminSource.GetByUserNameAndPassword(username, password);
+            if (admin == null)
+            {
+                return null;
+            }
             user = new User()
             {
                 UserId = admin.AdministratorId,

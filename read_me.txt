@@ -4,7 +4,7 @@ password: 1234
 
 Admin
 username: max
-password: sw23
+password: sw21
 
 * Create DB
     - Run the DB/script.sql

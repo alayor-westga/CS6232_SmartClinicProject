@@ -31,7 +31,7 @@ namespace SmartClinic.DAL
             " FROM Nurses n" +
             " INNER JOIN ClinicPersons cp ON (n.clinic_person_id = cp.clinic_person_id)" +
             " WHERE n.username = @UserName" +
-            "   AND password = @Password;";
+            "   AND password = HASHBYTES('SHA2_512', @Password+CAST(username AS NVARCHAR(36)));";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {

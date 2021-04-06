@@ -27,11 +27,11 @@ namespace SmartClinic.DAL
                 throw new ArgumentException("password cannot be null or empty.");
             }
             string selectStatement =
-            " SELECT n.administrator_id, n.username, cp.first_name, cp.last_name" +
-            " FROM Administrators n" +
-            " INNER JOIN ClinicPersons cp ON (n.clinic_person_id = cp.clinic_person_id)" +
-            " WHERE n.username = @UserName" +
-            "   AND password = @Password;";
+            " SELECT a.administrator_id, a.username, cp.first_name, cp.last_name" +
+            " FROM Administrators a" +
+            " INNER JOIN ClinicPersons cp ON (a.clinic_person_id = cp.clinic_person_id)" +
+            " WHERE a.username = @UserName" +
+            "   AND a.password = HASHBYTES('SHA2_512', @Password+CAST(a.username AS NVARCHAR(36)));";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
