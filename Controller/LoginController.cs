@@ -11,6 +11,7 @@ namespace SmartClinic.Controller
     public class LoginController
     {
         private readonly NurseDAL nurseSource;
+        private readonly AdministratorDAL adminSource;
         private static User user;
 
         /// <summary>
@@ -19,6 +20,7 @@ namespace SmartClinic.Controller
         public LoginController()
         {
             nurseSource = new NurseDAL();
+            adminSource = new AdministratorDAL();
         }
 
         public static User GetUser()
@@ -43,12 +45,39 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("password cannot be null or empty.");
             }
+            if (role == UserRole.Nurse)
+            { 
+                return LoginAsNurse(username, password);
+            } 
+            else if (role == UserRole.Admin)
+            {
+                return LoginAsAdmin(username, password);
+            }
+            throw new Exception("Unknown role " + role.ToString());
+        }
+
+        private User LoginAsNurse(string username, string password)
+        {
             Nurse nurse = this.nurseSource.GetByUserNameAndPassword(username, password);
-            user = new User() {
+            user = new User()
+            {
                 UserId = nurse.NurseId,
                 UserName = username,
                 FullName = nurse.FullName,
-                Role = role
+                Role = UserRole.Nurse
+            };
+            return user;
+        }
+
+        private User LoginAsAdmin(string username, string password)
+        {
+            Administrator admin = this.adminSource.GetByUserNameAndPassword(username, password);
+            user = new User()
+            {
+                UserId = admin.AdministratorId,
+                UserName = username,
+                FullName = admin.FullName,
+                Role = UserRole.Admin
             };
             return user;
         }
