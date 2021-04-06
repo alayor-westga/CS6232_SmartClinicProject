@@ -34,7 +34,7 @@ namespace SmartClinic.UserControls
             this.ssnErrorLabel = new System.Windows.Forms.Label();
             this.ssnTextBox = new System.Windows.Forms.TextBox();
             this.ssnLabel = new System.Windows.Forms.Label();
-            this.patientIDLabel = new System.Windows.Forms.Label();
+            this.idLabel = new System.Windows.Forms.Label();
             this.dobErrorLabel = new System.Windows.Forms.Label();
             this.zipCodeErrorLabel = new System.Windows.Forms.Label();
             this.stateErrorLabel = new System.Windows.Forms.Label();
@@ -118,16 +118,17 @@ namespace SmartClinic.UserControls
             this.ssnLabel.TabIndex = 71;
             this.ssnLabel.Text = "SSN:";
             // 
-            // patientIDLabel
+            // idLabel
             // 
-            this.patientIDLabel.Enabled = false;
-            this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.patientIDLabel.Location = new System.Drawing.Point(775, 94);
-            this.patientIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.patientIDLabel.Name = "patientIDLabel";
-            this.patientIDLabel.Size = new System.Drawing.Size(390, 36);
-            this.patientIDLabel.TabIndex = 70;
+            this.idLabel.Enabled = false;
+            this.idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idLabel.ForeColor = System.Drawing.Color.Black;
+            this.idLabel.Location = new System.Drawing.Point(775, 94);
+            this.idLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(390, 36);
+            this.idLabel.TabIndex = 70;
+            this.idLabel.Text = "ID: -";
             // 
             // dobErrorLabel
             // 
@@ -250,6 +251,7 @@ namespace SmartClinic.UserControls
             this.zipCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipCodeTextBox.Location = new System.Drawing.Point(982, 447);
             this.zipCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.zipCodeTextBox.MaxLength = 10;
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(180, 44);
             this.zipCodeTextBox.TabIndex = 47;
@@ -445,7 +447,7 @@ namespace SmartClinic.UserControls
             this.Controls.Add(this.ssnErrorLabel);
             this.Controls.Add(this.ssnTextBox);
             this.Controls.Add(this.ssnLabel);
-            this.Controls.Add(this.patientIDLabel);
+            this.Controls.Add(this.idLabel);
             this.Controls.Add(this.dobErrorLabel);
             this.Controls.Add(this.zipCodeErrorLabel);
             this.Controls.Add(this.stateErrorLabel);
@@ -491,7 +493,7 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.Label ssnErrorLabel;
         private System.Windows.Forms.TextBox ssnTextBox;
         private System.Windows.Forms.Label ssnLabel;
-        private System.Windows.Forms.Label patientIDLabel;
+        private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label dobErrorLabel;
         private System.Windows.Forms.Label zipCodeErrorLabel;
         private System.Windows.Forms.Label stateErrorLabel;

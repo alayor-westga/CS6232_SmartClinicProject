@@ -55,15 +55,6 @@ namespace SmartClinic.View
             loginForm.Show();
         }
 
-        private void NewAppointmentButton_Click(object sender, EventArgs e)
-        {
-            using (NewAppointmentForm newAppointmentForm = new NewAppointmentForm())
-            {
-                newAppointmentForm.ShowDialog();
-            }
-           
-        }
-
         private void NewPatientButton_Click(object sender, EventArgs e)
         {
             using (NewPatientForm newPatientForm = new NewPatientForm())

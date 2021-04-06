@@ -164,6 +164,7 @@ namespace SmartClinic.UserControls
                     if (searchPatientsForm.SelectedPatient != null)
                     {
                         SetPatientAndEnableAddAppointment(searchPatientsForm.SelectedPatient);
+                        ShowPatientInfo();
                     }
                 }
             }           

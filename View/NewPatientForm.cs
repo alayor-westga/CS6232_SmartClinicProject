@@ -25,7 +25,7 @@ namespace SmartClinic.View
         public Patient SelectedPatient { 
             get
             {
-                return newClinicPersonUserControl1.SelectedPatient;
+                return (Patient) newClinicPersonUserControl1.SelectedClinicPerson;
             }
         }
     }

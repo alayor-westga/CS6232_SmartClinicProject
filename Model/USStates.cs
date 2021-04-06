@@ -37,7 +37,7 @@ namespace SmartClinic.Model
         GA,
         [Description("Hawaii")]
         HI,
-        [Description("TA")]
+        [Description("Iowa")]
         IA,
         [Description("Idaho")]
         ID,

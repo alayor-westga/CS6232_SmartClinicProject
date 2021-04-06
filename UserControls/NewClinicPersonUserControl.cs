@@ -33,9 +33,9 @@ namespace SmartClinic.UserControls
 
 
         /// <summary>
-        /// It is the new created patient.
+        /// It is the new created clinic person.
         /// </summary>
-        public Patient SelectedPatient { get; set; }
+        public ClinicPerson SelectedClinicPerson{ get; set; }
 
         /// <summary>
         /// It sets the parent form.
@@ -65,27 +65,29 @@ namespace SmartClinic.UserControls
 
             try
             {
-                Patient newPatient = new Patient();
-                newPatient.DateOfBirth = dateTimePickerForDOB.Value.Date;
-                newPatient.Gender = genderComboBox.SelectedValue.ToString();
-                newPatient.FirstName = firstNameTextBox.Text;
-                newPatient.LastName = lastNameTextBox.Text;
-                newPatient.Street1 = address1TextBox.Text;
-                newPatient.Street2 = address2TextBox.Text;
-                newPatient.City = cityTextBox.Text;
-                newPatient.State = stateComboBox.SelectedValue.ToString();
-                newPatient.ZipCode = zipCodeTextBox.Text;
-                newPatient.Phone = phoneTextBox.Text;
-                newPatient.SSN = ssnTextBox.Text;
+                ClinicPerson newClinicPerson = new Patient();
+                newClinicPerson.DateOfBirth = dateTimePickerForDOB.Value.Date;
+                newClinicPerson.Gender = genderComboBox.SelectedValue.ToString();
+                newClinicPerson.FirstName = firstNameTextBox.Text;
+                newClinicPerson.LastName = lastNameTextBox.Text;
+                newClinicPerson.Street1 = address1TextBox.Text;
+                newClinicPerson.Street2 = address2TextBox.Text;
+                newClinicPerson.City = cityTextBox.Text;
+                newClinicPerson.State = stateComboBox.SelectedValue.ToString();
+                newClinicPerson.ZipCode = zipCodeTextBox.Text;
+                newClinicPerson.Phone = phoneTextBox.Text;
+                newClinicPerson.SSN = ssnTextBox.Text;
 
-                int clinicPersonID = patientController.AddClinicPerson(newPatient);
+                int clinicPersonID = patientController.AddClinicPerson(newClinicPerson);
                 int patientId = patientController.AddPatient(clinicPersonID);
-                patientIDLabel.Text = "Patient ID: " + patientId.ToString();
-                newPatient.ClinicPersonID = clinicPersonID;
-                newPatient.PatientId = patientId;
-                SelectedPatient = newPatient;
-                MessageBox.Show("The patient was successfully added to the database.",
+                idLabel.Text = "ID: " + patientId.ToString();
+                newClinicPerson.ClinicPersonID = clinicPersonID;
+
+                //newPatient.PatientId = patientId;
+                SelectedClinicPerson = newClinicPerson;
+                MessageBox.Show("The record was successfully added to the database.",
                         "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ParentForm.DialogResult = DialogResult.OK;
                 ParentForm.Close();
             }
             catch (ArgumentException argumentException)
@@ -105,7 +107,7 @@ namespace SmartClinic.UserControls
             stateErrorLabel.Text = "";
             zipCodeErrorLabel.Text = "";
             phoneErrorLabel.Text = "";
-            patientIDLabel.Text = "";
+            idLabel.Text = "";
             ssnErrorLabel.Text = "";
         }
 
