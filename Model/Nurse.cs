@@ -15,7 +15,12 @@ namespace SmartClinic.Model
         /// </summary>
         public int NurseId { get; set; }
 
-         public Nurse() {}
+        /// <summary>
+        /// It determines if the nurse has set their system access credentials.
+        /// </summary>
+        public bool HasCredentialsSet { get; set; }
+
+        public Nurse() {}
     
         /// <summary>
         /// It creates a new nurse cloning the info from the clinic person.

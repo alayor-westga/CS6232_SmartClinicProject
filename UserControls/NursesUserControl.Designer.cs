@@ -32,20 +32,20 @@ namespace SmartClinic.UserControls
             this.components = new System.ComponentModel.Container();
             this.searchMessageLabel = new System.Windows.Forms.Label();
             this.nursesGroupBox = new System.Windows.Forms.GroupBox();
-            this.viewAppointmentButton = new System.Windows.Forms.Button();
+            this.setCredentialsButton = new System.Windows.Forms.Button();
             this.nursesDataGridView = new System.Windows.Forms.DataGridView();
-            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.newNurseButton = new System.Windows.Forms.Button();
-            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nurseIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sSNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hasCredentialsSetDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.nurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.newNurseButton = new System.Windows.Forms.Button();
+            this.appointmentSearchResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nursesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nursesDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // searchMessageLabel
@@ -61,7 +61,7 @@ namespace SmartClinic.UserControls
             // nursesGroupBox
             // 
             this.nursesGroupBox.Controls.Add(this.searchMessageLabel);
-            this.nursesGroupBox.Controls.Add(this.viewAppointmentButton);
+            this.nursesGroupBox.Controls.Add(this.setCredentialsButton);
             this.nursesGroupBox.Controls.Add(this.nursesDataGridView);
             this.nursesGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nursesGroupBox.Location = new System.Drawing.Point(3, 107);
@@ -71,18 +71,19 @@ namespace SmartClinic.UserControls
             this.nursesGroupBox.TabStop = false;
             this.nursesGroupBox.Text = "Nurses";
             // 
-            // viewAppointmentButton
+            // setCredentialsButton
             // 
-            this.viewAppointmentButton.AutoSize = true;
-            this.viewAppointmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.viewAppointmentButton.Enabled = false;
-            this.viewAppointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewAppointmentButton.Location = new System.Drawing.Point(919, 596);
-            this.viewAppointmentButton.Name = "viewAppointmentButton";
-            this.viewAppointmentButton.Size = new System.Drawing.Size(250, 47);
-            this.viewAppointmentButton.TabIndex = 14;
-            this.viewAppointmentButton.Text = "View / Edit";
-            this.viewAppointmentButton.UseVisualStyleBackColor = true;
+            this.setCredentialsButton.AutoSize = true;
+            this.setCredentialsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.setCredentialsButton.Enabled = false;
+            this.setCredentialsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setCredentialsButton.Location = new System.Drawing.Point(643, 594);
+            this.setCredentialsButton.Name = "setCredentialsButton";
+            this.setCredentialsButton.Size = new System.Drawing.Size(526, 47);
+            this.setCredentialsButton.TabIndex = 14;
+            this.setCredentialsButton.Text = "Update System Access Credentials";
+            this.setCredentialsButton.UseVisualStyleBackColor = true;
+            this.setCredentialsButton.Click += new System.EventHandler(this.SetCredentialsButton_Click);
             // 
             // nursesDataGridView
             // 
@@ -96,7 +97,7 @@ namespace SmartClinic.UserControls
             this.fullNameDataGridViewTextBoxColumn,
             this.dateOfBirthDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn,
-            this.sSNDataGridViewTextBoxColumn});
+            this.hasCredentialsSetDataGridViewCheckBoxColumn});
             this.nursesDataGridView.DataSource = this.nurseBindingSource;
             this.nursesDataGridView.Location = new System.Drawing.Point(20, 53);
             this.nursesDataGridView.MultiSelect = false;
@@ -107,27 +108,7 @@ namespace SmartClinic.UserControls
             this.nursesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.nursesDataGridView.Size = new System.Drawing.Size(1160, 523);
             this.nursesDataGridView.TabIndex = 14;
-            // 
-            // appointmentSearchResultBindingSource
-            // 
-            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
-            // 
-            // newNurseButton
-            // 
-            this.newNurseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.newNurseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newNurseButton.Location = new System.Drawing.Point(23, 32);
-            this.newNurseButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.newNurseButton.Name = "newNurseButton";
-            this.newNurseButton.Size = new System.Drawing.Size(250, 47);
-            this.newNurseButton.TabIndex = 24;
-            this.newNurseButton.Text = "New Nurse";
-            this.newNurseButton.UseVisualStyleBackColor = true;
-            this.newNurseButton.Click += new System.EventHandler(this.NewNurseButton_Click);
-            // 
-            // nurseBindingSource
-            // 
-            this.nurseBindingSource.DataSource = typeof(SmartClinic.Model.Nurse);
+            this.nursesDataGridView.SelectionChanged += new System.EventHandler(this.NursesDataGridView_SelectionChanged);
             // 
             // nurseIdDataGridViewTextBoxColumn
             // 
@@ -161,13 +142,36 @@ namespace SmartClinic.UserControls
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
             this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // sSNDataGridViewTextBoxColumn
+            // hasCredentialsSetDataGridViewCheckBoxColumn
             // 
-            this.sSNDataGridViewTextBoxColumn.DataPropertyName = "SSN";
-            this.sSNDataGridViewTextBoxColumn.HeaderText = "SSN";
-            this.sSNDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.sSNDataGridViewTextBoxColumn.Name = "sSNDataGridViewTextBoxColumn";
-            this.sSNDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.DataPropertyName = "HasCredentialsSet";
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.FalseValue = "";
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.HeaderText = "Has System Access Credentials";
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.MinimumWidth = 10;
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.Name = "hasCredentialsSetDataGridViewCheckBoxColumn";
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.TrueValue = "";
+            // 
+            // nurseBindingSource
+            // 
+            this.nurseBindingSource.DataSource = typeof(SmartClinic.Model.Nurse);
+            // 
+            // newNurseButton
+            // 
+            this.newNurseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newNurseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newNurseButton.Location = new System.Drawing.Point(23, 32);
+            this.newNurseButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newNurseButton.Name = "newNurseButton";
+            this.newNurseButton.Size = new System.Drawing.Size(250, 47);
+            this.newNurseButton.TabIndex = 24;
+            this.newNurseButton.Text = "New Nurse";
+            this.newNurseButton.UseVisualStyleBackColor = true;
+            this.newNurseButton.Click += new System.EventHandler(this.NewNurseButton_Click);
+            // 
+            // appointmentSearchResultBindingSource
+            // 
+            this.appointmentSearchResultBindingSource.DataSource = typeof(SmartClinic.Model.AppointmentSearchResult);
             // 
             // NursesUserControl
             // 
@@ -181,8 +185,8 @@ namespace SmartClinic.UserControls
             this.nursesGroupBox.ResumeLayout(false);
             this.nursesGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nursesDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentSearchResultBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -191,7 +195,7 @@ namespace SmartClinic.UserControls
 
         private System.Windows.Forms.Label searchMessageLabel;
         private System.Windows.Forms.GroupBox nursesGroupBox;
-        private System.Windows.Forms.Button viewAppointmentButton;
+        private System.Windows.Forms.Button setCredentialsButton;
         private System.Windows.Forms.DataGridView nursesDataGridView;
         private System.Windows.Forms.BindingSource appointmentSearchResultBindingSource;
         private System.Windows.Forms.Button newNurseButton;
@@ -200,6 +204,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sSNDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn hasCredentialsSetDataGridViewCheckBoxColumn;
     }
 }

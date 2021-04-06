@@ -8,6 +8,7 @@ namespace SmartClinic.UserControls
 {
     public partial class NursesUserControl : UserControl
     {
+        private Nurse selectedNurse;
         private readonly NurseController nurseController;
         public NursesUserControl()
         {
@@ -31,6 +32,32 @@ namespace SmartClinic.UserControls
         private void GetNurses()
         {
             nursesDataGridView.DataSource = nurseController.GetAllNurses();
+        }
+
+        private void NursesDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (nursesDataGridView.SelectedRows.Count > 0)
+            {
+                selectedNurse = (Nurse) nursesDataGridView.SelectedRows[0].DataBoundItem;
+                setCredentialsButton.Enabled = true;
+                if (selectedNurse.HasCredentialsSet)
+                {
+                    setCredentialsButton.Text = "Update System Access Credentials";
+                }
+                else
+                {
+                    setCredentialsButton.Text = "Set System Access Credentials";
+                }
+            }
+            else
+            {
+                setCredentialsButton.Enabled = false;
+            }
+        }
+
+        private void SetCredentialsButton_Click(object sender, EventArgs e)
+        {
+            // Open dialog to set user credentials.
         }
     }
 }

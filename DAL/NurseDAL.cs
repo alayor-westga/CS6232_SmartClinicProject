@@ -30,7 +30,7 @@ namespace SmartClinic.DAL
                 throw new ArgumentException("password cannot be null or empty.");
             }
             string selectStatement =
-            " SELECT n.nurse_id, n.username, cp.first_name, cp.last_name" +
+            " SELECT n.nurse_id, n.username, n.password, cp.first_name, cp.last_name" +
             " FROM Nurses n" +
             " INNER JOIN ClinicPersons cp ON (n.clinic_person_id = cp.clinic_person_id)" +
             " WHERE n.username = @UserName" +
@@ -51,7 +51,7 @@ namespace SmartClinic.DAL
                             {
                                 NurseId = Int32.Parse(reader["nurse_id"].ToString()),
                                 FirstName = reader["first_name"].ToString(),
-                                LastName = reader["last_name"].ToString(),
+                                LastName = reader["last_name"].ToString()
                             };
                             return nurse;
                         }
@@ -104,7 +104,7 @@ namespace SmartClinic.DAL
         public List<Nurse> GetAllNurses()
         {
             string selectStatement =
-            " SELECT n.nurse_id, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
+            " SELECT n.nurse_id, n.username, n.password, cp.first_name, cp.last_name, cp.date_of_birth, cp.street1," +
             " cp.street2, cp.city, cp.state, cp.ssn" +
             " FROM Nurses n" +
             " INNER JOIN ClinicPersons cp ON (n.clinic_person_id = cp.clinic_person_id);";
@@ -142,6 +142,7 @@ namespace SmartClinic.DAL
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 SSN = reader["ssn"].ToString(),
+                                HasCredentialsSet = reader["username"].ToString().Length > 0 && reader["password"].ToString().Length > 0
                             };
                             nurseList.Add(Nurse);
                         }
