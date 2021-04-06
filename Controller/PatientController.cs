@@ -31,7 +31,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The patientID must not be negative");
             }
-            return this.patientSource.GetClinicPerson(patientID);
+            return patientSource.GetClinicPerson(patientID);
         }
 
 
@@ -90,7 +90,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The patientID must not be negative");
             }
-            return this.patientSource.PatientHasNoAppointments(patientID);
+            return patientSource.PatientHasNoAppointments(patientID);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The patientID must not be negative");
             }
-            this.patientSource.DeletePatient(patientID);
+            patientSource.DeletePatient(patientID);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The clinicPersonID must not be negative");
             }
-            return this.patientSource.AddPatient(clinicPersonID);
+            return patientSource.AddPatient(clinicPersonID);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentNullException("newPatient");
             }
-            return this.patientSource.UpdatePatientInformation(oldPatient, newPatient);
+            return patientSource.UpdatePatientInformation(oldPatient, newPatient);
         }
     }
 }

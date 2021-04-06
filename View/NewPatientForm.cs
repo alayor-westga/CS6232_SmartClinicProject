@@ -1,7 +1,6 @@
 ﻿using SmartClinic.Controller;
 using SmartClinic.Model;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SmartClinic.View
@@ -32,7 +31,7 @@ namespace SmartClinic.View
             int patientId = patientController.AddPatient(clinicPerson.ClinicPersonID);
             Patient patient = new Patient(patientId, clinicPerson);
             SelectedPatient = patient;
-            MessageBox.Show("The record was successfully added to the database.",
+            MessageBox.Show("The patient was successfully added to the database.",
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;
             Close();
