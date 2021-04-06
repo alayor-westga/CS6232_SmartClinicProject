@@ -44,7 +44,7 @@ namespace SmartClinic.View
             this.newAppoinmentTabPage = new System.Windows.Forms.TabPage();
             this.newAppointmentUserControl1 = new SmartClinic.UserControls.NewAppointmentUserControl();
             this.nursesTabPage = new System.Windows.Forms.TabPage();
-            this.newNurseButton = new System.Windows.Forms.Button();
+            this.nursesUserControl1 = new SmartClinic.UserControls.NursesUserControl();
             this.userLayoutPanel.SuspendLayout();
             this.PatientsTabPage.SuspendLayout();
             this.patientVisitsTabPage.SuspendLayout();
@@ -217,7 +217,7 @@ namespace SmartClinic.View
             // 
             // nursesTabPage
             // 
-            this.nursesTabPage.Controls.Add(this.newNurseButton);
+            this.nursesTabPage.Controls.Add(this.nursesUserControl1);
             this.nursesTabPage.Location = new System.Drawing.Point(8, 39);
             this.nursesTabPage.Name = "nursesTabPage";
             this.nursesTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -226,18 +226,13 @@ namespace SmartClinic.View
             this.nursesTabPage.Text = "Nurses";
             this.nursesTabPage.UseVisualStyleBackColor = true;
             // 
-            // newNurseButton
+            // nursesUserControl1
             // 
-            this.newNurseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.newNurseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newNurseButton.Location = new System.Drawing.Point(30, 34);
-            this.newNurseButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.newNurseButton.Name = "newNurseButton";
-            this.newNurseButton.Size = new System.Drawing.Size(250, 47);
-            this.newNurseButton.TabIndex = 2;
-            this.newNurseButton.Text = "New Nurse";
-            this.newNurseButton.UseVisualStyleBackColor = true;
-            this.newNurseButton.Click += new System.EventHandler(this.NewNurseButton_Click);
+            this.nursesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nursesUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.nursesUserControl1.Name = "nursesUserControl1";
+            this.nursesUserControl1.Size = new System.Drawing.Size(1484, 958);
+            this.nursesUserControl1.TabIndex = 0;
             // 
             // MainDashboard
             // 
@@ -281,6 +276,6 @@ namespace SmartClinic.View
         private UserControls.PatientVisitsUserControl patientVisitsUserControl1;
         private System.Windows.Forms.Button newPatientButton;
         private System.Windows.Forms.TabPage nursesTabPage;
-        private System.Windows.Forms.Button newNurseButton;
+        private UserControls.NursesUserControl nursesUserControl1;
     }
 }

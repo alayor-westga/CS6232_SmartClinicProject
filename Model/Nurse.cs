@@ -24,7 +24,7 @@ namespace SmartClinic.Model
         /// <param name="clinicPerson">The clinc info of the new nurse.</param>
         public Nurse(int nurseId, ClinicPerson clinicPerson)
         {
-            nurseId = nurseId;
+            NurseId = nurseId;
             DateOfBirth = clinicPerson.DateOfBirth;
             Gender = clinicPerson.Gender;
             FirstName = clinicPerson.FirstName;

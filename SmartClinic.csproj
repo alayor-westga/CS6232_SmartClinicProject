@@ -195,6 +195,7 @@
     <None Include="docs\Smart_Clinic_EERD.pdf" />
     <None Include="Properties\DataSources\SmartClinic.Model.AppointmentSearchResult.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Doctor.datasource" />
+    <None Include="Properties\DataSources\SmartClinic.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Patient.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.PatientVisits1.datasource" />
     <None Include="README.md" />
@@ -257,6 +258,12 @@
     </Compile>
     <Compile Include="UserControls\NewClinicPersonUserControl.Designer.cs">
       <DependentUpon>NewClinicPersonUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NursesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NursesUserControl.Designer.cs">
+      <DependentUpon>NursesUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PatientVisitsUserControl.cs">
       <SubType>UserControl</SubType>
@@ -330,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NewClinicPersonUserControl.resx">
       <DependentUpon>NewClinicPersonUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NursesUserControl.resx">
+      <DependentUpon>NursesUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PatientVisitsUserControl.resx">
       <DependentUpon>PatientVisitsUserControl.cs</DependentUpon>

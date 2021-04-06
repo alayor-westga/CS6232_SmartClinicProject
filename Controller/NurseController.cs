@@ -24,24 +24,14 @@ namespace SmartClinic.Controller
         /// It inserts a nurse into the DB.
         /// </summary>
         /// <param name="clinicPersonID">The clinic person id of the nurse.</param>
-        /// <param name="username">The username of the nurse.</param>
-        /// <param name="password">The password of the nurse.</param>
         /// <returns>The id of the new nurse.</returns>
-        public int AddNurse(int clinicPersonID, string username, string password)
+        public int AddNurse(int clinicPersonID)
         {
             if (clinicPersonID < 0)
             {
                 throw new ArgumentException("The clinicPersonID must not be negative");
             }
-            if (username == null)
-            {
-                throw new ArgumentNullException("username");
-            }
-            if (password == null)
-            {
-                throw new ArgumentNullException("password");
-            }
-            return nurseSource.AddNurse(clinicPersonID, username, password);
+            return nurseSource.AddNurse(clinicPersonID);
         }
     }
 }

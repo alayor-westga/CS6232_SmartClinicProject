@@ -23,7 +23,7 @@ namespace SmartClinic.View
         void ClinicPersonAddedListener.OnAdded(ClinicPerson clinicPerson)
         {
             // open a dialog to ask for user name and password
-            int nurseId = nurseController.AddNurse(clinicPerson.ClinicPersonID, "", "");
+            int nurseId = nurseController.AddNurse(clinicPerson.ClinicPersonID);
             Nurse nurse = new Nurse(nurseId, clinicPerson); 
             MessageBox.Show("The nurse was successfully added to the database.",
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
