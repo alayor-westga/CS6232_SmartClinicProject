@@ -151,5 +151,61 @@ namespace SmartClinic.DAL
                 return nurseList;
             }
         }
+
+        /// <summary>
+        /// It updates the user name and password of the nurse.
+        /// </summary>
+        /// <param name="username">The new username.</param>
+        /// <param name="password">The new password.</param>
+        /// <param name="currentUserName">The current user name.</param>
+        /// <param name="currentPassword">The current password.</param>
+        /// <returns>True if the update was successful. False otherwise</returns>
+        public bool SetUserNameAndPassword(
+            int nurseId, 
+            string username, 
+            string password, 
+            string currentUserName, 
+            string currentPassword
+            ) 
+        {
+            if (nurseId < 0)
+            {
+                throw new ArgumentException("nurseId must not be null.");
+            }
+            if (String.IsNullOrWhiteSpace(username))
+            {
+                throw new ArgumentException("username must have a value.");
+            }
+            if (String.IsNullOrWhiteSpace(password))
+            {
+                throw new ArgumentException("username must have a value.");
+            }
+            string updateStatement =
+               " UPDATE Nurses SET" +
+                    " username = @UserName, " +
+                    " password = HASHBYTES('SHA2_512', @Password+CAST(@Username AS NVARCHAR(36)))," +
+                " WHERE nurse_id = @NurseId";
+            updateStatement += currentUserName == null ? " AND n.username IS NULL" : " AND n.username = @CurrentUserName";
+            updateStatement += currentPassword == null ? " AND password IS NULL;" : " AND password = HASHBYTES('SHA2_512', @CurrentPassword+CAST(@CurrentUserName AS NVARCHAR(36)));";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@UserName", username);
+                    updateCommand.Parameters.AddWithValue("@Password", password);
+                    updateCommand.Parameters.AddWithValue("@CurrentUserName", currentUserName);
+                    updateCommand.Parameters.AddWithValue("@CurrentPassword", currentPassword);
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    if (count > 0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
     }
 }
