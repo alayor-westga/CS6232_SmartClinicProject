@@ -285,6 +285,14 @@ namespace SmartClinic.View
                                
             }
         }
+
+        private void LabTestsButton_Click(object sender, EventArgs e)
+        {
+            using (LabTestsForm labTestsForm = new LabTestsForm())
+            {
+                labTestsForm.ShowDialog();
+            }
+        }
     }
 }
 
