@@ -55,16 +55,14 @@ namespace SmartClinic.Controller
             int nurseId, 
             string username, 
             string password, 
-            string currentUserName, 
-            string currentPassword
+            string currentUserName
             ) 
         {
             return nurseSource.SetUserNameAndPassword(
                 nurseId, 
                 username, 
                 password, 
-                currentUserName, 
-                currentPassword
+                currentUserName
             );
         }
     }

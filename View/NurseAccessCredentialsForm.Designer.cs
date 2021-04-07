@@ -36,10 +36,13 @@ namespace SmartClinic.View
             this.nurseNameValueLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.confirmPasswordLabel = new System.Windows.Forms.Label();
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.setCredentialsButton = new System.Windows.Forms.Button();
+            this.confirmPasswordErrorLabel = new System.Windows.Forms.Label();
+            this.passwordErrorLabel = new System.Windows.Forms.Label();
+            this.userNameErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nurseIdLabel
@@ -112,29 +115,34 @@ namespace SmartClinic.View
             this.confirmPasswordLabel.TabIndex = 6;
             this.confirmPasswordLabel.Text = "Confirm Password";
             // 
-            // usernameTextBox
+            // userNameTextBox
             // 
-            this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(214, 158);
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(407, 44);
-            this.usernameTextBox.TabIndex = 7;
+            this.userNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameTextBox.Location = new System.Drawing.Point(214, 158);
+            this.userNameTextBox.Name = "userNameTextBox";
+            this.userNameTextBox.Size = new System.Drawing.Size(407, 44);
+            this.userNameTextBox.TabIndex = 7;
+            this.userNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBox_TextChanged);
             // 
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextBox.Location = new System.Drawing.Point(214, 239);
             this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(407, 44);
             this.passwordTextBox.TabIndex = 8;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBox_TextChanged);
             // 
             // confirmPasswordTextBox
             // 
             this.confirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmPasswordTextBox.Location = new System.Drawing.Point(315, 320);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
+            this.confirmPasswordTextBox.PasswordChar = '*';
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(306, 44);
             this.confirmPasswordTextBox.TabIndex = 9;
+            this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.ConfirmPasswordTextBox_TextChanged);
             // 
             // setCredentialsButton
             // 
@@ -146,16 +154,47 @@ namespace SmartClinic.View
             this.setCredentialsButton.TabIndex = 10;
             this.setCredentialsButton.Text = "Set Credentials";
             this.setCredentialsButton.UseVisualStyleBackColor = true;
+            this.setCredentialsButton.Click += new System.EventHandler(this.SetCredentialsButton_Click);
             // 
-            // NurseAccessCredentials
+            // confirmPasswordErrorLabel
+            // 
+            this.confirmPasswordErrorLabel.AutoSize = true;
+            this.confirmPasswordErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.confirmPasswordErrorLabel.Location = new System.Drawing.Point(357, 367);
+            this.confirmPasswordErrorLabel.Name = "confirmPasswordErrorLabel";
+            this.confirmPasswordErrorLabel.Size = new System.Drawing.Size(0, 25);
+            this.confirmPasswordErrorLabel.TabIndex = 11;
+            // 
+            // passwordErrorLabel
+            // 
+            this.passwordErrorLabel.AutoSize = true;
+            this.passwordErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.passwordErrorLabel.Location = new System.Drawing.Point(357, 285);
+            this.passwordErrorLabel.Name = "passwordErrorLabel";
+            this.passwordErrorLabel.Size = new System.Drawing.Size(0, 25);
+            this.passwordErrorLabel.TabIndex = 12;
+            // 
+            // userNameErrorLabel
+            // 
+            this.userNameErrorLabel.AutoSize = true;
+            this.userNameErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.userNameErrorLabel.Location = new System.Drawing.Point(357, 205);
+            this.userNameErrorLabel.Name = "userNameErrorLabel";
+            this.userNameErrorLabel.Size = new System.Drawing.Size(0, 25);
+            this.userNameErrorLabel.TabIndex = 13;
+            // 
+            // NurseAccessCredentialsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 476);
+            this.Controls.Add(this.userNameErrorLabel);
+            this.Controls.Add(this.passwordErrorLabel);
+            this.Controls.Add(this.confirmPasswordErrorLabel);
             this.Controls.Add(this.setCredentialsButton);
             this.Controls.Add(this.confirmPasswordTextBox);
             this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.usernameTextBox);
+            this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.confirmPasswordLabel);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.nurseNameValueLabel);
@@ -166,7 +205,7 @@ namespace SmartClinic.View
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "NurseAccessCredentials";
+            this.Name = "NurseAccessCredentialsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nurse Access Credentials";
             this.ResumeLayout(false);
@@ -183,9 +222,12 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label nurseNameValueLabel;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Label confirmPasswordLabel;
-        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.TextBox confirmPasswordTextBox;
         private System.Windows.Forms.Button setCredentialsButton;
+        private System.Windows.Forms.Label confirmPasswordErrorLabel;
+        private System.Windows.Forms.Label passwordErrorLabel;
+        private System.Windows.Forms.Label userNameErrorLabel;
     }
 }

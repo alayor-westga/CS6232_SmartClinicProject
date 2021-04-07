@@ -60,6 +60,7 @@ namespace SmartClinic.UserControls
             using (NurseAccessCredentialsForm nurseAccessCredentialsForm = new NurseAccessCredentialsForm())
             {
                 nurseAccessCredentialsForm.ShowForNurse(selectedNurse);
+                GetNurses();
             }
         }
     }

@@ -142,7 +142,7 @@ namespace SmartClinic.DAL
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 SSN = reader["ssn"].ToString(),
-                                UserName = reader["username"].ToString(),
+                                UserName = reader["username"] == DBNull.Value ? null : reader["username"].ToString(),
                                 HasCredentialsSet = reader["username"].ToString().Length > 0 && reader["password"].ToString().Length > 0
                             };
                             nurseList.Add(Nurse);
@@ -165,8 +165,7 @@ namespace SmartClinic.DAL
             int nurseId, 
             string username, 
             string password, 
-            string currentUserName, 
-            string currentPassword
+            string currentUserName
             ) 
         {
             if (nurseId < 0)
@@ -184,10 +183,9 @@ namespace SmartClinic.DAL
             string updateStatement =
                " UPDATE Nurses SET" +
                     " username = @UserName, " +
-                    " password = HASHBYTES('SHA2_512', @Password+CAST(@Username AS NVARCHAR(36)))," +
+                    " password = HASHBYTES('SHA2_512', @Password+CAST(@Username AS NVARCHAR(36)))" +
                 " WHERE nurse_id = @NurseId";
-            updateStatement += currentUserName == null ? " AND n.username IS NULL" : " AND n.username = @CurrentUserName";
-            updateStatement += currentPassword == null ? " AND password IS NULL;" : " AND password = HASHBYTES('SHA2_512', @CurrentPassword+CAST(@CurrentUserName AS NVARCHAR(36)));";
+            updateStatement += currentUserName == null ? " AND username IS NULL;" : " AND username = @CurrentUserName;";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -195,10 +193,13 @@ namespace SmartClinic.DAL
 
                 using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
                 {
+                    updateCommand.Parameters.AddWithValue("@NurseId", nurseId);
                     updateCommand.Parameters.AddWithValue("@UserName", username);
                     updateCommand.Parameters.AddWithValue("@Password", password);
-                    updateCommand.Parameters.AddWithValue("@CurrentUserName", currentUserName);
-                    updateCommand.Parameters.AddWithValue("@CurrentPassword", currentPassword);
+                    if (currentUserName != null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@CurrentUserName", currentUserName);
+                    }
 
                     int count = updateCommand.ExecuteNonQuery();
                     if (count > 0)
