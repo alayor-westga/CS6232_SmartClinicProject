@@ -1,7 +1,7 @@
 ﻿
 namespace SmartClinic.View
 {
-    partial class NurseAccessCredentials
+    partial class NurseAccessCredentialsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -151,7 +151,7 @@ namespace SmartClinic.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 476);
+            this.ClientSize = new System.Drawing.Size(650, 476);
             this.Controls.Add(this.setCredentialsButton);
             this.Controls.Add(this.confirmPasswordTextBox);
             this.Controls.Add(this.passwordTextBox);

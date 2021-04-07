@@ -16,6 +16,11 @@ namespace SmartClinic.Model
         public int NurseId { get; set; }
 
         /// <summary>
+        /// The user name of the nurse.
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
         /// It determines if the nurse has set their system access credentials.
         /// </summary>
         public bool HasCredentialsSet { get; set; }

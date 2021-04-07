@@ -142,6 +142,7 @@ namespace SmartClinic.DAL
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 SSN = reader["ssn"].ToString(),
+                                UserName = reader["username"].ToString(),
                                 HasCredentialsSet = reader["username"].ToString().Length > 0 && reader["password"].ToString().Length > 0
                             };
                             nurseList.Add(Nurse);

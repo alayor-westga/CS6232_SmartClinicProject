@@ -57,7 +57,10 @@ namespace SmartClinic.UserControls
 
         private void SetCredentialsButton_Click(object sender, EventArgs e)
         {
-            // Open dialog to set user credentials.
+            using (NurseAccessCredentialsForm nurseAccessCredentialsForm = new NurseAccessCredentialsForm())
+            {
+                nurseAccessCredentialsForm.ShowForNurse(selectedNurse);
+            }
         }
     }
 }
