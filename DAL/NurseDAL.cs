@@ -12,7 +12,6 @@ namespace SmartClinic.DAL
     /// </summary>
     public class NurseDAL
     {
-
         /// <summary>
         /// It verifies if a nurse exists with the provided username and password.
         /// </summary>
