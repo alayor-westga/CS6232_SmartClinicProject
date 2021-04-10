@@ -157,10 +157,16 @@ namespace SmartClinic.UserControls
                 isValid = false;
                 stateErrorLabel.Text = requiredField;
             }
+            Regex zipRegex = new Regex("[0-9]{5}(-[0-9]{4})?$");
             if (zipCodeTextBox.Text.Length == 0)
             {
                 isValid = false;
                 zipCodeErrorLabel.Text = requiredField;
+            }
+            if(!zipRegex.IsMatch(zipCodeTextBox.Text))
+            {
+                isValid = false;
+                zipCodeErrorLabel.Text = "Permitted Format: NNNNN or NNNNN-NNNN";
             }
             Regex phoneRegex = new Regex("[0-9]{10}");
             if (!phoneRegex.IsMatch(phoneTextBox.Text))
