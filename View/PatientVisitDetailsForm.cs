@@ -122,6 +122,10 @@ namespace SmartClinic.View
 
         private void EditPatientButton_Click(object sender, EventArgs e)
         {
+            if(!ValidateFinalDiagnosis())
+            {
+                return;
+            }
             symptomsTextBox.ReadOnly = false;
             weightTextBox.ReadOnly = false;
             tempTextBox.ReadOnly = false;
@@ -130,6 +134,18 @@ namespace SmartClinic.View
             pulseTextBox.ReadOnly = false;
             initialDiagnosisTextBox.ReadOnly = false;
             finalDiagnosisTextBox.ReadOnly = false;
+            saveChangesAndCloseButton.Enabled = true;
+            labTestsButton.Enabled = true;
+        }
+
+        private bool ValidateFinalDiagnosis()
+        {
+            if (!String.IsNullOrWhiteSpace(visit.FinalDiagnosis))
+            {
+                MessageBox.Show("This visit info cannot be edited. The final diagnosis has been made.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
      
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
