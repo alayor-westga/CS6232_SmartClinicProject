@@ -50,6 +50,8 @@ namespace SmartClinic.UserControls
             {
                 Console.WriteLine(ex.Message);
                 MessageBox.Show("The doctor list could not get loaded.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;                Console.WriteLine(ex.Message);
+                MessageBox.Show("The doctor list could not get loaded.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             doctorComboBox.DataSource = doctors;
@@ -172,7 +174,7 @@ namespace SmartClinic.UserControls
 
         private void AppointmentDatePicker_MouseDown(object sender, MouseEventArgs e)
         {
-            appointmentDatePicker.CustomFormat = "dd/MM/yyyy";
+            appointmentDatePicker.CustomFormat = "MM/dd/yyyy";
             appointmentDateErrorLabel.Text = "";
         }
 
