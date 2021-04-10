@@ -53,9 +53,9 @@ namespace SmartClinic.Model
         public string Doctor { get; set; }
 
         /// <summary>
-        /// The DoctorPhone associated with the patient visit
+        /// The PatientPhone associated with the patient visit
         /// </summary>
-        public string DoctorPhone { get; set; }
+        public string PatientPhone { get; set; }
 
         /// <summary>
         /// The visitDate associated with the patient visit

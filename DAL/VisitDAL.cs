@@ -103,7 +103,7 @@ namespace SmartClinic.DAL
             PatientVisits newPatientVisit = new PatientVisits();
             string selectStatement =
                 "SELECT p.patient_id, a.appointment_id, cpp.first_name + ' ' + cpp.last_name as 'Patient', cpp.date_of_birth, " +
-                    "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpd.phone_number, a.date " +
+                    "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpp.phone_number, a.date " +
                 "FROM Appointments a " +
                     "JOIN Patients p on a.patient_id = p.patient_id " +
                     "JOIN Doctors d on d.doctor_id = a.doctor_id " +
@@ -130,7 +130,7 @@ namespace SmartClinic.DAL
                             newPatientVisit.DateOfBirth = DateTime.Parse(reader["date_of_birth"].ToString());
                             newPatientVisit.Doctor = reader["Doctor"].ToString();
                             newPatientVisit.DoctorID = Int32.Parse(reader["doctor_id"].ToString());
-                            newPatientVisit.DoctorPhone = reader["phone_number"].ToString();                          
+                            newPatientVisit.PatientPhone = reader["phone_number"].ToString();                          
                             newPatientVisit.VisitDate= DateTime.Parse(reader["date"].ToString());                          
                         }
                     }
@@ -232,7 +232,7 @@ namespace SmartClinic.DAL
             PatientVisits patientVisit = new PatientVisits();
             string selectStatement =
             "SELECT p.patient_id, a.appointment_id, cpp.first_name + ' ' + cpp.last_name as 'Patient', cpp.date_of_birth, " +
-            "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpd.phone_number, cpn.first_name + ' ' + cpn.last_name as 'Nurse', " +
+            "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpp.phone_number, cpn.first_name + ' ' + cpn.last_name as 'Nurse', " +
             "n.nurse_id, a.date, weight, systolic_bp, diastolic_bp, body_temp, pulse, symptoms, reason, initial_diagnosis, final_diagnosis " +
 
             "FROM Appointments a " +
@@ -264,7 +264,7 @@ namespace SmartClinic.DAL
                             patientVisit.DateOfBirth = DateTime.Parse(reader["date_of_birth"].ToString());
                             patientVisit.Doctor = reader["Doctor"].ToString();
                             patientVisit.DoctorID = int.Parse(reader["doctor_id"].ToString());
-                            patientVisit.DoctorPhone = reader["phone_number"].ToString();
+                            patientVisit.PatientPhone = reader["phone_number"].ToString();
                             patientVisit.Nurse = reader["Nurse"].ToString();
                             patientVisit.NurseID = int.Parse(reader["nurse_id"].ToString());
                             patientVisit.VisitDate = DateTime.Parse(reader["date"].ToString());
@@ -297,7 +297,7 @@ namespace SmartClinic.DAL
             }
             string selectStatement =
             "SELECT p.patient_id, a.appointment_id, cpp.first_name + ' ' + cpp.last_name as 'Patient', cpp.date_of_birth, " +
-            "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpd.phone_number, cpn.first_name + ' ' + cpn.last_name as 'Nurse', " +
+            "cpd.first_name + ' ' + cpd.last_name as 'Doctor', d.doctor_id, cpp.phone_number, cpn.first_name + ' ' + cpn.last_name as 'Nurse', " +
             "n.nurse_id, a.date, weight, systolic_bp, diastolic_bp, body_temp, pulse, symptoms, reason, initial_diagnosis, final_diagnosis " +
 
             "FROM Appointments a " +
@@ -331,7 +331,7 @@ namespace SmartClinic.DAL
                                 DateOfBirth = DateTime.Parse(reader["date_of_birth"].ToString()),
                                 Doctor = reader["Doctor"].ToString(),
                                 DoctorID = Int32.Parse(reader["doctor_id"].ToString()),
-                                DoctorPhone = reader["phone_number"].ToString(),
+                               PatientPhone = reader["phone_number"].ToString(),
                                 Nurse = reader["Nurse"].ToString(),
                                 NurseID = Int32.Parse(reader["nurse_id"].ToString()),
                                 VisitDate = DateTime.Parse(reader["date"].ToString()),
