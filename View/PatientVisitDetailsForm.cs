@@ -308,6 +308,12 @@ namespace SmartClinic.View
             {
                 labTestDetailsForm.ShowDialog();
             }
+            /*
+            using (LabTestsForm labTestsForm = new LabTestsForm())
+            {
+                labTestsForm.ShowDialog();
+            }
+            */
         }
     }
 }

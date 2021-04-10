@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartClinic.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +12,17 @@ namespace SmartClinic.View
 {
     public partial class LabTestDetailsForm : Form
     {
+        private readonly LabTestController labTestController;
+
         public LabTestDetailsForm()
         {
             InitializeComponent();
+            this.labTestController = new LabTestController();
         }
 
-        private void datePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void ThisFormLoad_Load(object sender, EventArgs e)
         {
-
+            this.labTestComboBox.DataSource = this.labTestController.GetAllLabTests();
         }
-
-    
     }
 }
