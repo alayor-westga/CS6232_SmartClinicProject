@@ -284,7 +284,7 @@ namespace SmartClinic.DAL
         /// </summary>
         /// <param name="clinicPersonID">The clinic person id of the patient.</param>
         /// <returns>The ID of the new patient.</returns>
-        public int AddPatient(int clinicPersonID)
+        internal int AddPatient(int clinicPersonID, SqlConnection connection, SqlTransaction transaction)
         {
             if (clinicPersonID < 0)
             {
@@ -295,39 +295,29 @@ namespace SmartClinic.DAL
                          "(clinic_person_id) " +
                        "VALUES (@ClinicPersonID)";
 
-            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection, transaction))
             {
-                connection.Open();
-
-                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
-                {
-                    insertCommand.Parameters.AddWithValue("@ClinicPersonID", clinicPersonID);
-                    insertCommand.ExecuteNonQuery();
-                }
+                insertCommand.Parameters.AddWithValue("@ClinicPersonID", clinicPersonID);
+                insertCommand.ExecuteNonQuery();
             }
-            return this.GetLastPatientID();
+            return this.GetLastPatientID(connection, transaction);
         }
 
-        private int GetLastPatientID()
+        private int GetLastPatientID(SqlConnection connection, SqlTransaction transaction)
         {
             int lastPatientID = 0;
             string selectStatement =
 
            "SELECT TOP 1 patient_id FROM Patients ORDER BY patient_id DESC";
 
-            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection, transaction))
             {
-                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
 
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
-
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            lastPatientID = (int)reader["patient_id"];
-                        }
+                        lastPatientID = (int)reader["patient_id"];
                     }
                 }
             }

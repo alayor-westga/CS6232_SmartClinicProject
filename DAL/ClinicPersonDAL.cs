@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Collections;
 using SmartClinic.Model;
 using System.Data.SqlClient;
 using System.Data;
@@ -66,53 +64,59 @@ namespace SmartClinic.DAL
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
                 connection.Open();
-                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
                 {
-                    insertCommand.Parameters.AddWithValue("@DateOfBirth", newClinicPerson.DateOfBirth);
-                    insertCommand.Parameters.AddWithValue("@Gender", newClinicPerson.Gender);
-                    insertCommand.Parameters.AddWithValue("@FirstName", newClinicPerson.FirstName);
-                    insertCommand.Parameters.AddWithValue("@LastName", newClinicPerson.LastName);
-                    insertCommand.Parameters.AddWithValue("@Street1", newClinicPerson.Street1);
-                    insertCommand.Parameters.AddWithValue("@Street2", newClinicPerson.Street2);
-                    insertCommand.Parameters.AddWithValue("@City", newClinicPerson.City);
-                    insertCommand.Parameters.AddWithValue("@State", newClinicPerson.State);
-                    insertCommand.Parameters.AddWithValue("@ZipCode", newClinicPerson.ZipCode);
-                    insertCommand.Parameters.AddWithValue("@Phone", newClinicPerson.Phone);
-                    insertCommand.Parameters.AddWithValue("@SSN", newClinicPerson.SSN);
+                    using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection, transaction))
+                    {
+                        insertCommand.Parameters.AddWithValue("@DateOfBirth", newClinicPerson.DateOfBirth);
+                        insertCommand.Parameters.AddWithValue("@Gender", newClinicPerson.Gender);
+                        insertCommand.Parameters.AddWithValue("@FirstName", newClinicPerson.FirstName);
+                        insertCommand.Parameters.AddWithValue("@LastName", newClinicPerson.LastName);
+                        insertCommand.Parameters.AddWithValue("@Street1", newClinicPerson.Street1);
+                        insertCommand.Parameters.AddWithValue("@Street2", newClinicPerson.Street2);
+                        insertCommand.Parameters.AddWithValue("@City", newClinicPerson.City);
+                        insertCommand.Parameters.AddWithValue("@State", newClinicPerson.State);
+                        insertCommand.Parameters.AddWithValue("@ZipCode", newClinicPerson.ZipCode);
+                        insertCommand.Parameters.AddWithValue("@Phone", newClinicPerson.Phone);
+                        insertCommand.Parameters.AddWithValue("@SSN", newClinicPerson.SSN);
 
-                    insertCommand.ExecuteNonQuery();
+                        insertCommand.ExecuteNonQuery();
+                    }
+                    int clinicPersonId = this.GetLastClinicPersonID(connection, transaction);
+                    if (newClinicPerson is Nurse)
+                    {
+                        newClinicPerson.DerivedClinicPersonID = nurseDAL.AddNurse(clinicPersonId, connection, transaction);
+                    }
+                    else if (newClinicPerson is Patient)
+                    {
+                        newClinicPerson.DerivedClinicPersonID = patientDAL.AddPatient(clinicPersonId, connection, transaction);
+                    }
+                    transaction.Commit();
+                    return clinicPersonId;
+                }
+                catch(Exception exception)
+                {
+                    transaction.Rollback();
+                    throw exception;
                 }
             }
-            int clinicPersonId = this.GetLastClinicPersonID();
-            if (newClinicPerson is Nurse) {
-                newClinicPerson.DerivedClinicPersonID = nurseDAL.AddNurse(clinicPersonId);
-            } else if (newClinicPerson is Patient)
-            {
-                newClinicPerson.DerivedClinicPersonID = patientDAL.AddPatient(clinicPersonId);
-            }
-            return clinicPersonId;
         }
 
-        private int GetLastClinicPersonID()
+        private int GetLastClinicPersonID(SqlConnection connection, SqlTransaction transaction)
         {
             int lastClinicPersonID = 0;
             string selectStatement =
-
            "SELECT TOP 1 clinic_person_id FROM ClinicPersons ORDER BY clinic_person_id DESC";
 
-            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection, transaction))
             {
-                connection.Open();
+                using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
 
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    using (SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow))
-
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            lastClinicPersonID = (int)reader["clinic_person_id"];
-                        }
+                        lastClinicPersonID = (int)reader["clinic_person_id"];
                     }
                 }
             }
