@@ -225,6 +225,7 @@
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PatientVisitController.cs" />
+    <Compile Include="Controller\SelectionListener.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\ClinicPersonDAL.cs" />
@@ -306,7 +307,7 @@
     <Compile Include="View\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ClinicPersonAddedListener.cs" />
+    <Compile Include="Controller\ClinicPersonAddedListener.cs" />
     <Compile Include="View\NewNurseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,7 +338,6 @@
     <Compile Include="View\SearchPatientsForm.Designer.cs">
       <DependentUpon>SearchPatientsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SelectionListener.cs" />
     <Compile Include="View\UpdatePatientForm.cs">
       <SubType>Form</SubType>
     </Compile>

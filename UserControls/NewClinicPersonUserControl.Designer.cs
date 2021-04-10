@@ -75,7 +75,7 @@ namespace SmartClinic.UserControls
             this.genderComboBox.Location = new System.Drawing.Point(174, 108);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(256, 45);
-            this.genderComboBox.TabIndex = 75;
+            this.genderComboBox.TabIndex = 3;
             // 
             // stateComboBox
             // 
@@ -86,7 +86,7 @@ namespace SmartClinic.UserControls
             this.stateComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(527, 45);
-            this.stateComboBox.TabIndex = 74;
+            this.stateComboBox.TabIndex = 8;
             // 
             // ssnErrorLabel
             // 
@@ -105,7 +105,7 @@ namespace SmartClinic.UserControls
             this.ssnTextBox.MaxLength = 9;
             this.ssnTextBox.Name = "ssnTextBox";
             this.ssnTextBox.Size = new System.Drawing.Size(238, 44);
-            this.ssnTextBox.TabIndex = 72;
+            this.ssnTextBox.TabIndex = 11;
             // 
             // ssnLabel
             // 
@@ -220,7 +220,7 @@ namespace SmartClinic.UserControls
             this.clearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(201, 58);
-            this.clearButton.TabIndex = 55;
+            this.clearButton.TabIndex = 14;
             this.clearButton.Text = "Clear Form";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -244,7 +244,7 @@ namespace SmartClinic.UserControls
             this.phoneTextBox.MaxLength = 10;
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(330, 44);
-            this.phoneTextBox.TabIndex = 48;
+            this.phoneTextBox.TabIndex = 10;
             // 
             // zipCodeTextBox
             // 
@@ -254,7 +254,7 @@ namespace SmartClinic.UserControls
             this.zipCodeTextBox.MaxLength = 10;
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(180, 44);
-            this.zipCodeTextBox.TabIndex = 47;
+            this.zipCodeTextBox.TabIndex = 9;
             // 
             // cityTextBox
             // 
@@ -263,7 +263,7 @@ namespace SmartClinic.UserControls
             this.cityTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(330, 44);
-            this.cityTextBox.TabIndex = 45;
+            this.cityTextBox.TabIndex = 7;
             // 
             // phoneNumberLabel
             // 
@@ -305,7 +305,7 @@ namespace SmartClinic.UserControls
             this.address2TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(530, 44);
-            this.address2TextBox.TabIndex = 44;
+            this.address2TextBox.TabIndex = 6;
             // 
             // stateLabel
             // 
@@ -369,7 +369,7 @@ namespace SmartClinic.UserControls
             this.address1TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(990, 44);
-            this.address1TextBox.TabIndex = 43;
+            this.address1TextBox.TabIndex = 5;
             // 
             // dateTimePickerForDOB
             // 
@@ -379,7 +379,7 @@ namespace SmartClinic.UserControls
             this.dateTimePickerForDOB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePickerForDOB.Name = "dateTimePickerForDOB";
             this.dateTimePickerForDOB.Size = new System.Drawing.Size(256, 44);
-            this.dateTimePickerForDOB.TabIndex = 42;
+            this.dateTimePickerForDOB.TabIndex = 4;
             // 
             // addClinicPersonButton
             // 
@@ -390,7 +390,7 @@ namespace SmartClinic.UserControls
             this.addClinicPersonButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addClinicPersonButton.Name = "addClinicPersonButton";
             this.addClinicPersonButton.Size = new System.Drawing.Size(216, 58);
-            this.addClinicPersonButton.TabIndex = 50;
+            this.addClinicPersonButton.TabIndex = 12;
             this.addClinicPersonButton.Text = "Add";
             this.addClinicPersonButton.UseVisualStyleBackColor = true;
             this.addClinicPersonButton.Click += new System.EventHandler(this.AddClinicPersonButton_Click);
@@ -402,7 +402,7 @@ namespace SmartClinic.UserControls
             this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(434, 44);
-            this.lastNameTextBox.TabIndex = 41;
+            this.lastNameTextBox.TabIndex = 2;
             // 
             // firstNameTextBox
             // 
@@ -411,7 +411,7 @@ namespace SmartClinic.UserControls
             this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(434, 44);
-            this.firstNameTextBox.TabIndex = 40;
+            this.firstNameTextBox.TabIndex = 1;
             // 
             // cancelButton
             // 
@@ -422,7 +422,7 @@ namespace SmartClinic.UserControls
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(201, 58);
-            this.cancelButton.TabIndex = 53;
+            this.cancelButton.TabIndex = 13;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
