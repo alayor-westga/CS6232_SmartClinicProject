@@ -30,7 +30,7 @@ namespace SmartClinic.View
         private void InitializeComponent()
         {
             this.cancelButton = new System.Windows.Forms.Button();
-            this.selectPatientButton = new System.Windows.Forms.Button();           
+            this.selectPatientButton = new System.Windows.Forms.Button();
             this.searchPatientsUserControl = new SmartClinic.UserControls.SearchPatientsUserControl();
             this.SuspendLayout();
             // 
@@ -39,7 +39,7 @@ namespace SmartClinic.View
             this.cancelButton.AutoSize = true;
             this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(751, 727);
+            this.cancelButton.Location = new System.Drawing.Point(961, 727);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(188, 55);
@@ -54,7 +54,7 @@ namespace SmartClinic.View
             this.selectPatientButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.selectPatientButton.Enabled = false;
             this.selectPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectPatientButton.Location = new System.Drawing.Point(961, 727);
+            this.selectPatientButton.Location = new System.Drawing.Point(1171, 727);
             this.selectPatientButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.selectPatientButton.Name = "selectPatientButton";
             this.selectPatientButton.Size = new System.Drawing.Size(188, 55);
@@ -67,14 +67,14 @@ namespace SmartClinic.View
             // 
             this.searchPatientsUserControl.Location = new System.Drawing.Point(12, 12);
             this.searchPatientsUserControl.Name = "searchPatientsUserControl";
-            this.searchPatientsUserControl.Size = new System.Drawing.Size(1172, 694);
+            this.searchPatientsUserControl.Size = new System.Drawing.Size(1358, 694);
             this.searchPatientsUserControl.TabIndex = 0;
             // 
             // SearchPatientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1194, 796);
+            this.ClientSize = new System.Drawing.Size(1382, 796);
             this.Controls.Add(this.selectPatientButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.searchPatientsUserControl);

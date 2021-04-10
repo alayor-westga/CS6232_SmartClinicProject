@@ -31,8 +31,8 @@ namespace SmartClinic.View
         {
             this.components = new System.ComponentModel.Container();
             this.labTestsComboBox = new System.Windows.Forms.ComboBox();
-            this.chooseATestLabel = new System.Windows.Forms.Label();
             this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chooseATestLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,6 +40,7 @@ namespace SmartClinic.View
             // 
             this.labTestsComboBox.DataSource = this.labTestBindingSource;
             this.labTestsComboBox.DisplayMember = "Name";
+            this.labTestsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.labTestsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTestsComboBox.FormattingEnabled = true;
             this.labTestsComboBox.Location = new System.Drawing.Point(291, 153);
@@ -47,6 +48,10 @@ namespace SmartClinic.View
             this.labTestsComboBox.Size = new System.Drawing.Size(475, 45);
             this.labTestsComboBox.TabIndex = 0;
             this.labTestsComboBox.ValueMember = "LabTestCode";
+            // 
+            // labTestBindingSource
+            // 
+            this.labTestBindingSource.DataSource = typeof(SmartClinic.Model.LabTest);
             // 
             // chooseATestLabel
             // 
@@ -57,10 +62,6 @@ namespace SmartClinic.View
             this.chooseATestLabel.Size = new System.Drawing.Size(223, 37);
             this.chooseATestLabel.TabIndex = 1;
             this.chooseATestLabel.Text = "Choose a test:";
-            // 
-            // labTestBindingSource
-            // 
-            this.labTestBindingSource.DataSource = typeof(SmartClinic.Model.LabTest);
             // 
             // LabTestsForm
             // 

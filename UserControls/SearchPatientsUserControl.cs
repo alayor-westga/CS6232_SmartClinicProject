@@ -70,6 +70,15 @@ namespace SmartClinic.UserControls
         {
             Clear();
             searchByDOBOnlyRadioButton.Checked = true;
+            SetColumnWidths();
+        }
+
+        private void SetColumnWidths()
+        {
+           //patientsDataGridView.Columns[0].Width = 5;
+           //patientsDataGridView.Columns[1].Width = 5;
+           //patientsDataGridView.Columns[2].Width = 5;
+           //patientsDataGridView.Columns[3].Width = 50;
         }
 
         private void SearchByDOBOnlyRadioButton_CheckedChanged(object sender, EventArgs e)

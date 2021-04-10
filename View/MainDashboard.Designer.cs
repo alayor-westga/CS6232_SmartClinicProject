@@ -136,7 +136,7 @@ namespace SmartClinic.View
             this.searchPatientsUserControl1.Location = new System.Drawing.Point(30, 123);
             this.searchPatientsUserControl1.Margin = new System.Windows.Forms.Padding(2);
             this.searchPatientsUserControl1.Name = "searchPatientsUserControl1";
-            this.searchPatientsUserControl1.Size = new System.Drawing.Size(1172, 800);
+            this.searchPatientsUserControl1.Size = new System.Drawing.Size(1444, 800);
             this.searchPatientsUserControl1.TabIndex = 0;
             // 
             // patientVisitsTabPage
