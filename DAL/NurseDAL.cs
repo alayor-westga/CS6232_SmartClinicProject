@@ -204,5 +204,40 @@ namespace SmartClinic.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Checks if a nurse user name exists.
+        /// </summary>
+        /// <param name="username">the username to check</param>
+        /// <returns>true if username exists, false otherwise.</returns>
+        public bool UserNameExists(string username)
+        {
+            if (username == null) 
+            {
+                throw new ArgumentNullException("username");
+            }
+
+            string selectStatement =
+                "SELECT COUNT(1) FROM Nurses WHERE username = @UserName COLLATE Latin1_General_CS_AS;";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@UserName", username);
+
+                    if ((Int32)selectCommand.ExecuteScalar() == 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
     }
 }

@@ -53,6 +53,11 @@ namespace SmartClinic.View
                     MessageBox.Show("The credentials could not be updated.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);

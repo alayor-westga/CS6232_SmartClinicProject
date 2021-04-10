@@ -22,6 +22,11 @@ namespace SmartClinic.DAL
         /// <returns>true if ssn is not unique, false otherwise</returns>
         public bool SsnIsNotUnique(string ssn)
         {
+            if (ssn == null) 
+            {
+                throw new ArgumentNullException("ssn");
+            }
+
             string selectStatement =
                 "SELECT count(*) FROM ClinicPersons WHERE ssn = @SSN";
 

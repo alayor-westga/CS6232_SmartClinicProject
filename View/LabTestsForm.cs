@@ -18,7 +18,6 @@ namespace SmartClinic.View
             InitializeComponent();
             labTestController = new LabTestController();
         }
-
         private void LabTestsForm_Load(object sender, EventArgs e)
         {
             labTestsComboBox.DataSource = labTestController.GetAllLabTests();

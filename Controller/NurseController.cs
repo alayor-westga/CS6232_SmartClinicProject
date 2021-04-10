@@ -44,6 +44,22 @@ namespace SmartClinic.Controller
             string currentUserName
             ) 
         {
+            if (nurseId < 0)
+            {
+                throw new ArgumentException("nurseId must not be null.");
+            }
+            if (String.IsNullOrWhiteSpace(username))
+            {
+                throw new ArgumentException("username must have a value.");
+            }
+            if (String.IsNullOrWhiteSpace(password))
+            {
+               throw new ArgumentException("username must have a value.");
+            }
+            if (nurseSource.UserNameExists(username))
+            {
+                throw new ArgumentException("This username is already assigned.");
+            }
             return nurseSource.SetUserNameAndPassword(
                 nurseId, 
                 username, 

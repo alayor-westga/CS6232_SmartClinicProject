@@ -43,7 +43,7 @@ PATIENTS
 LAB TESTS
 * (#41) As Nurse, I want to see a list of tests.
 
-* (#42) As Nurse, I want to add order tests.
+* (#42) As Nurse, I want to order tests.
 
 * (#47) As Nurse, I want to remove tests from the order.
 
