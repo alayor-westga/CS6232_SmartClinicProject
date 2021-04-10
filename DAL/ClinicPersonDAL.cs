@@ -13,6 +13,10 @@ namespace SmartClinic.DAL
     public class ClinicPersonDAL
     {
 
+        //TODO: Delete
+        private NurseDAL nurseDAL = new NurseDAL();
+        private PatientDAL patientDAL = new PatientDAL();
+
         /// <summary>
         /// Checks if a ClinicPerson exists via UQ and NOT NULL key ssn
         /// </summary>
@@ -79,7 +83,14 @@ namespace SmartClinic.DAL
                     insertCommand.ExecuteNonQuery();
                 }
             }
-            return this.GetLastClinicPersonID();
+            int clinicPersonId = this.GetLastClinicPersonID();
+            if (newClinicPerson is Nurse) {
+                newClinicPerson.DerivedClinicPersonID = nurseDAL.AddNurse(clinicPersonId);
+            } else if (newClinicPerson is Patient)
+            {
+                newClinicPerson.DerivedClinicPersonID = patientDAL.AddPatient(clinicPersonId);
+            }
+            return clinicPersonId;
         }
 
         private int GetLastClinicPersonID()

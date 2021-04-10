@@ -17,14 +17,12 @@ namespace SmartClinic.View
 
         private void NewNurseForm_Load(object sender, EventArgs e)
         {
+            newClinicPersonUserControl1.SetClinicPerson(new Nurse());
             newClinicPersonUserControl1.AddClinicPersonAddedListener(this);
         }
 
         void ClinicPersonAddedListener.OnAdded(ClinicPerson clinicPerson)
         {
-            // open a dialog to ask for user name and password
-            int nurseId = nurseController.AddNurse(clinicPerson.ClinicPersonID);
-            Nurse nurse = new Nurse(nurseId, clinicPerson); 
             MessageBox.Show("The nurse was successfully added to the database.",
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;

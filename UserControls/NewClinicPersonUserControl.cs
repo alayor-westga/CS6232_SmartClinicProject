@@ -13,9 +13,9 @@ namespace SmartClinic.UserControls
 {
     public partial class NewClinicPersonUserControl : UserControl
     {
+        private ClinicPerson newClinicPerson;
         private readonly ClinicPersonController clinicPersonController;
         private List<ClinicPersonAddedListener> clinicPersonAddedListeners;
-
         private readonly Dictionary<string, string> genders;
         public NewClinicPersonUserControl()
         {
@@ -47,6 +47,15 @@ namespace SmartClinic.UserControls
             }
         }
 
+        /// <summary>
+        /// It adds a clinic person added listener to the list.
+        /// <param name="selectionListener">The listener to be added.</param>
+        /// </summary>  
+        public void SetClinicPerson(ClinicPerson clinicPerson)
+        {
+            newClinicPerson = clinicPerson;
+        }
+
         private static void LoadStateComboBox(ComboBox cbo)
         {
             cbo.DataSource = Enum.GetValues(typeof(States))
@@ -70,7 +79,6 @@ namespace SmartClinic.UserControls
 
             try
             {
-                ClinicPerson newClinicPerson = new ClinicPerson();
                 newClinicPerson.DateOfBirth = dateTimePickerForDOB.Value.Date;
                 newClinicPerson.Gender = genderComboBox.SelectedValue.ToString();
                 newClinicPerson.FirstName = firstNameTextBox.Text;

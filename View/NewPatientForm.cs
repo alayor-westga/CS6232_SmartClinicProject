@@ -28,8 +28,8 @@ namespace SmartClinic.View
 
         void ClinicPersonAddedListener.OnAdded(ClinicPerson clinicPerson)
         {
-            int patientId = patientController.AddPatient(clinicPerson.ClinicPersonID);
-            Patient patient = new Patient(patientId, clinicPerson);
+            Patient patient = (Patient)(clinicPerson);
+            patient.PatientId = clinicPerson.DerivedClinicPersonID;
             SelectedPatient = patient;
             MessageBox.Show("The patient was successfully added to the database.",
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -39,6 +39,7 @@ namespace SmartClinic.View
 
         private void NewPatientForm_Load(object sender, EventArgs e)
         {
+            newClinicPersonUserControl1.SetClinicPerson(new Patient());
             newClinicPersonUserControl1.AddClinicPersonAddedListener(this);
         }
     }

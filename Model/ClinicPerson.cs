@@ -11,6 +11,12 @@ namespace SmartClinic.Model
         /// The ID of the clinic person
         /// </summary>
         public int ClinicPersonID { get; set; }
+
+        /// <summary>
+        /// The ID of the derived clinic person (nurse, patient, etc.)
+        /// </summary>
+        public int DerivedClinicPersonID { get; set; }
+
         /// <summary>
         /// The first name of the clinic person.
         /// </summary>
