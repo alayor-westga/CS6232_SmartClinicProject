@@ -107,20 +107,6 @@ namespace SmartClinic.Controller
         }
 
         /// <summary>
-        /// It adds a patient to the DB.
-        /// </summary>
-        /// <param name="clinicPersonID">The clinic person id of the patient.</param>
-        /// <returns>The number of rows affected.</returns>
-        public int AddPatient(int clinicPersonID)
-        {
-            if (clinicPersonID < 0)
-            {
-                throw new ArgumentException("The clinicPersonID must not be negative");
-            }
-            return patientSource.AddPatient(clinicPersonID);
-        }
-
-        /// <summary>
         /// It updates a patient in the DB.
         /// </summary>
         /// <param name="oldPatient">The old patient info.</param>

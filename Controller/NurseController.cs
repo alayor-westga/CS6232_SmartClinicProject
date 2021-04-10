@@ -21,20 +21,6 @@ namespace SmartClinic.Controller
         }
 
         /// <summary>
-        /// It inserts a nurse into the DB.
-        /// </summary>
-        /// <param name="clinicPersonID">The clinic person id of the nurse.</param>
-        /// <returns>The id of the new nurse.</returns>
-        public int AddNurse(int clinicPersonID)
-        {
-            if (clinicPersonID < 0)
-            {
-                throw new ArgumentException("The clinicPersonID must not be negative");
-            }
-            return nurseSource.AddNurse(clinicPersonID);
-        }
-
-        /// <summary>
         /// It returns all the nurses in the system.
         /// </summary>
         /// <returns>The list of nurses.</returns>

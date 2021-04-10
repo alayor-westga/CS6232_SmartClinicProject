@@ -47,7 +47,7 @@ namespace SmartClinic.View
             this.saveButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.patientVisitDetailsButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.patientGroupBox = new System.Windows.Forms.GroupBox();
             this.patientSSNValueLabel = new System.Windows.Forms.Label();
@@ -252,18 +252,18 @@ namespace SmartClinic.View
             this.patientVisitDetailsButton.UseVisualStyleBackColor = true;
             this.patientVisitDetailsButton.Click += new System.EventHandler(this.PatientVisitDetailsButton_Click);
             // 
-            // cancelButton
+            // closeButton
             // 
-            this.cancelButton.AutoSize = true;
-            this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(417, 747);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(242, 55);
-            this.cancelButton.TabIndex = 31;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.closeButton.AutoSize = true;
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeButton.Location = new System.Drawing.Point(417, 747);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(242, 55);
+            this.closeButton.TabIndex = 31;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // editButton
             // 
@@ -377,7 +377,7 @@ namespace SmartClinic.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 816);
             this.Controls.Add(this.editButton);
-            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.patientVisitDetailsButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.saveButton);
@@ -423,7 +423,7 @@ namespace SmartClinic.View
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button patientVisitDetailsButton;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.BindingSource doctorBindingSource;
         private System.Windows.Forms.GroupBox patientGroupBox;

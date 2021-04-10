@@ -68,7 +68,7 @@ namespace SmartClinic.DAL
         /// </summary>
         /// <param name="clinicPersonID">The clinic person id of the nurse.</param>
         /// <returns>The id of the new nurse.</returns>
-        public int AddNurse(int clinicPersonID)
+        internal int AddNurse(int clinicPersonID, SqlConnection connection, SqlTransaction transaction)
         {
             if (clinicPersonID < 0)
             {
@@ -79,20 +79,16 @@ namespace SmartClinic.DAL
                 " (clinic_person_id)" +
                 " VALUES (@ClinicPersonID); SET @ID = SCOPE_IDENTITY();";
 
-            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+
+            using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection, transaction))
             {
-                connection.Open();
+                insertCommand.Parameters.AddWithValue("@ClinicPersonID", clinicPersonID);
 
-                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
-                {
-                    insertCommand.Parameters.AddWithValue("@ClinicPersonID", clinicPersonID);
-
-                    SqlParameter param = new SqlParameter("@ID", SqlDbType.Int, 4);
-                    param.Direction = ParameterDirection.Output;
-                    insertCommand.Parameters.Add(param);
-                    insertCommand.ExecuteNonQuery();
-                    return int.Parse(insertCommand.Parameters["@ID"].Value.ToString());
-                }
+                SqlParameter param = new SqlParameter("@ID", SqlDbType.Int, 4);
+                param.Direction = ParameterDirection.Output;
+                insertCommand.Parameters.Add(param);
+                insertCommand.ExecuteNonQuery();
+                return int.Parse(insertCommand.Parameters["@ID"].Value.ToString());
             }
         }
 
