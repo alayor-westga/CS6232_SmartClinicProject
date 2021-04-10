@@ -16,6 +16,11 @@ namespace SmartClinic.View
             InitializeComponent();
         }
 
- 
+        private void datePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+    
     }
 }
