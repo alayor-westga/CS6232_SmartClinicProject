@@ -33,12 +33,12 @@ namespace SmartClinic.View
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.patientIDLabel = new System.Windows.Forms.Label();
             this.patientIDTextBox = new System.Windows.Forms.Label();
-            this.dobLabel = new System.Windows.Forms.Label();
-            this.dobTextBox = new System.Windows.Forms.Label();
+            this.selectTestLabel = new System.Windows.Forms.Label();
             this.PatientNameLabel = new System.Windows.Forms.Label();
             this.patientNameTextBox = new System.Windows.Forms.Label();
             this.appointmentDateLabel = new System.Windows.Forms.Label();
             this.appointmentDateTextBox = new System.Windows.Forms.Label();
+            this.selectTestomboBox = new System.Windows.Forms.ComboBox();
             this.patientVisitDetailsGroupBox.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,12 +63,12 @@ namespace SmartClinic.View
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 267F));
             this.tableLayoutPanel1.Controls.Add(this.patientIDLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.patientIDTextBox, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dobLabel, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dobTextBox, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.selectTestLabel, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.PatientNameLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.patientNameTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.appointmentDateLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.appointmentDateTextBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.selectTestomboBox, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 38);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -98,26 +98,17 @@ namespace SmartClinic.View
             this.patientIDTextBox.Size = new System.Drawing.Size(100, 23);
             this.patientIDTextBox.TabIndex = 42;
             // 
-            // dobLabel
+            // selectTestLabel
             // 
-            this.dobLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobLabel.ForeColor = System.Drawing.Color.Black;
-            this.dobLabel.Location = new System.Drawing.Point(501, 37);
-            this.dobLabel.Name = "dobLabel";
-            this.dobLabel.Size = new System.Drawing.Size(130, 23);
-            this.dobLabel.TabIndex = 51;
-            this.dobLabel.Text = "Patient DOB:";
-            this.dobLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dobTextBox
-            // 
-            this.dobTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dobTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dobTextBox.Location = new System.Drawing.Point(637, 37);
-            this.dobTextBox.Name = "dobTextBox";
-            this.dobTextBox.Size = new System.Drawing.Size(208, 23);
-            this.dobTextBox.TabIndex = 53;
+            this.selectTestLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectTestLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectTestLabel.ForeColor = System.Drawing.Color.Black;
+            this.selectTestLabel.Location = new System.Drawing.Point(501, 37);
+            this.selectTestLabel.Name = "selectTestLabel";
+            this.selectTestLabel.Size = new System.Drawing.Size(130, 23);
+            this.selectTestLabel.TabIndex = 51;
+            this.selectTestLabel.Text = "Select Test:";
+            this.selectTestLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PatientNameLabel
             // 
@@ -161,6 +152,14 @@ namespace SmartClinic.View
             this.appointmentDateTextBox.Size = new System.Drawing.Size(200, 23);
             this.appointmentDateTextBox.TabIndex = 47;
             // 
+            // selectTestomboBox
+            // 
+            this.selectTestomboBox.FormattingEnabled = true;
+            this.selectTestomboBox.Location = new System.Drawing.Point(637, 40);
+            this.selectTestomboBox.Name = "selectTestomboBox";
+            this.selectTestomboBox.Size = new System.Drawing.Size(262, 33);
+            this.selectTestomboBox.TabIndex = 56;
+            // 
             // LabTestDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -181,11 +180,11 @@ namespace SmartClinic.View
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label patientIDLabel;
         private System.Windows.Forms.Label patientIDTextBox;
-        private System.Windows.Forms.Label dobLabel;
-        private System.Windows.Forms.Label dobTextBox;
+        private System.Windows.Forms.Label selectTestLabel;
         private System.Windows.Forms.Label PatientNameLabel;
         private System.Windows.Forms.Label patientNameTextBox;
         private System.Windows.Forms.Label appointmentDateLabel;
         private System.Windows.Forms.Label appointmentDateTextBox;
+        private System.Windows.Forms.ComboBox selectTestomboBox;
     }
 }
