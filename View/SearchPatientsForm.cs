@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SmartClinic.Model;
+using SmartClinic.Controller;
 
 namespace SmartClinic.View
 {

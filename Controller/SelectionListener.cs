@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SmartClinic.View
+namespace SmartClinic.Controller
 {
     /// <summary>
     /// It represents an object that listens for selected values.

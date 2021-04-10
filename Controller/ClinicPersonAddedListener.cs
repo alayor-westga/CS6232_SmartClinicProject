@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SmartClinic.Model;
 
-namespace SmartClinic.View
+namespace SmartClinic.Controller
 {
     /// <summary>
     /// It represents an object that listens for new clinic persons added to the system.
