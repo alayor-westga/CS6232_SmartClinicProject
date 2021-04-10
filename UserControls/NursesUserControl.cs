@@ -22,6 +22,7 @@ namespace SmartClinic.UserControls
             {
                 newNurseForm.ShowDialog();
             }
+            GetNurses();
         }
 
         private void NursesUserControl_Load(object sender, EventArgs e)
