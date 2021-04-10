@@ -226,7 +226,7 @@ namespace SmartClinic.UserControls
             this.patientVisitsDataGridView.Name = "patientVisitsDataGridView";
             this.patientVisitsDataGridView.ReadOnly = true;
             this.patientVisitsDataGridView.RowHeadersWidth = 51;
-            this.patientVisitsDataGridView.RowTemplate.Height = 24;
+            this.patientVisitsDataGridView.RowTemplate.Height = 33;
             this.patientVisitsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.patientVisitsDataGridView.Size = new System.Drawing.Size(1168, 340);
             this.patientVisitsDataGridView.TabIndex = 14;
