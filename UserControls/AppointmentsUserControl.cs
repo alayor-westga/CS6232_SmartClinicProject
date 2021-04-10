@@ -10,7 +10,7 @@ namespace SmartClinic.UserControls
     /// <summary>
     /// It renders the form to search for appointments.
     /// </summary>
-    public partial class AppointmentsUserControl : UserControl
+    public partial class AppointmentsUserControl : UserControl, IRefreshable
     {
         private Patient selectedPatient;      
         private readonly AppointmentController appointmentController;
@@ -24,8 +24,20 @@ namespace SmartClinic.UserControls
             appointmentController = new AppointmentController();
         }
 
+        /// <summary>
+        /// It refreshes the appointments gridview.
+        /// </summary>
+        override public void Refresh()
+        {
+            SearchAppointments();
+        }
+
         private void SearchAppointments()
         {
+            if (selectedPatient == null) 
+            {
+                return;
+            }
             List<AppointmentSearchResult> appointments = new List<AppointmentSearchResult>();
             try
             {

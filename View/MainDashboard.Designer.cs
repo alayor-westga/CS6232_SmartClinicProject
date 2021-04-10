@@ -194,6 +194,7 @@ namespace SmartClinic.View
             this.mainDashBoardTabControl.SelectedIndex = 0;
             this.mainDashBoardTabControl.Size = new System.Drawing.Size(1506, 1011);
             this.mainDashBoardTabControl.TabIndex = 2;
+            this.mainDashBoardTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.MainDashBoardTabControl_Selected);
             // 
             // newAppoinmentTabPage
             // 

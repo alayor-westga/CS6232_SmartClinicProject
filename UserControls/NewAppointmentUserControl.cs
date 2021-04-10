@@ -50,8 +50,6 @@ namespace SmartClinic.UserControls
             {
                 Console.WriteLine(ex.Message);
                 MessageBox.Show("The doctor list could not get loaded.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;                Console.WriteLine(ex.Message);
-                MessageBox.Show("The doctor list could not get loaded.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             doctorComboBox.DataSource = doctors;

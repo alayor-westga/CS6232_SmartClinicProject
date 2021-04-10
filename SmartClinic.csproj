@@ -219,6 +219,7 @@
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\ClinicPersonController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
+    <Compile Include="Controller\IRefreshable.cs" />
     <Compile Include="Controller\LabTestController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\NurseController.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using SmartClinic.Model;
 using SmartClinic.UserControls;
 using SmartClinic.Controller;
@@ -12,6 +13,7 @@ namespace SmartClinic.View
     public partial class MainDashboard : Form
     {
         private readonly Form loginForm;
+        private readonly List<TabPage> refreshableTabPages;
 
         /// <summary>
         /// It builds and initializes the main dashboard.
@@ -23,6 +25,9 @@ namespace SmartClinic.View
             searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
             ShowUserName();
             ShowNursesTab();
+             refreshableTabPages = new List<TabPage> {
+               appointmentsTabPage,
+            };
         }
 
         /// <summary>
@@ -68,6 +73,25 @@ namespace SmartClinic.View
             using (NewNurseForm newNurseForm = new NewNurseForm())
             {
                 newNurseForm.ShowDialog();
+            }
+        }
+
+        private void MainDashBoardTabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            if (refreshableTabPages.Contains(e.TabPage))
+            {
+                RefreshControlsInTabPage(e.TabPage);
+            }
+        }
+
+        private void RefreshControlsInTabPage(TabPage tabPage)
+        {
+            foreach (Control control in tabPage.Controls)
+            {
+                if (control is IRefreshable)
+                {
+                    ((IRefreshable)control).Refresh();
+                }
             }
         }
     }
