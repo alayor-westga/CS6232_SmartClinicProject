@@ -25,7 +25,7 @@ namespace SmartClinic.UserControls
         }
 
         /// <summary>
-        /// It refreshes the appointments gridview.
+        /// It refreshes the appointments grid view.
         /// </summary>
         override public void Refresh()
         {

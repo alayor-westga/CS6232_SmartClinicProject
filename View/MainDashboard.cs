@@ -27,6 +27,7 @@ namespace SmartClinic.View
             ShowNursesTab();
              refreshableTabPages = new List<TabPage> {
                appointmentsTabPage,
+               patientVisitsTabPage
             };
         }
 

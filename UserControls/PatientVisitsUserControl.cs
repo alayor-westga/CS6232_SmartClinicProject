@@ -10,7 +10,7 @@ namespace SmartClinic.UserControls
     /// <summary>
     /// It renders the form to search show patient visits.
     /// </summary>
-    public partial class PatientVisitsUserControl : UserControl
+    public partial class PatientVisitsUserControl : UserControl, IRefreshable
     {
         private Patient selectedPatient;   
         private readonly PatientVisitController patientVisitController;
@@ -24,8 +24,20 @@ namespace SmartClinic.UserControls
             patientVisitController = new PatientVisitController();
         }
 
-        private void SearchAppointments()
+        /// <summary>
+        /// It refreshes the visits gridview.
+        /// </summary>
+        override public void Refresh()
         {
+            SearchVisits();
+        }
+
+        private void SearchVisits()
+        {
+            if (selectedPatient == null) 
+            {
+                return;
+            }
             List<PatientVisits> appointments = new List<PatientVisits>();
             try
             {
@@ -71,7 +83,7 @@ namespace SmartClinic.UserControls
             {
                 patientVisitDetailsForm.ShowForExistingPatientVisit(patientVisits);
             }           
-            SearchAppointments();
+            SearchVisits();
         }
 
         private void AppointmentsDataGridView_DoubleClick(object sender, EventArgs e)
@@ -88,7 +100,7 @@ namespace SmartClinic.UserControls
                 {
                     selectedPatient = searchPatientsForm.SelectedPatient;
                     ShowPatientInfo();
-                    SearchAppointments();
+                    SearchVisits();
                 }
             }          
         }
