@@ -60,8 +60,8 @@ namespace SmartClinic.View
             appointmentDateTextBox.Text = visit.VisitDate.ToString();
             doctorIDTextBox.Text = visit.DoctorID.ToString();
             
-            string docPhone = visit.DoctorPhone.ToString();
-            doctorPhoneTextBox.Text = "(" + docPhone.Substring(0, 3) + ") " + docPhone.Substring(3, 3) + " - " + docPhone.Substring(6, 4);
+            string patientPhone = visit.PatientPhone.ToString();
+            patientPhoneTextBox.Text = "(" + patientPhone.Substring(0, 3) + ") " + patientPhone.Substring(3, 3) + " - " + patientPhone.Substring(6, 4);
 
             User user = LoginController.GetUser();
             loggedInNurseTextBox.Text = user.FullName;

@@ -71,8 +71,8 @@ namespace SmartClinic.View
             this.lastNurseIDLabel = new System.Windows.Forms.Label();
             this.loggedInNurseIDTextBox = new System.Windows.Forms.Label();
             this.lastNurseIDTextBox = new System.Windows.Forms.Label();
-            this.doctorPhoneLabel = new System.Windows.Forms.Label();
-            this.doctorPhoneTextBox = new System.Windows.Forms.Label();
+            this.patientPhoneLabel = new System.Windows.Forms.Label();
+            this.patientPhoneTextBox = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.doctorIDTextBox = new System.Windows.Forms.Label();
             this.patientVisitDetailsGroupBox = new System.Windows.Forms.GroupBox();
@@ -519,26 +519,26 @@ namespace SmartClinic.View
             this.lastNurseIDTextBox.Size = new System.Drawing.Size(159, 23);
             this.lastNurseIDTextBox.TabIndex = 85;
             // 
-            // doctorPhoneLabel
+            // patientPhoneLabel
             // 
-            this.doctorPhoneLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.doctorPhoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorPhoneLabel.ForeColor = System.Drawing.Color.Black;
-            this.doctorPhoneLabel.Location = new System.Drawing.Point(404, 73);
-            this.doctorPhoneLabel.Name = "doctorPhoneLabel";
-            this.doctorPhoneLabel.Size = new System.Drawing.Size(126, 23);
-            this.doctorPhoneLabel.TabIndex = 86;
-            this.doctorPhoneLabel.Text = "Doctor Phone:";
-            this.doctorPhoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.patientPhoneLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.patientPhoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientPhoneLabel.ForeColor = System.Drawing.Color.Black;
+            this.patientPhoneLabel.Location = new System.Drawing.Point(404, 73);
+            this.patientPhoneLabel.Name = "patientPhoneLabel";
+            this.patientPhoneLabel.Size = new System.Drawing.Size(126, 23);
+            this.patientPhoneLabel.TabIndex = 86;
+            this.patientPhoneLabel.Text = "Patient Phone:";
+            this.patientPhoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // doctorPhoneTextBox
+            // patientPhoneTextBox
             // 
-            this.doctorPhoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doctorPhoneTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.doctorPhoneTextBox.Location = new System.Drawing.Point(536, 73);
-            this.doctorPhoneTextBox.Name = "doctorPhoneTextBox";
-            this.doctorPhoneTextBox.Size = new System.Drawing.Size(208, 23);
-            this.doctorPhoneTextBox.TabIndex = 87;
+            this.patientPhoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientPhoneTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.patientPhoneTextBox.Location = new System.Drawing.Point(536, 73);
+            this.patientPhoneTextBox.Name = "patientPhoneTextBox";
+            this.patientPhoneTextBox.Size = new System.Drawing.Size(208, 23);
+            this.patientPhoneTextBox.TabIndex = 87;
             // 
             // tableLayoutPanel1
             // 
@@ -552,11 +552,11 @@ namespace SmartClinic.View
             this.tableLayoutPanel1.Controls.Add(this.loggedInNurseTextBox, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.loggedInNurse, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.lastNurseIDTextBox, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.doctorPhoneTextBox, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.patientPhoneTextBox, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.apptIDTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.loggedInNurseIDLabel, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.lastNurseIDLabel, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.doctorPhoneLabel, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.patientPhoneLabel, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.patientIDLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.patientIDTextBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.PatientNameLabel, 0, 1);
@@ -750,8 +750,8 @@ namespace SmartClinic.View
         private System.Windows.Forms.Label lastNurseIDLabel;
         private System.Windows.Forms.Label loggedInNurseIDTextBox;
         private System.Windows.Forms.Label lastNurseIDTextBox;
-        private System.Windows.Forms.Label doctorPhoneLabel;
-        private System.Windows.Forms.Label doctorPhoneTextBox;
+        private System.Windows.Forms.Label patientPhoneLabel;
+        private System.Windows.Forms.Label patientPhoneTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label doctorIDTextBox;
         private System.Windows.Forms.GroupBox patientVisitDetailsGroupBox;
