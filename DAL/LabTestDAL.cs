@@ -58,7 +58,7 @@ namespace SmartClinic.DAL
         }
 
        public void AddOrderedTests(List<LabTestResults> orderedTests)
-        {
+       {
             if (orderedTests == null)
             {
                 throw new ArgumentNullException("orderedTests");
@@ -92,6 +92,44 @@ namespace SmartClinic.DAL
                     throw new Exception("Could not add tests. Check to be sure \neach test has not already been ordered.");
                 }
             }
+       }
+
+        public List<LabTestResults> GetTestsForAppointment(int appointmentID)
+        {
+            if (appointmentID < 0)
+            {
+                throw new ArgumentException("The patientId must not be negative");
+            }
+
+            string selectStatement =
+            "SELECT appointment_id, lab_test_code, date_performed, result, is_normal " +
+            " WHERE appointment_id=@AppoinmtentID;";
+
+            List<LabTestResults> labTestSearchResults = new List<LabTestResults>();
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentID);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            LabTestResults labTestResult = new LabTestResults()
+                            {
+                                AppointmentID = Int32.Parse(reader["appointment_id"].ToString()),
+                                LabTestCode = reader["lab_test_code"].ToString(),
+                                DatePerformed = DateTime.Parse(reader["date_performed"].ToString()),
+                                Result = reader["result"].ToString(),
+                                IsNormal = (bool) reader["street2"],                             
+                            };
+                            labTestSearchResults.Add(labTestResult);
+                        }
+                    }
+                }
+            }
+            return labTestSearchResults;
         }
     }
 }

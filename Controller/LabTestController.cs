@@ -41,5 +41,9 @@ namespace SmartClinic.Controller
             }
         }
 
+        public List<LabTestResults> GetTestsForAppointment(int appointmentID)
+        {
+            return this.labTestSource.GetTestsForAppointment(appointmentID);
+        }
     }
 }

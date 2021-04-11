@@ -39,16 +39,14 @@ namespace SmartClinic.View
             this.patientNameDisplayLabel.Text = this.visit.Patient.ToString();
             this.apptDateTimeDisplayLabel.Text = this.visit.VisitDate.ToString();
             this.appointmentIDLabel2.Text = this.visit.AppointmentID.ToString();
-            this.labTestResultsDataGridView.DataSource = this.labTestController.GetAllLabTests(); //test code
-           
         }
 
-        private void orderTestButton_Click(object sender, EventArgs e)
+        private void OrderTestButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you wish\nto order these tests?",
                         "Confirm Test Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if(dialogResult == DialogResult.No)
+            if (dialogResult == DialogResult.No)
             {
                 return;
             }
@@ -82,6 +80,16 @@ namespace SmartClinic.View
 
             MessageBox.Show("Tests have been successfully ordered.",
                         "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            try
+            {
+                this.labTestResultsDataGridView.DataSource = this.labTestController.GetTestsForAppointment(this.visit.AppointmentID);
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)

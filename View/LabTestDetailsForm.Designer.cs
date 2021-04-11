@@ -233,7 +233,7 @@ namespace SmartClinic.View
             this.orderTestButton.TabIndex = 91;
             this.orderTestButton.Text = "Order Tests";
             this.orderTestButton.UseVisualStyleBackColor = true;
-            this.orderTestButton.Click += new System.EventHandler(this.orderTestButton_Click);
+            this.orderTestButton.Click += new System.EventHandler(this.OrderTestButton_Click);
             // 
             // labTestDetailsGroupBox
             // 
