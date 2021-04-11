@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmartClinic.Model
 {
-    class LabTestResults
+    public class LabTestResults
     {
         /// <summary>
         /// AppointmentID for LabTestResults
@@ -15,7 +15,7 @@ namespace SmartClinic.Model
         /// <summary>
         /// LabTestCode for LabTestResults
         /// </summary>
-        public int LabTestCode { get; set; }
+        public string LabTestCode { get; set; }
 
         /// <summary>
         /// DatePerformed for LabTestResults

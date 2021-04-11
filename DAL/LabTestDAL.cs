@@ -56,5 +56,42 @@ namespace SmartClinic.DAL
                 return labTestList;
             }
         }
+
+       public void AddOrderedTests(List<LabTestResults> orderedTests)
+        {
+            if (orderedTests == null)
+            {
+                throw new ArgumentNullException("orderedTests");
+            }
+            string insertStatement =
+           "INSERT LabTestResults " +
+             "(appointment_id, lab_test_code) " +
+           "VALUES (@AppointmentID, @LabTestCode)";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    foreach (LabTestResults orderedTest in orderedTests)
+                    {
+                        using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection, transaction))
+                        {
+                            insertCommand.Parameters.AddWithValue("@AppointmentID", orderedTest.AppointmentID);
+                            insertCommand.Parameters.AddWithValue("@LabTestCode", orderedTest.LabTestCode);
+
+                            insertCommand.ExecuteNonQuery();
+                        }
+                    }                                      
+                    transaction.Commit();                    
+                }
+                catch (Exception exception)
+                {
+                    transaction.Rollback();
+                    throw exception;
+                }
+            }
+        }
     }
 }

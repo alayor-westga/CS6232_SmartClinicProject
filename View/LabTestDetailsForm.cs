@@ -50,7 +50,7 @@ namespace SmartClinic.View
             foreach (LabTest labTest in labTestListBox.SelectedItems)
             {
                 LabTestResults labTestResult = new LabTestResults();
-                labTestResult.LabTestCode = Int32.Parse(labTest.LabTestCode);
+                labTestResult.LabTestCode = labTest.LabTestCode;
                 labTestResult.AppointmentID = this.visit.AppointmentID;
                 orderedTests.Add(labTestResult);
             }

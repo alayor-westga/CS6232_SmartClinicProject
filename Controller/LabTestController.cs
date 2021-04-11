@@ -29,9 +29,10 @@ namespace SmartClinic.Controller
             return labTestSource.GetAllLabTests();
         }
 
-        internal void AddOrderedTests(List<PatientVisits> patientVisits)
+        public void AddOrderedTests(List<LabTestResults> orderedTests)
         {
-            throw new NotImplementedException();
+            this.labTestSource.AddOrderedTests(orderedTests);
         }
+
     }
 }
