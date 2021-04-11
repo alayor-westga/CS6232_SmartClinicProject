@@ -45,7 +45,25 @@ namespace SmartClinic.View
 
         private void orderTestButton_Click(object sender, EventArgs e)
         {
+            List<LabTestResults> orderedTests = new List<LabTestResults>();
 
+            foreach (LabTest labTest in labTestListBox.SelectedItems)
+            {
+                LabTestResults labTestResult = new LabTestResults();
+                labTestResult.LabTestCode = Int32.Parse(labTest.LabTestCode);
+                labTestResult.AppointmentID = this.visit.AppointmentID;
+                orderedTests.Add(labTestResult);
+            }
+
+            try
+            {
+                this.labTestController.AddOrderedTests(orderedTests);
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)

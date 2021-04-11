@@ -15,7 +15,7 @@ namespace SmartClinic.Model
         /// <summary>
         /// LabTestCode for LabTestResults
         /// </summary>
-        public LabTest LabTest { get; set; }
+        public int LabTestCode { get; set; }
 
         /// <summary>
         /// DatePerformed for LabTestResults
