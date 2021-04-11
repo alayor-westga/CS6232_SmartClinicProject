@@ -194,9 +194,9 @@
     <None Include="docs\mockups.pdf" />
     <None Include="docs\Smart_Clinic_EERD.pdf" />
     <None Include="Properties\DataSources\SmartClinic.Model.AppointmentSearchResult.datasource" />
+    <None Include="Properties\DataSources\SmartClinic.Model.ClinicPerson.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.LabTest.datasource" />
-    <None Include="Properties\DataSources\SmartClinic.Model.LabTestResults.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Patient.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.PatientVisits1.datasource" />
