@@ -31,7 +31,14 @@ namespace SmartClinic.Controller
 
         public void AddOrderedTests(List<LabTestResults> orderedTests)
         {
-            this.labTestSource.AddOrderedTests(orderedTests);
+            try
+            {
+                this.labTestSource.AddOrderedTests(orderedTests);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
         }
 
     }

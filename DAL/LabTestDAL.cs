@@ -86,10 +86,10 @@ namespace SmartClinic.DAL
                     }                                      
                     transaction.Commit();                    
                 }
-                catch (Exception exception)
+                catch 
                 {
                     transaction.Rollback();
-                    throw exception;
+                    throw new Exception("Could not add tests. Check to be sure \neach test has not already been ordered.");
                 }
             }
         }
