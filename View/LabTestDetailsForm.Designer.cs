@@ -42,14 +42,15 @@ namespace SmartClinic.View
             this.labTestsDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labTestComboBox = new System.Windows.Forms.ComboBox();
+            this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.orderTestButton = new System.Windows.Forms.Button();
             this.patientIDLabel = new System.Windows.Forms.Label();
-            this.patientIDTextBox = new System.Windows.Forms.Label();
             this.PatientNameLabel = new System.Windows.Forms.Label();
-            this.patientNameTextBox = new System.Windows.Forms.Label();
             this.appointmentDateLabel = new System.Windows.Forms.Label();
-            this.appointmentDateTextBox = new System.Windows.Forms.Label();
             this.selectTestLabel = new System.Windows.Forms.Label();
+            this.patientNameDisplayLabel = new System.Windows.Forms.Label();
+            this.apptDateTimeDisplayLabel = new System.Windows.Forms.Label();
+            this.patientIDDisplayLabel = new System.Windows.Forms.Label();
             this.appointmentIDLabel2 = new System.Windows.Forms.Label();
             this.labTestResultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.datePerformedDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -64,7 +65,6 @@ namespace SmartClinic.View
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saveChangesButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.labTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             appointmentIDLabel = new System.Windows.Forms.Label();
             datePerformedLabel = new System.Windows.Forms.Label();
             isNormalLabel = new System.Windows.Forms.Label();
@@ -73,9 +73,9 @@ namespace SmartClinic.View
             nameLabel = new System.Windows.Forms.Label();
             this.labTestsDetailsGroupBox.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -152,20 +152,20 @@ namespace SmartClinic.View
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.54369F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.45631F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 298F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.10695F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.89305F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 255F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableLayoutPanel1.Controls.Add(this.labTestComboBox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.orderTestButton, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.patientIDLabel, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.patientIDTextBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.PatientNameLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.patientNameTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.appointmentDateLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.appointmentDateTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.selectTestLabel, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.patientNameDisplayLabel, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.apptDateTimeDisplayLabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.patientIDDisplayLabel, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 38);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -178,17 +178,22 @@ namespace SmartClinic.View
             // 
             this.labTestComboBox.DataSource = this.labTestBindingSource;
             this.labTestComboBox.DisplayMember = "Name";
+            this.labTestComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.labTestComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTestComboBox.FormattingEnabled = true;
-            this.labTestComboBox.Location = new System.Drawing.Point(439, 37);
+            this.labTestComboBox.Location = new System.Drawing.Point(477, 37);
             this.labTestComboBox.Name = "labTestComboBox";
-            this.labTestComboBox.Size = new System.Drawing.Size(271, 28);
+            this.labTestComboBox.Size = new System.Drawing.Size(239, 28);
             this.labTestComboBox.TabIndex = 105;
             this.labTestComboBox.ValueMember = "LabTestCode";
             // 
+            // labTestBindingSource
+            // 
+            this.labTestBindingSource.DataSource = typeof(SmartClinic.Model.LabTest);
+            // 
             // orderTestButton
             // 
-            this.orderTestButton.Location = new System.Drawing.Point(737, 37);
+            this.orderTestButton.Location = new System.Drawing.Point(732, 37);
             this.orderTestButton.Name = "orderTestButton";
             this.orderTestButton.Size = new System.Drawing.Size(140, 30);
             this.orderTestButton.TabIndex = 91;
@@ -200,76 +205,73 @@ namespace SmartClinic.View
             this.patientIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.patientIDLabel.Location = new System.Drawing.Point(327, 0);
+            this.patientIDLabel.Location = new System.Drawing.Point(375, 0);
             this.patientIDLabel.Name = "patientIDLabel";
-            this.patientIDLabel.Size = new System.Drawing.Size(106, 23);
+            this.patientIDLabel.Size = new System.Drawing.Size(96, 23);
             this.patientIDLabel.TabIndex = 38;
             this.patientIDLabel.Text = "Patient ID:";
             this.patientIDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // patientIDTextBox
-            // 
-            this.patientIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientIDTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.patientIDTextBox.Location = new System.Drawing.Point(439, 0);
-            this.patientIDTextBox.Name = "patientIDTextBox";
-            this.patientIDTextBox.Size = new System.Drawing.Size(100, 23);
-            this.patientIDTextBox.TabIndex = 42;
             // 
             // PatientNameLabel
             // 
             this.PatientNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PatientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PatientNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.PatientNameLabel.Location = new System.Drawing.Point(23, 0);
+            this.PatientNameLabel.Location = new System.Drawing.Point(24, 0);
             this.PatientNameLabel.Name = "PatientNameLabel";
             this.PatientNameLabel.Size = new System.Drawing.Size(122, 23);
             this.PatientNameLabel.TabIndex = 54;
             this.PatientNameLabel.Text = "Patient Name:";
             this.PatientNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // patientNameTextBox
-            // 
-            this.patientNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientNameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.patientNameTextBox.Location = new System.Drawing.Point(151, 0);
-            this.patientNameTextBox.Name = "patientNameTextBox";
-            this.patientNameTextBox.Size = new System.Drawing.Size(150, 23);
-            this.patientNameTextBox.TabIndex = 55;
-            // 
             // appointmentDateLabel
             // 
             this.appointmentDateLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.appointmentDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDateLabel.ForeColor = System.Drawing.Color.Black;
-            this.appointmentDateLabel.Location = new System.Drawing.Point(3, 40);
+            this.appointmentDateLabel.Location = new System.Drawing.Point(5, 40);
             this.appointmentDateLabel.Name = "appointmentDateLabel";
-            this.appointmentDateLabel.Size = new System.Drawing.Size(142, 23);
+            this.appointmentDateLabel.Size = new System.Drawing.Size(141, 23);
             this.appointmentDateLabel.TabIndex = 43;
             this.appointmentDateLabel.Text = "Appt. Date/Time:";
             this.appointmentDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // appointmentDateTextBox
-            // 
-            this.appointmentDateTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.appointmentDateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentDateTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.appointmentDateTextBox.Location = new System.Drawing.Point(151, 40);
-            this.appointmentDateTextBox.Name = "appointmentDateTextBox";
-            this.appointmentDateTextBox.Size = new System.Drawing.Size(150, 23);
-            this.appointmentDateTextBox.TabIndex = 47;
             // 
             // selectTestLabel
             // 
             this.selectTestLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.selectTestLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectTestLabel.ForeColor = System.Drawing.Color.Black;
-            this.selectTestLabel.Location = new System.Drawing.Point(307, 40);
+            this.selectTestLabel.Location = new System.Drawing.Point(375, 40);
             this.selectTestLabel.Name = "selectTestLabel";
-            this.selectTestLabel.Size = new System.Drawing.Size(126, 23);
+            this.selectTestLabel.Size = new System.Drawing.Size(96, 23);
             this.selectTestLabel.TabIndex = 51;
             this.selectTestLabel.Text = "Select Test:";
             this.selectTestLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // patientNameDisplayLabel
+            // 
+            this.patientNameDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientNameDisplayLabel.Location = new System.Drawing.Point(152, 0);
+            this.patientNameDisplayLabel.Name = "patientNameDisplayLabel";
+            this.patientNameDisplayLabel.Size = new System.Drawing.Size(217, 20);
+            this.patientNameDisplayLabel.TabIndex = 0;
+            // 
+            // apptDateTimeDisplayLabel
+            // 
+            this.apptDateTimeDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.apptDateTimeDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apptDateTimeDisplayLabel.Location = new System.Drawing.Point(152, 38);
+            this.apptDateTimeDisplayLabel.Name = "apptDateTimeDisplayLabel";
+            this.apptDateTimeDisplayLabel.Size = new System.Drawing.Size(217, 28);
+            this.apptDateTimeDisplayLabel.TabIndex = 0;
+            // 
+            // patientIDDisplayLabel
+            // 
+            this.patientIDDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientIDDisplayLabel.Location = new System.Drawing.Point(477, 0);
+            this.patientIDDisplayLabel.Name = "patientIDDisplayLabel";
+            this.patientIDDisplayLabel.Size = new System.Drawing.Size(239, 23);
+            this.patientIDDisplayLabel.TabIndex = 0;
             // 
             // appointmentIDLabel2
             // 
@@ -299,6 +301,9 @@ namespace SmartClinic.View
             this.isNormalComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.labTestResultsBindingSource, "IsNormal", true));
             this.isNormalComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isNormalComboBox.FormattingEnabled = true;
+            this.isNormalComboBox.Items.AddRange(new object[] {
+            "normal",
+            "abnormal"});
             this.isNormalComboBox.Location = new System.Drawing.Point(191, 498);
             this.isNormalComboBox.Name = "isNormalComboBox";
             this.isNormalComboBox.Size = new System.Drawing.Size(189, 28);
@@ -427,15 +432,11 @@ namespace SmartClinic.View
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // labTestBindingSource
-            // 
-            this.labTestBindingSource.DataSource = typeof(SmartClinic.Model.LabTest);
-            // 
             // LabTestDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 635);
+            this.ClientSize = new System.Drawing.Size(967, 604);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveChangesButton);
             this.Controls.Add(this.labTestResultsDataGridView);
@@ -452,14 +453,16 @@ namespace SmartClinic.View
             this.Controls.Add(resultLabel);
             this.Controls.Add(this.resultTextBox);
             this.Controls.Add(this.labTestsDetailsGroupBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "LabTestDetailsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LabTestDetailsForm";
             this.Load += new System.EventHandler(this.ThisFormLoad_Load);
             this.labTestsDetailsGroupBox.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labTestBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,12 +473,9 @@ namespace SmartClinic.View
         private System.Windows.Forms.GroupBox labTestsDetailsGroupBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label patientIDLabel;
-        private System.Windows.Forms.Label patientIDTextBox;
         private System.Windows.Forms.Label selectTestLabel;
         private System.Windows.Forms.Label PatientNameLabel;
-        private System.Windows.Forms.Label patientNameTextBox;
         private System.Windows.Forms.Label appointmentDateLabel;
-        private System.Windows.Forms.Label appointmentDateTextBox;
         private System.Windows.Forms.Button orderTestButton;
         private System.Windows.Forms.BindingSource labTestResultsBindingSource;
         private System.Windows.Forms.Label appointmentIDLabel2;
@@ -492,6 +492,9 @@ namespace SmartClinic.View
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.ComboBox labTestComboBox;
+        private System.Windows.Forms.Label patientNameDisplayLabel;
+        private System.Windows.Forms.Label apptDateTimeDisplayLabel;
+        private System.Windows.Forms.Label patientIDDisplayLabel;
         private System.Windows.Forms.BindingSource labTestBindingSource;
     }
 }

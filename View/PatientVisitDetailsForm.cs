@@ -304,16 +304,10 @@ namespace SmartClinic.View
 
         private void LabTestsButton_Click(object sender, EventArgs e)
         {
-            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm())
+            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit))
             {
                 labTestDetailsForm.ShowDialog();
             }
-            /*
-            using (LabTestsForm labTestsForm = new LabTestsForm())
-            {
-                labTestsForm.ShowDialog();
-            }
-            */
         }
     }
 }
