@@ -45,6 +45,14 @@ namespace SmartClinic.View
 
         private void orderTestButton_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you wish\nto order these tests?",
+                        "Confirm Test Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
             List<LabTestResults> orderedTests = new List<LabTestResults>();
 
             foreach (LabTest labTest in labTestListBox.SelectedItems)
@@ -63,12 +71,17 @@ namespace SmartClinic.View
             {
                 MessageBox.Show(argumentException.Message,
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message,
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            MessageBox.Show("Tests have been successfully ordered.",
+                        "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
