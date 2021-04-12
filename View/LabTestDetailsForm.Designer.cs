@@ -289,6 +289,7 @@ namespace SmartClinic.View
             // 
             // datePerformedDateTimePicker
             // 
+            this.datePerformedDateTimePicker.AllowDrop = true;
             this.datePerformedDateTimePicker.CustomFormat = "";
             this.datePerformedDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datePerformedDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;

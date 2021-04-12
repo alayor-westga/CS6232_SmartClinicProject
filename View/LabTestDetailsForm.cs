@@ -28,7 +28,7 @@ namespace SmartClinic.View
         {
             this.labTestListBox.DataSource = this.labTestController.GetAllLabTests();
             this.datePerformedDateTimePicker.Checked = false;
-            this.datePerformedDateTimePicker.Text = String.Empty;
+            this.datePerformedDateTimePicker.Text = "";
             this.labTestListBox.ClearSelected();
             this.PopulateForm();
             this.PopulateDataGridView();
@@ -87,6 +87,7 @@ namespace SmartClinic.View
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
+            
             if (((DateTimePicker)sender).ShowCheckBox == true)
             {
                 if (((DateTimePicker)sender).Checked == false)
@@ -103,6 +104,7 @@ namespace SmartClinic.View
             {
                 ((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
             }
+            
         }
 
         private void PopulateDataGridView()
@@ -126,6 +128,7 @@ namespace SmartClinic.View
             Console.WriteLine(labTestResultsDataGridView.CurrentRow.Cells[1].Value);
             try
             {
+                this.datePerformedDateTimePicker.Checked = true;
                 this.datePerformedDateTimePicker.Value = (DateTime)labTestResultsDataGridView.CurrentRow.Cells[1].Value;
             }
             catch (ArgumentOutOfRangeException)
