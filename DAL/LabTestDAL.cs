@@ -37,14 +37,14 @@ namespace SmartClinic.DAL
                     {
                         foreach (DictionaryEntry param in parameters)
                         {
-                            selectCommand.Parameters.AddWithValue((String) param.Key, param.Value);
+                            selectCommand.Parameters.AddWithValue((String)param.Key, param.Value);
                         }
                     }
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                             LabTest labTest = new LabTest()
+                            LabTest labTest = new LabTest()
                             {
                                 LabTestCode = reader["lab_test_code"].ToString(),
                                 Name = reader["name"].ToString(),
@@ -57,8 +57,8 @@ namespace SmartClinic.DAL
             }
         }
 
-       public void AddOrderedTests(List<LabTestResults> orderedTests)
-       {
+        public void AddOrderedTests(List<LabTestResults> orderedTests)
+        {
             if (orderedTests == null)
             {
                 throw new ArgumentNullException("orderedTests");
@@ -83,16 +83,16 @@ namespace SmartClinic.DAL
 
                             insertCommand.ExecuteNonQuery();
                         }
-                    }                                      
-                    transaction.Commit();                    
+                    }
+                    transaction.Commit();
                 }
-                catch 
+                catch
                 {
                     transaction.Rollback();
                     throw new Exception("Could not add tests. Check to be sure \neach test has not already been ordered.");
                 }
             }
-       }
+        }
 
         public List<LabTestResults> GetTestsForAppointment(int appointmentID)
         {
@@ -103,7 +103,8 @@ namespace SmartClinic.DAL
 
             string selectStatement =
             "SELECT appointment_id, lab_test_code, date_performed, result, is_normal " +
-            " WHERE appointment_id=@AppoinmtentID;";
+            "FROM LabTestResults " +
+            " WHERE appointment_id=@AppointmentID;";
 
             List<LabTestResults> labTestSearchResults = new List<LabTestResults>();
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
@@ -116,20 +117,31 @@ namespace SmartClinic.DAL
                     {
                         while (reader.Read())
                         {
-                            LabTestResults labTestResult = new LabTestResults()
+                            LabTestResults labTestResult = new LabTestResults();
                             {
-                                AppointmentID = Int32.Parse(reader["appointment_id"].ToString()),
-                                LabTestCode = reader["lab_test_code"].ToString(),
-                                DatePerformed = DateTime.Parse(reader["date_performed"].ToString()),
-                                Result = reader["result"].ToString(),
-                                IsNormal = (bool) reader["street2"],                             
-                            };
-                            labTestSearchResults.Add(labTestResult);
-                        }
+                                
+                                labTestResult.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
+                                labTestResult.LabTestCode = reader["lab_test_code"].ToString();
+                               
+                                if (reader[2] != DBNull.Value)
+                                {
+                                    labTestResult.DatePerformed = DateTime.Parse(reader["date_performed"].ToString());
+                                }
+
+                                labTestResult.Result = reader["result"].ToString();
+                                
+                                if (reader[4] != DBNull.Value)
+                                {
+                                    labTestResult.IsNormal = (bool)reader["is_normal"];
+                                }
+                                                            
+                            }
+                        labTestSearchResults.Add(labTestResult);
                     }
                 }
             }
+        }
             return labTestSearchResults;
         }
-    }
+}
 }

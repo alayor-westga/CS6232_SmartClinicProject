@@ -31,6 +31,7 @@ namespace SmartClinic.View
             this.datePerformedDateTimePicker.Text = String.Empty;
             this.labTestListBox.ClearSelected();
             this.PopulateForm();
+            this.populateDataGridView();
         }
 
         private void PopulateForm()
@@ -81,15 +82,7 @@ namespace SmartClinic.View
             MessageBox.Show("Tests have been successfully ordered.",
                         "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            try
-            {
-                this.labTestResultsDataGridView.DataSource = this.labTestController.GetTestsForAppointment(this.visit.AppointmentID);
-            }
-            catch (ArgumentException argumentException)
-            {
-                MessageBox.Show(argumentException.Message,
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.populateDataGridView();
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -109,6 +102,19 @@ namespace SmartClinic.View
             else
             {
                 ((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+            }
+        }
+
+        private void populateDataGridView()
+        {
+            try
+            {
+                this.labTestResultsDataGridView.DataSource = this.labTestController.GetTestsForAppointment(this.visit.AppointmentID);
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
