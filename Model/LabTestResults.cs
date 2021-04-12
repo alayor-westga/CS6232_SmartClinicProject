@@ -18,6 +18,10 @@ namespace SmartClinic.Model
         public string LabTestCode { get; set; }
 
         /// <summary>
+        /// LabTestName for LabTestResults
+        /// </summary>
+        public string LabTestName { get; set; }
+        /// <summary>
         /// DatePerformed for LabTestResults
         /// </summary>
         public DateTime DatePerformed { get; set; }

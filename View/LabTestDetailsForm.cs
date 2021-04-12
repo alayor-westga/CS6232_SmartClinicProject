@@ -139,6 +139,7 @@ namespace SmartClinic.View
             var senderGrid = (DataGridView)sender;
             senderGrid.EndEdit();
             var checkboxCell = (DataGridViewCheckBoxCell)senderGrid.CurrentRow.Cells[3];
+            
             if ((bool)checkboxCell.Value)
             {
                 this.isNormalComboBox.Text = "normal";
