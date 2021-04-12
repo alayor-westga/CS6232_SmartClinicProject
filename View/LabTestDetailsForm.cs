@@ -120,25 +120,35 @@ namespace SmartClinic.View
 
         private void RowSelectionChanged_Click(object sender, EventArgs e)
         {
+
             this.labTestCodeLabel2.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
             this.nameLabel1.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
-            if (this.datePerformedDateTimePicker.Text.Count() == 0)
+            Console.WriteLine(labTestResultsDataGridView.CurrentRow.Cells[1].Value);
+            try
             {
-                this.datePerformedDateTimePicker.Text = this.labTestResultsDataGridView.CurrentRow.Cells[1].Value.ToString();
+                this.datePerformedDateTimePicker.Value = (DateTime)labTestResultsDataGridView.CurrentRow.Cells[1].Value;
             }
-            if (labTestResultsDataGridView.CurrentRow.Cells[2].ToString() == "true")
+            catch (ArgumentOutOfRangeException)
+            {
+                this.datePerformedDateTimePicker.Text = "";
+            }
+
+            var senderGrid = (DataGridView)sender;
+            senderGrid.EndEdit();
+            var checkboxCell = (DataGridViewCheckBoxCell)senderGrid.CurrentRow.Cells[3];
+            if ((bool)checkboxCell.Value)
             {
                 this.isNormalComboBox.Text = "normal";
             }
-            else if (labTestResultsDataGridView.CurrentRow.Cells[2].ToString() == "false")
+            else if (!(bool)checkboxCell.Value && this.labTestResultsDataGridView.CurrentRow.Cells[2].Value.ToString() != "")
             {
                 this.isNormalComboBox.Text = "abnormal";
             }
             else
             {
-                this.isNormalComboBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[2].Value.ToString();
+                this.isNormalComboBox.Text = "";
             }
-            this.resultTextBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[3].Value.ToString();
+            this.resultTextBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[2].Value.ToString();
         }
     }
 }
