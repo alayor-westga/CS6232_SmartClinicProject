@@ -58,11 +58,11 @@ namespace SmartClinic.View
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labTestResultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labTestResultsDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewLabel = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridGroupBox = new System.Windows.Forms.GroupBox();
             appointmentIDLabel = new System.Windows.Forms.Label();
             datePerformedLabel = new System.Windows.Forms.Label();
             isNormalLabel = new System.Windows.Forms.Label();
@@ -75,6 +75,7 @@ namespace SmartClinic.View
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsDataGridView)).BeginInit();
+            this.dataGridGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -235,7 +236,7 @@ namespace SmartClinic.View
             // orderTestButton
             // 
             this.orderTestButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderTestButton.Location = new System.Drawing.Point(6, 158);
+            this.orderTestButton.Location = new System.Drawing.Point(6, 153);
             this.orderTestButton.Name = "orderTestButton";
             this.orderTestButton.Size = new System.Drawing.Size(337, 30);
             this.orderTestButton.TabIndex = 91;
@@ -343,11 +344,11 @@ namespace SmartClinic.View
             this.labTestListBox.DataSource = this.labTestBindingSource;
             this.labTestListBox.DisplayMember = "Name";
             this.labTestListBox.FormattingEnabled = true;
-            this.labTestListBox.ItemHeight = 20;
+            this.labTestListBox.ItemHeight = 16;
             this.labTestListBox.Location = new System.Drawing.Point(6, 28);
             this.labTestListBox.Name = "labTestListBox";
             this.labTestListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.labTestListBox.Size = new System.Drawing.Size(337, 124);
+            this.labTestListBox.Size = new System.Drawing.Size(337, 116);
             this.labTestListBox.Sorted = true;
             this.labTestListBox.TabIndex = 107;
             this.labTestListBox.ValueMember = "LabTestCode";
@@ -356,7 +357,7 @@ namespace SmartClinic.View
             // 
             this.groupBox1.Controls.Add(this.labTestListBox);
             this.groupBox1.Controls.Add(this.orderTestButton);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(349, 193);
@@ -381,23 +382,15 @@ namespace SmartClinic.View
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewCheckBoxColumn1});
             this.labTestResultsDataGridView.DataSource = this.labTestResultsBindingSource;
-            this.labTestResultsDataGridView.Location = new System.Drawing.Point(12, 240);
+            this.labTestResultsDataGridView.Location = new System.Drawing.Point(6, 26);
+            this.labTestResultsDataGridView.MultiSelect = false;
             this.labTestResultsDataGridView.Name = "labTestResultsDataGridView";
             this.labTestResultsDataGridView.ReadOnly = true;
             this.labTestResultsDataGridView.RowHeadersWidth = 51;
             this.labTestResultsDataGridView.RowTemplate.Height = 24;
-            this.labTestResultsDataGridView.Size = new System.Drawing.Size(670, 274);
+            this.labTestResultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.labTestResultsDataGridView.Size = new System.Drawing.Size(658, 274);
             this.labTestResultsDataGridView.TabIndex = 108;
-            // 
-            // dataGridViewLabel
-            // 
-            this.dataGridViewLabel.AutoSize = true;
-            this.dataGridViewLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewLabel.Location = new System.Drawing.Point(14, 217);
-            this.dataGridViewLabel.Name = "dataGridViewLabel";
-            this.dataGridViewLabel.Size = new System.Drawing.Size(289, 20);
-            this.dataGridViewLabel.TabIndex = 109;
-            this.dataGridViewLabel.Text = "The Tests Below Have Been Ordered";
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -434,13 +427,22 @@ namespace SmartClinic.View
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
+            // dataGridGroupBox
+            // 
+            this.dataGridGroupBox.Controls.Add(this.labTestResultsDataGridView);
+            this.dataGridGroupBox.Location = new System.Drawing.Point(12, 208);
+            this.dataGridGroupBox.Name = "dataGridGroupBox";
+            this.dataGridGroupBox.Size = new System.Drawing.Size(670, 306);
+            this.dataGridGroupBox.TabIndex = 110;
+            this.dataGridGroupBox.TabStop = false;
+            this.dataGridGroupBox.Text = "The Tests Below Have Been Ordered";
+            // 
             // LabTestDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 569);
-            this.Controls.Add(this.dataGridViewLabel);
-            this.Controls.Add(this.labTestResultsDataGridView);
+            this.ClientSize = new System.Drawing.Size(1045, 567);
+            this.Controls.Add(this.dataGridGroupBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labTestDetailsGroupBox);
             this.Controls.Add(this.closeButton);
@@ -458,8 +460,8 @@ namespace SmartClinic.View
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsDataGridView)).EndInit();
+            this.dataGridGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -487,10 +489,10 @@ namespace SmartClinic.View
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.BindingSource labTestResultsBindingSource;
         private System.Windows.Forms.DataGridView labTestResultsDataGridView;
-        private System.Windows.Forms.Label dataGridViewLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.GroupBox dataGridGroupBox;
     }
 }
