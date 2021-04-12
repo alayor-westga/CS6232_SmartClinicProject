@@ -102,8 +102,10 @@ namespace SmartClinic.DAL
             }
 
             string selectStatement =
-            "SELECT appointment_id, lab_test_code, date_performed, result, is_normal " +
+
+            "SELECT appointment_id, LabTests.lab_test_code, LabTests.name, date_performed, result, is_normal " +
             "FROM LabTestResults " +
+            "JOIN LabTests on LabTests.lab_test_code = LabTestResults.lab_test_code" +
             " WHERE appointment_id=@AppointmentID;";
 
             List<LabTestResults> labTestSearchResults = new List<LabTestResults>();
@@ -122,15 +124,16 @@ namespace SmartClinic.DAL
                                 
                                 labTestResult.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
                                 labTestResult.LabTestCode = reader["lab_test_code"].ToString();
-                               
-                                if (reader[2] != DBNull.Value)
+                                labTestResult.LabTestName = reader["name"].ToString();
+
+                                if (reader[3] != DBNull.Value)
                                 {
                                     labTestResult.DatePerformed = DateTime.Parse(reader["date_performed"].ToString());
                                 }
 
                                 labTestResult.Result = reader["result"].ToString();
                                 
-                                if (reader[4] != DBNull.Value)
+                                if (reader[5] != DBNull.Value)
                                 {
                                     labTestResult.IsNormal = (bool)reader["is_normal"];
                                 }

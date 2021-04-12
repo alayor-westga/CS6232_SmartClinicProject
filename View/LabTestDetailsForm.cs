@@ -124,12 +124,12 @@ namespace SmartClinic.View
         {
 
             this.labTestCodeLabel2.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
-            this.nameLabel1.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
-            Console.WriteLine(labTestResultsDataGridView.CurrentRow.Cells[1].Value);
+            this.nameLabel1.Text = this.labTestResultsDataGridView.CurrentRow.Cells[1].Value.ToString();
+            Console.WriteLine(labTestResultsDataGridView.CurrentRow.Cells[2].Value);
             try
             {
                 this.datePerformedDateTimePicker.Checked = true;
-                this.datePerformedDateTimePicker.Value = (DateTime)labTestResultsDataGridView.CurrentRow.Cells[1].Value;
+                this.datePerformedDateTimePicker.Value = (DateTime)labTestResultsDataGridView.CurrentRow.Cells[2].Value;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -138,13 +138,13 @@ namespace SmartClinic.View
 
             var senderGrid = (DataGridView)sender;
             senderGrid.EndEdit();
-            var checkboxCell = (DataGridViewCheckBoxCell)senderGrid.CurrentRow.Cells[3];
+            var checkboxCell = (DataGridViewCheckBoxCell)senderGrid.CurrentRow.Cells[4];
             
             if ((bool)checkboxCell.Value)
             {
                 this.isNormalComboBox.Text = "normal";
             }
-            else if (!(bool)checkboxCell.Value && this.labTestResultsDataGridView.CurrentRow.Cells[2].Value.ToString() != "")
+            else if (!(bool)checkboxCell.Value && this.labTestResultsDataGridView.CurrentRow.Cells[3].Value.ToString() != "")
             {
                 this.isNormalComboBox.Text = "abnormal";
             }
@@ -152,7 +152,7 @@ namespace SmartClinic.View
             {
                 this.isNormalComboBox.Text = "";
             }
-            this.resultTextBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[2].Value.ToString();
+            this.resultTextBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }
