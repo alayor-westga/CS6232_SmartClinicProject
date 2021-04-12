@@ -31,7 +31,7 @@ namespace SmartClinic.View
             this.datePerformedDateTimePicker.Text = String.Empty;
             this.labTestListBox.ClearSelected();
             this.PopulateForm();
-            this.populateDataGridView();
+            this.PopulateDataGridView();
         }
 
         private void PopulateForm()
@@ -82,7 +82,7 @@ namespace SmartClinic.View
             MessageBox.Show("Tests have been successfully ordered.",
                         "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            this.populateDataGridView();
+            this.PopulateDataGridView();
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace SmartClinic.View
             }
         }
 
-        private void populateDataGridView()
+        private void PopulateDataGridView()
         {
             try
             {
@@ -118,6 +118,27 @@ namespace SmartClinic.View
             }
         }
 
-
+        private void RowSelectionChanged_Click(object sender, EventArgs e)
+        {
+            this.labTestCodeLabel2.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
+            this.nameLabel1.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
+            if (this.datePerformedDateTimePicker.Text.Count() == 0)
+            {
+                this.datePerformedDateTimePicker.Text = this.labTestResultsDataGridView.CurrentRow.Cells[1].Value.ToString();
+            }
+            if (labTestResultsDataGridView.CurrentRow.Cells[2].ToString() == "true")
+            {
+                this.isNormalComboBox.Text = "normal";
+            }
+            else if (labTestResultsDataGridView.CurrentRow.Cells[2].ToString() == "false")
+            {
+                this.isNormalComboBox.Text = "abnormal";
+            }
+            else
+            {
+                this.isNormalComboBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[2].Value.ToString();
+            }
+            this.resultTextBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[3].Value.ToString();
+        }
     }
 }

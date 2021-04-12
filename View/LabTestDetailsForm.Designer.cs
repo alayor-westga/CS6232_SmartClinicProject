@@ -307,7 +307,7 @@ namespace SmartClinic.View
             this.saveChangesButton.Name = "saveChangesButton";
             this.saveChangesButton.Size = new System.Drawing.Size(313, 31);
             this.saveChangesButton.TabIndex = 101;
-            this.saveChangesButton.Text = "Save Changes";
+            this.saveChangesButton.Text = "Save Updates to Lab Test";
             this.saveChangesButton.UseVisualStyleBackColor = true;
             // 
             // labTestCodeLabel2
@@ -391,6 +391,7 @@ namespace SmartClinic.View
             this.labTestResultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.labTestResultsDataGridView.Size = new System.Drawing.Size(658, 274);
             this.labTestResultsDataGridView.TabIndex = 108;
+            this.labTestResultsDataGridView.SelectionChanged += new System.EventHandler(this.RowSelectionChanged_Click);
             // 
             // dataGridViewTextBoxColumn2
             // 
