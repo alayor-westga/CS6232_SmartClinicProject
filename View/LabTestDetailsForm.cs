@@ -15,6 +15,7 @@ namespace SmartClinic.View
     {
         private readonly LabTestController labTestController;
         private readonly PatientVisits visit;
+        private LabTestResults results;
 
         public LabTestDetailsForm(PatientVisits visit)
         {
@@ -86,8 +87,7 @@ namespace SmartClinic.View
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            
+        {           
             if (((DateTimePicker)sender).ShowCheckBox == true)
             {
                 if (((DateTimePicker)sender).Checked == false)
@@ -103,8 +103,7 @@ namespace SmartClinic.View
             else
             {
                 ((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
-            }
-            
+            }          
         }
 
         private void PopulateDataGridView()
@@ -153,6 +152,113 @@ namespace SmartClinic.View
                 this.isNormalComboBox.Text = "";
             }
             this.resultTextBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void SaveChangesButton_Click(object sender, EventArgs e)
+        {
+            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && !string.IsNullOrWhiteSpace(this.isNormalComboBox.Text) ||
+                !string.IsNullOrWhiteSpace(this.resultTextBox.Text) && string.IsNullOrWhiteSpace(this.isNormalComboBox.Text)))
+            {
+                MessageBox.Show("'Result' and 'Normal / Abnormal' fields\nmust be entered at the same time",
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            this.results = new LabTestResults();
+
+            if (this.GetFieldsWithValues() == "Date has value")
+            {
+                this.results.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
+
+                try
+                {
+                    this.labTestController.UpdateDatePerformed(this.visit.AppointmentID, this.results);
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show(argumentException.Message,
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (this.GetFieldsWithValues() == "Result has value")
+            {
+                if (this.isNormalComboBox.Text == "normal")
+                {
+                    this.results.IsNormal = true;
+                }
+                else
+                {
+                    this.results.IsNormal = false;
+                }
+
+                this.results.Result = this.resultTextBox.Text;
+
+                try
+                {
+                    this.labTestController.UpdateResults(this.visit.AppointmentID, this.results);
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show(argumentException.Message,
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (this.GetFieldsWithValues() == "Result and Date have values")
+            {
+                this.results.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
+
+                if (this.isNormalComboBox.Text == "normal")
+                {
+                    this.results.IsNormal = true;
+                }
+                else
+                {
+                    this.results.IsNormal = false;
+                }
+
+                this.results.Result = this.resultTextBox.Text;
+
+                try
+                {
+                    this.labTestController.UpdateResultsAndDatePerformed(this.visit.AppointmentID, this.results);
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show(argumentException.Message,
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (this.GetFieldsWithValues() == "No fields have values")
+            {
+                MessageBox.Show("There is nothing to save.",
+                         "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MessageBox.Show("Changes to this lab test have\nhave been successfully saved",
+                                     "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        private string GetFieldsWithValues()
+        {
+            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && !this.datePerformedDateTimePicker.Checked))
+            {
+                return "Result has value";
+            }
+            if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked))
+            {
+                return "Date has value";
+            }
+            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked))
+            {
+                return "Result and Date have values";
+            }
+            return "No fields have values";
         }
     }
 }

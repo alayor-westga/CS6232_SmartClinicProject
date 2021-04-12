@@ -58,12 +58,12 @@ namespace SmartClinic.View
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labTestResultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labTestResultsDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridGroupBox = new System.Windows.Forms.GroupBox();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LabTestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridGroupBox = new System.Windows.Forms.GroupBox();
             appointmentIDLabel = new System.Windows.Forms.Label();
             datePerformedLabel = new System.Windows.Forms.Label();
             isNormalLabel = new System.Windows.Forms.Label();
@@ -311,6 +311,7 @@ namespace SmartClinic.View
             this.saveChangesButton.TabIndex = 101;
             this.saveChangesButton.Text = "Save Updates to Lab Test";
             this.saveChangesButton.UseVisualStyleBackColor = true;
+            this.saveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
             // 
             // labTestCodeLabel2
             // 
@@ -396,16 +397,6 @@ namespace SmartClinic.View
             this.labTestResultsDataGridView.TabIndex = 108;
             this.labTestResultsDataGridView.SelectionChanged += new System.EventHandler(this.RowSelectionChanged_Click);
             // 
-            // dataGridGroupBox
-            // 
-            this.dataGridGroupBox.Controls.Add(this.labTestResultsDataGridView);
-            this.dataGridGroupBox.Location = new System.Drawing.Point(12, 208);
-            this.dataGridGroupBox.Name = "dataGridGroupBox";
-            this.dataGridGroupBox.Size = new System.Drawing.Size(771, 306);
-            this.dataGridGroupBox.TabIndex = 110;
-            this.dataGridGroupBox.TabStop = false;
-            this.dataGridGroupBox.Text = "The Tests Below Have Been Ordered";
-            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "LabTestCode";
@@ -449,6 +440,16 @@ namespace SmartClinic.View
             this.dataGridViewCheckBoxColumn1.MinimumWidth = 6;
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridGroupBox
+            // 
+            this.dataGridGroupBox.Controls.Add(this.labTestResultsDataGridView);
+            this.dataGridGroupBox.Location = new System.Drawing.Point(12, 208);
+            this.dataGridGroupBox.Name = "dataGridGroupBox";
+            this.dataGridGroupBox.Size = new System.Drawing.Size(771, 306);
+            this.dataGridGroupBox.TabIndex = 110;
+            this.dataGridGroupBox.TabStop = false;
+            this.dataGridGroupBox.Text = "The Tests Below Have Been Ordered";
             // 
             // LabTestDetailsForm
             // 
