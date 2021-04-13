@@ -51,7 +51,7 @@ namespace SmartClinic.Controller
             return this.labTestSource.GetSingleLabTestResult(labTestCode, appointmentID);
         }
 
-        public void UpdateLabTestResults(LabTestResults newResults, int v)
+        public void UpdateLabTestResults(LabTestResults newResults, LabTestResults oldResults, string updateVariation)
         {
             
         }

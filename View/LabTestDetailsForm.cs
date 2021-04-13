@@ -15,13 +15,13 @@ namespace SmartClinic.View
     {
         private readonly LabTestController labTestController;
         private readonly PatientVisits visit;
+        private LabTestResults oldResults;
 
         public LabTestDetailsForm(PatientVisits visit)
         {
             InitializeComponent();
             this.labTestController = new LabTestController();
             this.visit = visit;
-
         }
 
         private void ThisFormLoad_Load(object sender, EventArgs e)
@@ -151,7 +151,7 @@ namespace SmartClinic.View
 
         private void RowSelectionChanged_Click(object sender, EventArgs e)
         {
-            LabTestResults oldResults = new LabTestResults();
+            this.oldResults = new LabTestResults();
             try
             {
                 oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), 
@@ -215,7 +215,7 @@ namespace SmartClinic.View
 
                 try
                 {
-                    this.labTestController.UpdateLabTestResults(newResults, 1);
+                    this.labTestController.UpdateLabTestResults(newResults, this.oldResults, "update date");
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -240,7 +240,7 @@ namespace SmartClinic.View
 
                 try
                 {
-                    this.labTestController.UpdateLabTestResults(newResults, 2);
+                    this.labTestController.UpdateLabTestResults(newResults, this.oldResults, "update result");
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -267,7 +267,7 @@ namespace SmartClinic.View
 
                 try
                 {
-                    this.labTestController.UpdateLabTestResults(newResults, 3);
+                    this.labTestController.UpdateLabTestResults(newResults, this.oldResults, "update result and date");
                 }
                 catch (ArgumentException argumentException)
                 {
