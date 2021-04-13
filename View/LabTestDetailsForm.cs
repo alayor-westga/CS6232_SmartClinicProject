@@ -146,18 +146,22 @@ namespace SmartClinic.View
                 this.datePerformedDateTimePicker.Text = "";
             }
 
-            if (oldResults.IsNormal)
+            try
             {
-                this.isNormalComboBox.Text = "normal";
-            }
-            else if (!oldResults.IsNormal)
-            {
-                this.isNormalComboBox.Text = "abnormal";
-            }
-            else
+                if ((bool)oldResults.IsNormal)
+                {
+                    this.isNormalComboBox.Text = "normal";
+                }
+                else if ((bool)!oldResults.IsNormal)
+                {
+                    this.isNormalComboBox.Text = "abnormal";
+                }
+            } 
+            catch
             {
                 this.isNormalComboBox.Text = "";
             }
+            
             this.resultTextBox.Text = oldResults.Result;
         }
 

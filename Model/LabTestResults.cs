@@ -34,7 +34,7 @@ namespace SmartClinic.Model
         /// <summary>
         /// IsNormal for LabTestResults
         /// </summary>
-        public bool IsNormal { get; set; }
+        public bool? IsNormal { get; set; }
 
     }
 }

@@ -190,7 +190,7 @@ namespace SmartClinic.DAL
 
                                     if (reader[5] != DBNull.Value)
                                     {
-                                        labTestResult.IsNormal = (bool)reader["is_normal"];
+                                        labTestResult.IsNormal = (bool)reader["is_normal"];                                  
                                     }
                                 }                              
                             }
