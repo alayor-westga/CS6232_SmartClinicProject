@@ -15,7 +15,6 @@ namespace SmartClinic.View
     {
         private readonly LabTestController labTestController;
         private readonly PatientVisits visit;
-        private LabTestResults results;
 
         public LabTestDetailsForm(PatientVisits visit)
         {
@@ -27,7 +26,16 @@ namespace SmartClinic.View
 
         private void ThisFormLoad_Load(object sender, EventArgs e)
         {
-            this.labTestListBox.DataSource = this.labTestController.GetAllLabTests();
+            try
+            {
+                this.labTestListBox.DataSource = this.labTestController.GetAllLabTests();
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.datePerformedDateTimePicker.Checked = false;
             this.datePerformedDateTimePicker.Text = "";
             this.labTestListBox.ClearSelected();
@@ -121,10 +129,13 @@ namespace SmartClinic.View
 
         private void RowSelectionChanged_Click(object sender, EventArgs e)
         {
-
+            LabTestResults oldResults = new LabTestResults();
+            oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(),
+                this.visit.AppointmentID);
+            
             this.labTestCodeLabel2.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
             this.nameLabel1.Text = this.labTestResultsDataGridView.CurrentRow.Cells[1].Value.ToString();
-            Console.WriteLine(labTestResultsDataGridView.CurrentRow.Cells[2].Value);
+
             try
             {
                 this.datePerformedDateTimePicker.Checked = true;
@@ -163,15 +174,17 @@ namespace SmartClinic.View
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            this.results = new LabTestResults();
+            LabTestResults newResults = new LabTestResults();
+            newResults.AppointmentID = this.visit.AppointmentID;
+            newResults.LabTestCode = this.labTestCodeLabel2.Text;
 
             if (this.GetFieldsWithValues() == "Date has value")
             {
-                this.results.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
+                newResults.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
 
                 try
                 {
-                    this.labTestController.UpdateDatePerformed(this.visit.AppointmentID, this.results);
+                    this.labTestController.UpdateLabTestResults(newResults, 1);
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -185,18 +198,18 @@ namespace SmartClinic.View
             {
                 if (this.isNormalComboBox.Text == "normal")
                 {
-                    this.results.IsNormal = true;
+                    newResults.IsNormal = true;
                 }
                 else
                 {
-                    this.results.IsNormal = false;
+                    newResults.IsNormal = false;
                 }
 
-                this.results.Result = this.resultTextBox.Text;
+                newResults.Result = this.resultTextBox.Text;
 
                 try
                 {
-                    this.labTestController.UpdateResults(this.visit.AppointmentID, this.results);
+                    this.labTestController.UpdateLabTestResults(newResults, 2);
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -208,22 +221,22 @@ namespace SmartClinic.View
 
             if (this.GetFieldsWithValues() == "Result and Date have values")
             {
-                this.results.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
+                newResults.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
 
                 if (this.isNormalComboBox.Text == "normal")
                 {
-                    this.results.IsNormal = true;
+                    newResults.IsNormal = true;
                 }
                 else
                 {
-                    this.results.IsNormal = false;
+                    newResults.IsNormal = false;
                 }
 
-                this.results.Result = this.resultTextBox.Text;
+                newResults.Result = this.resultTextBox.Text;
 
                 try
                 {
-                    this.labTestController.UpdateResultsAndDatePerformed(this.visit.AppointmentID, this.results);
+                    this.labTestController.UpdateLabTestResults(newResults, 3);
                 }
                 catch (ArgumentException argumentException)
                 {

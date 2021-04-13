@@ -45,5 +45,15 @@ namespace SmartClinic.Controller
         {
             return this.labTestSource.GetTestsForAppointment(appointmentID);
         }
+
+        internal LabTestResults GetSingleLabTestResult(string v, int appointmentID)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void UpdateLabTestResults(LabTestResults newResults, int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
