@@ -95,7 +95,7 @@ namespace SmartClinic.View
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {           
+        {
             if (((DateTimePicker)sender).ShowCheckBox == true)
             {
                 if (((DateTimePicker)sender).Checked == false)
@@ -111,7 +111,7 @@ namespace SmartClinic.View
             else
             {
                 ((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
-            }          
+            }
         }
 
         private void PopulateDataGridView()
@@ -132,29 +132,25 @@ namespace SmartClinic.View
             LabTestResults oldResults = new LabTestResults();
             oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(),
                 this.visit.AppointmentID);
-            
-            this.labTestCodeLabel2.Text = this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString();
-            this.nameLabel1.Text = this.labTestResultsDataGridView.CurrentRow.Cells[1].Value.ToString();
+
+            this.labTestCodeLabel2.Text = oldResults.LabTestCode;
+            this.nameLabel1.Text = oldResults.LabTestName;
 
             try
             {
                 this.datePerformedDateTimePicker.Checked = true;
-                this.datePerformedDateTimePicker.Value = (DateTime)labTestResultsDataGridView.CurrentRow.Cells[2].Value;
+                this.datePerformedDateTimePicker.Value = oldResults.DatePerformed;
             }
             catch (ArgumentOutOfRangeException)
             {
                 this.datePerformedDateTimePicker.Text = "";
             }
 
-            var senderGrid = (DataGridView)sender;
-            senderGrid.EndEdit();
-            var checkboxCell = (DataGridViewCheckBoxCell)senderGrid.CurrentRow.Cells[4];
-            
-            if ((bool)checkboxCell.Value)
+            if (oldResults.IsNormal)
             {
                 this.isNormalComboBox.Text = "normal";
             }
-            else if (!(bool)checkboxCell.Value && this.labTestResultsDataGridView.CurrentRow.Cells[3].Value.ToString() != "")
+            else if (!oldResults.IsNormal)
             {
                 this.isNormalComboBox.Text = "abnormal";
             }
@@ -162,7 +158,7 @@ namespace SmartClinic.View
             {
                 this.isNormalComboBox.Text = "";
             }
-            this.resultTextBox.Text = this.labTestResultsDataGridView.CurrentRow.Cells[3].Value.ToString();
+            this.resultTextBox.Text = oldResults.Result;
         }
 
         private void SaveChangesButton_Click(object sender, EventArgs e)
@@ -172,6 +168,7 @@ namespace SmartClinic.View
             {
                 MessageBox.Show("'Result' and 'Normal / Abnormal' fields\nmust be entered at the same time",
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             LabTestResults newResults = new LabTestResults();

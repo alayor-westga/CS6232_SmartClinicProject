@@ -121,7 +121,7 @@ namespace SmartClinic.DAL
                         {
                             LabTestResults labTestResult = new LabTestResults();
                             {
-                                
+
                                 labTestResult.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
                                 labTestResult.LabTestCode = reader["lab_test_code"].ToString();
                                 labTestResult.LabTestName = reader["name"].ToString();
@@ -132,19 +132,73 @@ namespace SmartClinic.DAL
                                 }
 
                                 labTestResult.Result = reader["result"].ToString();
-                                
+
                                 if (reader[5] != DBNull.Value)
                                 {
                                     labTestResult.IsNormal = (bool)reader["is_normal"];
                                 }
-                                                            
+
                             }
-                        labTestSearchResults.Add(labTestResult);
+                            labTestSearchResults.Add(labTestResult);
+                        }
                     }
                 }
             }
-        }
             return labTestSearchResults;
         }
-}
+
+        public LabTestResults GetSingleLabTestResult(string labTestCode, int appointmentID)
+        {
+            LabTestResults labTestResult = new LabTestResults();
+            string selectStatement =
+
+                 "SELECT appointment_id, LabTests.lab_test_code, LabTests.name, date_performed, result, is_normal " +
+                 "FROM LabTestResults " +
+                 "JOIN LabTests on LabTests.lab_test_code = LabTestResults.lab_test_code " +
+                 "WHERE appointment_id=@AppointmentID AND LabTests.lab_test_code=@LabTestCode";
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentID);
+                    selectCommand.Parameters.AddWithValue("@LabTestCode", labTestCode);
+
+                    if ((Int32)selectCommand.ExecuteScalar() == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {                              
+                                {
+                                    labTestResult.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
+                                    labTestResult.LabTestCode = reader["lab_test_code"].ToString();
+                                    labTestResult.LabTestName = reader["name"].ToString();
+
+                                    if (reader[3] != DBNull.Value)
+                                    {
+                                        labTestResult.DatePerformed = DateTime.Parse(reader["date_performed"].ToString());
+                                    }
+
+                                    labTestResult.Result = reader["result"].ToString();
+
+                                    if (reader[5] != DBNull.Value)
+                                    {
+                                        labTestResult.IsNormal = (bool)reader["is_normal"];
+                                    }
+                                }                              
+                            }
+                        }
+                        return labTestResult;
+                    }                   
+                }
+            }
+        }
+    }
 }
