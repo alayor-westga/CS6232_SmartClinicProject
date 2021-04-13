@@ -26,9 +26,33 @@ namespace SmartClinic.View
 
         private void ThisFormLoad_Load(object sender, EventArgs e)
         {
+            this.LoadLabTestListBox();           
+            this.datePerformedDateTimePicker.Checked = false;
+            this.datePerformedDateTimePicker.Text = "";
+            this.PopulateForm();
+            this.PopulateDataGridView();
+        }
+
+        private void LoadLabTestListBox()
+        {
+            List<LabTest> allLabTests = new List<LabTest>();
+            List<LabTest> labTestsNotSelected = new List<LabTest>();
+
             try
-            {
-                this.labTestListBox.DataSource = this.labTestController.GetAllLabTests();
+            {               
+                allLabTests = this.labTestController.GetAllLabTests();
+                foreach (LabTest labTest in allLabTests)
+                {
+                    if (this.labTestController.GetSingleLabTestResult(labTest.LabTestCode, this.visit.AppointmentID) == null)
+                    {
+                        labTestsNotSelected.Add(labTest);
+                    }
+                }
+                if (labTestsNotSelected.Count == 0)
+                {
+                    this.orderTestButton.Enabled = false;              
+                }
+                this.labTestListBox.DataSource = labTestsNotSelected;
             }
             catch (ArgumentException argumentException)
             {
@@ -36,11 +60,8 @@ namespace SmartClinic.View
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            this.datePerformedDateTimePicker.Checked = false;
-            this.datePerformedDateTimePicker.Text = "";
+
             this.labTestListBox.ClearSelected();
-            this.PopulateForm();
-            this.PopulateDataGridView();
         }
 
         private void PopulateForm()
@@ -92,6 +113,7 @@ namespace SmartClinic.View
                         "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.PopulateDataGridView();
+            this.LoadLabTestListBox();
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -130,8 +152,16 @@ namespace SmartClinic.View
         private void RowSelectionChanged_Click(object sender, EventArgs e)
         {
             LabTestResults oldResults = new LabTestResults();
-            oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(),
-                this.visit.AppointmentID);
+            try
+            {
+                oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), 
+                    this.visit.AppointmentID);
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             this.labTestCodeLabel2.Text = oldResults.LabTestCode;
             this.nameLabel1.Text = oldResults.LabTestName;

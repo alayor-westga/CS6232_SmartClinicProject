@@ -166,39 +166,40 @@ namespace SmartClinic.DAL
                     selectCommand.Parameters.AddWithValue("@AppointmentID", appointmentID);
                     selectCommand.Parameters.AddWithValue("@LabTestCode", labTestCode);
 
-                    if ((Int32)selectCommand.ExecuteScalar() == 0)
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        return null;
-                    }
-                    else
-                    {
-                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        if (reader.Read())
                         {
-                            while (reader.Read())
-                            {                              
+                            {
+                                labTestResult.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
+                                labTestResult.LabTestCode = reader["lab_test_code"].ToString();
+                                labTestResult.LabTestName = reader["name"].ToString();
+
+                                if (reader[3] != DBNull.Value)
                                 {
-                                    labTestResult.AppointmentID = Int32.Parse(reader["appointment_id"].ToString());
-                                    labTestResult.LabTestCode = reader["lab_test_code"].ToString();
-                                    labTestResult.LabTestName = reader["name"].ToString();
+                                    labTestResult.DatePerformed = DateTime.Parse(reader["date_performed"].ToString());
+                                }
 
-                                    if (reader[3] != DBNull.Value)
-                                    {
-                                        labTestResult.DatePerformed = DateTime.Parse(reader["date_performed"].ToString());
-                                    }
+                                labTestResult.Result = reader["result"].ToString();
 
-                                    labTestResult.Result = reader["result"].ToString();
-
-                                    if (reader[5] != DBNull.Value)
-                                    {
-                                        labTestResult.IsNormal = (bool)reader["is_normal"];                                  
-                                    }
-                                }                              
+                                if (reader[5] != DBNull.Value)
+                                {
+                                    labTestResult.IsNormal = (bool)reader["is_normal"];
+                                }
                             }
+                            return labTestResult;
                         }
-                        return labTestResult;
-                    }                   
+                        else
+                        {
+                            Console.Write("in null");
+                            return null;
+                          
+                        }
+                    }
+                   
                 }
             }
         }
     }
 }
+
