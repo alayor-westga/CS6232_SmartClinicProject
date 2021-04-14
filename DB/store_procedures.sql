@@ -42,7 +42,7 @@ BEGIN
 			INNER JOIN Patients p ON (p.patient_id = a.patient_id)
 			INNER JOIN ClinicPersons c ON (p.clinic_person_id = c.clinic_person_id)
 		WHERE lab_test_code = @LabTestCodeParam
-		AND DATEDIFF(YEAR, r.date_performed, c.date_of_birth) BETWEEN @StartAge AND @EndAge;
+		AND CAST(DATEDIFF(DAY, c.date_of_birth, r.date_performed) / 365.25 AS INT) BETWEEN @StartAge AND @EndAge;
                 
 		RETURN @LabTestCount;
 END
