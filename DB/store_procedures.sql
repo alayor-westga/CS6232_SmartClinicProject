@@ -6,72 +6,72 @@ GO
 CREATE FUNCTION getLabTestResultTypeCount(@LabTestCodeParam VARCHAR(45), @IsNormal BIT)
 RETURNS INT
 BEGIN
-		DECLARE @LabTestCount INT;
+    DECLARE @LabTestCount INT;
 
-		IF  @LabTestCodeParam IS NULL OR @IsNormal IS NULL
-            -- Adding this hack as throwing errors is not allowed in functions.
-			RETURN CAST('You must specify both the @LabTestCodeParam and the @IsNormal.' AS INT);
-        
-		SELECT @LabTestCount = COUNT(*)
-		FROM LabTestResults 
-		WHERE lab_test_code = @LabTestCodeParam
-		AND is_normal = @IsNormal;
-                
-		RETURN @LabTestCount;
+    IF  @LabTestCodeParam IS NULL OR @IsNormal IS NULL
+        -- Adding this hack as throwing errors is not allowed in functions.
+        RETURN CAST('You must specify both the @LabTestCodeParam and the @IsNormal.' AS INT);
+    
+    SELECT @LabTestCount = COUNT(*)
+    FROM LabTestResults 
+    WHERE lab_test_code = @LabTestCodeParam
+    AND is_normal = @IsNormal;
+            
+    RETURN @LabTestCount;
 END
 GO
 CREATE FUNCTION getLabTestCountByPatientAgeRange (@LabTestCodeParam VARCHAR(45), @StartAge INT, @EndAge INT)
 RETURNS INT
 AS
 BEGIN
-		DECLARE @LabTestCount INT;
-        
-        IF  @LabTestCodeParam IS NULL OR @StartAge IS NULL OR @EndAge IS NULL
-			RETURN CAST('You must specify the @LabTestCodeParam, @StartAge, and @EndAge.' AS INT);
+    DECLARE @LabTestCount INT;
+    
+    IF  @LabTestCodeParam IS NULL OR @StartAge IS NULL OR @EndAge IS NULL
+        RETURN CAST('You must specify the @LabTestCodeParam, @StartAge, and @EndAge.' AS INT);
 
-        IF  @StartAge > @EndAge 
-			RETURN CAST('@EndAge must be greater or equal than @StartAge.' AS INT);
-        
-		SELECT @LabTestCount = COUNT(r.lab_test_code)
-		FROM LabTestResults r
-        	INNER JOIN Appointments a ON (a.appointment_id = r.appointment_id)
-			INNER JOIN Patients p ON (p.patient_id = a.patient_id)
-			INNER JOIN ClinicPersons c ON (p.clinic_person_id = c.clinic_person_id)
-		WHERE lab_test_code = @LabTestCodeParam
-		AND CAST(DATEDIFF(DAY, c.date_of_birth, r.date_performed) / 365.25 AS INT) BETWEEN @StartAge AND @EndAge;
-                
-		RETURN @LabTestCount;
+    IF  @StartAge > @EndAge 
+        RETURN CAST('@EndAge must be greater or equal than @StartAge.' AS INT);
+    
+    SELECT @LabTestCount = COUNT(r.lab_test_code)
+    FROM LabTestResults r
+        INNER JOIN Appointments a ON (a.appointment_id = r.appointment_id)
+        INNER JOIN Patients p ON (p.patient_id = a.patient_id)
+        INNER JOIN ClinicPersons c ON (p.clinic_person_id = c.clinic_person_id)
+    WHERE lab_test_code = @LabTestCodeParam
+    AND CAST(DATEDIFF(DAY, c.date_of_birth, r.date_performed) / 365.25 AS INT) BETWEEN @StartAge AND @EndAge;
+            
+    RETURN @LabTestCount;
 END
 GO
 CREATE PROCEDURE getMostPerformedTestsDuringDates @StartDate DATE, @EndDate DATE
 AS
 SET NOCOUNT ON;
-        DECLARE @AllTestsCount INT;
+    DECLARE @AllTestsCount INT;
 
-        IF  @StartDate IS NULL OR @EndDate IS NULL
-            THROW 70001, 'You must specify a @StartDate and @EndDate.', 1;
+    IF  @StartDate IS NULL OR @EndDate IS NULL
+        THROW 70001, 'You must specify a @StartDate and @EndDate.', 1;
 
-        IF  @StartDate > @EndDate 
-			THROW 70001, '@EndDate must be greater or equal than @StartDate.', 1;
-        
-		SELECT @AllTestsCount = COUNT(lab_test_code)
-        FROM LabTestResults
-		WHERE date_performed BETWEEN @StartDate AND @EndDate;
-        
-		SELECT 
-			t.lab_test_code,
-			t.name,
-			COUNT(t.lab_test_code) AS tests_count,
-            @AllTestsCount as all_tests_count,
-            CAST(COUNT(t.lab_test_code) AS DECIMAL) / @AllTestsCount AS test_count_percentage,
-            [dbo].getLabTestResultTypeCount(t.lab_test_code, 1) AS normal_results_count,
-            [dbo].getLabTestResultTypeCount(t.lab_test_code, 0) AS abnormal_results_count,
-            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 18, 29) / CAST(COUNT(t.lab_test_code) AS DECIMAL) AS tests_on_18_29_pecent,
-            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 30, 39) / CAST(COUNT(t.lab_test_code) AS DECIMAL) AS tests_on_30_39_pecent
-        FROM LabTestResults r
-			INNER JOIN LabTests t ON (t.lab_test_code = r.lab_test_code)
-		WHERE r.date_performed BETWEEN @StartDate AND @EndDate
-		GROUP BY t.lab_test_code, t.name
-        HAVING COUNT(t.lab_test_code) > 1
-        ORDER BY tests_count DESC, t.lab_test_code DESC;
+    IF  @StartDate > @EndDate 
+        THROW 70001, '@EndDate must be greater or equal than @StartDate.', 1;
+    
+    SELECT @AllTestsCount = COUNT(lab_test_code)
+    FROM LabTestResults
+    WHERE date_performed BETWEEN @StartDate AND @EndDate;
+    
+    SELECT 
+        t.lab_test_code,
+        t.name,
+        COUNT(t.lab_test_code) AS tests_count,
+        @AllTestsCount as all_tests_count,
+        FORMAT(CAST(COUNT(t.lab_test_code) AS DECIMAL) / @AllTestsCount, 'P') AS test_count_percentage,
+        [dbo].getLabTestResultTypeCount(t.lab_test_code, 1) AS normal_results_count,
+        [dbo].getLabTestResultTypeCount(t.lab_test_code, 0) AS abnormal_results_count,
+        FORMAT([dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 18, 29) / CAST(COUNT(t.lab_test_code) AS DECIMAL), 'P') AS tests_on_18_29_pecent,
+        FORMAT([dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 30, 39) / CAST(COUNT(t.lab_test_code) AS DECIMAL), 'P') AS tests_on_30_39_pecent
+    FROM LabTestResults r
+        INNER JOIN LabTests t ON (t.lab_test_code = r.lab_test_code)
+    WHERE r.date_performed BETWEEN @StartDate AND @EndDate
+    GROUP BY t.lab_test_code, t.name
+    HAVING COUNT(t.lab_test_code) > 1
+    ORDER BY tests_count DESC, t.lab_test_code DESC;
 GO
