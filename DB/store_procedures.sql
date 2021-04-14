@@ -24,6 +24,9 @@ GO
 CREATE FUNCTION getYearDiff(@FirstDate DATETIME, @SecondDate DATETIME)
 RETURNS INT
 BEGIN
+    IF  @FirstDate IS NULL OR @SecondDate IS NULL
+        RETURN CAST('You must specify both the @FirstDate and the @SecondDate.' AS INT);
+        
     RETURN CAST(DATEDIFF(DAY, @FirstDate, @SecondDate) / 365.25 AS INT);
 END
 GO
