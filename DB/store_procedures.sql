@@ -1,5 +1,31 @@
 USE [cs6232-g1];
 GO
+CREATE FUNCTION getLabTestCountByPatientAgeRange (@LabTestCodeParam VARCHAR, @StartAge INT, @EndAge INT)
+RETURNS INT
+AS
+BEGIN
+		DECLARE @LabTestCount INT;
+        
+		/* IF  @LabTestCodeParam IS NULL OR @StartAge IS NULL OR @EndAge IS NULL  THEN
+			SIGNAL SQLSTATE 'HY000'
+			SET MESSAGE_TEXT = 'You must specify the @LabTestCodeParam, @StartAge, and @EndAge.', MYSQL_ERRNO = 1108;
+		END IF;
+		IF @StartAge > @EndAge THEN
+			SIGNAL SQLSTATE 'HY000'
+			SET MESSAGE_TEXT = '@EndAge must be greater or equal than @StartAge.', MYSQL_ERRNO = 1108;
+		END IF; */
+        
+		SELECT @LabTestCount = COUNT(r.lab_test_code)
+		FROM LabTestResults r
+        	INNER JOIN Appointments a ON (a.appointment_id = r.appointment_id)
+			INNER JOIN Patients p ON (p.patient_id = a.patient_id)
+			INNER JOIN ClinicPersons c ON (p.clinic_person_id = c.clinic_person_id)
+		WHERE lab_test_code = @LabTestCodeParam
+		AND DATEDIFF(YEAR, r.date_performed, c.date_of_birth) BETWEEN @StartAge AND @EndAge;
+                
+		RETURN @LabTestCount;
+END
+GO
 CREATE PROCEDURE getMostPerformedTestsDuringDates @StartDate DATE, @EndDate DATE
 AS
 SET NOCOUNT ON;
