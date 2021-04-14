@@ -198,6 +198,7 @@
     <None Include="Properties\DataSources\SmartClinic.Model.Doctor.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.LabTest.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.LabTestResults.datasource" />
+    <None Include="Properties\DataSources\SmartClinic.Model.MostPerformedTestDuringDates.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Patient.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.PatientVisits1.datasource" />
@@ -227,6 +228,7 @@
     <Compile Include="Controller\NurseController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PatientVisitController.cs" />
+    <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\SelectionListener.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
@@ -235,6 +237,7 @@
     <Compile Include="DAL\LabTestDAL.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DAL\ReportDAL.cs" />
     <Compile Include="DAL\SmartClinitDBConnection.cs" />
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\LabTest.cs" />

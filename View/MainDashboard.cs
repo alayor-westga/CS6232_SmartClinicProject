@@ -12,6 +12,8 @@ namespace SmartClinic.View
     /// </summary>
     public partial class MainDashboard : Form
     {
+        //TODO: Delete me
+        private readonly ReportController reportController;
         private readonly Form loginForm;
         private readonly List<TabPage> refreshableTabPages;
 
@@ -21,6 +23,7 @@ namespace SmartClinic.View
         public MainDashboard(Form loginForm)
         {
             InitializeComponent();
+            this.reportController = new ReportController();
             this.loginForm = loginForm;
             searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
             ShowUserName();
@@ -94,6 +97,12 @@ namespace SmartClinic.View
                     ((IRefreshable)control).Refresh();
                 }
             }
+        }
+
+        //TODO: Delete me
+        private void button1_Click(object sender, EventArgs e)
+        {
+            reportDataGridView.DataSource = this.reportController.getMostPerformedTestsDuringDates(startDate.Value, endDate.Value);
         }
     }
 }
