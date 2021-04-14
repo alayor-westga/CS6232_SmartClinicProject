@@ -151,11 +151,20 @@ namespace SmartClinic.View
 
         private void RowSelectionChanged_Click(object sender, EventArgs e)
         {
+           
             this.oldResults = new LabTestResults();
             try
             {
                 oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), 
                     this.visit.AppointmentID);
+                Console.WriteLine("old results:");
+                Console.WriteLine(oldResults.DatePerformed);
+                Console.WriteLine(oldResults.IsNormal);
+                Console.WriteLine(oldResults.Result);
+
+
+
+
             }
             catch (ArgumentException argumentException)
             {
@@ -212,10 +221,20 @@ namespace SmartClinic.View
             if (this.GetFieldsWithValues() == "Date has value")
             {
                 newResults.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
+                Console.WriteLine(newResults.DatePerformed);
 
                 try
                 {
-                    this.labTestController.UpdateLabTestResults(newResults, this.oldResults, "update date");
+                    if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults, "update date"))
+                    {
+                        MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
+                        + "\n\nThe form has been updated to reflect those changes.",
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //need to do something here
+                        return;
+                    }
+                    MessageBox.Show("The changes were successfully amended to the database.",
+                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -240,7 +259,16 @@ namespace SmartClinic.View
 
                 try
                 {
-                    this.labTestController.UpdateLabTestResults(newResults, this.oldResults, "update result");
+                    if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults, "update result"))
+                    {
+                        MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
+                        + "\n\nThe form has been updated to reflect those changes.",
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //need to do something here
+                        return;
+                    }
+                    MessageBox.Show("The changes were successfully amended to the database.",
+                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -267,7 +295,16 @@ namespace SmartClinic.View
 
                 try
                 {
-                    this.labTestController.UpdateLabTestResults(newResults, this.oldResults, "update result and date");
+                    if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults, "update result and date"))
+                    {
+                        MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
+                        + "\n\nThe form has been updated to reflect those changes.",
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       //need to do something here
+                        return;
+                    }
+                    MessageBox.Show("The changes were successfully amended to the database.",
+                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);                   
                 }
                 catch (ArgumentException argumentException)
                 {
@@ -290,15 +327,15 @@ namespace SmartClinic.View
         }
         private string GetFieldsWithValues()
         {
-            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && !this.datePerformedDateTimePicker.Checked))
+            if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == false))
             {
                 return "Result has value";
             }
-            if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked))
+            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == true))
             {
                 return "Date has value";
             }
-            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked))
+            if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == true))
             {
                 return "Result and Date have values";
             }

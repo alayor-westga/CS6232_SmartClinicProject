@@ -183,7 +183,7 @@ namespace SmartClinic.DAL
                     "AND state = @OldState " +
                     "AND zip_code = @OldZipCode " +
                     "AND phone_number = @OldPhoneNumber " +
-                    "AND ssn = @OldSSN;";
+                    "AND ssn = @OldSSN";
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
