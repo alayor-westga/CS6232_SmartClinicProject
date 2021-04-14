@@ -1,4 +1,25 @@
 USE [cs6232-g1];
+DROP PROCEDURE IF EXISTS getMostPerformedTestsDuringDates;
+DROP FUNCTION IF EXISTS getLabTestResultTypeCount;
+DROP FUNCTION IF EXISTS getLabTestCountByPatientAgeRange;
+GO
+CREATE FUNCTION getLabTestResultTypeCount(@LabTestCodeParam VARCHAR, @ResultType VARCHAR)
+RETURNS INT
+BEGIN
+		DECLARE @LabTestCount INT;
+
+		/* IF  @LabTestCodeParam IS NULL OR @ResultType IS NULL  THEN
+			SIGNAL SQLSTATE 'HY000'
+			SET MESSAGE_TEXT = 'You must specify both the @LabTestCodeParam and the @ResultType.', MYSQL_ERRNO = 1108;
+		END IF; */
+        
+		SELECT @LabTestCount = COUNT(*)
+		FROM LabTestResults 
+		WHERE lab_test_code = @LabTestCodeParam
+		AND result = @ResultType;
+                
+		RETURN @LabTestCount;
+END
 GO
 CREATE FUNCTION getLabTestCountByPatientAgeRange (@LabTestCodeParam VARCHAR, @StartAge INT, @EndAge INT)
 RETURNS INT
@@ -50,10 +71,10 @@ SET NOCOUNT ON;
 			COUNT(t.lab_test_code) AS tests_count,
             @AllTestsCount,
             COUNT(t.lab_test_code) / @AllTestsCount AS test_count_percentage,
-            getLabTestResultTypeCount(r.lab_test_code, 'normal') AS normal_results_count,
-            getLabTestResultTypeCount(r.lab_test_code, 'abnormal') AS abnormal_results_count,
-            getLabTestCountByPatientAgeRange(r.lab_test_code, 18, 29) / COUNT(t.lab_test_code) AS tests_on_18_29_pecent,
-            getLabTestCountByPatientAgeRange(r.lab_test_code, 30, 39) / COUNT(t.lab_test_code) AS tests_on_30_39_pecent
+            [dbo].getLabTestResultTypeCount(t.lab_test_code, 'normal') AS normal_results_count,
+            [dbo].getLabTestResultTypeCount(t.lab_test_code, 'abnormal') AS abnormal_results_count,
+            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 18, 29) / COUNT(t.lab_test_code) AS tests_on_18_29_pecent,
+            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 30, 39) / COUNT(t.lab_test_code) AS tests_on_30_39_pecent
         FROM LabTestResults r
 			INNER JOIN LabTests t ON (t.lab_test_code = r.lab_test_code)
 		WHERE r.date_performed BETWEEN @StartDate AND @EndDate
