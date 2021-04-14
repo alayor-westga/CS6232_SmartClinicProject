@@ -3,25 +3,25 @@ DROP PROCEDURE IF EXISTS getMostPerformedTestsDuringDates;
 DROP FUNCTION IF EXISTS getLabTestResultTypeCount;
 DROP FUNCTION IF EXISTS getLabTestCountByPatientAgeRange;
 GO
-CREATE FUNCTION getLabTestResultTypeCount(@LabTestCodeParam VARCHAR, @ResultType VARCHAR)
+CREATE FUNCTION getLabTestResultTypeCount(@LabTestCodeParam VARCHAR(45), @IsNormal BIT)
 RETURNS INT
 BEGIN
 		DECLARE @LabTestCount INT;
 
-		/* IF  @LabTestCodeParam IS NULL OR @ResultType IS NULL  THEN
+		/* IF  @LabTestCodeParam IS NULL OR @IsNormal IS NULL  THEN
 			SIGNAL SQLSTATE 'HY000'
-			SET MESSAGE_TEXT = 'You must specify both the @LabTestCodeParam and the @ResultType.', MYSQL_ERRNO = 1108;
+			SET MESSAGE_TEXT = 'You must specify both the @LabTestCodeParam and the @IsNormal.', MYSQL_ERRNO = 1108;
 		END IF; */
         
 		SELECT @LabTestCount = COUNT(*)
 		FROM LabTestResults 
 		WHERE lab_test_code = @LabTestCodeParam
-		AND result = @ResultType;
+		AND is_normal = @IsNormal;
                 
 		RETURN @LabTestCount;
 END
 GO
-CREATE FUNCTION getLabTestCountByPatientAgeRange (@LabTestCodeParam VARCHAR, @StartAge INT, @EndAge INT)
+CREATE FUNCTION getLabTestCountByPatientAgeRange (@LabTestCodeParam VARCHAR(45), @StartAge INT, @EndAge INT)
 RETURNS INT
 AS
 BEGIN
@@ -71,8 +71,8 @@ SET NOCOUNT ON;
 			COUNT(t.lab_test_code) AS tests_count,
             @AllTestsCount,
             COUNT(t.lab_test_code) / @AllTestsCount AS test_count_percentage,
-            [dbo].getLabTestResultTypeCount(t.lab_test_code, 'normal') AS normal_results_count,
-            [dbo].getLabTestResultTypeCount(t.lab_test_code, 'abnormal') AS abnormal_results_count,
+            [dbo].getLabTestResultTypeCount(t.lab_test_code, 1) AS normal_results_count,
+            [dbo].getLabTestResultTypeCount(t.lab_test_code, 0) AS abnormal_results_count,
             [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 18, 29) / COUNT(t.lab_test_code) AS tests_on_18_29_pecent,
             [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 30, 39) / COUNT(t.lab_test_code) AS tests_on_30_39_pecent
         FROM LabTestResults r
