@@ -63,11 +63,11 @@ SET NOCOUNT ON;
 			t.name,
 			COUNT(t.lab_test_code) AS tests_count,
             @AllTestsCount as all_tests_count,
-            COUNT(t.lab_test_code) / @AllTestsCount AS test_count_percentage,
+            CAST(COUNT(t.lab_test_code) AS DECIMAL) / @AllTestsCount AS test_count_percentage,
             [dbo].getLabTestResultTypeCount(t.lab_test_code, 1) AS normal_results_count,
             [dbo].getLabTestResultTypeCount(t.lab_test_code, 0) AS abnormal_results_count,
-            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 18, 29) / COUNT(t.lab_test_code) AS tests_on_18_29_pecent,
-            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 30, 39) / COUNT(t.lab_test_code) AS tests_on_30_39_pecent
+            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 18, 29) / CAST(COUNT(t.lab_test_code) AS DECIMAL) AS tests_on_18_29_pecent,
+            [dbo].getLabTestCountByPatientAgeRange(t.lab_test_code, 30, 39) / CAST(COUNT(t.lab_test_code) AS DECIMAL) AS tests_on_30_39_pecent
         FROM LabTestResults r
 			INNER JOIN LabTests t ON (t.lab_test_code = r.lab_test_code)
 		WHERE r.date_performed BETWEEN @StartDate AND @EndDate
