@@ -239,6 +239,7 @@
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\LabTestResults.cs" />
+    <Compile Include="Model\MostPerformedTestDuringDates.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Model\Appointment.cs" />

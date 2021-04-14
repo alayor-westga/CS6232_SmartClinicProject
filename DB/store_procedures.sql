@@ -71,7 +71,7 @@ SET NOCOUNT ON;
     
     SELECT 
         t.lab_test_code,
-        t.name,
+        t.name AS lab_test_name,
         COUNT(t.lab_test_code) AS tests_count,
         @AllTestsCount as all_tests_count,
         FORMAT(CAST(COUNT(t.lab_test_code) AS DECIMAL) / @AllTestsCount, 'P') AS test_count_percentage,
