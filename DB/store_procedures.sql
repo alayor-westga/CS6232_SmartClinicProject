@@ -8,10 +8,9 @@ RETURNS INT
 BEGIN
 		DECLARE @LabTestCount INT;
 
-		/* IF  @LabTestCodeParam IS NULL OR @IsNormal IS NULL  THEN
-			SIGNAL SQLSTATE 'HY000'
-			SET MESSAGE_TEXT = 'You must specify both the @LabTestCodeParam and the @IsNormal.', MYSQL_ERRNO = 1108;
-		END IF; */
+		IF  @LabTestCodeParam IS NULL OR @IsNormal IS NULL
+            -- Adding this hack as throwing errors is not allowed in functions.
+			RETURN CAST('You must specify both the @LabTestCodeParam and the @IsNormal.' AS INT);
         
 		SELECT @LabTestCount = COUNT(*)
 		FROM LabTestResults 
@@ -27,14 +26,11 @@ AS
 BEGIN
 		DECLARE @LabTestCount INT;
         
-		/* IF  @LabTestCodeParam IS NULL OR @StartAge IS NULL OR @EndAge IS NULL  THEN
-			SIGNAL SQLSTATE 'HY000'
-			SET MESSAGE_TEXT = 'You must specify the @LabTestCodeParam, @StartAge, and @EndAge.', MYSQL_ERRNO = 1108;
-		END IF;
-		IF @StartAge > @EndAge THEN
-			SIGNAL SQLSTATE 'HY000'
-			SET MESSAGE_TEXT = '@EndAge must be greater or equal than @StartAge.', MYSQL_ERRNO = 1108;
-		END IF; */
+        IF  @LabTestCodeParam IS NULL OR @StartAge IS NULL OR @EndAge IS NULL
+			RETURN CAST('You must specify the @LabTestCodeParam, @StartAge, and @EndAge.' AS INT);
+
+        IF  @StartAge > @EndAge 
+			RETURN CAST('@EndAge must be greater or equal than @StartAge.' AS INT);
         
 		SELECT @LabTestCount = COUNT(r.lab_test_code)
 		FROM LabTestResults r
@@ -51,15 +47,12 @@ CREATE PROCEDURE getMostPerformedTestsDuringDates @StartDate DATE, @EndDate DATE
 AS
 SET NOCOUNT ON;
         DECLARE @AllTestsCount INT;
-        
-		/* IF (@StartDate IS NULL OR @EndDate IS NULL)
-		BEGIN
-			THROW 51000, 'You must specify a @StartDate and @EndDate.', 1; 
-		END
-		IF (@StartDate > @EndDate)
-		BEGIN
-			THROW 51000, '@EndDate must be greater or equal than @StartDate.', 1; 
-		END */
+
+        IF  @StartDate IS NULL OR @EndDate IS NULL
+            THROW 70001, 'You must specify a @StartDate and @EndDate.', 1;
+
+        IF  @StartDate > @EndDate 
+			THROW 70001, '@EndDate must be greater or equal than @StartDate.', 1;
         
 		SELECT @AllTestsCount = COUNT(lab_test_code)
         FROM LabTestResults
@@ -69,7 +62,7 @@ SET NOCOUNT ON;
 			t.lab_test_code,
 			t.name,
 			COUNT(t.lab_test_code) AS tests_count,
-            @AllTestsCount,
+            @AllTestsCount as all_tests_count,
             COUNT(t.lab_test_code) / @AllTestsCount AS test_count_percentage,
             [dbo].getLabTestResultTypeCount(t.lab_test_code, 1) AS normal_results_count,
             [dbo].getLabTestResultTypeCount(t.lab_test_code, 0) AS abnormal_results_count,
@@ -81,5 +74,4 @@ SET NOCOUNT ON;
 		GROUP BY t.lab_test_code, t.name
         HAVING COUNT(t.lab_test_code) > 1
         ORDER BY tests_count DESC, t.lab_test_code DESC;
-        
 GO
