@@ -1,5 +1,6 @@
 USE [cs6232-g1];
 DROP PROCEDURE IF EXISTS getMostPerformedTestsDuringDates;
+DROP FUNCTION IF EXISTS getYearDiff;
 DROP FUNCTION IF EXISTS getLabTestResultTypeCount;
 DROP FUNCTION IF EXISTS getLabTestCountByPatientAgeRange;
 GO
@@ -20,6 +21,12 @@ BEGIN
     RETURN @LabTestCount;
 END
 GO
+CREATE FUNCTION getYearDiff(@FirstDate DATETIME, @SecondDate DATETIME)
+RETURNS INT
+BEGIN
+    RETURN CAST(DATEDIFF(DAY, @FirstDate, @SecondDate) / 365.25 AS INT);
+END
+GO
 CREATE FUNCTION getLabTestCountByPatientAgeRange(@LabTestCodeParam VARCHAR(45), @StartAge INT, @EndAge INT, @InsideRange BIT)
 RETURNS INT
 AS
@@ -38,8 +45,8 @@ BEGIN
         INNER JOIN Patients p ON (p.patient_id = a.patient_id)
         INNER JOIN ClinicPersons c ON (p.clinic_person_id = c.clinic_person_id)
     WHERE lab_test_code = @LabTestCodeParam
-    AND (@InsideRange = 1 AND CAST(DATEDIFF(DAY, c.date_of_birth, r.date_performed) / 365.25 AS INT) BETWEEN @StartAge AND @EndAge
-        OR @InsideRange = 0 AND CAST(DATEDIFF(DAY, c.date_of_birth, r.date_performed) / 365.25 AS INT) NOT BETWEEN @StartAge AND @EndAge);
+    AND (@InsideRange = 1 AND [dbo].getYearDiff(c.date_of_birth, r.date_performed) BETWEEN @StartAge AND @EndAge
+        OR @InsideRange = 0 AND [dbo].getYearDiff(c.date_of_birth, r.date_performed) NOT BETWEEN @StartAge AND @EndAge);
             
     RETURN @LabTestCount;
 END
