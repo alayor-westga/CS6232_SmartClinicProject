@@ -209,6 +209,13 @@ namespace SmartClinic.View
                return;
             }
 
+            if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == false))
+            {
+                MessageBox.Show("Must select a 'Date Performed' before saving results.",
+                       "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             LabTestResults newResults = new LabTestResults();
             newResults.AppointmentID = this.visit.AppointmentID;
             newResults.LabTestCode = this.labTestCodeLabel2.Text;
