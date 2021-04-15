@@ -185,7 +185,10 @@ namespace SmartClinic.DAL
                                 if (reader[5] != DBNull.Value)
                                 {
                                     labTestResult.IsNormal = (bool)reader["is_normal"];
+                                    Console.WriteLine("In get single lab test: " + labTestResult.IsNormal);
+
                                 }
+                                
                             }
                             return labTestResult;
                         }
@@ -193,9 +196,9 @@ namespace SmartClinic.DAL
                         {
                             Console.Write("in null");
                             return null;
-                          
+
                         }
-                    }                  
+                    }
                 }
             }
         }
@@ -203,7 +206,9 @@ namespace SmartClinic.DAL
         public bool UpdateLabTestResults(LabTestResults oldResults, LabTestResults newResults, string updateVariation)
         {
             Console.WriteLine("In DAL: " + newResults.DatePerformed);
-            
+            Console.WriteLine("In update lab test results - old results: " + oldResults.IsNormal);
+
+
             if (oldResults == null)
             {
                 throw new ArgumentNullException("oldResults");
@@ -216,7 +221,7 @@ namespace SmartClinic.DAL
             {
                 throw new ArgumentNullException("updateVariation");
             }
-            string updateStatement = this.GetUpdateStatement(updateVariation);            
+            string updateStatement = this.GetUpdateStatement(updateVariation);
 
             using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
             {
@@ -226,15 +231,15 @@ namespace SmartClinic.DAL
                 {
                     if (updateVariation == "update date")
                     {
-                    
-                       
+
+
                         updateCommand.Parameters.AddWithValue("@NewDatePerformed", newResults.DatePerformed);
                         updateCommand.Parameters.AddWithValue("@OldDatePerformed", DBNull.Value);
 
                     }
                     if (updateVariation == "update result")
                     {
-                    
+
 
                         updateCommand.Parameters.AddWithValue("@NewResult", newResults.Result);
                         updateCommand.Parameters.AddWithValue("@OldResult", DBNull.Value);
@@ -274,11 +279,11 @@ namespace SmartClinic.DAL
                    "date_performed = @NewDatePerformed " +
                "WHERE appointment_id = @OldAppointmentID " +
                    "AND lab_test_code = @OldLabTestCode " +
-                   "AND date_performed IS NULL";                 
+                   "AND date_performed IS NULL";
             }
             else if (updateVariation == "update result")
             {
-                return "UPDATE LabTestResults SET " +                
+                return "UPDATE LabTestResults SET " +
                    "result = @NewResult, " +
                    "is_normal = @NewIsNormal " +
                "WHERE appointment_id = @OldAppointmentID " +
@@ -286,7 +291,7 @@ namespace SmartClinic.DAL
                    "AND result IS NULL " +
                    "AND is_normal IS NULL";
             }
-            else 
+            else
             {
                 return "UPDATE LabTestResults SET " +
                    "date_performed = @NewDatePerformed, " +
@@ -297,6 +302,100 @@ namespace SmartClinic.DAL
                    "AND result IS NULL " +
                    "AND date_performed IS NULL " +
                    "AND is_normal IS NULL";
+            }
+        }
+        public bool UpdateLabTestResults(LabTestResults oldResults, LabTestResults newResults)
+        {
+            Console.WriteLine("In DAL: " + newResults.DatePerformed);
+            Console.WriteLine("In update lab test results - old results: " + oldResults.IsNormal);
+
+
+            if (oldResults == null)
+            {
+                throw new ArgumentNullException("oldResults");
+            }
+            if (newResults == null)
+            {
+                throw new ArgumentNullException("newResults");
+            }
+
+            using (SqlConnection connection = SmartClinicDBConnection.GetConnection())
+            {
+                string updateStatement =
+                    "UPDATE LabTestResults SET " +
+                        "date_performed = @NewDatePerformed, " +
+                        "result = @NewResult, " +
+                        "is_normal = @NewIsNormal " +
+                    "WHERE appointment_id = @OldAppointmentID " +
+                        "AND lab_test_code = @OldLabTestCode " +
+                        "AND (result = @OldResult OR result IS NULL and @OldResult IS NULL) " +
+                        "AND (date_performed = @OldDatePerformed OR date_performed IS NULL and @OldDatePerformed IS NULL) " +
+                        "AND (is_normal = @OldIsNormal OR is_normal IS NULL and @OldIsNormal IS NULL)";
+                connection.Open();
+
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+
+                    if (newResults.DatePerformed == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewDatePerformed", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewDatePerformed", newResults.DatePerformed);
+                    }
+                    if (newResults.Result == "")
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewResult", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewResult", newResults.Result);
+                    }
+                    if (newResults.IsNormal == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewIsNormal", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@NewIsNormal", newResults.IsNormal);
+                    }
+
+
+                    if (oldResults.DatePerformed == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldDatePerformed", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldDatePerformed", oldResults.DatePerformed);
+                    }
+                    if (oldResults.Result == "")
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldResult", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldResult", oldResults.Result);
+                    }
+                    if (oldResults.IsNormal == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldIsNormal", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldIsNormal", oldResults.IsNormal);
+                    }
+                 
+                    updateCommand.Parameters.AddWithValue("@OldAppointmentID", oldResults.AppointmentID);
+                    updateCommand.Parameters.AddWithValue("@OldLabTestCode", oldResults.LabTestCode);
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    if (count > 0)
+                        return true;
+                    else
+                        return false;
+                }
             }
         }
     }

@@ -55,5 +55,10 @@ namespace SmartClinic.Controller
         {
             return this.labTestSource.UpdateLabTestResults(oldResults, newResults, updateVariation);
         }
+
+        public bool UpdateLabTestResults(LabTestResults oldResults, LabTestResults newResults)
+        {
+            return this.labTestSource.UpdateLabTestResults(oldResults, newResults);
+        }
     }
 }

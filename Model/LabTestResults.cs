@@ -24,7 +24,7 @@ namespace SmartClinic.Model
         /// <summary>
         /// DatePerformed for LabTestResults
         /// </summary>
-        public DateTime DatePerformed { get; set; }
+        public DateTime? DatePerformed { get; set; }
 
         /// <summary>
         /// Result for LabTestResults

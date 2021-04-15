@@ -26,7 +26,7 @@ namespace SmartClinic.View
 
         private void ThisFormLoad_Load(object sender, EventArgs e)
         {
-            this.LoadLabTestListBox();           
+            this.LoadLabTestListBox();
             this.datePerformedDateTimePicker.Checked = false;
             this.datePerformedDateTimePicker.Text = "";
             this.PopulateForm();
@@ -39,7 +39,7 @@ namespace SmartClinic.View
             List<LabTest> labTestsNotSelected = new List<LabTest>();
 
             try
-            {               
+            {
                 allLabTests = this.labTestController.GetAllLabTests();
                 foreach (LabTest labTest in allLabTests)
                 {
@@ -50,7 +50,7 @@ namespace SmartClinic.View
                 }
                 if (labTestsNotSelected.Count == 0)
                 {
-                    this.orderTestButton.Enabled = false;              
+                    this.orderTestButton.Enabled = false;
                 }
                 this.labTestListBox.DataSource = labTestsNotSelected;
             }
@@ -108,12 +108,12 @@ namespace SmartClinic.View
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            this.PopulateDataGridView();
+            this.LoadLabTestListBox();
 
             MessageBox.Show("Tests have been successfully ordered.",
                         "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            this.PopulateDataGridView();
-            this.LoadLabTestListBox();
+         
         }
 
         private void DatePerformedDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -151,36 +151,16 @@ namespace SmartClinic.View
 
         private void RowSelectionChanged_Click(object sender, EventArgs e)
         {
-           
-            this.oldResults = new LabTestResults();
-            try
-            {
-                oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), 
-                    this.visit.AppointmentID);
-                Console.WriteLine("old results:");
-                Console.WriteLine(oldResults.DatePerformed);
-                Console.WriteLine(oldResults.IsNormal);
-                Console.WriteLine(oldResults.Result);
-
-
-
-
-            }
-            catch (ArgumentException argumentException)
-            {
-                MessageBox.Show(argumentException.Message,
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            this.GetDataForSelectedRow();
             this.labTestCodeLabel2.Text = oldResults.LabTestCode;
             this.nameLabel1.Text = oldResults.LabTestName;
 
             try
             {
                 this.datePerformedDateTimePicker.Checked = true;
-                this.datePerformedDateTimePicker.Value = oldResults.DatePerformed;
+                this.datePerformedDateTimePicker.Value = (DateTime)oldResults.DatePerformed;
             }
-            catch (ArgumentOutOfRangeException)
+            catch (InvalidOperationException)
             {
                 this.datePerformedDateTimePicker.Text = "";
             }
@@ -195,13 +175,28 @@ namespace SmartClinic.View
                 {
                     this.isNormalComboBox.Text = "abnormal";
                 }
-            } 
+            }
             catch
             {
-                this.isNormalComboBox.Text = "";
+                this.isNormalComboBox.Text = null;
             }
-            
             this.resultTextBox.Text = oldResults.Result;
+        }
+
+        private void GetDataForSelectedRow()
+        {
+            this.oldResults = new LabTestResults();
+        
+            try
+            {
+                oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(),
+                    this.visit.AppointmentID);
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SaveChangesButton_Click(object sender, EventArgs e)
@@ -211,135 +206,69 @@ namespace SmartClinic.View
             {
                 MessageBox.Show("'Result' and 'Normal / Abnormal' fields\nmust be entered at the same time",
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+               return;
             }
 
             LabTestResults newResults = new LabTestResults();
             newResults.AppointmentID = this.visit.AppointmentID;
             newResults.LabTestCode = this.labTestCodeLabel2.Text;
 
-            if (this.GetFieldsWithValues() == "Date has value")
+            if (this.datePerformedDateTimePicker.Checked)
             {
                 newResults.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
-                Console.WriteLine(newResults.DatePerformed);
-
-                try
-                {
-                    if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults, "update date"))
-                    {
-                        MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
-                        + "\n\nThe form has been updated to reflect those changes.",
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //need to do something here
-                        return;
-                    }
-                    MessageBox.Show("The changes were successfully amended to the database.",
-                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (ArgumentException argumentException)
-                {
-                    MessageBox.Show(argumentException.Message,
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            } 
+            else
+            {
+                newResults.DatePerformed = null;
             }
 
-            if (this.GetFieldsWithValues() == "Result has value")
+            if (this.isNormalComboBox.Text == "normal")
             {
-                if (this.isNormalComboBox.Text == "normal")
-                {
-                    newResults.IsNormal = true;
-                }
-                else
-                {
-                    newResults.IsNormal = false;
-                }
+                newResults.IsNormal = true;
+            }
+            else if (this.isNormalComboBox.Text == "abnormal")
+            {
+                newResults.IsNormal = false;
+            }
+            else
+            {
+                newResults.IsNormal = null;
+            }
 
+            if (string.IsNullOrWhiteSpace(this.resultTextBox.Text))
+            {
+                newResults.Result = "";
+            }
+            else
+            {
                 newResults.Result = this.resultTextBox.Text;
-
-                try
-                {
-                    if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults, "update result"))
-                    {
-                        MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
-                        + "\n\nThe form has been updated to reflect those changes.",
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //need to do something here
-                        return;
-                    }
-                    MessageBox.Show("The changes were successfully amended to the database.",
-                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
-                }
-                catch (ArgumentException argumentException)
-                {
-                    MessageBox.Show(argumentException.Message,
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
             }
 
-            if (this.GetFieldsWithValues() == "Result and Date have values")
+            try
             {
-                newResults.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
-
-                if (this.isNormalComboBox.Text == "normal")
+                if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults))
                 {
-                    newResults.IsNormal = true;
-                }
-                else
-                {
-                    newResults.IsNormal = false;
-                }
-
-                newResults.Result = this.resultTextBox.Text;
-
-                try
-                {
-                    if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults, "update result and date"))
-                    {
-                        MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
-                        + "\n\nThe form has been updated to reflect those changes.",
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                       //need to do something here
-                        return;
-                    }
-                    MessageBox.Show("The changes were successfully amended to the database.",
-                            "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);                   
-                }
-                catch (ArgumentException argumentException)
-                {
-                    MessageBox.Show(argumentException.Message,
-                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
+                    + "\n\nThe form has been updated to reflect those changes.",
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //need to do something here
                     return;
                 }
-            }
 
-            if (this.GetFieldsWithValues() == "No fields have values")
+            }
+            catch (ArgumentException argumentException)
             {
-                MessageBox.Show("There is nothing to save.",
-                         "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            int currentRow = this.labTestResultsDataGridView.CurrentCell.RowIndex;          
+            this.PopulateDataGridView();
+            //this.labTestResultsDataGridView.Rows[currentRow].Selected = true;
             MessageBox.Show("Changes to this lab test have\nhave been successfully saved",
                                      "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        }
-        private string GetFieldsWithValues()
-        {
-            if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == false))
-            {
-                return "Result has value";
-            }
-            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == true))
-            {
-                return "Date has value";
-            }
-            if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == true))
-            {
-                return "Result and Date have values";
-            }
-            return "No fields have values";
         }
     }
 }
