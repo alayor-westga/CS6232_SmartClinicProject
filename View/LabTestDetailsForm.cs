@@ -233,7 +233,7 @@ namespace SmartClinic.View
             try
             {
                 Console.WriteLine(labTestResultsDataGridView.Rows.Count);
-                if (this.labTestResultsDataGridView.CurrentRow.Cells[0].Value != null)
+                if(this.labTestResultsDataGridView.Rows.Count != 0)
                 {
                     oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), this.visit.AppointmentID);
                 }              
@@ -352,32 +352,50 @@ namespace SmartClinic.View
         private void SearchButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(labTestCodeComboBox.Text))
-            {             
+            {
+                List<LabTestResults> searchResultList = new List<LabTestResults>();
                 try
                 {
-                    List<LabTestResults> searchResultList = new List<LabTestResults>();
-                    searchResultList.Add(this.labTestController.GetSingleLabTestResult(this.labTestCodeComboBox.SelectedValue.ToString(), this.visit.AppointmentID));
-                    this.labTestResultsDataGridView.DataSource = searchResultList;
+                    LabTestResults searchResult = this.labTestController.GetSingleLabTestResult(this.labTestCodeComboBox.SelectedValue.ToString(), this.visit.AppointmentID);
+                    if (searchResult != null)
+                    {
+                        searchResultList.Add(searchResult);
+                    }
                 }
-                catch
+                catch (ArgumentException argumentException)
                 {
-
+                    MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                if (searchResultList.Count == 0)
+                {
+                    this.resultsLabel.Text = "No search results.";
+                }
+                this.labTestResultsDataGridView.DataSource = searchResultList;
             }
             if (!string.IsNullOrWhiteSpace(labTestNameComboBox.Text))
             {
                 List<LabTestResults> searchResultList = new List<LabTestResults>();
-                searchResultList.Add(this.labTestController.GetSingleLabTestResult(this.labTestNameComboBox.SelectedValue.ToString(), this.visit.AppointmentID));
-                if (searchResultList.Count == 1)
-                {                   
-                    this.labTestResultsDataGridView.DataSource = searchResultList;
-                }
-                else
+                try
                 {
-                    this.labTestResultsDataGridView.Rows.Clear();
-                    Console.WriteLine("after clear: " + labTestResultsDataGridView.Rows.Count);
+                    LabTestResults searchResult = this.labTestController.GetSingleLabTestResult(this.labTestNameComboBox.SelectedValue.ToString(), this.visit.AppointmentID);
+                    if (searchResult != null)
+                    {
+                        searchResultList.Add(searchResult);
+                    }
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (searchResultList.Count == 0)
+                {
                     this.resultsLabel.Text = "No search results.";
-                }               
+                }
+                this.labTestResultsDataGridView.DataSource = searchResultList;
             }
         }
 
