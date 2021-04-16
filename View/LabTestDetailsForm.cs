@@ -31,11 +31,14 @@ namespace SmartClinic.View
             this.LoadLabTestListBox();
             this.datePerformedDateTimePicker.Checked = false;
             this.datePerformedDateTimePicker.Text = "";
-            this.PopulateForm();
+            this.PopulateHeader();
             this.PopulateDataGridView();
             this.PopulateSearchComboBoxes();
             this.DisableFormIfFinalDiagnosisEntered();
+          
         }
+
+   
 
         private void DisableFormIfFinalDiagnosisEntered()
         {
@@ -81,7 +84,7 @@ namespace SmartClinic.View
             this.labTestListBox.ClearSelected();
         }
 
-        private void PopulateForm()
+        private void PopulateHeader()
         {
             this.patientIDDisplayLabel.Text = this.visit.PatientID.ToString();
             this.patientNameDisplayLabel.Text = this.visit.Patient.ToString();
@@ -368,10 +371,7 @@ namespace SmartClinic.View
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (searchResultList.Count == 0)
-                {
-                    this.resultsLabel.Text = "No search results.";
-                }
+                
                 this.labTestResultsDataGridView.DataSource = searchResultList;
             }
             if (!string.IsNullOrWhiteSpace(labTestNameComboBox.Text))
@@ -391,10 +391,7 @@ namespace SmartClinic.View
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (searchResultList.Count == 0)
-                {
-                    this.resultsLabel.Text = "No search results.";
-                }
+                
                 this.labTestResultsDataGridView.DataSource = searchResultList;
             }
         }
@@ -405,6 +402,33 @@ namespace SmartClinic.View
             this.resultsLabel.Text = "";
             this.labTestCodeComboBox.SelectedIndex = -1;
             this.labTestNameComboBox.SelectedIndex = -1;
+        }
+
+        private void DataGridViewStateChanged_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (this.labTestResultsDataGridView.Rows.Count == 0)
+            {
+                this.saveChangesButton.Enabled = false;
+                this.resultsLabel.Text = "No results";
+                this.ResetForm();
+            }
+        }
+
+        private void ResetForm()
+        {
+            this.labTestCodeLabel2.Text = "";
+            this.nameLabel1.Text = "";
+            this.datePerformedDateTimePicker.Checked = false;
+            this.isNormalComboBox.Text = "";
+            this.resultTextBox.Text = "";
+
+        }
+
+        private void DataGridViewStateChanged_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            
+            this.saveChangesButton.Enabled = true;
+            this.resultsLabel.Text = "";
         }
     }
 }

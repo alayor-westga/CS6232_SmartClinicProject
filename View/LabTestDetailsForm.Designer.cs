@@ -283,6 +283,7 @@ namespace SmartClinic.View
             // 
             // isNormalComboBox
             // 
+            this.isNormalComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.isNormalComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isNormalComboBox.FormattingEnabled = true;
             this.isNormalComboBox.Items.AddRange(new object[] {
@@ -402,6 +403,8 @@ namespace SmartClinic.View
             this.labTestResultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.labTestResultsDataGridView.Size = new System.Drawing.Size(759, 274);
             this.labTestResultsDataGridView.TabIndex = 108;
+            this.labTestResultsDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DataGridViewStateChanged_RowsAdded);
+            this.labTestResultsDataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DataGridViewStateChanged_RowsRemoved);
             this.labTestResultsDataGridView.SelectionChanged += new System.EventHandler(this.RowSelectionChanged_Click);
             // 
             // dataGridViewTextBoxColumn2
