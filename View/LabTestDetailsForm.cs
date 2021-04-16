@@ -16,12 +16,14 @@ namespace SmartClinic.View
         private readonly LabTestController labTestController;
         private readonly PatientVisits visit;
         private LabTestResults oldResults;
+        private bool finalDiagnosisNotAdded;
 
-        public LabTestDetailsForm(PatientVisits visit)
+        public LabTestDetailsForm(PatientVisits visit, bool finalDiagnosisNotAdded)
         {
             InitializeComponent();
             this.labTestController = new LabTestController();
             this.visit = visit;
+            this.finalDiagnosisNotAdded = finalDiagnosisNotAdded;
         }
 
         private void ThisFormLoad_Load(object sender, EventArgs e)
@@ -32,9 +34,21 @@ namespace SmartClinic.View
             this.PopulateForm();
             this.PopulateDataGridView();
             this.PopulateSearchComboBoxes();
+            this.DisableFormIfFinalDiagnosisEntered();
         }
 
-       
+        private void DisableFormIfFinalDiagnosisEntered()
+        {
+            if (!this.finalDiagnosisNotAdded)
+            {
+                this.datePerformedDateTimePicker.Enabled = false;
+                this.resultTextBox.ReadOnly = true;
+                this.isNormalComboBox.Enabled = false;
+                this.orderTestButton.Enabled = false;
+                this.saveChangesButton.Enabled = false;
+                this.labTestListBox.Enabled = false;
+            }
+        }
 
         private void LoadLabTestListBox()
         {
@@ -219,9 +233,9 @@ namespace SmartClinic.View
             try
             {
                 Console.WriteLine(labTestResultsDataGridView.Rows.Count);
-                if (labTestResultsDataGridView.Rows.Count >= 1)
+                if (this.labTestResultsDataGridView.CurrentRow.Cells[0].Value != null)
                 {
-                    //oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), this.visit.AppointmentID);
+                    oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), this.visit.AppointmentID);
                 }              
             }
             catch (ArgumentException argumentException)
@@ -333,6 +347,8 @@ namespace SmartClinic.View
             }
         }
 
+
+
         private void SearchButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(labTestCodeComboBox.Text))
@@ -359,16 +375,16 @@ namespace SmartClinic.View
                 else
                 {
                     this.labTestResultsDataGridView.Rows.Clear();
-                    this.searchLabel.Text = "No search results.";
-                }
-                
+                    Console.WriteLine("after clear: " + labTestResultsDataGridView.Rows.Count);
+                    this.resultsLabel.Text = "No search results.";
+                }               
             }
         }
 
         private void ResetSearchButton_Click(object sender, EventArgs e)
         {
             this.PopulateDataGridView();
-            this.searchLabel.Text = "";
+            this.resultsLabel.Text = "";
             this.labTestCodeComboBox.SelectedIndex = -1;
             this.labTestNameComboBox.SelectedIndex = -1;
         }

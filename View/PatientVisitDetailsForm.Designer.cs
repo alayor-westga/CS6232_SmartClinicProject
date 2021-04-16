@@ -91,7 +91,6 @@ namespace SmartClinic.View
             // labTestsButton
             // 
             this.labTestsButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labTestsButton.Enabled = false;
             this.labTestsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTestsButton.Location = new System.Drawing.Point(706, 647);
             this.labTestsButton.Name = "labTestsButton";
@@ -300,7 +299,7 @@ namespace SmartClinic.View
             // 
             this.dobTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dobTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dobTextBox.Location = new System.Drawing.Point(534, 36);
+            this.dobTextBox.Location = new System.Drawing.Point(533, 36);
             this.dobTextBox.Name = "dobTextBox";
             this.dobTextBox.Size = new System.Drawing.Size(208, 23);
             this.dobTextBox.TabIndex = 53;
@@ -310,7 +309,7 @@ namespace SmartClinic.View
             this.dobLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dobLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dobLabel.ForeColor = System.Drawing.Color.Black;
-            this.dobLabel.Location = new System.Drawing.Point(460, 36);
+            this.dobLabel.Location = new System.Drawing.Point(459, 36);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(68, 23);
             this.dobLabel.TabIndex = 51;
@@ -335,7 +334,7 @@ namespace SmartClinic.View
             this.doctorTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.doctorTextBox.Location = new System.Drawing.Point(153, 110);
             this.doctorTextBox.Name = "doctorTextBox";
-            this.doctorTextBox.Size = new System.Drawing.Size(211, 23);
+            this.doctorTextBox.Size = new System.Drawing.Size(210, 23);
             this.doctorTextBox.TabIndex = 49;
             // 
             // PatientNameLabel
@@ -365,7 +364,7 @@ namespace SmartClinic.View
             this.nurseTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.nurseTextBox.Location = new System.Drawing.Point(153, 148);
             this.nurseTextBox.Name = "nurseTextBox";
-            this.nurseTextBox.Size = new System.Drawing.Size(211, 23);
+            this.nurseTextBox.Size = new System.Drawing.Size(210, 23);
             this.nurseTextBox.TabIndex = 45;
             // 
             // appointmentDateLabel
@@ -384,7 +383,7 @@ namespace SmartClinic.View
             // 
             this.patientIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientIDTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.patientIDTextBox.Location = new System.Drawing.Point(534, 0);
+            this.patientIDTextBox.Location = new System.Drawing.Point(533, 0);
             this.patientIDTextBox.Name = "patientIDTextBox";
             this.patientIDTextBox.Size = new System.Drawing.Size(100, 23);
             this.patientIDTextBox.TabIndex = 42;
@@ -395,7 +394,7 @@ namespace SmartClinic.View
             this.patientNameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.patientNameTextBox.Location = new System.Drawing.Point(153, 36);
             this.patientNameTextBox.Name = "patientNameTextBox";
-            this.patientNameTextBox.Size = new System.Drawing.Size(211, 23);
+            this.patientNameTextBox.Size = new System.Drawing.Size(210, 23);
             this.patientNameTextBox.TabIndex = 40;
             // 
             // doctorLabel
@@ -415,7 +414,7 @@ namespace SmartClinic.View
             this.patientIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.patientIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.patientIDLabel.Location = new System.Drawing.Point(422, 0);
+            this.patientIDLabel.Location = new System.Drawing.Point(421, 0);
             this.patientIDLabel.Name = "patientIDLabel";
             this.patientIDLabel.Size = new System.Drawing.Size(106, 23);
             this.patientIDLabel.TabIndex = 38;
@@ -438,7 +437,7 @@ namespace SmartClinic.View
             this.loggedInNurseTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.loggedInNurseTextBox.Location = new System.Drawing.Point(153, 187);
             this.loggedInNurseTextBox.Name = "loggedInNurseTextBox";
-            this.loggedInNurseTextBox.Size = new System.Drawing.Size(211, 23);
+            this.loggedInNurseTextBox.Size = new System.Drawing.Size(210, 23);
             this.loggedInNurseTextBox.TabIndex = 76;
             // 
             // apptIDLabel
@@ -479,7 +478,7 @@ namespace SmartClinic.View
             this.doctorIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.doctorIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doctorIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.doctorIDLabel.Location = new System.Drawing.Point(432, 110);
+            this.doctorIDLabel.Location = new System.Drawing.Point(431, 110);
             this.doctorIDLabel.Name = "doctorIDLabel";
             this.doctorIDLabel.Size = new System.Drawing.Size(96, 23);
             this.doctorIDLabel.TabIndex = 80;
@@ -491,7 +490,7 @@ namespace SmartClinic.View
             this.loggedInNurseIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.loggedInNurseIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loggedInNurseIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.loggedInNurseIDLabel.Location = new System.Drawing.Point(419, 187);
+            this.loggedInNurseIDLabel.Location = new System.Drawing.Point(418, 187);
             this.loggedInNurseIDLabel.Name = "loggedInNurseIDLabel";
             this.loggedInNurseIDLabel.Size = new System.Drawing.Size(109, 23);
             this.loggedInNurseIDLabel.TabIndex = 82;
@@ -503,7 +502,7 @@ namespace SmartClinic.View
             this.lastNurseIDLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lastNurseIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNurseIDLabel.ForeColor = System.Drawing.Color.Black;
-            this.lastNurseIDLabel.Location = new System.Drawing.Point(415, 148);
+            this.lastNurseIDLabel.Location = new System.Drawing.Point(414, 148);
             this.lastNurseIDLabel.Name = "lastNurseIDLabel";
             this.lastNurseIDLabel.Size = new System.Drawing.Size(113, 23);
             this.lastNurseIDLabel.TabIndex = 83;
@@ -514,7 +513,7 @@ namespace SmartClinic.View
             // 
             this.loggedInNurseIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loggedInNurseIDTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.loggedInNurseIDTextBox.Location = new System.Drawing.Point(534, 187);
+            this.loggedInNurseIDTextBox.Location = new System.Drawing.Point(533, 187);
             this.loggedInNurseIDTextBox.Name = "loggedInNurseIDTextBox";
             this.loggedInNurseIDTextBox.Size = new System.Drawing.Size(159, 23);
             this.loggedInNurseIDTextBox.TabIndex = 84;
@@ -523,7 +522,7 @@ namespace SmartClinic.View
             // 
             this.lastNurseIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNurseIDTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lastNurseIDTextBox.Location = new System.Drawing.Point(534, 148);
+            this.lastNurseIDTextBox.Location = new System.Drawing.Point(533, 148);
             this.lastNurseIDTextBox.Name = "lastNurseIDTextBox";
             this.lastNurseIDTextBox.Size = new System.Drawing.Size(159, 23);
             this.lastNurseIDTextBox.TabIndex = 85;
@@ -533,7 +532,7 @@ namespace SmartClinic.View
             this.patientPhoneLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.patientPhoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientPhoneLabel.ForeColor = System.Drawing.Color.Black;
-            this.patientPhoneLabel.Location = new System.Drawing.Point(402, 73);
+            this.patientPhoneLabel.Location = new System.Drawing.Point(401, 73);
             this.patientPhoneLabel.Name = "patientPhoneLabel";
             this.patientPhoneLabel.Size = new System.Drawing.Size(126, 23);
             this.patientPhoneLabel.TabIndex = 86;
@@ -544,7 +543,7 @@ namespace SmartClinic.View
             // 
             this.patientPhoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.patientPhoneTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.patientPhoneTextBox.Location = new System.Drawing.Point(534, 73);
+            this.patientPhoneTextBox.Location = new System.Drawing.Point(533, 73);
             this.patientPhoneTextBox.Name = "patientPhoneTextBox";
             this.patientPhoneTextBox.Size = new System.Drawing.Size(208, 23);
             this.patientPhoneTextBox.TabIndex = 87;
@@ -555,7 +554,7 @@ namespace SmartClinic.View
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.8971F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.1029F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 235F));
             this.tableLayoutPanel1.Controls.Add(this.apptIDLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.loggedInNurseIDTextBox, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.loggedInNurseTextBox, 1, 5);
@@ -596,7 +595,7 @@ namespace SmartClinic.View
             // 
             this.doctorIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doctorIDTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.doctorIDTextBox.Location = new System.Drawing.Point(534, 110);
+            this.doctorIDTextBox.Location = new System.Drawing.Point(533, 110);
             this.doctorIDTextBox.Name = "doctorIDTextBox";
             this.doctorIDTextBox.Size = new System.Drawing.Size(159, 23);
             this.doctorIDTextBox.TabIndex = 88;

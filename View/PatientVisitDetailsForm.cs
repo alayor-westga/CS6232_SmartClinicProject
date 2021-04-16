@@ -263,7 +263,6 @@ namespace SmartClinic.View
                 isValid = false;
                 bloodPressureMessageLabel.Text = "Required Field";
             }
-
             if (!int.TryParse(systolicTextBox.Text, out _))
             {
                 isValid = false;
@@ -304,7 +303,7 @@ namespace SmartClinic.View
 
         private void LabTestsButton_Click(object sender, EventArgs e)
         {
-            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit))
+            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit, this.ValidateFinalDiagnosis()))
             {
                 labTestDetailsForm.ShowDialog();
             }
