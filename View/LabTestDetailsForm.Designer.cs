@@ -64,6 +64,12 @@ namespace SmartClinic.View
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridGroupBox = new System.Windows.Forms.GroupBox();
+            this.labTestCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.labTestNameComboBox = new System.Windows.Forms.ComboBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchLabel = new System.Windows.Forms.Label();
+            this.resultsLabel = new System.Windows.Forms.Label();
+            this.resetSearchButton = new System.Windows.Forms.Button();
             appointmentIDLabel = new System.Windows.Forms.Label();
             datePerformedLabel = new System.Windows.Forms.Label();
             isNormalLabel = new System.Windows.Forms.Label();
@@ -340,7 +346,7 @@ namespace SmartClinic.View
             this.closeButton.TabIndex = 102;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // labTestListBox
             // 
@@ -452,11 +458,79 @@ namespace SmartClinic.View
             this.dataGridGroupBox.TabStop = false;
             this.dataGridGroupBox.Text = "The Tests Below Have Been Ordered";
             // 
+            // labTestCodeComboBox
+            // 
+            this.labTestCodeComboBox.DataSource = this.labTestBindingSource;
+            this.labTestCodeComboBox.DisplayMember = "LabTestCode";
+            this.labTestCodeComboBox.FormattingEnabled = true;
+            this.labTestCodeComboBox.Location = new System.Drawing.Point(378, 185);
+            this.labTestCodeComboBox.Name = "labTestCodeComboBox";
+            this.labTestCodeComboBox.Size = new System.Drawing.Size(91, 24);
+            this.labTestCodeComboBox.TabIndex = 111;
+            this.labTestCodeComboBox.ValueMember = "LabTestCode";
+            this.labTestCodeComboBox.DropDownClosed += new System.EventHandler(this.LabTestCode_DropDownClosed);
+            // 
+            // labTestNameComboBox
+            // 
+            this.labTestNameComboBox.DataSource = this.labTestBindingSource;
+            this.labTestNameComboBox.DisplayMember = "Name";
+            this.labTestNameComboBox.FormattingEnabled = true;
+            this.labTestNameComboBox.Location = new System.Drawing.Point(475, 185);
+            this.labTestNameComboBox.Name = "labTestNameComboBox";
+            this.labTestNameComboBox.Size = new System.Drawing.Size(193, 24);
+            this.labTestNameComboBox.TabIndex = 112;
+            this.labTestNameComboBox.ValueMember = "LabTestCode";
+            this.labTestNameComboBox.DropDownClosed += new System.EventHandler(this.LabTestName_DropDownClosed);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(674, 185);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(103, 24);
+            this.searchButton.TabIndex = 113;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // searchLabel
+            // 
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Location = new System.Drawing.Point(378, 165);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(227, 17);
+            this.searchLabel.TabIndex = 114;
+            this.searchLabel.Text = "Search by Lab Test Code or Name";
+            // 
+            // resultsLabel
+            // 
+            this.resultsLabel.AutoSize = true;
+            this.resultsLabel.ForeColor = System.Drawing.Color.Red;
+            this.resultsLabel.Location = new System.Drawing.Point(605, 520);
+            this.resultsLabel.Name = "resultsLabel";
+            this.resultsLabel.Size = new System.Drawing.Size(0, 17);
+            this.resultsLabel.TabIndex = 115;
+            // 
+            // resetSearchButton
+            // 
+            this.resetSearchButton.Location = new System.Drawing.Point(674, 157);
+            this.resetSearchButton.Name = "resetSearchButton";
+            this.resetSearchButton.Size = new System.Drawing.Size(103, 23);
+            this.resetSearchButton.TabIndex = 116;
+            this.resetSearchButton.Text = "Reset Search";
+            this.resetSearchButton.UseVisualStyleBackColor = true;
+            this.resetSearchButton.Click += new System.EventHandler(this.ResetSearchButton_Click);
+            // 
             // LabTestDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 567);
+            this.Controls.Add(this.resetSearchButton);
+            this.Controls.Add(this.resultsLabel);
+            this.Controls.Add(this.searchLabel);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.labTestNameComboBox);
+            this.Controls.Add(this.labTestCodeComboBox);
             this.Controls.Add(this.dataGridGroupBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labTestDetailsGroupBox);
@@ -477,6 +551,7 @@ namespace SmartClinic.View
             ((System.ComponentModel.ISupportInitialize)(this.labTestResultsDataGridView)).EndInit();
             this.dataGridGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -510,5 +585,11 @@ namespace SmartClinic.View
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.ComboBox labTestCodeComboBox;
+        private System.Windows.Forms.ComboBox labTestNameComboBox;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.Label resultsLabel;
+        private System.Windows.Forms.Button resetSearchButton;
     }
 }

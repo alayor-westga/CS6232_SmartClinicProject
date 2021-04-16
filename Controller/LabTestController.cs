@@ -49,12 +49,7 @@ namespace SmartClinic.Controller
         public LabTestResults GetSingleLabTestResult(string labTestCode, int appointmentID)
         {
             return this.labTestSource.GetSingleLabTestResult(labTestCode, appointmentID);
-        }
-
-        public bool UpdateLabTestResults(LabTestResults oldResults, LabTestResults newResults, string updateVariation)
-        {
-            return this.labTestSource.UpdateLabTestResults(oldResults, newResults, updateVariation);
-        }
+        }       
 
         public bool UpdateLabTestResults(LabTestResults oldResults, LabTestResults newResults)
         {

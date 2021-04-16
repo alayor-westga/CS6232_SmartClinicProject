@@ -31,7 +31,10 @@ namespace SmartClinic.View
             this.datePerformedDateTimePicker.Text = "";
             this.PopulateForm();
             this.PopulateDataGridView();
+            this.PopulateSearchComboBoxes();
         }
+
+       
 
         private void LoadLabTestListBox()
         {
@@ -74,22 +77,30 @@ namespace SmartClinic.View
 
         private void OrderTestButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you wish\nto order these tests?",
-                        "Confirm Test Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (dialogResult == DialogResult.No)
-            {
-                return;
-            }
-
             List<LabTestResults> orderedTests = new List<LabTestResults>();
-
+            int selectedItemsCounter = 0;
             foreach (LabTest labTest in labTestListBox.SelectedItems)
             {
                 LabTestResults labTestResult = new LabTestResults();
                 labTestResult.LabTestCode = labTest.LabTestCode;
                 labTestResult.AppointmentID = this.visit.AppointmentID;
                 orderedTests.Add(labTestResult);
+                selectedItemsCounter += 1;
+            }
+
+            if (selectedItemsCounter == 0)
+            {
+                MessageBox.Show("You have not selected any items",
+                      "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you wish\nto order these tests?",
+                        "Confirm Test Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.No)
+            {
+                return;
             }
 
             try
@@ -110,6 +121,8 @@ namespace SmartClinic.View
             }
             this.PopulateDataGridView();
             this.LoadLabTestListBox();
+            this.labTestCodeComboBox.SelectedIndex = -1;
+            this.labTestNameComboBox.SelectedIndex = -1;
 
             MessageBox.Show("Tests have been successfully ordered.",
                         "Order Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -147,6 +160,22 @@ namespace SmartClinic.View
                 MessageBox.Show(argumentException.Message,
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void PopulateSearchComboBoxes()
+        {
+            try
+            {
+                this.labTestCodeComboBox.DataSource = this.labTestController.GetAllLabTests();
+                this.labTestNameComboBox.DataSource = this.labTestController.GetAllLabTests();
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            this.labTestCodeComboBox.SelectedIndex = -1;
+            this.labTestNameComboBox.SelectedIndex = -1;
         }
 
         private void RowSelectionChanged_Click(object sender, EventArgs e)
@@ -189,8 +218,11 @@ namespace SmartClinic.View
         
             try
             {
-                oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(),
-                    this.visit.AppointmentID);
+                Console.WriteLine(labTestResultsDataGridView.Rows.Count);
+                if (labTestResultsDataGridView.Rows.Count >= 1)
+                {
+                    //oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), this.visit.AppointmentID);
+                }              
             }
             catch (ArgumentException argumentException)
             {
@@ -278,9 +310,67 @@ namespace SmartClinic.View
 
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }    
+
+        private void LabTestCode_DropDownClosed(object sender, EventArgs e)
+        {
+            if (this.labTestCodeComboBox.SelectedIndex != -1)
+            {
+                this.labTestNameComboBox.SelectedIndex = -1;
+
+            }
+        }
+
+        private void LabTestName_DropDownClosed(object sender, EventArgs e)
+        {
+            if (this.labTestNameComboBox.SelectedIndex != -1)
+            {
+                this.labTestCodeComboBox.SelectedIndex = -1;
+
+            }
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(labTestCodeComboBox.Text))
+            {             
+                try
+                {
+                    List<LabTestResults> searchResultList = new List<LabTestResults>();
+                    searchResultList.Add(this.labTestController.GetSingleLabTestResult(this.labTestCodeComboBox.SelectedValue.ToString(), this.visit.AppointmentID));
+                    this.labTestResultsDataGridView.DataSource = searchResultList;
+                }
+                catch
+                {
+
+                }
+            }
+            if (!string.IsNullOrWhiteSpace(labTestNameComboBox.Text))
+            {
+                List<LabTestResults> searchResultList = new List<LabTestResults>();
+                searchResultList.Add(this.labTestController.GetSingleLabTestResult(this.labTestNameComboBox.SelectedValue.ToString(), this.visit.AppointmentID));
+                if (searchResultList.Count == 1)
+                {                   
+                    this.labTestResultsDataGridView.DataSource = searchResultList;
+                }
+                else
+                {
+                    this.labTestResultsDataGridView.Rows.Clear();
+                    this.searchLabel.Text = "No search results.";
+                }
+                
+            }
+        }
+
+        private void ResetSearchButton_Click(object sender, EventArgs e)
+        {
+            this.PopulateDataGridView();
+            this.searchLabel.Text = "";
+            this.labTestCodeComboBox.SelectedIndex = -1;
+            this.labTestNameComboBox.SelectedIndex = -1;
         }
     }
 }
