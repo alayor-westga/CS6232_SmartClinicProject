@@ -35,6 +35,7 @@ namespace SmartClinic.View
             this.visit = visit;
             PopulateHeaderInformation();
             ClearVisitInformation();
+            this.labTestsButton.Enabled = false;
             ShowDialog();
         }
 
@@ -135,7 +136,7 @@ namespace SmartClinic.View
             initialDiagnosisTextBox.ReadOnly = false;
             finalDiagnosisTextBox.ReadOnly = false;
             saveChangesAndCloseButton.Enabled = true;
-            labTestsButton.Enabled = true;
+            
         }
 
         private bool ValidateFinalDiagnosis()
@@ -150,6 +151,7 @@ namespace SmartClinic.View
      
         private void SaveChangesAndCloseButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("in save changes");
             ClearErrorMessages();
             if (!ValidateFields()) return;
 
@@ -175,7 +177,8 @@ namespace SmartClinic.View
                         patientVisitController.AddPatientVisit(patientVisit);
                         MessageBox.Show("The visit information was successfully saved.",
                                 "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
+                        this.labTestsButton.Enabled = true;
+                   
                     }
                     catch (ArgumentException argumentException)
                     {
@@ -199,7 +202,7 @@ namespace SmartClinic.View
                         }
                         MessageBox.Show("The changes were successfully amended to the database.",
                                 "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
+                  
                     }
                     catch (ArgumentException argumentException)
                     {
@@ -222,6 +225,7 @@ namespace SmartClinic.View
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+
             Close();
         }
 
@@ -294,16 +298,54 @@ namespace SmartClinic.View
         private void AppointmentDetailsButton_Click(object sender, EventArgs e)
         {
             using(AppointmentDetailsForm appointmentDetailsForm = new AppointmentDetailsForm())
-            {                             
+            {
+                try
+                {
                     Appointment appointment = this.appointmentController.GetAppointmentByAppointmentId(this.visit.AppointmentID);
                     appointmentDetailsForm.ShowWithAppointment(appointment);
+
+
+                }
+                catch (ArgumentException argumentException)
+                {
+                    MessageBox.Show(argumentException.Message,
+                            "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                    
                                
             }
         }
 
         private void LabTestsButton_Click(object sender, EventArgs e)
         {
-            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit, this.ValidateFinalDiagnosis()))
+            /*
+            try
+            {
+                
+                if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.visit.AppointmentID))
+                {
+                    DialogResult dialogResult = MessageBox.Show("This visit has not been saved.\nDo you want to save it?",
+                        "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        this.saveChangesAndCloseButton.PerformClick();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+
+
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message,
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                */
+            
+            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit, finalDiagnosisTextBox.Text == ""))
             {
                 labTestDetailsForm.ShowDialog();
             }

@@ -35,6 +35,10 @@ namespace SmartClinic.View
             this.PopulateDataGridView();
             this.PopulateSearchComboBoxes();
             this.DisableFormIfFinalDiagnosisEntered();
+            if (this.labTestResultsDataGridView.Rows.Count == 0)
+            {
+                this.saveChangesButton.Enabled = false;
+            }
           
         }
 
@@ -426,8 +430,10 @@ namespace SmartClinic.View
 
         private void DataGridViewStateChanged_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            
-            this.saveChangesButton.Enabled = true;
+            if (this.finalDiagnosisNotAdded)
+            {
+                this.saveChangesButton.Enabled = true;
+            }
             this.resultsLabel.Text = "";
         }
     }
