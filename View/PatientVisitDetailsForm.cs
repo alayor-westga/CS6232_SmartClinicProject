@@ -344,8 +344,8 @@ namespace SmartClinic.View
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
                 */
-            
-            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit, finalDiagnosisTextBox.Text == ""))
+
+            using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit, !string.IsNullOrWhiteSpace(finalDiagnosisTextBox.Text)))
             {
                 labTestDetailsForm.ShowDialog();
             }
