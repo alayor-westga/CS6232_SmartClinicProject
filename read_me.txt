@@ -1,10 +1,10 @@
 Nurse
 username: jane
-password: 1234
+password: test1234
 
 Admin
-username: max
-password: sw21
+username: doe
+password: test1234
 
 * Create DB
     - Run the DB/script.sql
