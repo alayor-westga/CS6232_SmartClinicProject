@@ -178,7 +178,7 @@ namespace SmartClinic.View
                         MessageBox.Show("The visit information was successfully saved.",
                                 "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.labTestsButton.Enabled = true;
-                   
+                        Close();
                     }
                     catch (ArgumentException argumentException)
                     {
@@ -202,7 +202,7 @@ namespace SmartClinic.View
                         }
                         MessageBox.Show("The changes were successfully amended to the database.",
                                 "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  
+                        Close();
                     }
                     catch (ArgumentException argumentException)
                     {

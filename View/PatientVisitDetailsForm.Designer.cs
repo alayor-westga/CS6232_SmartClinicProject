@@ -104,9 +104,9 @@ namespace SmartClinic.View
             // 
             this.appointmentDetailsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.appointmentDetailsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentDetailsButton.Location = new System.Drawing.Point(438, 647);
+            this.appointmentDetailsButton.Location = new System.Drawing.Point(478, 647);
             this.appointmentDetailsButton.Name = "appointmentDetailsButton";
-            this.appointmentDetailsButton.Size = new System.Drawing.Size(262, 35);
+            this.appointmentDetailsButton.Size = new System.Drawing.Size(222, 35);
             this.appointmentDetailsButton.TabIndex = 73;
             this.appointmentDetailsButton.Text = "Appointment Details";
             this.appointmentDetailsButton.UseVisualStyleBackColor = true;
@@ -119,9 +119,9 @@ namespace SmartClinic.View
             this.saveChangesAndCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveChangesAndCloseButton.Location = new System.Drawing.Point(216, 647);
             this.saveChangesAndCloseButton.Name = "saveChangesAndCloseButton";
-            this.saveChangesAndCloseButton.Size = new System.Drawing.Size(216, 35);
+            this.saveChangesAndCloseButton.Size = new System.Drawing.Size(256, 35);
             this.saveChangesAndCloseButton.TabIndex = 72;
-            this.saveChangesAndCloseButton.Text = "Save Changes";
+            this.saveChangesAndCloseButton.Text = "Save Changes And Close";
             this.saveChangesAndCloseButton.UseVisualStyleBackColor = true;
             this.saveChangesAndCloseButton.Click += new System.EventHandler(this.SaveChangesAndCloseButton_Click);
             // 
@@ -133,7 +133,7 @@ namespace SmartClinic.View
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(91, 35);
             this.cancelButton.TabIndex = 71;
-            this.cancelButton.Text = "Close";
+            this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 

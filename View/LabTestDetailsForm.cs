@@ -260,6 +260,12 @@ namespace SmartClinic.View
 
         private void SaveChangesButton_Click(object sender, EventArgs e)
         {
+            if (!this.ValidateFormChanges())
+            {
+                MessageBox.Show("No changes to the form have been detected.",
+                        "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && !string.IsNullOrWhiteSpace(this.isNormalComboBox.Text) ||
                 !string.IsNullOrWhiteSpace(this.resultTextBox.Text) && string.IsNullOrWhiteSpace(this.isNormalComboBox.Text)))
             {
@@ -336,6 +342,43 @@ namespace SmartClinic.View
             MessageBox.Show("Changes to this lab test have\nhave been successfully saved",
                                      "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+        }
+
+        private bool ValidateFormChanges()
+        {
+            bool formChanged = false;
+            Console.WriteLine(this.oldResults.DatePerformed);
+            Console.WriteLine((DateTime)this.datePerformedDateTimePicker.Value);
+            if (this.oldResults.DatePerformed != (DateTime)this.datePerformedDateTimePicker.Value)
+            {
+                formChanged = true;
+            }
+            if (this.oldResults.Result != this.resultTextBox.Text)
+            {
+                formChanged = true;
+            }
+            if (this.oldResults.IsNormal == true && this.isNormalComboBox.Text != "normal")
+            {
+                formChanged = true;
+            }
+            if (this.oldResults.IsNormal == false && this.isNormalComboBox.Text != "abnormal")
+            {
+                formChanged = true;
+            }
+            if (this.oldResults.IsNormal == null && this.isNormalComboBox.Text != "")
+            {
+                formChanged = true;
+            }
+            if (this.oldResults == null && this.datePerformedDateTimePicker.Checked == true)
+            {
+                formChanged = true;
+            }
+            if ((this.oldResults.DatePerformed == (DateTime)this.datePerformedDateTimePicker.Value) && this.datePerformedDateTimePicker.Checked == false)
+            {
+                formChanged = true;
+            }
+
+            return formChanged;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
