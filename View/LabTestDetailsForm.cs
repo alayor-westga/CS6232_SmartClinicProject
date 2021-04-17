@@ -205,6 +205,12 @@ namespace SmartClinic.View
             this.labTestCodeLabel2.Text = oldResults.LabTestCode;
             this.nameLabel1.Text = oldResults.LabTestName;
 
+            this.PopulateDateIsNormalResults();
+            
+        }
+
+        private void PopulateDateIsNormalResults()
+        {
             try
             {
                 this.datePerformedDateTimePicker.Checked = true;
@@ -311,7 +317,8 @@ namespace SmartClinic.View
                     MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
                     + "\n\nThe form has been updated to reflect those changes.",
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //need to do something here
+                    this.oldResults = this.labTestController.GetSingleLabTestResult(this.labTestCodeLabel2.Text, this.visit.AppointmentID);
+                    this.PopulateDateIsNormalResults();
                     return;
                 }
 
