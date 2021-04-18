@@ -224,7 +224,6 @@ namespace SmartClinic.View
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-
             Close();
         }
 
@@ -309,41 +308,12 @@ namespace SmartClinic.View
                 {
                     MessageBox.Show(argumentException.Message,
                             "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                    
-                               
+                }                                                 
             }
         }
 
         private void LabTestsButton_Click(object sender, EventArgs e)
-        {
-            /*
-            try
-            {
-                
-                if (this.patientVisitController.AppointmentHasNoAssociatedVisit(this.visit.AppointmentID))
-                {
-                    DialogResult dialogResult = MessageBox.Show("This visit has not been saved.\nDo you want to save it?",
-                        "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        this.saveChangesAndCloseButton.PerformClick();
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-
-
-            }
-            catch (ArgumentException argumentException)
-            {
-                MessageBox.Show(argumentException.Message,
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                */
-
+        {           
             using (LabTestDetailsForm labTestDetailsForm = new LabTestDetailsForm(visit, !string.IsNullOrWhiteSpace(finalDiagnosisTextBox.Text)))
             {
                 labTestDetailsForm.ShowDialog();
