@@ -57,6 +57,10 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// Adds the given tests to the LabTestResults table
+        /// </summary>
+        /// <param name="orderedTests"></param>
         public void AddOrderedTests(List<LabTestResults> orderedTests)
         {
             if (orderedTests == null)
@@ -94,6 +98,11 @@ namespace SmartClinic.DAL
             }
         }
 
+        /// <summary>
+        /// gets a List of all lab test results associated with an appointmentID
+        /// </summary>
+        /// <param name="appointmentID"></param>
+        /// <returns></returns>
         public List<LabTestResults> GetTestsForAppointment(int appointmentID)
         {
             if (appointmentID < 0)
@@ -147,6 +156,12 @@ namespace SmartClinic.DAL
             return labTestSearchResults;
         }
 
+        /// <summary>
+        /// Gets a single lab test result record from a labtestCode and an appointmentID
+        /// </summary>
+        /// <param name="labTestCode"></param>
+        /// <param name="appointmentID"></param>
+        /// <returns></returns>
         public LabTestResults GetSingleLabTestResult(string labTestCode, int appointmentID)
         {
             LabTestResults labTestResult = new LabTestResults();
@@ -203,7 +218,12 @@ namespace SmartClinic.DAL
             }
         }
 
-
+        /// <summary>
+        /// Updates a record in the Lab Test Results table
+        /// </summary>
+        /// <param name="oldResults"></param>
+        /// <param name="newResults"></param>
+        /// <returns></returns>
         public bool UpdateLabTestResults(LabTestResults oldResults, LabTestResults newResults)
         {
             Console.WriteLine("In DAL: " + newResults.DatePerformed);
