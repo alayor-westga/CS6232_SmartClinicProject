@@ -302,12 +302,6 @@
     <Compile Include="View\LabTestDetailsForm.Designer.cs">
       <DependentUpon>LabTestDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LabTestsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\LabTestsForm.Designer.cs">
-      <DependentUpon>LabTestsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,9 +376,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\LabTestDetailsForm.resx">
       <DependentUpon>LabTestDetailsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\LabTestsForm.resx">
-      <DependentUpon>LabTestsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
