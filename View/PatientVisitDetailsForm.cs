@@ -136,7 +136,6 @@ namespace SmartClinic.View
             initialDiagnosisTextBox.ReadOnly = false;
             finalDiagnosisTextBox.ReadOnly = false;
             saveChangesAndCloseButton.Enabled = true;
-            labTestsButton.Enabled = true;
         }
 
         private bool ValidateFinalDiagnosis()
