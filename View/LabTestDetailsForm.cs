@@ -14,8 +14,8 @@ namespace SmartClinic.View
         private readonly LabTestController labTestController;
         private readonly PatientVisits visit;
         private LabTestResults oldResults;
+        private LabTestResults newResults;
         private bool finalDiagnosisAdded;
-        private int currentRow;
 
         /// <summary>
         /// Constructor for class to initialize components and instance variables
@@ -26,8 +26,7 @@ namespace SmartClinic.View
         {
             InitializeComponent();
             this.labTestController = new LabTestController();
-            this.visit = visit;
-            this.currentRow = 0;
+            this.visit = visit;          
             this.finalDiagnosisAdded = finalDiagnosisAdded;
         }
 
@@ -205,7 +204,6 @@ namespace SmartClinic.View
             this.labTestCodeLabel2.Text = oldResults.LabTestCode;
             this.nameLabel1.Text = oldResults.LabTestName;
             this.PopulateDateIsNormalResults();
-            Console.WriteLine("in row selection changed");
         }
 
         private void PopulateDateIsNormalResults()
@@ -261,17 +259,12 @@ namespace SmartClinic.View
         private void SaveChangesButton_Click(object sender, EventArgs e)
         {
             if (!this.ValidateFormChanges())
-            {
-                MessageBox.Show("No changes to the form have been detected.",
-                        "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {             
                 return;
             }
-            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && !string.IsNullOrWhiteSpace(this.isNormalComboBox.Text) ||
-                !string.IsNullOrWhiteSpace(this.resultTextBox.Text) && string.IsNullOrWhiteSpace(this.isNormalComboBox.Text)))
-            {
-                MessageBox.Show("'Result' and 'Normal / Abnormal' fields\nmust be entered at the same time",
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               return;
+            if (!this.ValidateResultsAndIsNormalEnteredTogether())
+            {             
+                return;
             }
 
             if ((!string.IsNullOrWhiteSpace(this.resultTextBox.Text) && this.datePerformedDateTimePicker.Checked == false))
@@ -281,89 +274,94 @@ namespace SmartClinic.View
                 return;
             }
 
-            LabTestResults newResults = new LabTestResults();
-            newResults.AppointmentID = this.visit.AppointmentID;
-            newResults.LabTestCode = this.labTestCodeLabel2.Text;
-
-            if (this.datePerformedDateTimePicker.Checked)
+            this.AssignEnteredValuesToNewResults();
+            if (!this.UpdateLabTestResults())
             {
-                newResults.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
-            } 
-            else
-            {
-                newResults.DatePerformed = null;
+                return;
             }
-
-            if (this.isNormalComboBox.Text == "normal")
-            {
-                newResults.IsNormal = true;
-            }
-            else if (this.isNormalComboBox.Text == "abnormal")
-            {
-                newResults.IsNormal = false;
-            }
-            else
-            {
-                newResults.IsNormal = null;
-            }
-
-            if (string.IsNullOrWhiteSpace(this.resultTextBox.Text))
-            {
-                newResults.Result = "";
-            }
-            else
-            {
-                newResults.Result = this.resultTextBox.Text;
-            }
-
+            this.PopulateDataGridView();        
+        }
+       
+        private bool UpdateLabTestResults()
+        {
             try
             {
-                if (!this.labTestController.UpdateLabTestResults(this.oldResults, newResults))
+                if (!this.labTestController.UpdateLabTestResults(this.oldResults, this.newResults))
                 {
                     MessageBox.Show("This lab test information has been\nmodified since it has been retrieved."
                     + "\n\nThe form has been updated to reflect those changes.",
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.oldResults = this.labTestController.GetSingleLabTestResult(this.labTestCodeLabel2.Text, this.visit.AppointmentID);
                     this.PopulateDateIsNormalResults();
-                    return;
+                    return false;
                 }
             }
             catch (ArgumentException argumentException)
             {
                 MessageBox.Show(argumentException.Message,
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
-
-            this.currentRow = this.labTestResultsDataGridView.CurrentCell.RowIndex;
-            string currentLabTestCode = this.labTestCodeLabel2.Text;         
-            this.PopulateDataGridView();          
-            this.labTestResultsDataGridView.Rows[this.currentRow].Selected = true;           
-            this.oldResults = new LabTestResults();
-
-            try
-            {
-                if (this.labTestResultsDataGridView.Rows.Count != 0)
-                {
-                    oldResults = this.labTestController.GetSingleLabTestResult(currentLabTestCode, this.visit.AppointmentID);
-                    Console.WriteLine(oldResults.LabTestName);
-                }
-            }
-            catch (ArgumentException argumentException)
-            {
-                MessageBox.Show(argumentException.Message,
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            this.PopulateDateIsNormalResults();
             MessageBox.Show("Changes to this lab test have\nhave been successfully saved",
-                                     "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
+        }
+
+        private void AssignEnteredValuesToNewResults()
+        {
+            this.newResults = new LabTestResults
+            {
+                AppointmentID = this.visit.AppointmentID,
+                LabTestCode = this.labTestCodeLabel2.Text
+            };
+
+            if (this.datePerformedDateTimePicker.Checked)
+            {
+                this.newResults.DatePerformed = (DateTime)this.datePerformedDateTimePicker.Value;
+            }
+            else
+            {
+                this.newResults.DatePerformed = null;
+            }
+
+            if (this.isNormalComboBox.Text == "normal")
+            {
+                this.newResults.IsNormal = true;
+            }
+            else if (this.isNormalComboBox.Text == "abnormal")
+            {
+                this.newResults.IsNormal = false;
+            }
+            else
+            {
+                this.newResults.IsNormal = null;
+            }
+
+            if (string.IsNullOrWhiteSpace(this.resultTextBox.Text))
+            {
+                this.newResults.Result = "";
+            }
+            else
+            {
+                this.newResults.Result = this.resultTextBox.Text;
+            }
+        }
+
+        private bool ValidateResultsAndIsNormalEnteredTogether()
+        {
+            if ((string.IsNullOrWhiteSpace(this.resultTextBox.Text) && !string.IsNullOrWhiteSpace(this.isNormalComboBox.Text) ||
+                !string.IsNullOrWhiteSpace(this.resultTextBox.Text) && string.IsNullOrWhiteSpace(this.isNormalComboBox.Text)))
+            {
+                MessageBox.Show("'Result' and 'Normal / Abnormal' fields\nmust be entered at the same time",
+                      "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private bool ValidateFormChanges()
         {
             bool formChanged = false;
-            Console.WriteLine("oldResults: " + this.oldResults.DatePerformed);
-            Console.WriteLine("picker: " + (DateTime)this.datePerformedDateTimePicker.Value);
             if (this.oldResults.DatePerformed != (DateTime)this.datePerformedDateTimePicker.Value) 
             {
                 formChanged = true;
@@ -396,7 +394,11 @@ namespace SmartClinic.View
             {
                 formChanged = true;
             }
-
+            if (formChanged == false)
+            {
+                MessageBox.Show("No changes to the form have been detected.",
+                      "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             return formChanged;
         }
 
