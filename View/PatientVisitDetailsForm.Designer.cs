@@ -91,6 +91,7 @@ namespace SmartClinic.View
             // labTestsButton
             // 
             this.labTestsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labTestsButton.Enabled = false;
             this.labTestsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTestsButton.Location = new System.Drawing.Point(1059, 1011);
             this.labTestsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
