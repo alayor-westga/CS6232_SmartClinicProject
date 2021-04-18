@@ -41,7 +41,7 @@ namespace SmartClinic.UserControls
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hasCredentialsSetDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.hasCredentialsSetDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nursesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nursesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nurseBindingSource)).BeginInit();
@@ -166,12 +166,12 @@ namespace SmartClinic.UserControls
             // hasCredentialsSetDataGridViewCheckBoxColumn
             // 
             this.hasCredentialsSetDataGridViewCheckBoxColumn.DataPropertyName = "HasCredentialsSet";
-            this.hasCredentialsSetDataGridViewCheckBoxColumn.FalseValue = "";
             this.hasCredentialsSetDataGridViewCheckBoxColumn.HeaderText = "Has Access Credentials";
             this.hasCredentialsSetDataGridViewCheckBoxColumn.MinimumWidth = 10;
             this.hasCredentialsSetDataGridViewCheckBoxColumn.Name = "hasCredentialsSetDataGridViewCheckBoxColumn";
             this.hasCredentialsSetDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.hasCredentialsSetDataGridViewCheckBoxColumn.TrueValue = "";
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hasCredentialsSetDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // NursesUserControl
             // 
@@ -204,6 +204,6 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn hasCredentialsSetDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hasCredentialsSetDataGridViewCheckBoxColumn;
     }
 }
