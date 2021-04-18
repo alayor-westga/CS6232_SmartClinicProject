@@ -337,9 +337,10 @@ namespace SmartClinic.View
             }
 
             this.currentRow = this.labTestResultsDataGridView.CurrentCell.RowIndex;
+            string currentLabTestCode = this.labTestCodeLabel2.Text;
             Console.WriteLine("current row: " + this.currentRow);
             this.PopulateDataGridView();          
-            //this.labTestResultsDataGridView.Rows[this.currentRow].Selected = true; //this is the problem - not properly assigning
+            this.labTestResultsDataGridView.Rows[this.currentRow].Selected = true; //this is the problem - not properly assigning
             
             Console.WriteLine("current row after populate: " + this.labTestResultsDataGridView.CurrentCell.RowIndex);
             //this.GetDataForSelectedRow();
@@ -350,7 +351,7 @@ namespace SmartClinic.View
                 Console.WriteLine(labTestResultsDataGridView.Rows.Count);
                 if (this.labTestResultsDataGridView.Rows.Count != 0)
                 {
-                    oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.Rows[this.currentRow].Cells[0].Value.ToString(), this.visit.AppointmentID);
+                    oldResults = this.labTestController.GetSingleLabTestResult(currentLabTestCode, this.visit.AppointmentID);
                     Console.WriteLine(oldResults.LabTestName);
                 }
             }
