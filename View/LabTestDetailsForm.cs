@@ -15,7 +15,7 @@ namespace SmartClinic.View
         private readonly PatientVisits visit;
         private LabTestResults oldResults;
         private LabTestResults newResults;
-        private bool finalDiagnosisAdded;
+        private readonly bool finalDiagnosisAdded;
 
         /// <summary>
         /// Constructor for class to initialize components and instance variables
@@ -55,7 +55,7 @@ namespace SmartClinic.View
 
         private void LoadLabTestListBox()
         {
-            List<LabTest> allLabTests = new List<LabTest>();
+            List<LabTest> allLabTests;
             List<LabTest> labTestsNotSelected = new List<LabTest>();
 
             try

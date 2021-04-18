@@ -508,7 +508,7 @@ namespace SmartClinic.View
             // 
             this.resultsLabel.AutoSize = true;
             this.resultsLabel.ForeColor = System.Drawing.Color.Red;
-            this.resultsLabel.Location = new System.Drawing.Point(605, 520);
+            this.resultsLabel.Location = new System.Drawing.Point(688, 517);
             this.resultsLabel.Name = "resultsLabel";
             this.resultsLabel.Size = new System.Drawing.Size(0, 17);
             this.resultsLabel.TabIndex = 115;
