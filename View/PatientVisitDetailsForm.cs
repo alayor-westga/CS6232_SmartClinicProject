@@ -143,7 +143,7 @@ namespace SmartClinic.View
         {
             if (!String.IsNullOrWhiteSpace(visit.FinalDiagnosis))
             {
-                MessageBox.Show("This visit info cannot be edited. The final diagnosis has been made.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This visit info cannot be edited. The final diagnosis has been made.", "Operation not allowed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             return true;

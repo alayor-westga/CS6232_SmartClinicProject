@@ -95,6 +95,16 @@ namespace SmartClinic.Controller
         }
 
         /// <summary>
+        /// It evaluates if there is a visit assigned to the appoinment.
+        /// </summary>
+        /// <param name="appointmentId">The appointment id to be checked.</param>
+        /// <returns>True if the appoinemnt has a visit. False otherwise</returns>
+        public bool HasVisit(int appointmentId)
+        {
+            return visitSource.ExistsForAppointmentId(appointmentId);
+        }
+
+        /// <summary>
         /// It deletes an appointment from the data base.
         /// </summary>
         /// <param name="appointmentId">The appointment id to be deleted.</param>
@@ -105,7 +115,7 @@ namespace SmartClinic.Controller
             {
                 throw new ArgumentException("The appointmentId must not be negative.");
             }
-            if (visitSource.ExistsForAppointmentId(appointmentId))
+            if (HasVisit(appointmentId))
             {
                 throw new ArgumentException("There is an assigned visit to this appointment. Thus, it cannot be deleted.");
             }

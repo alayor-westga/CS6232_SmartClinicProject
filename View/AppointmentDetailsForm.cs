@@ -86,6 +86,11 @@ namespace SmartClinic.View
             {
                 return;
             }
+            if (appointmentController.HasVisit(appointment.AppointmentId))
+            {
+                MessageBox.Show("The appointment has a visit. It cannot be edited.", "Has a visit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             appointmentDatePicker.Enabled = true;
             appointmentTimePicker.Enabled = true;
             doctorComboBox.Enabled = true;
