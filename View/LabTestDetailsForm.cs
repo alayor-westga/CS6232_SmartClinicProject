@@ -238,7 +238,7 @@ namespace SmartClinic.View
             this.resultTextBox.Text = oldResults.Result;
         }
 
-        private void GetDataForSelectedRow() //work on dependency injection... for current row
+        private void GetDataForSelectedRow() 
         {
             this.oldResults = new LabTestResults();
         
@@ -248,7 +248,6 @@ namespace SmartClinic.View
                 if(this.labTestResultsDataGridView.Rows.Count != 0)
                 {
                     oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), this.visit.AppointmentID);              
-                    //oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.Rows[this.currentRow].Cells[0].Value.ToString(), this.visit.AppointmentID);
                     Console.WriteLine("current row in getdataforRow: " + this.labTestResultsDataGridView.CurrentRow.Cells[0].Value);
                 }              
             }
@@ -337,18 +336,13 @@ namespace SmartClinic.View
             }
 
             this.currentRow = this.labTestResultsDataGridView.CurrentCell.RowIndex;
-            string currentLabTestCode = this.labTestCodeLabel2.Text;
-            Console.WriteLine("current row: " + this.currentRow);
+            string currentLabTestCode = this.labTestCodeLabel2.Text;         
             this.PopulateDataGridView();          
-            this.labTestResultsDataGridView.Rows[this.currentRow].Selected = true; //this is the problem - not properly assigning
-            
-            Console.WriteLine("current row after populate: " + this.labTestResultsDataGridView.CurrentCell.RowIndex);
-            //this.GetDataForSelectedRow();
+            this.labTestResultsDataGridView.Rows[this.currentRow].Selected = true;           
             this.oldResults = new LabTestResults();
 
             try
             {
-                Console.WriteLine(labTestResultsDataGridView.Rows.Count);
                 if (this.labTestResultsDataGridView.Rows.Count != 0)
                 {
                     oldResults = this.labTestController.GetSingleLabTestResult(currentLabTestCode, this.visit.AppointmentID);
@@ -363,7 +357,6 @@ namespace SmartClinic.View
             this.PopulateDateIsNormalResults();
             MessageBox.Show("Changes to this lab test have\nhave been successfully saved",
                                      "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private bool ValidateFormChanges()
@@ -371,7 +364,7 @@ namespace SmartClinic.View
             bool formChanged = false;
             Console.WriteLine("oldResults: " + this.oldResults.DatePerformed);
             Console.WriteLine("picker: " + (DateTime)this.datePerformedDateTimePicker.Value);
-            if (this.oldResults.DatePerformed != (DateTime)this.datePerformedDateTimePicker.Value) //trouble here
+            if (this.oldResults.DatePerformed != (DateTime)this.datePerformedDateTimePicker.Value) 
             {
                 formChanged = true;
             }
@@ -401,7 +394,7 @@ namespace SmartClinic.View
             }
             if (this.oldResults.DatePerformed == null && this.datePerformedDateTimePicker.Value == DateTime.Now && this.datePerformedDateTimePicker.Checked == false)
             {
-                formChanged = true; //may not need this one
+                formChanged = true;
             }
 
             return formChanged;
