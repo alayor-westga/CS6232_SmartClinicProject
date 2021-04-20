@@ -11,9 +11,13 @@ namespace SmartClinic.View
 {
     public partial class MostPerformedTestForm : Form
     {
-        public MostPerformedTestForm()
+        private DateTime startDate;
+        private DateTime endDate;
+        public MostPerformedTestForm(DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
+            this.startDate = startDate;
+            this.endDate = endDate;           
         }
     }
 }

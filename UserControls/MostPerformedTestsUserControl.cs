@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartClinic.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,15 @@ namespace SmartClinic.UserControls
 
         private void GenerateReportButton_Click(object sender, EventArgs e)
         {
-
+            if (startDateDateTimePicker.Value < endDateDateTimePicker.Value)
+            {
+                using (MostPerformedTestForm mostPerformedTestForm = new MostPerformedTestForm(this.startDateDateTimePicker.Value, this.endDateDateTimePicker.Value))
+                {
+                    mostPerformedTestForm.ShowDialog();
+                }               
+            }
+            else { 
+            }
         }
     }
 }
