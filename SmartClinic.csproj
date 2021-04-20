@@ -260,6 +260,12 @@
     <Compile Include="UserControls\AppointmentsUserControl.Designer.cs">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MostPerformedTestsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MostPerformedTestsUserControl.Designer.cs">
+      <DependentUpon>MostPerformedTestsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NewAppointmentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -355,6 +361,9 @@
   <ItemGroup>
     <EmbeddedResource Include="UserControls\AppointmentsUserControl.resx">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MostPerformedTestsUserControl.resx">
+      <DependentUpon>MostPerformedTestsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NewAppointmentUserControl.resx">
       <DependentUpon>NewAppointmentUserControl.cs</DependentUpon>
