@@ -36,8 +36,8 @@ namespace SmartClinic.UserControls
             this.queryInformationGroupBox = new System.Windows.Forms.GroupBox();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.endDateLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.startDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.endDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.generateReportButton = new System.Windows.Forms.Button();
             this.reportInformationGroupBox.SuspendLayout();
             this.queryInformationGroupBox.SuspendLayout();
@@ -75,8 +75,8 @@ namespace SmartClinic.UserControls
             // queryInformationGroupBox
             // 
             this.queryInformationGroupBox.Controls.Add(this.generateReportButton);
-            this.queryInformationGroupBox.Controls.Add(this.dateTimePicker2);
-            this.queryInformationGroupBox.Controls.Add(this.dateTimePicker1);
+            this.queryInformationGroupBox.Controls.Add(this.endDateDateTimePicker);
+            this.queryInformationGroupBox.Controls.Add(this.startDateDateTimePicker);
             this.queryInformationGroupBox.Controls.Add(this.endDateLabel);
             this.queryInformationGroupBox.Controls.Add(this.startDateLabel);
             this.queryInformationGroupBox.Location = new System.Drawing.Point(19, 388);
@@ -104,21 +104,21 @@ namespace SmartClinic.UserControls
             this.endDateLabel.TabIndex = 1;
             this.endDateLabel.Text = "End Date";
             // 
-            // dateTimePicker1
+            // startDateDateTimePicker
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(10, 57);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(151, 22);
-            this.dateTimePicker1.TabIndex = 2;
+            this.startDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.startDateDateTimePicker.Location = new System.Drawing.Point(10, 57);
+            this.startDateDateTimePicker.Name = "startDateDateTimePicker";
+            this.startDateDateTimePicker.Size = new System.Drawing.Size(151, 22);
+            this.startDateDateTimePicker.TabIndex = 2;
             // 
-            // dateTimePicker2
+            // endDateDateTimePicker
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(218, 56);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(151, 22);
-            this.dateTimePicker2.TabIndex = 3;
+            this.endDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.endDateDateTimePicker.Location = new System.Drawing.Point(218, 56);
+            this.endDateDateTimePicker.Name = "endDateDateTimePicker";
+            this.endDateDateTimePicker.Size = new System.Drawing.Size(151, 22);
+            this.endDateDateTimePicker.TabIndex = 3;
             // 
             // generateReportButton
             // 
@@ -128,6 +128,7 @@ namespace SmartClinic.UserControls
             this.generateReportButton.TabIndex = 4;
             this.generateReportButton.Text = "Generate Report";
             this.generateReportButton.UseVisualStyleBackColor = true;
+            this.generateReportButton.Click += new System.EventHandler(this.GenerateReportButton_Click);
             // 
             // MostPerformedTestsUserControl
             // 
@@ -151,8 +152,8 @@ namespace SmartClinic.UserControls
         private System.Windows.Forms.GroupBox reportInformationGroupBox;
         private System.Windows.Forms.GroupBox queryInformationGroupBox;
         private System.Windows.Forms.Button generateReportButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker endDateDateTimePicker;
+        private System.Windows.Forms.DateTimePicker startDateDateTimePicker;
         private System.Windows.Forms.Label endDateLabel;
         private System.Windows.Forms.Label startDateLabel;
     }

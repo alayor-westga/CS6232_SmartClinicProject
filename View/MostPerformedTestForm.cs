@@ -7,18 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SmartClinic.UserControls
+namespace SmartClinic.View
 {
-    public partial class MostPerformedTestsUserControl : UserControl
+    public partial class MostPerformedTestForm : Form
     {
-        public MostPerformedTestsUserControl()
+        public MostPerformedTestForm()
         {
             InitializeComponent();
-        }
-
-        private void GenerateReportButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
