@@ -48,6 +48,7 @@ namespace SmartClinic.View
             this.nursesUserControl1 = new SmartClinic.UserControls.NursesUserControl();
             this.mostPerformedTestDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mostPerformedTests = new System.Windows.Forms.TabPage();
+            this.mostPerformedTestsUserControl1 = new SmartClinic.UserControls.MostPerformedTestsUserControl();
             this.userLayoutPanel.SuspendLayout();
             this.PatientsTabPage.SuspendLayout();
             this.patientVisitsTabPage.SuspendLayout();
@@ -56,6 +57,7 @@ namespace SmartClinic.View
             this.newAppoinmentTabPage.SuspendLayout();
             this.nursesTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mostPerformedTestDuringDatesBindingSource)).BeginInit();
+            this.mostPerformedTests.SuspendLayout();
             this.SuspendLayout();
             // 
             // userLayoutPanel
@@ -248,6 +250,7 @@ namespace SmartClinic.View
             // 
             // mostPerformedTests
             // 
+            this.mostPerformedTests.Controls.Add(this.mostPerformedTestsUserControl1);
             this.mostPerformedTests.Location = new System.Drawing.Point(4, 25);
             this.mostPerformedTests.Name = "mostPerformedTests";
             this.mostPerformedTests.Padding = new System.Windows.Forms.Padding(3);
@@ -255,6 +258,13 @@ namespace SmartClinic.View
             this.mostPerformedTests.TabIndex = 5;
             this.mostPerformedTests.Text = "Most Performed Tests";
             this.mostPerformedTests.UseVisualStyleBackColor = true;
+            // 
+            // mostPerformedTestsUserControl1
+            // 
+            this.mostPerformedTestsUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.mostPerformedTestsUserControl1.Name = "mostPerformedTestsUserControl1";
+            this.mostPerformedTestsUserControl1.Size = new System.Drawing.Size(996, 618);
+            this.mostPerformedTestsUserControl1.TabIndex = 0;
             // 
             // MainDashboard
             // 
@@ -279,6 +289,7 @@ namespace SmartClinic.View
             this.newAppoinmentTabPage.ResumeLayout(false);
             this.nursesTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mostPerformedTestDuringDatesBindingSource)).EndInit();
+            this.mostPerformedTests.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -303,5 +314,6 @@ namespace SmartClinic.View
         private UserControls.NursesUserControl nursesUserControl1;
         private System.Windows.Forms.BindingSource mostPerformedTestDuringDatesBindingSource;
         private System.Windows.Forms.TabPage mostPerformedTests;
+        private UserControls.MostPerformedTestsUserControl mostPerformedTestsUserControl1;
     }
 }
