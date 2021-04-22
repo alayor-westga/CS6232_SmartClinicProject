@@ -26,7 +26,7 @@ namespace SmartClinic.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-2JO3ONJ;Initial Catalog=cs6232-g1;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-9M63G7E;Initial Catalog=cs6232-g1;Integrated Security=True")]
         public string cs6232_g1ConnectionString {
             get {
                 return ((string)(this["cs6232_g1ConnectionString"]));
