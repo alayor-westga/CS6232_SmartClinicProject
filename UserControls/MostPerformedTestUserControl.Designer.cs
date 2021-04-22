@@ -30,7 +30,7 @@ namespace SmartClinic.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this._cs6232_g1DataSet = new SmartClinic._cs6232_g1DataSet();
             this.getMostPerformedTestsDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -46,9 +46,9 @@ namespace SmartClinic.UserControls
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "MostPerformedTestsDataSet";
-            reportDataSource2.Value = this.getMostPerformedTestsDuringDatesBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource3.Name = "MostPerformedTestsDataSet";
+            reportDataSource3.Value = this.getMostPerformedTestsDuringDatesBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "SmartClinic.MostPerformedTestsReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(21, 101);
             this.reportViewer1.Name = "reportViewer1";
@@ -90,9 +90,9 @@ namespace SmartClinic.UserControls
             // 
             // resultsButton
             // 
-            this.resultsButton.Location = new System.Drawing.Point(301, 52);
+            this.resultsButton.Location = new System.Drawing.Point(301, 50);
             this.resultsButton.Name = "resultsButton";
-            this.resultsButton.Size = new System.Drawing.Size(141, 23);
+            this.resultsButton.Size = new System.Drawing.Size(141, 28);
             this.resultsButton.TabIndex = 3;
             this.resultsButton.Text = "Get Query Results";
             this.resultsButton.UseVisualStyleBackColor = true;
