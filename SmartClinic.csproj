@@ -377,12 +377,6 @@
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\ClinicPersonAddedListener.cs" />
-    <Compile Include="View\MostPerformedTestsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\MostPerformedTestsForm.Designer.cs">
-      <DependentUpon>MostPerformedTestsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\NewNurseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,9 +453,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\MostPerformedTestsForm.resx">
-      <DependentUpon>MostPerformedTestsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\NewNurseForm.resx">
       <DependentUpon>NewNurseForm.cs</DependentUpon>
