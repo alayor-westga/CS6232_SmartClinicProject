@@ -6,6 +6,8 @@ Admin
 username: doe
 password: test1234
 
+>>> The DB Structure Has Not Changed.
+
 * Create DB
     - Run the DB/script.sql
         Note: You can also run the DB/script_dev.sql which is a manual script we 

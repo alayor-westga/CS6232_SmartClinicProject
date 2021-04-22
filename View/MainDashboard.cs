@@ -24,7 +24,7 @@ namespace SmartClinic.View
             this.loginForm = loginForm;
             searchPatientsUserControl1.ChangeFormMode(SearchPatientsUserControl.SearchFormMode.SearchAndEdit);
             ShowUserName();
-            ShowNursesTab();
+            ShowTabPages();
              refreshableTabPages = new List<TabPage> {
                appointmentsTabPage,
                patientVisitsTabPage
@@ -40,13 +40,26 @@ namespace SmartClinic.View
             userNameLabel.Text = user.FullName + " (" + user.UserName + ")";
         }
 
-        private void ShowNursesTab()
+        private void ShowTabPages()
         {
+            mainDashBoardTabControl.TabPages.Remove(newAppoinmentTabPage);
+            mainDashBoardTabControl.TabPages.Remove(appointmentsTabPage);
+            mainDashBoardTabControl.TabPages.Remove(patientVisitsTabPage);
+            mainDashBoardTabControl.TabPages.Remove(patientsTabPage);
             mainDashBoardTabControl.TabPages.Remove(nursesTabPage);
+            mainDashBoardTabControl.TabPages.Remove(mostPerformedTestsTabPage);
             User user = LoginController.GetUser();
             if (user.Role == UserRole.Admin)
             {
                 mainDashBoardTabControl.TabPages.Add(nursesTabPage);
+                mainDashBoardTabControl.TabPages.Add(mostPerformedTestsTabPage);
+            } 
+            else if (user.Role == UserRole.Nurse) 
+            {
+                mainDashBoardTabControl.TabPages.Add(newAppoinmentTabPage);
+                mainDashBoardTabControl.TabPages.Add(appointmentsTabPage);
+                mainDashBoardTabControl.TabPages.Add(patientVisitsTabPage);
+                mainDashBoardTabControl.TabPages.Add(patientsTabPage);
             }
         }
 
