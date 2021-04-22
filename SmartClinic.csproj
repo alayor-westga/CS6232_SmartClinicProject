@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -6,8 +6,9 @@
     <OutputType>WinExe</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>WindowsApplication</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -19,6 +20,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>SmartClinic</RootNamespace>
@@ -221,7 +224,22 @@
     <None Include="Properties\DataSources\SmartClinic.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.Patient.datasource" />
     <None Include="Properties\DataSources\SmartClinic.Model.PatientVisits1.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="README.md" />
+    <None Include="_cs6232_g1DataSet.xsc">
+      <DependentUpon>_cs6232_g1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_cs6232_g1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_cs6232_g1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_cs6232_g1DataSet.xss">
+      <DependentUpon>_cs6232_g1DataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\script.sql" />
@@ -286,6 +304,11 @@
     <Compile Include="Model\USStates.cs" />
     <Compile Include="Model\Views\AppointmentSearchResult.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserControls\AppointmentsUserControl.cs">
       <SubType>UserControl</SubType>
@@ -293,11 +316,11 @@
     <Compile Include="UserControls\AppointmentsUserControl.Designer.cs">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MostPerformedTestsUserControl.cs">
+    <Compile Include="UserControls\MostPerformedTestUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MostPerformedTestsUserControl.Designer.cs">
-      <DependentUpon>MostPerformedTestsUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\MostPerformedTestUserControl.Designer.cs">
+      <DependentUpon>MostPerformedTestUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NewAppointmentUserControl.cs">
       <SubType>UserControl</SubType>
@@ -354,11 +377,11 @@
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\ClinicPersonAddedListener.cs" />
-    <Compile Include="View\MostPerformedTestForm.cs">
+    <Compile Include="View\MostPerformedTestsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MostPerformedTestForm.Designer.cs">
-      <DependentUpon>MostPerformedTestForm.cs</DependentUpon>
+    <Compile Include="View\MostPerformedTestsForm.Designer.cs">
+      <DependentUpon>MostPerformedTestsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\NewNurseForm.cs">
       <SubType>Form</SubType>
@@ -396,13 +419,19 @@
     <Compile Include="View\UpdatePatientForm.Designer.cs">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_cs6232_g1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_cs6232_g1DataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MostPerformedTestsReport.rdlc" />
     <EmbeddedResource Include="UserControls\AppointmentsUserControl.resx">
       <DependentUpon>AppointmentsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MostPerformedTestsUserControl.resx">
-      <DependentUpon>MostPerformedTestsUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MostPerformedTestUserControl.resx">
+      <DependentUpon>MostPerformedTestUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NewAppointmentUserControl.resx">
       <DependentUpon>NewAppointmentUserControl.cs</DependentUpon>
@@ -431,8 +460,8 @@
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MostPerformedTestForm.resx">
-      <DependentUpon>MostPerformedTestForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\MostPerformedTestsForm.resx">
+      <DependentUpon>MostPerformedTestsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\NewNurseForm.resx">
       <DependentUpon>NewNurseForm.cs</DependentUpon>

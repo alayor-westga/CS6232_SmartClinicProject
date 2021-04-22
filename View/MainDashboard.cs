@@ -95,5 +95,11 @@ namespace SmartClinic.View
                 }
             }
         }
+
+        private void MainDashboard_Load(object sender, EventArgs e)
+        {
+
+           
+        }
     }
 }

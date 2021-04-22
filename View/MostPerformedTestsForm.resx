@@ -117,20 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="reportDescriptionLabel.Text" xml:space="preserve">
-    <value>Given the start and end dates, the data displayed for each qualified test will be:
-
-1) test code
-2) test name
-3) total number of times the qualified test has been performed in the specified date range
-4) total number of times that all tests have been performed in the given date range
-5) the percentage of the number in 3) over the number in 4)
-6) the number of normal results for the qualified test in the specified date range
-7) the number of abnormal results for the qualified test in the specified date range
-8) the percentage of the total number of times that the test was performed on a patient in age 18-29
-    over the total number of times that the test has been performed in the specified date range
-9) similarly, the percentage of patients in age 30-39
-10) the percentage of patients of all other age agroups who took the test
-</value>
-  </data>
+  <metadata name="getMostPerformedTestsDuringDatesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>477, 17</value>
+  </metadata>
+  <metadata name="_cs6232_g1DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="getMostPerformedTestsDuringDatesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>881, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>204</value>
+  </metadata>
 </root>
