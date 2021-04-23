@@ -245,6 +245,7 @@
     <Content Include="DB\script.sql" />
     <Content Include="DB\script2.sql" />
     <Content Include="docs\backlog.txt" />
+    <Content Include="docs\cs6232-g1-Diagram.JPG" />
     <Content Include="read_me.txt">
       <SubType>Form</SubType>
     </Content>
