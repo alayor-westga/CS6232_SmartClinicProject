@@ -30,41 +30,41 @@ namespace SmartClinic.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this._cs6232_g1DataSet = new SmartClinic._cs6232_g1DataSet();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.getMostPerformedTestsDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._cs6232_g1DataSet = new SmartClinic._cs6232_g1DataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.getMostPerformedTestsDuringDatesTableAdapter = new SmartClinic._cs6232_g1DataSetTableAdapters.getMostPerformedTestsDuringDatesTableAdapter();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.endDateLabel = new System.Windows.Forms.Label();
             this.resultsButton = new System.Windows.Forms.Button();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this._cs6232_g1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getMostPerformedTestsDuringDatesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._cs6232_g1DataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // getMostPerformedTestsDuringDatesBindingSource
             // 
-            reportDataSource3.Name = "MostPerformedTestsDataSet";
-            reportDataSource3.Value = this.getMostPerformedTestsDuringDatesBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SmartClinic.MostPerformedTestsReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(21, 101);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1046, 488);
-            this.reportViewer1.TabIndex = 0;
+            this.getMostPerformedTestsDuringDatesBindingSource.DataMember = "getMostPerformedTestsDuringDates";
+            this.getMostPerformedTestsDuringDatesBindingSource.DataSource = this._cs6232_g1DataSet;
             // 
             // _cs6232_g1DataSet
             // 
             this._cs6232_g1DataSet.DataSetName = "_cs6232_g1DataSet";
             this._cs6232_g1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // getMostPerformedTestsDuringDatesBindingSource
+            // reportViewer1
             // 
-            this.getMostPerformedTestsDuringDatesBindingSource.DataMember = "getMostPerformedTestsDuringDates";
-            this.getMostPerformedTestsDuringDatesBindingSource.DataSource = this._cs6232_g1DataSet;
+            reportDataSource1.Name = "MostPerformedTestsDataSet";
+            reportDataSource1.Value = this.getMostPerformedTestsDuringDatesBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SmartClinic.MostPerformedTestsReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(21, 101);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1046, 488);
+            this.reportViewer1.TabIndex = 0;
             // 
             // getMostPerformedTestsDuringDatesTableAdapter
             // 
@@ -127,8 +127,8 @@ namespace SmartClinic.UserControls
             this.Name = "MostPerformedTestUserControl";
             this.Size = new System.Drawing.Size(1086, 614);
             this.Load += new System.EventHandler(this.MostPerformedTestsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this._cs6232_g1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getMostPerformedTestsDuringDatesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._cs6232_g1DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

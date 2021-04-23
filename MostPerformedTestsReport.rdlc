@@ -836,7 +836,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1087,6 +1086,7 @@
         </TablixRowHierarchy>
         <NoRowsMessage>No Tests Found for Search Parameters</NoRowsMessage>
         <DataSetName>MostPerformedTestsDataSet</DataSetName>
+        <Top>0.46667in</Top>
         <Height>0.875in</Height>
         <Width>8.675in</Width>
         <Style>
@@ -1096,8 +1096,43 @@
           <Color>Red</Color>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Most Performed Tests During Specified Time Frame For Tests Performed At Least Twice</Value>
+                <Style>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>0.105in</Top>
+        <Left>0.78in</Left>
+        <Height>0.25in</Height>
+        <Width>7.2in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.11667in</Height>
     <Style>
       <Border>
         <Style>None</Style>
