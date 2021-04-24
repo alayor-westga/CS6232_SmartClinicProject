@@ -188,15 +188,13 @@ namespace SmartClinic.View
                     ((DateTimePicker)sender).Format = DateTimePickerFormat.Custom;
                 }
                 else
-                {
-                    //((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+                {                   
                     ((DateTimePicker)sender).CustomFormat = "MM/dd/yyyy hh:mm tt";
                     ((DateTimePicker)sender).Format = DateTimePickerFormat.Custom;
                 }
             }
             else
-            {
-                //((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+            {              
                 ((DateTimePicker)sender).CustomFormat = "MM/dd/yyyy hh:mm tt";
                 ((DateTimePicker)sender).Format = DateTimePickerFormat.Custom;
             }
@@ -245,12 +243,10 @@ namespace SmartClinic.View
             this.oldResults = new LabTestResults();
         
             try
-            {
-                Console.WriteLine(labTestResultsDataGridView.Rows.Count);
+            {               
                 if(this.labTestResultsDataGridView.Rows.Count != 0)
                 {
-                    oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), this.visit.AppointmentID);              
-                    Console.WriteLine("current row in getdataforRow: " + this.labTestResultsDataGridView.CurrentRow.Cells[0].Value);
+                    oldResults = this.labTestController.GetSingleLabTestResult(this.labTestResultsDataGridView.CurrentRow.Cells[0].Value.ToString(), this.visit.AppointmentID);                                
                 }              
             }
             catch (ArgumentException argumentException)

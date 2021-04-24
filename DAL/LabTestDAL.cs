@@ -225,11 +225,7 @@ namespace SmartClinic.DAL
         /// <param name="newResults"></param>
         /// <returns></returns>
         public bool UpdateLabTestResults(LabTestResults oldResults, LabTestResults newResults)
-        {
-            Console.WriteLine("In DAL: " + newResults.DatePerformed);
-            Console.WriteLine("In update lab test results - old results: " + oldResults.IsNormal);
-
-
+        {         
             if (oldResults == null)
             {
                 throw new ArgumentNullException("oldResults");
