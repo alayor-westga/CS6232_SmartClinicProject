@@ -189,12 +189,16 @@ namespace SmartClinic.View
                 }
                 else
                 {
-                    ((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+                    //((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+                    ((DateTimePicker)sender).CustomFormat = "MM/dd/yyyy hh:mm tt";
+                    ((DateTimePicker)sender).Format = DateTimePickerFormat.Custom;
                 }
             }
             else
             {
-                ((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+                //((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+                ((DateTimePicker)sender).CustomFormat = "MM/dd/yyyy hh:mm tt";
+                ((DateTimePicker)sender).Format = DateTimePickerFormat.Custom;
             }
         }
 
