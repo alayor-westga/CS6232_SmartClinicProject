@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using SmartClinic.Model;
 using System.Collections;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace SmartClinic.DAL
 {
